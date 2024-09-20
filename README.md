@@ -10,6 +10,5 @@ presentaciones programacion basica
 <a href="https://github.com/ejecutortecnico/ejecutortecnico.github.io/blob/main/html-template.html">Github Plantilla html</a>
 
 
-<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
-
+<a href="https://developer.mozilla.org/es/docs/Web/HTML">Documentacion HTML</a>
 

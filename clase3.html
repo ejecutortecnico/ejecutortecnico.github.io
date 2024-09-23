@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentación Historia</title>
-    <link href="css/clase3.css" rel="stylesheet">
+    <title>Presentación clase 3</title>
+    <link href="css/estilos.css" rel="stylesheet">
      <style>
       
     </style>
@@ -14,37 +14,167 @@
     <div class="container">
         <!-- Diapositiva 1 -->
         <div class="slide active">
-		  
-		<img src="images/logo.png"  width="300" height="150" />
-            <h1>Modelo de Caja</h1>
-			<div class="row">
+            <div class="row">
                 <div class="col">
-                    Hablar de la historia del lenguaje HTML es hablar de los inicios de la Web. 
-                    HTML (Hyper Text Markup Language) es un lenguaje de marcas cuya finalidad es crear páginas web. 
-                    Básicamente.
+                    <img src="images/logo.png"  width="200" height="100" />
                 </div>
                 <div class="col">
-                  <img src="images/boxmodel.png" alt="Box Model" style="height: 100%; width: 100%;">
+                    <h1>Selectores CSS</h1>
+                </div>
+            </div>
+			<div class="row">
+                <div class="col">
+                    En CSS, los selectores son patrones que se utilizan para seleccionar los elementos que desea diseñar.
+                </div>
+                <div class="col">
+                  <img src="images/selectores.png" alt="Selectores" onclick="window.modal.showModal();" style="height: 50%; width: 50%;">
+            <dialog id="modal" style="height: auto; width: auto;">
+                <img src="images/selectores.png" alt="Selectores modal" style="height: 100%; width: 50%;">
+            <button onclick="window.modal.close();">Cerrar</button>
+            </dialog>
+                </div>
+                <div class="col">
+                    <img src="images/selectores2.png" alt="Selectores HTML" onclick="window.modal2.showModal();" style="height: 100%; width: 100%;">
+                </div>
+                <dialog id="modal2" style="height: auto; width: auto;">
+                    <img src="images/selectores2.png" alt="Selectores modal" style="height: 50%; width: 100%;">
+                <button onclick="window.modal2.close();">Cerrar</button>
+                </dialog>
+		    </div>
+		</div>
+
+        <div class="slide">
+            <div class="row">
+                <div class="col">
+                    <img src="images/logo.png"  width="200" height="100" />
+                </div>
+                <div class="col">
+                    <h1>Jerarquia CSS</h1>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    CSS en línea (CSS aplicado directamente en la etiqueta)<br>
+                    CSS interno (CSS aplicado entre etiquetas style en la misma página).<br>
+                    CSS externo (CSS aplicado externamente (desde la ruta del archivo u otro sitio web) con la etiqueta link).<br>
+                    Class<br>
+                    Id<br>
+                    !important<br>
+                </div>
+                <div class="col">
+                    <img src="images/jerarquia.png" alt="Box Model" onclick="window.modal3.showModal();" style="height: 100%; width: 100%;">
                     </div>
+                    <dialog id="modal3" style="height: auto; width: auto;">
+                        <img src="images/jerarquia.png" alt="div modal" style="height: 100%; width: 50%;">
+                    <button onclick="window.modal3.close();">Cerrar</button>
+                    </dialog>
+                    </div>
+        </div>
+
+        <div class="slide">
+            <div class="row">
+                <div class="col">
+                    <img src="images/logo.png"  width="200" height="100" />
+                </div>
+                <div class="col">
+                    <h1>Etiqueta DIV</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    El elemento de HTML div es el contenedor genérico para el contenido. No tiene efecto en el contenido o en el diseño hasta que se le aplica un estilo de alguna manera usando CSS
+                </div>
+                <div class="col">
+                    <img src="images/div.png" alt="Box Model" onclick="window.modal4.showModal();" style="height: 100%; width: 100%;">
+                </div>
+                <dialog id="modal4" style="height: auto; width: auto;">
+                        <img src="images/div.png" alt="div modal" style="height: 50%; width: 100%;">
+                    <button onclick="window.modal4.close();">Cerrar</button>
+                </dialog>
+            </div>
+        </div>
+
+    <div class="slide">
+        <div class="row">
+            <div class="col">
+                <img src="images/logo.png"  width="200" height="100" />
+            </div>
+            <div class="col">
+                <h1>Modelo de Caja</h1>
+            </div>
+        </div>
+            
+            <div class="row">
+                <div class="col">
+                    El modelo de caja comprende algunas propiedades que definen como se verá tu sitio: 
+                    box-sizing, border, padding y margin. Estas propiedades finalmente afectan como tu 
+                    contenido será desplegado.
+                </div>
+                <div class="col">
+                    <img src="images/boxmodel.png" alt="Box Model"  onclick="window.modal5.showModal();" style="height: 100%; width: 100%;">
+                    </div>
+                    <dialog id="modal5" style="height: auto; width: auto;">
+                        <img src="images/boxmodel.png" alt="box modal" style="height: 50%; width: 50%;">
+                        <img src="images/box-model-1.png" alt="Box Model" style="height: 50%; width: 50%;">   
+                    <button onclick="window.modal5.close();">Cerrar</button>
+                    </dialog>
                 <div class="col">
                     <img src="images/box-model-1.png" alt="Box Model" style="height: 100%; width: 100%;">   
-                 </div>
-		         </div>
-			</div>
+                    </div>
+                    </div>
+            </div>
+
 
         <!-- Diapositiva 2 -->
         <div class="slide">
-		<img src="images/logo.png"  width="300" height="150"  />
-            <h1>Los orígenes de HTML</h1>
-            <p>En un principio, su finalidad era que los científicos de diferentes universidades del mundo pudieran compartir información entre sí de manera sencilla.</p>
-        </div>
+            <div class="row">
+                <div class="col">
+                    <img src="images/logo.png"  width="200" height="100" />
+                </div>
+                <div class="col">
+                    <h1>Display FLex</h1>
+                </div>
+            </div>
+            
+			<div class="row">
+                <div class="col">
+                    El módulo de diseño de caja flexible facilita el diseño de una estructura
+                     de diseño flexible y responsiva sin utilizar flotación ni posicionamiento.
+                </div>
+                <div class="col">
+                    Para comenzar a utilizar el modelo Flexbox, primero debemos definir un contenedor flexible.
+                    </div>
+                <div class="col">
+                    <img src="images/contenedor.png" alt="Box Model" style="height: 100%; width: 100%;">
+                 </div>
+		         </div>
+                </div>
 
         <!-- Diapositiva 3 -->
         <div class="slide">
-		<img src="images/logo.png"  width="300" height="150"  />
-            <h1>HTML 1</h1>
-            <p>En 1991 se publica formalmente, bajo el nombre de “HTML Tags”, el primer documento con la descripción de HTML.
-                En 1993 se propone oficialmente que HTML sea un estándar.</p>
+            <div class="row">
+                <div class="col">
+                    <img src="images/logo.png"  width="200" height="100" />
+                </div>
+                <div class="col">
+                    <h1>Display Grid</h1>
+                </div>
+            </div>
+            
+			<div class="row">
+                <div class="col">
+                    El módulo de diseño de cuadrícula CSS ofrece un sistema de diseño basado en cuadrícula,
+                    con filas y columnas, lo que facilita el diseño de páginas web sin tener que utilizar 
+                    flotantes y posicionamiento.
+                </div>
+                <div class="col">
+                  <img src="images/grid.png" alt="grid box" style="height: 100%; width: 100%;">
+                    </div>
+                <div class="col">
+                    <img src="images/grid.png" alt="grid Box" style="height: 100%; width: 100%;">   
+                 </div>
+		         </div>
         </div>
 
         <!-- Controles -->

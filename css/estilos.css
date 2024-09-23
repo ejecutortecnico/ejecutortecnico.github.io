@@ -55,5 +55,6 @@ button:hover {
 
 .col{
     width: 30%;
+    height: inherit;
     padding: 20px;
 }

@@ -22,11 +22,13 @@ body {
     width: 50%;    
     height: 200px;
     background-color: lightblue;
+    border: 2px solid greenyellow; 
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 100px 100px 200px 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
     gap: 10px;
 }
 

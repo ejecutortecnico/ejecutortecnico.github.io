@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Clase 4</title>
+    <link href="css/estilos5.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Diapositiva 1 -->
+        <div class="slide active">
+            <div class="row">
+                <div class="col">
+                    <img src="images/logo.png"  width="300" height="150" />
+                    <h1>Estructura HTML</h1>
+                </div>
+                <div class="col">    
+                    <div class="col">
+                        <img src="images/clase51.png" alt="Box Model" onclick="window.modal1.showModal();" style="height: 80%; width: 80%;">   
+                    </div>
+                    <dialog id="modal1" style="height: auto; width: auto;">
+                        <img src="images/clase51.png" alt="Clase 5 imagen 1" style="height: 100%; width: 100%;">   
+                        <button onclick="window.modal1.close();">Cerrar</button>
+                    </dialog>
+                </div>
+            </div>
+		</div>
+
+        <div class="slide">
+            <div class="row">
+                <div class="col">
+                    <img src="images/logo.png"  width="300" height="150" />
+                    <h1>Encabezado o HEADER</h1>
+                </div>
+                <div class="col">    
+                    <div class="col">
+                        <img src="images/clase52.png" alt="Box Model" onclick="window.modal2.showModal();" style="height: 80%; width: 80%;">   
+                    </div>
+                    <dialog id="modal2" style="height: auto; width: auto;">
+                        <img src="images/clase52.png" alt="Clase 5 imagen 1" style="height: 100%; width: 100%;">   
+                        <button onclick="window.modal2.close();">Cerrar</button>
+                    </dialog>
+                </div>
+            </div>
+        </div>
+           
+
+
+        <!-- Diapositiva 2 -->
+       
+        <div class="slide">
+            <div class="row">
+                <div class="col">
+                    <img src="images/logo.png"  width="300" height="150" />
+                    <h1>Sobre Nosotros</h1>
+                </div>
+                <div class="col">    
+                    <div class="col">
+                        <img src="images/clase53.png" alt="Box Model" onclick="window.modal3.showModal();" style="height: 80%; width: 80%;">   
+                    </div>
+                    <dialog id="modal3" style="height: auto; width: auto;">
+                        <img src="images/clase53.png" alt="Clase 5 imagen 1" style="height: 50%; width: 100%;">   
+                        <button onclick="window.modal3.close();">Cerrar</button>
+                    </dialog>
+                </div>
+            </div>
+        </div>
+
+            <div class="slide">
+                <div class="row">
+                    <div class="col">
+                        <img src="images/logo.png"  width="300" height="150" />
+                        <h1>Portafolio</h1>
+                    </div>
+                    <div class="col">    
+                        <div class="col">
+                            <img src="images/clase54.png" alt="Box Model" onclick="window.modal4.showModal();" style="height: 80%; width: 80%;">   
+                        </div>
+                        <dialog id="modal4" style="height: auto; width: auto;">
+                            <img src="images/clase54.png" alt="Clase 5 imagen 1" style="height: 100%; width: 100%;">   
+                            <button onclick="window.modal4.close();">Cerrar</button>
+                        </dialog>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="row">
+                    <div class="col">
+                        <img src="images/logo.png"  width="300" height="150" />
+                        <h1>Contactenos</h1>
+                    </div>
+                    <div class="col">    
+                        <div class="col">
+                            <img src="images/clase55.png" alt="Box Model" onclick="window.modal5.showModal();" style="height: 80%; width: 80%;">   
+                        </div>
+                        <dialog id="modal5" style="height: auto; width: auto;">
+                            <img src="images/clase55.png" alt="Clase 5 imagen 1" style="height: 100%; width: 100%;">   
+                            <button onclick="window.modal5.close();">Cerrar</button>
+                        </dialog>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        <!-- Controles -->
+        <div class="controls">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+    </script>
+
+
+</body>
+</html>

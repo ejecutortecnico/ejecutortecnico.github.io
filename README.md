@@ -12,3 +12,14 @@ presentaciones programacion basica
 
 <a href="https://developer.mozilla.org/es/docs/Web/HTML">Documentacion HTML</a>
 
+
+Validar el HTML y CSS utilizando herramientas como el [
+    
+    Validador HTML de W3C
+    
+    
+    https://validator.w3.org/ 
+    
+    validador css
+
+    https://jigsaw.w3.org/css-validator/).

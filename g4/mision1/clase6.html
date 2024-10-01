@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Plantilla</title>
+    <!-- Importa Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            
+            font-family: Arial, sans-serif;
+
+            background-image: url(simagenes/fondotecno.jpg);
+            background-size: cover; /* Para que la imagen cubra toda la pantalla */
+            background-attachment: fixed; /* Hace que el fondo permanezca fijo al desplazarse */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+        }
+
+        .section-title {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-align: center; /* Centra el texto */
+        }
+
+        .custom-section {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con ligera transparencia */
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+        }
+
+        .custom-img {
+            max-width: 100%; /* Asegura que la imagen no se desborde del contenedor */
+            height: auto;
+            border-radius: 10px; /* Bordes redondeados para las imágenes */
+            margin: 10px 0;
+        }
+
+        .container {
+            margin-top: 50px;
+            max-width: 900px; /* Ajusta el ancho máximo de la página */
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* =============================*/
+
+        
+        .custom-section {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 9);
+        }
+
+        .custom-code {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+    
+
+    <div class="container">
+        <header class="text-center mt-4 p-4 bg-primary text-white rounded shadow-lg">
+            <h1 class="display-4 font-weight-bold">Mi Primer Portafolio</h1>
+            <p class="lead">Usando CSS</p>
+
+           
+        </header>
+
+        <!-- Sección para colocar el contenido -->
+        <section id="EstructuraHTML" class="custom-section">
+            <h2 class="text-center text-primary mt-5 mb-4 pb-2 border-bottom border-primary">Etiqueta body</h2>
+
+
+
+            <div class="text-center mt-4">  
+                <img src="simagenesclase6/1etiquetabody.png" alt="1etiquetabody" 
+            style="height: 100%; margin-left: 15px; margin-top: 2%;margin-bottom: 3%; border-radius: 3%;">
+            </div>   
+
+
+            <div class="custom-section">
+            <ul class="list-group">
+
+                <!-- Explicación de !DOCTYPE html -->
+                <li class="list-group-item">
+                    <div class="custom-code"> font-family: Arial, Helvetica, sans-serif;</div>
+                    <p>Define la fuente del texto en el cuerpo de la página. Se usa Arial primero, y si no está disponible, se usa Helvetica o cualquier fuente sans-serif.</p>
+                </li>
+
+                <!-- Explicación de <html lang="es"> -->
+                <li class="list-group-item">
+                    <div class="custom-code">line-height: 1.6;</div>
+                    <p>Establece la altura de línea en 1.6, mejorando la legibilidad al proporcionar más espacio entre las líneas de texto.</p>
+                </li>
+
+                <!-- Explicación de <head> -->
+                <li class="list-group-item">
+                    <div class="custom-code">margin: 0;</div>
+                    <p>Elimina el margen exterior del cuerpo para que el contenido ocupe todo el ancho de la ventana del navegador..</p>
+                </li>
+
+                <!-- Explicación de <meta charset="UTF-8"> -->
+                <li class="list-group-item">
+                    <div class="custom-code">padding: 0;</div>
+                    <p>Elimina el relleno interior del cuerpo, asegurando que no haya espacio adicional alrededor del contenido..</p>
+                </li>
+            </ul>
+            </div>
+        </section>
+
+
+
+        
+
+        <!-- Sección para más texto o contenido -->
+        <section id="emcabezado html" class="custom-section" >
+            <h2 class="text-center text-primary mt-5 mb-4 pb-2 border-bottom border-primary">Encabezado o header</h2>
+
+            <!-- Otra imagen -->
+            <div class="text-center">
+                <img src="simagenesclase6/2header.png" alt="2header" 
+                style="height: 100%; margin-left: 15px; margin-top: 2%;margin-bottom: 3%; border-radius: 3%;">
+             </div>
+        
+
+        <div class="custom-section">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="custom-code">header { background: #333; }</div>
+                    <p>Establece un fondo gris oscuro para el encabezado.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">header { color: #fff; }</div>
+                    <p>Cambia el color del texto a blanco.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">header { padding: 20px 0; }</div>
+                    <p>Aplica un relleno superior e inferior de 20 píxeles, centrando el contenido dentro del encabezado.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">header { text-align: center; }</div>
+                    <p>Centra el texto dentro del encabezado.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">nav ul { list-style: none; }</div>
+                    <p>Elimina los puntos de la lista predeterminados para las listas no ordenadas.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">nav ul { padding: 0; }</div>
+                    <p>Elimina el relleno de la lista, asegurando que no haya espacio adicional alrededor.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">nav ul li { display: inline; }</div>
+                    <p>Muestra los elementos de la lista en línea (horizontalmente).</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">nav ul li { margin: 0 10px; }</div>
+                    <p>Aplica un margen de 10 píxeles a la izquierda y a la derecha de cada elemento de la lista.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">nav ul li a { color: #fff; }</div>
+                    <p>Cambia el color del texto del enlace a blanco.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">nav ul li a { text-decoration: none; }</div>
+                    <p>Elimina el subrayado de los enlaces.</p>
+                </li>
+            </ul>
+        </div>
+        </section>
+
+
+        <section id="emcabezado html" class="custom-section">
+            <h2 class="text-center text-primary mt-5 mb-4 pb-2 border-bottom border-primary">Sobre Nosotros</h2>
+           
+
+            <!-- Otra imagen -->
+            <div class="text-center" style="height: 250px;">
+                <img src="simagenesclase6/3about.png" alt="3about" 
+                style="height: 100%; margin-top: 2%;margin-bottom: 3%; border-radius: 3%;">
+            </div>
+
+
+
+
+            <div class="custom-section">
+                <ul class="list-group">
+    
+                    <li class="list-group-item">
+                        <div class="custom-code">#about { padding: 20px; }</div>
+                        <p>Aplica un relleno de 20 píxeles alrededor del contenido en la sección con el ID "about".</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">#about { background: #f4f4f4; }</div>
+                        <p>Establece un color de fondo gris claro (#f4f4f4) para la sección "about".</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">about h2 { margin-top: 0; }</div>
+                        <p>Elimina el margen superior del encabezado <code>&lt;h2&gt;</code> dentro de la sección "about", evitando el espacio adicional por encima del título.</p>
+                    </li>
+                    
+                </ul>
+                </div>
+        </section>
+
+
+
+        <section id="Galeria" class="custom-section">
+            <h2 class="text-center text-primary mt-5 mb-4 pb-2 border-bottom border-primary">Galeria</h2>
+            
+            <!-- Otra imagen -->
+            <div class="text-center" >
+                <img src="simagenesclase6/4galery.png" alt="portafolio" 
+                style="height: 100%; margin-top: 2%;margin-bottom: 3%; border-radius: 6%;">
+            </div>
+
+
+
+            <div class="custom-section">
+                <ul class="list-group">
+    
+                    <li class="list-group-item">
+                        <div class="custom-code">.gallery { display: flex; }</div>
+                        <p>Define un contenedor de "galería" con un diseño flexible, lo que permite que los elementos internos se distribuyan en línea en una sola fila por defecto.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">.gallery { flex-wrap: wrap; }</div>
+                        <p>Permite que los elementos dentro del contenedor "gallery" se ajusten automáticamente a nuevas líneas cuando no hay suficiente espacio en la fila.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">.gallery { gap: 20px; }</div>
+                        <p>Establece un espacio de 20 píxeles entre cada elemento de la galería, proporcionando separación visual.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">.gallery { justify-content: center; }</div>
+                        <p>Centra los elementos de la galería horizontalmente dentro del contenedor.</p>
+                    </li>
+                </ul>
+                </div>
+        </section>
+
+
+
+
+
+        <section id="Portafolio" class="custom-section">
+            <h2 class="text-center text-primary mt-5 mb-4 pb-2 border-bottom border-primary">Portafolio</h2>
+            
+
+            <!-- Otra imagen -->
+            <div class="text-center" >
+                <img src="simagenesclase6/5portafolio.png" alt="portafolio" 
+                style="height: 100%; margin-top: 2%;margin-bottom: 3%; border-radius: 6%;">
+            </div>
+
+
+            <div class="custom-section">
+            <ul class="list-group">
+    
+                <li class="list-group-item">
+                    <div class="custom-code">.project { width: 300px; }</div>
+                    <p>Establece un ancho fijo de 300 píxeles para los elementos que tienen la clase <code>.project</code>, definiendo así el tamaño del contenedor del proyecto.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">.project { padding: 10px; }</div>
+                    <p>Añade un espacio interno de 10 píxeles entre el borde del contenedor del proyecto y su contenido, proporcionando espacio para respirar.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">.project { background: #fff; }</div>
+                    <p>Establece un color de fondo blanco para el contenedor del proyecto.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">.project { border: 1px solid #ddd; }</div>
+                    <p>Añade un borde delgado de 1 píxel de grosor y color gris claro alrededor del contenedor del proyecto, lo que lo separa visualmente del fondo.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">.project { text-align: center; }</div>
+                    <p>Centra horizontalmente el texto dentro del contenedor del proyecto.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">.project img { max-width: 100%; }</div>
+                    <p>Asegura que las imágenes dentro del contenedor del proyecto no superen el 100% del ancho del contenedor, manteniéndolas responsivas.</p>
+                </li>
+                <li class="list-group-item">
+                    <div class="custom-code">.project img { height: auto; }</div>
+                    <p>Ajusta automáticamente la altura de las imágenes en proporción a su ancho, manteniendo su relación de aspecto.</p>
+                </li>
+                
+                
+                
+            </ul>
+            </div>
+
+
+
+        </section>
+
+
+
+        <section id="Contactenos" class="custom-section">
+            <h2 class="text-center text-primary mt-5 mb-4 pb-2 border-bottom border-primary">Contactenos</h2>
+
+            <!-- Otra imagen -->
+            <div class="text-center" >
+                <img src="simagenesclase6/6contacto.png" alt="contactenos" 
+                style="height: 100%; margin-top: 2%;margin-bottom: 3%; border-radius: 3%;">
+            </div>
+
+
+
+            <div class="custom-section">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="custom-code">#contact { padding: 20px; }</div>
+                        <p>Añade un espacio de 20 píxeles alrededor de la sección de contacto, proporcionando un margen interno para que el contenido no toque los bordes del contenedor.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">form { display: flex; }</div>
+                        <p>Utiliza el sistema de <code>flexbox</code> para organizar los elementos del formulario de manera flexible y eficiente.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">form { flex-direction: column; }</div>
+                        <p>Organiza los elementos del formulario en una columna, haciendo que los campos y etiquetas se apilen uno sobre otro.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">form label { margin-bottom: 5px; }</div>
+                        <p>Añade un margen inferior de 5 píxeles a las etiquetas del formulario, separándolas del campo correspondiente.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">form input, form textarea { margin-bottom: 10px; }</div>
+                        <p>Añade un margen inferior de 10 píxeles a los campos de entrada y las áreas de texto, separando cada elemento del siguiente.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">form input, form textarea { padding: 10px; }</div>
+                        <p>Proporciona un relleno interno de 10 píxeles a los campos de entrada y áreas de texto, haciendo que el contenido dentro de los campos esté más espaciado y sea más fácil de leer.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">form input, form textarea { font-size: 16px; }</div>
+                        <p>Establece el tamaño de fuente en 16 píxeles para mejorar la legibilidad del texto dentro de los campos del formulario.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">form[type="submit"] { background: #333; }</div>
+                        <p>Establece un fondo de color gris oscuro (#333) para el botón de envío del formulario.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">form[type="submit"] { color: #fff; }</div>
+                        <p>Establece el color del texto del botón de envío en blanco para que contraste con el fondo oscuro.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">form[type="submit"] { border: none; }</div>
+                        <p>Elimina el borde alrededor del botón de envío para un diseño más limpio y moderno.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">form[type="submit"] { cursor: pointer; }</div>
+                        <p>Cambia el cursor a una mano (puntero) cuando el usuario pasa el ratón sobre el botón de envío, indicando que es un elemento clicable.</p>
+                    </li>
+                    
+                    
+                </ul>
+                </div>
+        </section>
+
+
+        <section id="Contactenos" class="custom-section">
+            <h2 class="text-center text-primary mt-5 mb-4 pb-2 border-bottom border-primary">Responsive</h2>
+          
+
+            <!-- Otra imagen -->
+            <div class="text-center" >
+                <img src="simagenesclase6/7responsive.png" alt="contactenos" 
+                style="height: 100%; margin-top: 2%;margin-bottom: 3%; border-radius: 3%;">
+            </div>
+
+            <div class="custom-section">
+                <ul class="list-group">
+        
+                    <li class="list-group-item">
+                        <div class="custom-code">@media(max-width: 600px) {}</div>
+                        <p>Este bloque de código aplica estilos específicos cuando el ancho de la pantalla es de 600 píxeles o menos. Esto es útil para hacer que la página sea más responsiva en dispositivos móviles.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">nav ul { display: flex; }</div>
+                        <p>Cambia la visualización del menú de navegación a <code>flexbox</code> para permitir una disposición más flexible de los elementos del menú.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">nav ul { flex-direction: column; }</div>
+                        <p>Reorganiza los elementos del menú en una columna vertical, haciendo que se apilen uno sobre otro en lugar de estar en línea horizontal, ideal para pantallas pequeñas.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">nav ul { align-items: center; }</div>
+                        <p>Centra los elementos del menú dentro del contenedor de navegación, lo que mejora su presentación en pantallas móviles.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">.gallery { flex-direction: column; }</div>
+                        <p>Hace que los elementos de la galería se dispongan en una columna en lugar de en una fila, lo que mejora la visualización en dispositivos con pantallas más pequeñas.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="custom-code">.gallery { align-items: center; }</div>
+                        <p>Centra los elementos de la galería dentro de su contenedor cuando la pantalla es de 600 píxeles o menos, haciendo que el contenido sea más accesible y fácil de ver en dispositivos móviles.</p>
+                    </li>
+                    
+                    
+                    
+                    
+                </ul>
+                </div>
+
+        </section>
+
+
+
+    </div>
+
+    <!-- Script Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

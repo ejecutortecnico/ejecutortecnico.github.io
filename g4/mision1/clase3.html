@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación CSS</title>
+    <!-- Importa Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            background-image: url(simagenes/fondotecno.jpg);
+            background-size: cover; /* Para que la imagen cubra toda la pantalla */
+            background-attachment: fixed; /* Hace que el fondo permanezca fijo al desplazarse */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+        }
+
+        /* Estilos adicionales si los necesitas */
+        .section-title {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .custom-section {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+        }
+
+        .code-example {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .text-center{
+            color: rgb(202, 41, 41);
+        }
+
+
+
+        .imagenes-selectores {
+            display: flex;
+            gap: 15px; /* Espacio entre las imágenes */
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            margin-top: 10px; /* Espacio por encima de las imágenes */
+        }
+
+        .img-selector {
+            width: 45%; /* Ajusta el ancho de las imágenes */
+            height: auto; /* Mantén la proporción de la imagen */
+            border-radius: 5%;
+        }
+
+        .imagen-jerarquia{
+            display: flex;
+            gap: 15px; /* Espacio entre las imágenes */
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            margin-top: 10px; /* Espacio por encima de las imágenes */
+        }
+
+        .jerarquia-css{
+            justify-content: center; 
+            width: 45%; /* Ajusta el ancho de las imágenes */
+            height: auto; /* Mantén la proporción de la imagen */
+            border-radius: 5%;
+        }
+
+        .containerIMG{
+            display: flex;
+            gap: 15px; /* Espacio entre las imágenes */
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            margin-top: 10px; /* Espacio por encima de las imágenes */
+        }
+
+        .contenedorIMG{
+            justify-content: center; 
+            width: 45%; /* Ajusta el ancho de las imágenes */
+            height: auto; /* Mantén la proporción de la imagen */
+            border-radius: 5%;
+        }
+        
+        .imagenesCaja{
+            display: flex;
+            gap: 15px; /* Espacio entre las imágenes */
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            margin-top: 10px; /* Espacio por encima de las imágenes */
+        }
+
+        .cajacodigo {
+            width: 45%; /* Ajusta el ancho de las imágenes */
+            height: auto; /* Mantén la proporción de la imagen */
+            border-radius: 5%;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-4 p-4 bg-primary text-white rounded shadow-lg">
+
+
+            <h1>Presentación de CSS</h1>
+
+            
+            <img src="simagenes/Css.png" alt="Imagen CSS" style="height: 100%; margin-left: 15px; margin-top: 2%; 
+            margin-bottom: 3%;">
+        </header>
+
+        <!-- Sección de Selectores CSS -->
+        <section id="selectores" class="custom-section">
+            <h2 class="section-title">Selectores CSS</h2>
+            <p>En CSS, los selectores son patrones que se utilizan para seleccionar los elementos que desea diseñar como por ejemplo:</p>
+
+            <div class="imagenes-selectores">
+                <img src="simagenes/selector1.png" alt="Imagen Selector 1" class="img-selector">
+                <img src="simagenes/selector2.png" alt="Imagen Selector 2" class="img-selector">
+            </div>
+
+        </section>
+
+        <!-- ===================== Sección de Jerarquía CSS ====================-->
+        <section id="jerarquia-css" class="custom-section">
+            <h2 class="section-title">Jerarquía en CSS</h2>
+            <ul>
+                <li>CSS en línea (aplicado directamente en la etiqueta)</li>
+                <li>CSS interno (aplicado entre etiquetas <code>&lt;style&gt;</code> en la misma página)</li>
+                <li>CSS externo (aplicado externamente con la etiqueta <code>&lt;link&gt;</code>)</li>
+                <li>Clases y IDs</li>
+                <li><code>!important</code></li>
+            </ul>
+            <div class="imagen-jerarquia">
+                <img src="simagenes/jerarquiacss.png" alt="Imagen Css" class="jerarquia-css">
+            </div>
+        </section>
+
+
+
+        <!--=========================== Sección de Etiqueta Div==================-->
+        <section id="div" class="custom-section">
+            <h2 class="section-title">Etiqueta <code>&lt;div&gt;</code></h2>
+            <p>El elemento <code>&lt;div&gt;</code> es el contenedor genérico para el contenido, sin efecto en el diseño hasta que se le aplica un estilo usando CSS.</p>
+        
+            <div class="containerIMG">
+                <img src="simagenes/container.png" alt="imagen contenedor" class="contenedorIMG">
+            </div>
+        </section>
+
+
+
+
+        <!--=========================== Sección de Modelo de Caja ===============================-->
+        <section id="modelo-caja" class="custom-section">
+            <h2 class="section-title">Modelo de Caja</h2>
+            <p>El modelo de caja define cómo se verá un sitio web a través de propiedades como <code>box-sizing</code>, <code>border</code>, <code>padding</code> y <code>margin</code>.</p>
+            <div class="code-example">
+                <code>box-sizing: border-box;</code><br>
+                <code>border: 1px solid black;</code><br>
+                <code>padding: 10px;</code><br>
+                <code>margin: 20px;</code>
+            </div>
+
+            <div class="imagenesCaja">
+                <img src="simagenes/cajacodigo.png" alt="Codigo de caja" class="cajacodigo">
+                <img src="simagenes/cajaa.png" alt="Caja" class="cajacodigo">
+            </div>
+        </section>
+
+        <!-- Sección de Display Flex -->
+        <section id="display-flex" class="custom-section">
+            <h2 class="section-title">Display Flex</h2>
+            <p>El módulo de caja flexible permite crear diseños flexibles y responsivos sin flotación ni posicionamiento. Para empezar, definimos un contenedor flexible.</p>
+      
+            <div class="displayfleximg" style="display: flex; justify-content: center;">
+                <img src="simagenes/displayflex.png" alt="display-flex" style="height: 100%; margin-top: 2%; border-radius: 3%;
+                margin-bottom: 3%">
+            </div>
+        </section>
+
+        <!-- Sección de Display Grid -->
+        <section id="display-grid" class="custom-section">
+            <h2 class="section-title">Display Grid</h2>
+            <p>El diseño de cuadrícula en CSS permite un sistema de diseño basado en filas y columnas, facilitando el diseño de páginas web.</p>
+            
+            
+            <div class="displayfleximg" style="display: flex; justify-content: center;">
+                <img src="simagenes/displaygrid.png" alt="display-flex" style="height: 100%; margin-top: 2%; border-radius: 3%;
+                margin-bottom: 3%">
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Script Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

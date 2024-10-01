@@ -1,0 +1,199 @@
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;   
+            background-image: url(../simagenes/fondotecno.jpg );
+            background-size: cover; /* Para que la imagen cubra toda la pantalla */
+            background-attachment: fixed; /* Hace que el fondo permanezca fijo al desplazarse */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+.titulo {
+    display: flex;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    align-items: center; /* Alinea las imágenes verticalmente */
+    gap: 50px; /* Espacio entre las imágenes */
+    padding: 30px;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.titulo img {
+    max-width: 100%; /* Asegura que las imágenes sean responsivas */
+    height: auto;
+    max-height: 180px; /* Ajusta el alto máximo según tu preferencia */
+}
+
+
+
+
+
+h1 {
+    color: #2c3e50;
+}
+p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+
+.historia {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.7);
+}
+
+h1 {
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    color: #333;
+}
+
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.imagen {
+    flex: 1 1 50%;
+    padding: 20px;
+    text-align: center;
+}
+
+.imagen img {
+    max-width: 70%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.texto {
+    flex: 1 1 50%;
+    padding: 20px;
+}
+
+.texto p {
+    color: #555;
+    line-height: 1.8;
+}
+
+
+
+
+
+.html1 {
+    
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.7);
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: #333;
+}
+
+.contenedor2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+
+.html1image {
+    flex: 1 1 50%;
+    padding: 20px;
+    text-align: center;
+}
+
+.html1image img {
+    max-width: 70%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.texto1 {
+    flex: 1 1 50%;
+    padding-left: 20px;
+}
+
+.texto1 ul {
+    list-style: none;
+    padding: 0;
+}
+
+.texto1 ul li {
+    margin-bottom: 10px;
+}
+
+.texto1 ul li::before {
+    content: '•'; /* Marcador de lista personalizado */
+    color: #3498db;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+
+
+
+
+.htmls{
+    padding-top: 10%;
+    display: flex;
+    justify-content:center
+}
+
+.htmls img{
+    width: 100%;/* disminuir el tamaño*/
+    height: auto;
+
+}
+
+
+.html5{
+    padding-top: 10%;
+    padding-bottom: 10%;
+    display: flex;
+    justify-content:center
+}
+
+.html5 img{
+    width: 95%;/* disminuir el tamaño*/
+    height: auto;
+}
+
+
+.estructurahml{
+ 
+    display: flex;
+    justify-content:center;
+    background-color: rgba(227, 227, 227, 0.6);
+}
+
+.estructurahml img{
+    width: 82%;/* disminuir el tamaño*/
+    height: auto;
+}
+
+
+.basicahtml{
+    background-color: rgba(227, 227, 227, 0.6);
+    display: flex;
+    justify-content:center
+}
+
+.basicahtml img{
+    width: 82%;/* disminuir el tamaño*/
+    height: auto;
+}
+
+
+
+

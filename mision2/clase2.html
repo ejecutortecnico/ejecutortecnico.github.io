@@ -88,7 +88,7 @@
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Funciones Declarativas</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -113,7 +113,7 @@
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Funciones Anonimas</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -137,16 +137,14 @@
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Funciones Flecha o Arrow</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <pre>
                     <code>
-                        let persona = {
-                            nombre: "Ana",
-                            edad: 30
-                            };
+                        let restar = (a, b) => a - b;
+                        console.log(restar(10, 4)); // 6
                     </code>
                 </pre>       
             </div>
@@ -233,27 +231,13 @@
                 <p>.</p>
                 </div>
                 <div class="col">
-                    <h2>Primitivos</h2>
-                <p>
-                     `string`, `number`, `boolean`, `null`, `undefined`, `symbol`:
-                </p> 
-                  <ul>
-                    <li>
-                        let mensaje = "Hola, mundo";
-                    </li>
-                    <li>
-                        let cantidad = 42;
-                    </li>
-                    <li>
-                        let esVerdadero = true;
-                    </li>
-                    <li>
-                        let valorNulo = null;
-                    </li>
-                    <li>
-                        let valorIndefinido;
-                    </li>
-                  </ul>
+                    <pre>
+                        <code>
+                            for (let i = 0; i < 5; i++) {
+                                console.log("Número: " + i);
+                                }
+                        </code>
+                    </pre>
                 </div>	
 		  </div>
         </div>
@@ -273,83 +257,23 @@
                 <p>.</p>
                 </div>
                 <div class="col">
-                    <h2>Objetos</h2>
-                <p>
-                    <ul>
-                        <li>
-                            `object`, `array`, `function`
-                        </li>
-                        <li>
-                            let persona = {
-                                nombre: "Ana",
-                                edad: 30
-                                };
-                        </li>
-                        <li>
-                            let lista = [1, 2, 3, 4, 5];
-                        </li>
-                        <li>
-                            function saludar() {
-                                console.log("Hola");
-                                }
-                        </li>
-                    </ul>
-                </p>
+                <pre>
+                    <code>
+                        let i = 0;
+                        while (i < 5) {
+                        console.log("Número: " + i);
+                        i++;
+                        }
+                        i = 0;
+                        do {
+                        console.log("Número: " + i);
+                        i++;
+                        } while (i < 5);
+                    </code>
+                </pre>
                     </div>	
 		  </div>
         </div>
-     
-        <div class="slide">
-            <div class="row">
-                <div class="col">
-                    <img src="images/logo.png"  width="300" height="150" />
-                </div>
-                <div class="col">
-                    <h1>Bucles</h1>
-                </div>
-            </div>
-			<div class="row">
-                <div class="col">
-                <p>.</p>
-                </div>
-                <div class="col">
-                <p>Bucle `for`<br>
-                 
-                    for (let i = 0; i < 5; i++) {
-                    console.log("Número: " + i);
-                    }</p>
-                </div>	
-		  </div>
-        </div>
-
-        <div class="slide">
-            <div class="row">
-                <div class="col">
-                    <img src="images/logo.png"  width="300" height="150" />
-                </div>
-                <div class="col">
-                    <h1>Bucles</h1>
-                </div>
-            </div>
-			<div class="row">
-                <div class="col">
-                <p>.</p>
-                </div>
-                <div class="col">
-                    <h2>Bucle `while` y `do...while</h2>
-                <p>let i = 0;
-                    while (i < 5) {
-                    console.log("Número: " + i);
-                    i++;
-                    }
-                    i = 0;
-                    do {
-                    console.log("Número: " + i);
-                    i++;
-                    } while (i < 5);</p>
-                </div>	
-		  </div>
-        </div>
 
 
         <div class="slide">
@@ -366,20 +290,24 @@
                 <p>.</p>
                 </div>
                 <div class="col">
-                    <h2>Bucles `for...in` y `for...of`</h2>
-                <p>
-                    let persona = {nombre: "Ana", edad: 30};
-                    for (let clave in persona) {
-                    console.log(clave + ": " + persona[clave]);
-                    }
-                    let numeros = [1, 2, 3, 4, 5];
-                    for (let numero of numeros) {
-                    console.log(numero);
-                    } 
-                </p>
+                    <pre>
+                        <code>
+                            let persona = {nombre: "Ana", edad: 30};
+                            for (let clave in persona) {
+                            console.log(clave + ": " + persona[clave]);
+                            }
+        
+                            let numeros = [1, 2, 3, 4, 5];
+                            for (let numero of numeros) {
+                            console.log(numero);
+                            }
+                        </code>
+                    </pre>
                 </div>	
 		  </div>
         </div>
+
+
 
 
         <!-- Controles -->

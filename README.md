@@ -1,8 +1,8 @@
 presentaciones programacion basica
 
-<a href="objetivos.html">Objetivos</a>
+<a href="https://ejecutortecnico.github.io/g4/mision1/objetivos.html">Objetivos</a>
 
-<a href="html.html">Html clase 1</a>
+<a href="https://ejecutortecnico.github.io/g4/mision1/clase1.html">Html clase 1</a>
 
 
 <a href="html-template.html">Plantilla html</a>
@@ -11,15 +11,3 @@ presentaciones programacion basica
 
 
 <a href="https://developer.mozilla.org/es/docs/Web/HTML">Documentacion HTML</a>
-
-
-Validar el HTML y CSS utilizando herramientas como el [
-    
-    Validador HTML de W3C
-    
-    
-    https://validator.w3.org/ 
-    
-    validador css
-
-    https://jigsaw.w3.org/css-validator/).

@@ -7,7 +7,10 @@ console.log("Eres adulto.");
 console.log("Eres mayor.");
 }
 
+for(let carro in carros){
+    console.log(carro.mpg);
 
+}
 // let dia = 3;
 // switch (dia) {
 // case 1:

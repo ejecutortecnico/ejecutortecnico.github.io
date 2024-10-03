@@ -7,7 +7,7 @@ console.log("Eres adulto.");
 console.log("Eres mayor.");
 }
 
-for(let carro in carros){
+for(let carro of carros){
     console.log(carro.mpg);
 
 }

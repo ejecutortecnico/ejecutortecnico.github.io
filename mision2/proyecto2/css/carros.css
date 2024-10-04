@@ -1,0 +1,12 @@
+tr, td {
+    border: 1px solid red;
+    width: auto;
+}
+
+table{
+    border: 2px solid black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}

@@ -86,3 +86,11 @@ flex-direction: column;
 align-items: center;
 }
 }
+
+
+@media (max-width: 600px) {   /* @media`: Regla para aplicar estilos según las características del dispositivo. */
+    .contenedor {          /* `max-width`: Aplica estilos si el ancho de la pantalla es menor que el valor especificado.  */
+    flex-direction: column;
+    }
+    }
+   

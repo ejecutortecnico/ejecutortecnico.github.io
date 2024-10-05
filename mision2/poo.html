@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación: POO en JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .slide {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+        p, ul {
+            font-size: 1.2em;
+            color: #555;
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: square;
+        }
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: auto;
+        }
+        .nav {
+            margin: 20px;
+            text-align: center;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="slide" id="slide1">
+        <h1>Programación Orientada a Objetos en JavaScript</h1>
+        <p>Tu nombre</p>
+        <p>Fecha</p>
+    </div>
+
+    <div class="slide hidden" id="slide2">
+        <h2>¿Qué es la Programación Orientada a Objetos?</h2>
+        <p>Definición: Paradigma de programación basado en el concepto de "objetos" que pueden contener datos (atributos) y código (métodos).</p>
+        <ul>
+            <li>Clases</li>
+            <li>Objetos</li>
+            <li>Herencia</li>
+            <li>Encapsulación</li>
+            <li>Polimorfismo</li>
+        </ul>
+    </div>
+
+    <div class="slide hidden" id="slide3">
+        <h2>Objetos en JavaScript</h2>
+        <p>En JavaScript, los objetos son colecciones de pares clave-valor:</p>
+        <pre>
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  hablar: function() {
+    console.log("Hola, soy Juan");
+  }
+};</pre>
+        <p>Los objetos pueden tener métodos (funciones dentro de ellos).</p>
+    </div>
+
+    <div class="slide hidden" id="slide4">
+        <h2>Clases en JavaScript (ES6)</h2>
+        <p>Antes de ES6, la POO en JavaScript se hacía mediante funciones constructoras. Con ES6, se introdujeron las clases.</p>
+        <pre>
+class Persona {
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+  hablar() {
+    console.log(`Hola, soy ${this.nombre}`);
+  }
+}</pre>
+    </div>
+
+    <div class="slide hidden" id="slide5">
+        <h2>Crear Objetos usando Clases</h2>
+        <pre>
+const juan = new Persona("Juan", 30);
+juan.hablar(); // Hola, soy Juan</pre>
+        <p><code>new</code> crea una nueva instancia de la clase.</p>
+    </div>
+
+    <div class="slide hidden" id="slide6">
+        <h2>Herencia en JavaScript</h2>
+        <pre>
+class Estudiante extends Persona {
+  constructor(nombre, edad, carrera) {
+    super(nombre, edad);
+    this.carrera = carrera;
+  }
+  estudiar() {
+    console.log(`${this.nombre} está estudiando ${this.carrera}`);
+  }
+}</pre>
+        <p><code>extends</code> indica que una clase hereda de otra.</p>
+    </div>
+
+    <div class="slide hidden" id="slide7">
+        <h2>Encapsulación</h2>
+        <p>La capacidad de restringir el acceso a ciertos componentes de un objeto.</p>
+        <pre>
+class Persona {
+  constructor(nombre, edad) {
+    let _nombre = nombre;
+    this.edad = edad;
+    this.getNombre = function() {
+      return _nombre;
+    }
+  }
+}</pre>
+    </div>
+
+    <div class="slide hidden" id="slide8">
+        <h2>Polimorfismo</h2>
+        <p>Permite que los objetos puedan comportarse de diferentes maneras según su clase.</p>
+        <pre>
+class Animal {
+  hablar() {
+    console.log("El animal hace un sonido");
+  }
+}
+class Perro extends Animal {
+  hablar() {
+    console.log("El perro ladra");
+  }
+}
+const perro = new Perro();
+perro.hablar(); // El perro ladra</pre>
+    </div>
+
+    <div class="slide hidden" id="slide9">
+        <h2>Beneficios de la POO</h2>
+        <ul>
+            <li>Reutilización de código (herencia)</li>
+            <li>Modularidad (clases y objetos)</li>
+            <li>Mantenimiento y escalabilidad (encapsulación)</li>
+            <li>Flexibilidad (polimorfismo)</li>
+        </ul>
+    </div>
+
+    <div class="slide hidden" id="slide10">
+        <h2>Conclusión</h2>
+        <p>JavaScript es un lenguaje flexible que permite trabajar tanto con un estilo de programación funcional como orientado a objetos.</p>
+        <p>La Programación Orientada a Objetos permite escribir código más modular y reutilizable.</p>
+    </div>
+
+    <div class="nav">
+        <button onclick="prevSlide()">Anterior</button>
+        <button onclick="nextSlide()">Siguiente</button>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 1;
+
+    function showSlide(slideNumber) {
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach((slide, index) => {
+            slide.classList.add('hidden');
+            if (index === slideNumber - 1) {
+                slide.classList.remove('hidden');
+            }
+        });
+    }
+
+    function nextSlide() {
+        if (currentSlide < 10) {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlide > 1) {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+    }
+
+    // Mostrar la primera diapositiva al cargar la página
+    showSlide(currentSlide);
+</script>
+
+</body>
+</html>

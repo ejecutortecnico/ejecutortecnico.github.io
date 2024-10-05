@@ -1,0 +1,15 @@
+.contenedor{
+    display: flex;
+
+}
+
+.item{
+    margin-left: 10px;
+    background-color: aqua;
+}
+
+@media(max-width:600px){
+    .contenedor{
+        flex-direction: column;
+    }
+}

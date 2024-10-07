@@ -8,68 +8,81 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-image: url("images/fondo.jpeg");
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size:cover;
+            background-repeat: no-repeat;
         }
         .slide {
-            display: none;
-            padding: 50px;
-            text-align: center;
-            max-width: 800px;
-        }
-        .slide.active {
-            display: block;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         h1, h2 {
-            color: #0d6efd;
+            margin: 10px 0;
+            color: #ff00c3;
         }
-        pre {
-            background-color: #e9ecef;
-            color: #333;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: left;
-            overflow-x: auto;
-            max-width: 600px;
-            margin: 0 auto;
+        p, ul {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 10px 0;
         }
-        .buttons {
+        ul {
+            list-style-type: square;
+        }
+        .container {
+            width: 80%;
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            width: 100%;
-            max-width: 800px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
         }
-        .buttons button {
+        .nav {
+            margin: 20px;
+            text-align: center;
+        }
+        .nav button {
             padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #0d6efd;
+            margin: 0 5px;
+            background-color: #d49afe;
             color: white;
             border: none;
             border-radius: 5px;
+            cursor: pointer;
         }
-        .buttons button:hover {
-            background-color: #084298;
+        .nav button:hover{
+            background-color: darkmagenta;
+        }
+        .hidden {
+            display: none;
+        }
+        pre {
+            color: #00ff08;
         }
     </style>
 </head>
 <body>
-
+<div class="container">
     <!-- Slide 1 -->
-    <div class="slide active">
+    <div class="slide">
         <h1>JavaScript: Sincrónico y Asincrónico</h1>
         <h2>Introducción a la programación sincrónica y asincrónica</h2>
         <p>JavaScript permite manejar tareas en dos modos: sincrónico (en secuencia) y asincrónico (permitiendo ejecutar otras tareas en paralelo).</p>
     </div>
 
     <!-- Slide 2 -->
-    <div class="slide">
+    <div class="slide hidden">
         <h2>1. JavaScript Sincrónico</h2>
         <p>En el modo sincrónico, cada instrucción se ejecuta una tras otra, bloqueando la ejecución hasta que cada tarea se complete.</p>
         <pre><code>// Ejemplo de JavaScript Sincrónico
@@ -80,7 +93,7 @@ console.log("Tarea 3");</code></pre>
     </div>
 
     <!-- Slide 3 -->
-    <div class="slide">
+    <div class="slide hidden">
         <h2>2. JavaScript Asincrónico</h2>
         <p>En el modo asincrónico, JavaScript puede ejecutar otras tareas mientras espera la finalización de operaciones más lentas, como solicitudes de red o temporizadores.</p>
         <pre><code>// Ejemplo de JavaScript Asincrónico con setTimeout
@@ -93,7 +106,7 @@ console.log("Fin");</code></pre>
     </div>
 
     <!-- Slide 4 -->
-    <div class="slide">
+    <div class="slide hidden">
         <h2>3. Técnicas de Programación Asincrónica</h2>
         <p>JavaScript cuenta con varias formas de manejar la asincronía:</p>
         <ul>
@@ -104,7 +117,7 @@ console.log("Fin");</code></pre>
     </div>
 
     <!-- Slide 5 -->
-    <div class="slide">
+    <div class="slide hidden">
         <h2>4. Promesas</h2>
         <p>Las Promesas son objetos que representan el resultado de una operación asincrónica, con tres estados posibles: pendiente, cumplida y rechazada.</p>
         <pre><code>// Ejemplo de Promesa
@@ -117,7 +130,7 @@ promesa.then(resultado => console.log(resultado));</code></pre>
     </div>
 
     <!-- Slide 6 -->
-    <div class="slide">
+    <div class="slide hidden">
         <h2>5. async/await</h2>
         <p><code>async</code> y <code>await</code> permiten escribir código asincrónico de manera más clara y estructurada, como si fuera sincrónico.</p>
         <pre><code>// Ejemplo de async/await
@@ -132,40 +145,52 @@ fetchData();</code></pre>
     </div>
 
     <!-- Slide 7 -->
-    <div class="slide">
+    <div class="slide hidden">
         <h2>6. Diferencias entre Sincrónico y Asincrónico</h2>
         <p>La programación sincrónica ejecuta tareas en secuencia, mientras que la asincrónica permite ejecutar otras tareas en paralelo. La asincronía es útil para operaciones de larga duración (peticiones a APIs, archivos) sin bloquear el flujo del programa.</p>
     </div>
 
     <!-- Slide 8 -->
-    <div class="slide">
+    <div class="slide hidden">
         <h2>Conclusión</h2>
         <p>JavaScript soporta tanto operaciones sincrónicas como asincrónicas, permitiendo un desarrollo flexible. La programación asincrónica es clave para crear aplicaciones interactivas y eficientes.</p>
     </div>
 
     <!-- Navigation Buttons -->
-    <div class="buttons">
-        <button onclick="previousSlide()">Anterior</button>
+    <div class="nav">
+        <button onclick="prevSlide()">Anterior</button>
         <button onclick="nextSlide()">Siguiente</button>
     </div>
-
+</div>
     <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+       let currentSlide = 1;
 
-        function showSlide(index) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (index + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
+function showSlide(slideNumber) {
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach((slide, index) => {
+        slide.classList.add('hidden');
+        if (index === slideNumber - 1) {
+            slide.classList.remove('hidden');
         }
+    });
+}
 
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
+function nextSlide() {
+    if (currentSlide < 10) {
+        currentSlide++;
+        showSlide(currentSlide);
+    }
+}
 
-        function previousSlide() {
-            showSlide(currentSlide - 1);
-        }
+function prevSlide() {
+    if (currentSlide > 1) {
+        currentSlide--;
+        showSlide(currentSlide);
+    }
+}
+
+// Mostrar la primera diapositiva al cargar la página
+showSlide(currentSlide);
     </script>
 </body>
 </html>

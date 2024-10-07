@@ -1,0 +1,13 @@
+Calculadora
+lista de tareas
+Juego de ahorcado  o memoria
+Simulador de lanzamiento de dados
+Quiz de preguntas y respuestas
+pagina web dinamica con validacion de formularios
+
+ Cada uno de estos proyectos te permitirá practicar diferentes aspectos de JavaScript, 
+ incluyendo la manipulación del DOM, manejo de eventos, almacenamiento en el navegador 
+ y lógica de programación. 
+ 
+ Recuerda que también puedes combinar estas ideas y agregar tus propias funcionalidades 
+ para hacerlas más desafiantes y divertidas.

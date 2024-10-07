@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitecturas de Software</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url(simagenes/fondo.jpeg);
+            background-size: cover;
+            backdrop-filter: blur(5px) brightness(50%);
+            background-repeat: no-repeat;
+            color: #ecf0f1;
+        }
+        .slide {
+            display: none;
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            /* background-color: #34495e; */
+            border-radius: 10px;
+        }
+        .active {
+            display: block;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+        h1, h2 {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="slide1" class="slide active">
+        <h1>Arquitecturas de Software</h1>
+        <p>Explora los modelos clave en arquitectura de software, sus características, y cómo optimizar la elección arquitectónica en función de las necesidades del sistema.</p>
+    </div>
+
+    <div id="slide2" class="slide">
+        <h2>¿Qué es una Arquitectura de Software?</h2>
+        <p>La arquitectura de software estructura un sistema, define los componentes, y establece la manera en la que estos interactúan para garantizar funcionalidad, mantenimiento y escalabilidad.</p>
+        <ul>
+            <li><b>Componentes:</b> Elementos o módulos funcionales.</li>
+            <li><b>Conectores:</b> Vínculos para la interacción entre componentes.</li>
+            <li><b>Restricciones:</b> Reglas que garantizan una integración efectiva.</li>
+        </ul>
+    </div>
+
+    <div id="slide3" class="slide">
+        <h2>Arquitectura Monolítica</h2>
+        <p>Un sistema monolítico agrupa todos sus componentes en una única aplicación, ideal para proyectos pequeños y de fácil mantenimiento.</p>
+        <ul>
+            <li><b>Ventajas:</b> Estructura sencilla, despliegue rápido y bajo costo de mantenimiento inicial.</li>
+            <li><b>Desventajas:</b> Escalabilidad limitada, dependencias fuertes y difícil de mantener al crecer.</li>
+        </ul>
+        <p><b>Aplicación:</b> Gestión interna de pequeñas empresas o proyectos piloto.</p>
+    </div>
+
+    <div id="slide4" class="slide">
+        <h2>Arquitectura en Capas</h2>
+        <p>Organiza el sistema en capas (presentación, lógica de negocio, acceso a datos) con responsabilidades específicas, facilitando el mantenimiento y la escalabilidad.</p>
+        <ul>
+            <li><b>Presentación:</b> Interfaz y comunicación con capas inferiores.</li>
+            <li><b>Lógica de negocio:</b> Procesa y aplica las reglas del sistema.</li>
+            <li><b>Acceso a datos:</b> Gestiona la interacción con la base de datos.</li>
+        </ul>
+        <p><b>Aplicación:</b> Portales web y sistemas empresariales modulares.</p>
+    </div>
+
+    <div id="slide5" class="slide">
+        <h2>Arquitectura de Microservicios</h2>
+        <p>Descompone la aplicación en servicios independientes, cada uno especializado y autónomo, permitiendo la escalabilidad individual y despliegue continuo.</p>
+        <ul>
+            <li><b>Ventajas:</b> Escalabilidad dinámica, facilidad para actualizar servicios, y resistencia ante fallos.</li>
+            <li><b>Desventajas:</b> Complejidad administrativa y mayores requisitos de infraestructura.</li>
+        </ul>
+        <p><b>Aplicación:</b> Aplicaciones de alta demanda, como plataformas de streaming y e-commerce.</p>
+    </div>
+
+    <div id="slide6" class="slide">
+        <h2>Arquitectura Orientada a Servicios (SOA)</h2>
+        <p>SOA facilita que diferentes sistemas compartan funcionalidades a través de servicios independientes, cada uno operando bajo un protocolo común.</p>
+        <ul>
+            <li><b>Principio:</b> Interoperabilidad y desacoplamiento entre servicios.</li>
+            <li><b>Aplicación:</b> Organizaciones que requieren integrar sistemas antiguos con nuevos (p.ej., banca y seguros).</li>
+        </ul>
+    </div>
+
+    <div id="slide7" class="slide">
+        <h2>Arquitectura Serverless</h2>
+        <p>Serverless permite ejecutar funciones bajo demanda en la nube, sin necesidad de gestión de servidores. Se paga solo por el tiempo de ejecución.</p>
+        <ul>
+            <li><b>Ventajas:</b> Costo reducido, escalabilidad automática y flexibilidad.</li>
+            <li><b>Desventajas:</b> Dependencia de proveedores y posible latencia en arranque.</li>
+        </ul>
+        <p><b>Aplicación:</b> Procesamiento de datos en tiempo real y automatización de tareas en IoT.</p>
+    </div>
+
+    <div id="slide8" class="slide">
+        <h2>Conclusión</h2>
+        <p>La arquitectura define cómo el sistema logra sus objetivos, asegurando el balance entre rendimiento, escalabilidad y mantenimiento.</p>
+        <ul>
+            <li><b>Monolítica:</b> Simplicidad para proyectos pequeños.</li>
+            <li><b>Capas:</b> Ideal para modularidad y separación de responsabilidades.</li>
+            <li><b>Microservicios:</b> Potencia sistemas complejos y escalables.</li>
+            <li><b>SOA:</b> Conecta sistemas diversos en un entorno empresarial.</li>
+            <li><b>Serverless:</b> Permite flexibilidad y ahorro en la nube.</li>
+        </ul>
+        <p>La elección arquitectónica correcta mejora la sostenibilidad del sistema y adapta el desarrollo a los requisitos del negocio.</p>
+    </div>
+
+    <div class="controls">
+        <button onclick="prevSlide()">Anterior</button>
+        <button onclick="nextSlide()">Siguiente</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 8;
+
+        function showSlide(n) {
+            document.querySelector('.active').classList.remove('active');
+            document.getElementById('slide' + n).classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide % totalSlides) + 1;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 2 + totalSlides) % totalSlides + 1;
+            showSlide(currentSlide);
+        }
+    </script>
+</body>
+</html>

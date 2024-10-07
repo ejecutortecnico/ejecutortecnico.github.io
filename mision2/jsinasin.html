@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Sincrónico y Asincrónico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slide {
+            display: none;
+            padding: 50px;
+            text-align: center;
+            max-width: 800px;
+        }
+        .slide.active {
+            display: block;
+        }
+        h1, h2 {
+            color: #0d6efd;
+        }
+        pre {
+            background-color: #e9ecef;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .buttons button:hover {
+            background-color: #084298;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1 -->
+    <div class="slide active">
+        <h1>JavaScript: Sincrónico y Asincrónico</h1>
+        <h2>Introducción a la programación sincrónica y asincrónica</h2>
+        <p>JavaScript permite manejar tareas en dos modos: sincrónico (en secuencia) y asincrónico (permitiendo ejecutar otras tareas en paralelo).</p>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <h2>1. JavaScript Sincrónico</h2>
+        <p>En el modo sincrónico, cada instrucción se ejecuta una tras otra, bloqueando la ejecución hasta que cada tarea se complete.</p>
+        <pre><code>// Ejemplo de JavaScript Sincrónico
+console.log("Tarea 1");
+console.log("Tarea 2");
+console.log("Tarea 3");</code></pre>
+        <p>Resultado: "Tarea 1" se muestra primero, luego "Tarea 2" y finalmente "Tarea 3".</p>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <h2>2. JavaScript Asincrónico</h2>
+        <p>En el modo asincrónico, JavaScript puede ejecutar otras tareas mientras espera la finalización de operaciones más lentas, como solicitudes de red o temporizadores.</p>
+        <pre><code>// Ejemplo de JavaScript Asincrónico con setTimeout
+console.log("Inicio");
+setTimeout(() => {
+    console.log("Tarea Asincrónica");
+}, 2000);
+console.log("Fin");</code></pre>
+        <p>Resultado: "Inicio" y "Fin" se muestran antes que "Tarea Asincrónica".</p>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+        <h2>3. Técnicas de Programación Asincrónica</h2>
+        <p>JavaScript cuenta con varias formas de manejar la asincronía:</p>
+        <ul>
+            <li><b>setTimeout:</b> Ejecuta código después de un período de tiempo.</li>
+            <li><b>Promesas:</b> Representan la eventual finalización de una operación asincrónica.</li>
+            <li><b>async/await:</b> Sintaxis moderna para trabajar con Promesas de forma más legible.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+        <h2>4. Promesas</h2>
+        <p>Las Promesas son objetos que representan el resultado de una operación asincrónica, con tres estados posibles: pendiente, cumplida y rechazada.</p>
+        <pre><code>// Ejemplo de Promesa
+let promesa = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("Operación Completada"), 3000);
+});
+
+promesa.then(resultado => console.log(resultado));</code></pre>
+        <p>Resultado: Después de 3 segundos, se muestra "Operación Completada".</p>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+        <h2>5. async/await</h2>
+        <p><code>async</code> y <code>await</code> permiten escribir código asincrónico de manera más clara y estructurada, como si fuera sincrónico.</p>
+        <pre><code>// Ejemplo de async/await
+async function fetchData() {
+    let respuesta = await fetch('https://api.example.com/data');
+    let data = await respuesta.json();
+    console.log(data);
+}
+
+fetchData();</code></pre>
+        <p>Resultado: Se espera la respuesta de la API antes de continuar con el código.</p>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide">
+        <h2>6. Diferencias entre Sincrónico y Asincrónico</h2>
+        <p>La programación sincrónica ejecuta tareas en secuencia, mientras que la asincrónica permite ejecutar otras tareas en paralelo. La asincronía es útil para operaciones de larga duración (peticiones a APIs, archivos) sin bloquear el flujo del programa.</p>
+    </div>
+
+    <!-- Slide 8 -->
+    <div class="slide">
+        <h2>Conclusión</h2>
+        <p>JavaScript soporta tanto operaciones sincrónicas como asincrónicas, permitiendo un desarrollo flexible. La programación asincrónica es clave para crear aplicaciones interactivas y eficientes.</p>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="buttons">
+        <button onclick="previousSlide()">Anterior</button>
+        <button onclick="nextSlide()">Siguiente</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+    </script>
+</body>
+</html>

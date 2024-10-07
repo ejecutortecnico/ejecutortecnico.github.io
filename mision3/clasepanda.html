@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandas en Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(imagenes/fondo.jpeg);
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size:cover;
+            background-repeat: no-repeat;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slide {
+            display: none;
+            padding: 50px;
+            text-align: center;
+            max-width: 800px;
+        }
+        .container {
+            width: 80%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .slide.active {
+            display: block;
+        }
+        h1, h2 {
+            color: #00796b;
+        }
+        pre {
+            background-color: #e0f7fa;
+            color: #004d40;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .buttons button:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+    <!-- Slide 1 -->
+    <div class="slide active">
+        <h1>Pandas en Python</h1>
+        <h2>Introducción a Pandas</h2>
+        <p>Pandas es una biblioteca esencial para la manipulación y análisis de datos en Python.</p>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <h2>1. Series en Pandas</h2>
+        <p>Las Series son estructuras de datos unidimensionales en Pandas.</p>
+        <pre><code>import pandas as pd
+
+# Crear una Serie
+mi_serie = pd.Series([1, 2, 3, 4, 5])
+print(mi_serie)</code></pre>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <h2>2. DataFrames en Pandas</h2>
+        <p>Los DataFrames son estructuras de datos bidimensionales con etiquetas en filas y columnas.</p>
+        <pre><code># Crear un DataFrame
+data = {'Nombre': ['Ana', 'Luis', 'Carlos'], 'Edad': [23, 34, 29]}
+df = pd.DataFrame(data)
+print(df)</code></pre>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+        <h2>3. Operaciones Básicas</h2>
+        <p>Pandas ofrece funciones rápidas para analizar datos.</p>
+        <pre><code># Seleccionar columna
+print(df['Nombre'])
+
+# Descripción estadística
+print(df.describe())</code></pre>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+        <h2>4. Filtrado de Datos</h2>
+        <p>Filtrar datos en un DataFrame basado en condiciones específicas.</p>
+        <pre><code># Filtrar personas mayores de 30 años
+filtro = df[df['Edad'] > 30]
+print(filtro)</code></pre>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+        <h2>5. Manipulación de Datos</h2>
+        <p>Agregar, eliminar o modificar datos en un DataFrame.</p>
+        <pre><code># Añadir una columna
+df['Ciudad'] = ['Madrid', 'Barcelona', 'Valencia']
+
+# Eliminar una columna
+df = df.drop(columns=['Edad'])
+
+print(df)</code></pre>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide">
+        <h2>Conclusión</h2>
+        <p>Pandas es una herramienta poderosa para análisis de datos, permitiendo transformar y limpiar datasets rápidamente.</p>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="buttons">
+        <button onclick="previousSlide()">Anterior</button>
+        <button onclick="nextSlide()">Siguiente</button>
+    </div>
+</div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+    </script>
+</body>
+</html>

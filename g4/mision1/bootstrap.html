@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Básico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(simagenes/fondo.jpeg);
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size:cover;
+            background-repeat: no-repeat;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slide {
+            display: none;
+            padding: 50px;
+            text-align: center;
+            max-width: 800px;
+        }
+        .container {
+            width: 80%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .slide.active {
+            display: block;
+        }
+        h1, h2 {
+            margin: 10px 0;
+            color: #ff00c3;
+        }
+        p, ul {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: square;
+        }
+        pre {
+            background-color: #e9ecef;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .buttons button:hover {
+            background-color: #084298;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+     <!-- Slide 1 -->
+     <div class="slide active">
+        <h1>Bootstrap Básico</h1>
+        <h2>Introducción a Bootstrap</h2>
+        <p>Bootstrap es un framework CSS de código abierto que facilita el desarrollo de sitios web modernos, responsivos y visualmente atractivos. Contiene herramientas como un sistema de grid, componentes UI, y clases de utilidades.</p>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <h2>1. Instalación de Bootstrap</h2>
+        <p>La forma más rápida de incluir Bootstrap es a través de un CDN. Esto asegura que los usuarios carguen el framework desde servidores rápidos y confiables.</p>
+        <pre><code>&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</code></pre>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <h2>2. Sistema de Grid</h2>
+        <p>El sistema de grid de Bootstrap es fundamental para crear diseños responsivos. Se basa en un contenedor (<code>container</code>), filas (<code>row</code>) y columnas (<code>col</code>).</p>
+        <pre><code>&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-md-6"&gt;Columna 1 (6/12)&lt;/div&gt;
+        &lt;div class="col-md-6"&gt;Columna 2 (6/12)&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p><b>Nota:</b> Bootstrap usa una grilla de 12 columnas, donde <code>col-md-6</code> ocupa la mitad del ancho en dispositivos medianos.</p>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+        <h2>3. Componentes Básicos</h2>
+        <p>Bootstrap incluye componentes preconstruidos para interfaces, como botones, alertas, y tarjetas:</p>
+        <pre><code>&lt;button class="btn btn-primary"&gt;Botón Primario&lt;/button&gt;
+&lt;div class="alert alert-warning"&gt;¡Cuidado! Esta es una alerta de advertencia.&lt;/div&gt;
+&lt;div class="card" style="width: 18rem;"&gt;
+    &lt;img src="imagen.jpg" class="card-img-top" alt="Imagen"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Título de la Tarjeta&lt;/h5&gt;
+        &lt;p class="card-text"&gt;Texto de la tarjeta con información descriptiva.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+        <h2>4. Clases de Utilidad</h2>
+        <p>Bootstrap ofrece clases de utilidad para personalizar el espaciado, el tamaño del texto, el color y mucho más.</p>
+        <pre><code>&lt;div class="p-3 mb-2 bg-info text-white"&gt;
+    Este div tiene un fondo azul claro y texto blanco, con un padding de 3 y un margen de 2.
+&lt;/div&gt;</code></pre>
+        <p>Ejemplos de clases de utilidad:</p>
+        <ul>
+            <li><code>m-3</code>: Margen de 3</li>
+            <li><code>p-2</code>: Padding de 2</li>
+            <li><code>text-center</code>: Texto centrado</li>
+            <li><code>bg-success</code>: Fondo verde</li>
+        </ul>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+        <h2>5. Ejemplo Práctico</h2>
+        <p>Combina varios elementos de Bootstrap para crear una página simple y responsiva.</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+            &lt;a class="navbar-brand" href="#"&gt;Mi Sitio&lt;/a&gt;
+            &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"&gt;
+                &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+                &lt;ul class="navbar-nav"&gt;
+                    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/nav&gt;
+
+        &lt;div class="row mt-4"&gt;
+            &lt;div class="col-md-6"&gt;
+                &lt;div class="card"&gt;
+                    &lt;div class="card-body"&gt;
+                        &lt;h5 class="card-title"&gt;Bienvenidos&lt;/h5&gt;
+                        &lt;p class="card-text"&gt;Explora nuestro sitio web con Bootstrap.&lt;/p&gt;
+                        &lt;a href="#" class="btn btn-primary"&gt;Más Información&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-md-6"&gt;
+                &lt;div class="alert alert-info"&gt;Este sitio está diseñado con Bootstrap.&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide">
+        <h2>Conclusión</h2>
+        <p>Bootstrap simplifica el desarrollo web y permite crear interfaces modernas de manera rápida. Con su sistema de grid, componentes y clases de utilidad, es posible crear diseños responsivos y atractivos.</p>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="buttons">
+        <button onclick="previousSlide()">Anterior</button>
+        <button onclick="nextSlide()">Siguiente</button>
+    </div>
+
+
+</div>
+   
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+    </script>
+</body>
+</html>

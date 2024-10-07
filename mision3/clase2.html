@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Intermedio</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-image: url(imagenes/fondo.jpeg);
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size:cover;
+            background-repeat: no-repeat;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slide {
+            display: none;
+            padding: 50px;
+            text-align: center;
+            max-width: 800px;
+        }
+        .container {
+            width: 80%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .slide.active {
+            display: block;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p, ul {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        pre {
+            background-color: #f0f8ff;
+            color: #1d3557;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .buttons button:hover {
+            background-color: darkmagenta;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Slide 1 -->
+    <div class="slide active">
+        <h1>Python Intermedio</h1>
+        <h2>Temas Avanzados</h2>
+        <p>Exploraremos estructuras de datos y técnicas de manejo de errores en Python.</p>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <h2>1. Listas en Python</h2>
+        <p>Las listas son colecciones ordenadas y mutables de elementos.</p>
+        <pre><code># Crear una lista
+mi_lista = [1, 2, 3, 4]
+
+# Acceder a elementos
+print(mi_lista[0])  # Output: 1
+
+# Añadir elementos
+mi_lista.append(5)</code></pre>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <h2>2. Diccionarios en Python</h2>
+        <p>Los diccionarios almacenan pares clave-valor.</p>
+        <pre><code># Crear un diccionario
+mi_diccionario = {"nombre": "Juan", "edad": 30}
+
+# Acceder a valores
+print(mi_diccionario["nombre"])  # Output: Juan
+
+# Añadir un nuevo par clave-valor
+mi_diccionario["ciudad"] = "Madrid"</code></pre>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+        <h2>3. Manejo de Errores</h2>
+        <p>Usamos try-except para capturar errores y evitar que el programa se detenga inesperadamente.</p>
+        <pre><code>try:
+    resultado = 10 / 0
+except ZeroDivisionError:
+    print("No se puede dividir por cero")</code></pre>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+        <h2>4. Módulos en Python</h2>
+        <p>Los módulos permiten organizar y reutilizar código.</p>
+        <pre><code># Importar el módulo math
+import math
+
+# Usar funciones del módulo
+print(math.sqrt(16))  # Output: 4.0</code></pre>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+        <h2>Conclusión</h2>
+        <p>Con estas herramientas, puedes empezar a construir programas más complejos y organizados en Python.</p>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="buttons">
+        <button onclick="previousSlide()">Anterior</button>
+        <button onclick="nextSlide()">Siguiente</button>
+    </div>
+
+</div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+    </script>
+</body>
+</html>

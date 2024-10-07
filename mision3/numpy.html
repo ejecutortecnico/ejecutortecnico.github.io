@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a NumPy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(imagenes/fondo.jpeg);
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .slide {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            margin: 10px 0;
+            color: #ff00c3;
+        }
+        p, ul {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: square;
+        }
+        .container {
+            width: 80%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .nav {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .hidden {
+            display: none;
+        }
+        pre {
+            color: #00ff08;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <h1>Introducción a NumPy</h1>
+            <h2>Librería Fundamental para Computación Numérica</h2>
+            <p>NumPy es una librería de Python optimizada para el cálculo y manipulación de datos numéricos en grandes arrays multidimensionales.</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide hidden">
+            <h2>1. Instalación de NumPy</h2>
+            <p>Para instalar NumPy, utiliza el siguiente comando:</p>
+            <pre><code>pip install numpy</code></pre>
+            <p>Es recomendable crear un entorno virtual para gestionar las dependencias.</p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide hidden">
+            <h2>2. Creación de Arrays</h2>
+            <p>NumPy utiliza <b>ndarrays</b> para manejar matrices multidimensionales. Ejemplo de creación de arrays:</p>
+            <pre><code>import numpy as np
+
+# Array unidimensional
+arr_1d = np.array([1, 2, 3])
+
+# Array bidimensional
+arr_2d = np.array([[1, 2, 3], [4, 5, 6]])
+</code></pre>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide hidden">
+            <h2>3. Operaciones Básicas</h2>
+            <p>NumPy permite realizar operaciones matemáticas directamente en los arrays.</p>
+            <ul>
+                <li><b>Suma</b>: `np.add(arr1, arr2)`</li>
+                <li><b>Resta</b>: `np.subtract(arr1, arr2)`</li>
+                <li><b>Multiplicación</b>: `np.multiply(arr1, arr2)`</li>
+                <li><b>División</b>: `np.divide(arr1, arr2)`</li>
+            </ul>
+            <pre><code>arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+
+# Suma de arrays
+resultado = np.add(arr1, arr2)</code></pre>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide hidden">
+            <h2>4. Funciones Estadísticas</h2>
+            <p>NumPy proporciona funciones rápidas para análisis estadístico:</p>
+            <ul>
+                <li><b>Media</b>: `np.mean(array)`</li>
+                <li><b>Mediana</b>: `np.median(array)`</li>
+                <li><b>Desviación Estándar</b>: `np.std(array)`</li>
+            </ul>
+            <pre><code>data = np.array([1, 2, 3, 4, 5])
+
+# Calcular media
+media = np.mean(data)</code></pre>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide hidden">
+            <h2>5. Manipulación de Arrays</h2>
+            <p>NumPy permite cambiar la forma y estructura de los arrays:</p>
+            <ul>
+                <li><b>Reshape</b>: `array.reshape(filas, columnas)`</li>
+                <li><b>Flatten</b>: `array.flatten()` convierte el array en unidimensional</li>
+            </ul>
+            <pre><code>arr = np.array([[1, 2], [3, 4]])
+
+# Cambiar forma
+arr_reshape = arr.reshape(1, 4)</code></pre>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide hidden">
+            <h2>Conclusión</h2>
+            <p>NumPy es una herramienta poderosa para cálculos numéricos en Python, esencial en análisis de datos, machine learning y ciencia de datos.</p>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav">
+            <button onclick="previousSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.add('hidden');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.remove('hidden');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+    </script>
+</body>
+</html>

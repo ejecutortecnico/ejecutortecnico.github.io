@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Matplotlib</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        .code-snippet {
+            background-color: #f9f9f9;
+            border-left: 5px solid #007acc;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        pre {
+            margin: 0;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav-buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #007acc;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .nav-buttons button:hover {
+            background-color: #005f99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Presentación de Matplotlib</h1>
+
+        <!-- Slide 1 -->
+        <div class="slide active" id="slide1">
+            <h2>¿Qué es Matplotlib?</h2>
+            <p>Matplotlib es una de las bibliotecas más populares para la creación de gráficos en Python. Permite crear visualizaciones de datos en 2D con facilidad y flexibilidad.</p>
+            <h3>Instalación</h3>
+            <div class="code-snippet">
+                <pre>pip install matplotlib</pre>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" id="slide2">
+            <h2>Ejemplo básico</h2>
+            <p>Uno de los gráficos más básicos que puedes crear con Matplotlib es una gráfica de líneas:</p>
+            <div class="code-snippet">
+                <pre>
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4]
+y = [1, 4, 9, 16]
+
+plt.plot(x, y)
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.title('Gráfico simple de Matplotlib')
+plt.show()
+                </pre>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" id="slide3">
+            <h2>Tipos de gráficos</h2>
+            <p>Matplotlib soporta una gran variedad de tipos de gráficos:</p>
+            <ul>
+                <li>Gráficos de líneas</li>
+                <li>Gráficos de barras</li>
+                <li>Histogramas</li>
+                <li>Gráficos de dispersión</li>
+                <li>Gráficos de pastel</li>
+            </ul>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide" id="slide4">
+            <h2>Ejemplo de gráfico de barras</h2>
+            <div class="code-snippet">
+                <pre>
+import matplotlib.pyplot as plt
+
+categorias = ['A', 'B', 'C', 'D']
+valores = [3, 7, 1, 8]
+
+plt.bar(categorias, valores)
+plt.xlabel('Categorías')
+plt.ylabel('Valores')
+plt.title('Gráfico de barras')
+plt.show()
+                </pre>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide" id="slide5">
+            <h2>Personalización de gráficos</h2>
+            <p>Matplotlib permite personalizar los gráficos agregando etiquetas, títulos, colores y estilos de línea.</p>
+            <div class="code-snippet">
+                <pre>
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4]
+y = [1, 4, 9, 16]
+
+plt.plot(x, y, color='green', linestyle='--', marker='o')
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.title('Gráfico con estilo personalizado')
+plt.grid(True)
+plt.show()
+                </pre>
+            </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide" id="slide6">
+            <h2>Conclusión</h2>
+            <p>Matplotlib es una herramienta poderosa para crear visualizaciones en Python. Su flexibilidad y facilidad de uso la convierten en una opción ideal para científicos de datos y desarrolladores.</p>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="nav-buttons">
+            <button id="prevBtn" onclick="prevSlide()">Anterior</button>
+            <button id="nextBtn" onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Mostrar la primera diapositiva
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

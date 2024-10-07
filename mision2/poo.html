@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presentación: POO en JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-image: url("images/fondo.jpeg");
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size:cover;
+            background-repeat: no-repeat;
         }
         .slide {
             width: 100%;
@@ -18,26 +23,31 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: white;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         h1, h2 {
             margin: 10px 0;
-            color: #333;
+            color: #ff00c3;
         }
         p, ul {
             font-size: 1.2em;
-            color: #555;
+            color: #ffffff;
             margin: 10px 0;
         }
         ul {
             list-style-type: square;
         }
         .container {
-            max-width: 1000px;
-            width: 90%;
-            margin: auto;
+            width: 80%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
         }
         .nav {
             margin: 20px;
@@ -45,12 +55,21 @@
         }
         .nav button {
             padding: 10px 20px;
-            margin: 5px;
-            font-size: 1.2em;
+            margin: 0 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+        }
+        .nav button:hover{
+            background-color: darkmagenta;
         }
         .hidden {
             display: none;
+        }
+        pre {
+            color: #00ff08;
         }
     </style>
 </head>
@@ -59,8 +78,8 @@
 <div class="container">
     <div class="slide" id="slide1">
         <h1>Programación Orientada a Objetos en JavaScript</h1>
-        <p>Tu nombre</p>
-        <p>Fecha</p>
+        <p>Jorge Rodriguez</p>
+        <p>7 octubre 2024</p>
     </div>
 
     <div class="slide hidden" id="slide2">

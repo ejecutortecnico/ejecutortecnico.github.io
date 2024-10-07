@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respuesta de GPT</title>
+</head>
+<body>
+    <h1>Respuesta generada por GPT</h1>
+    <input type="text" id="prompt" placeholder="Escribe un prompt">
+    <button onclick="obtenerRespuesta()">Generar Respuesta</button>
+    <p id="respuesta"></p>
+
+    <script>
+        async function obtenerRespuesta() {
+            const prompt = document.getElementById('prompt').value;
+            
+            // Hacer una solicitud POST al backend con el prompt
+            const response = await fetch('http://localhost:3000/respuesta', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prompt: prompt }) // Enviamos el prompt al servidor
+            });
+
+            const data = await response.json();
+            document.getElementById('respuesta').innerHTML = data.respuesta;
+        }
+    </script>
+</body>
+</html>

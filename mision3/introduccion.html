@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación sobre Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("imagenes/fondo.jpeg");
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 80%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .slide {
+            display: none;
+            padding: 50px;
+            text-align: center;
+            max-width: 800px;
+        }
+        .slide.active {
+            display: block;
+        }
+        h1, h2 {
+            margin: 10px 0;
+            color: #ff00c3;
+        }
+        p, ul {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: square;
+        }
+        pre {
+            background-color: transparent; /* Quitar fondo del modal */
+            color: #00ff08; /* Cambiar texto del código a #00ff08 */
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* Estilos para los botones de navegación */
+        .nav button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #d49afe; /* Color de fondo */
+            color: white; /* Color del texto */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta; /* Color al pasar el mouse */
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+        }
+        .modal-content {
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            color: black;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slide active" id="slide1">
+            <h1>Introducción a Python</h1>
+            <p>Python es un lenguaje de programación popular, fácil de aprender y con una gran cantidad de aplicaciones.</p>
+        </div>
+
+        <div class="slide hidden" id="slide2">
+            <h2>¿Qué es Python?</h2>
+            <p>Python es un lenguaje de programación de alto nivel, interpretado, orientado a objetos y de propósito general.</p>
+        </div>
+
+        <div class="slide hidden" id="slide3">
+            <h2>Usos de Python</h2>
+            <p>Python se utiliza en desarrollo web, ciencia de datos, inteligencia artificial, automatización, entre otros campos.</p>
+        </div>
+
+        <div class="slide hidden" id="slide4">
+            <h2>Numpy</h2>
+            <p>Numpy es una biblioteca para Python que soporta grandes matrices y matrices multidimensionales.</p>
+            <pre onclick="openModal('numpy')"><code>pip install numpy
+import numpy as np
+
+# Crear una matriz de 2x3
+matriz = np.array([[1, 2, 3], [4, 5, 6]])
+print(matriz)</code></pre>
+        </div>
+
+        <div class="slide hidden" id="slide5">
+            <h2>Pandas</h2>
+            <p>Pandas proporciona estructuras de datos y herramientas de análisis de datos.</p>
+            <pre onclick="openModal('pandas')"><code>pip install pandas
+import pandas as pd
+
+# Crear un DataFrame
+data = {'Nombre': ['Juan', 'Ana', 'Pedro'],
+        'Edad': [28, 24, 35]}
+df = pd.DataFrame(data)
+print(df)</code></pre>
+        </div>
+
+        <div class="slide hidden" id="slide6">
+            <h2>Matplotlib</h2>
+            <p>Matplotlib es una biblioteca para la creación de gráficos en 2D.</p>
+            <pre onclick="openModal('matplotlib')"><code>pip install matplotlib
+import matplotlib.pyplot as plt
+
+# Crear un gráfico simple
+x = [1, 2, 3, 4, 5]
+y = [2, 3, 5, 7, 11]
+plt.plot(x, y)
+plt.title('Gráfico de Ejemplo')
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.show()</code></pre>
+        </div>
+
+        <div class="slide hidden" id="slide7">
+            <h2>Seaborn</h2>
+            <p>Seaborn es una biblioteca de visualización basada en Matplotlib.</p>
+            <pre onclick="openModal('seaborn')"><code>pip install seaborn
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Crear un gráfico de dispersión
+tips = sns.load_dataset('tips')
+sns.scatterplot(data=tips, x='total_bill', y='tip', hue='day')
+plt.title('Propinas por Cuenta Total')
+plt.show()</code></pre>
+        </div>
+
+        <div class="slide hidden" id="slide8">
+            <h2>Flask</h2>
+            <p>Flask es un microframework para crear aplicaciones web en Python.</p>
+            <pre onclick="openModal('flask')"><code>pip install Flask
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "¡Hola, Flask!"
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+        </div>
+
+        <div class="slide hidden" id="slide9">
+            <h2>Django</h2>
+            <p>Django es un framework web de alto nivel que permite el desarrollo rápido de aplicaciones web.</p>
+            <pre onclick="openModal('django')"><code>pip install django
+# Ejemplo de configuración de un proyecto Django
+django-admin startproject mi_proyecto</code></pre>
+        </div>
+
+        <div class="slide hidden" id="slide10">
+            <h2>Scikit-Learn</h2>
+            <p>Scikit-Learn es una biblioteca de aprendizaje automático para Python.</p>
+            <pre onclick="openModal('sklearn')"><code>pip install scikit-learn
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+# Datos de ejemplo
+X = np.array([[1], [2], [3], [4]])
+y = np.array([2, 3, 5, 7])
+
+# Crear y entrenar el modelo
+modelo = LinearRegression()
+modelo.fit(X, y)
+print(modelo.predict([[5]]))  # Predecir el valor para X=5</code></pre>
+        </div>
+
+        <div class="slide hidden" id="slide11">
+            <h2>TensorFlow</h2>
+            <p>TensorFlow es una biblioteca de aprendizaje automático.</p>
+            <pre onclick="openModal('tensorflow')"><code>pip install tensorflow
+import tensorflow as tf
+
+# Crear un modelo simple
+modelo = tf.keras.Sequential([
+    tf.keras.layers.Dense(10, activation='relu', input_shape=(32,)),
+    tf.keras.layers.Dense(1)
+])
+modelo.compile(optimizer='adam', loss='mean_squared_error')</code></pre>
+        </div>
+
+        <div class="slide hidden" id="slide12">
+            <h2>PyTorch</h2>
+            <p>PyTorch es una biblioteca de aprendizaje profundo que proporciona flexibilidad y velocidad.</p>
+            <pre onclick="openModal('pytorch')"><code>pip install torch
+import torch
+import torch.nn as nn
+
+# Definir una red neuronal simple
+class RedNeuronal(nn.Module):
+    def __init__(self):
+        super(RedNeuronal, self).__init__()
+        self.capa1 = nn.Linear(2, 2)
+
+    def forward(self, x):
+        return self.capa1(x)
+
+# Crear una instancia de la red y pasar un tensor
+modelo = RedNeuronal()
+entrada = torch.tensor([[1.0, 2.0]])
+salida = modelo(entrada)
+print(salida)</code></pre>
+        </div>
+
+        <div class="slide hidden" id="slide13">
+            <h2>Conclusiones</h2>
+            <p>Python es una herramienta poderosa y versátil que es ampliamente utilizada en muchos campos.</p>
+            <ul>
+                <li>Facilidad de aprendizaje y uso.</li>
+                <li>Gran comunidad y soporte.</li>
+                <li>Amplia gama de bibliotecas para diferentes aplicaciones.</li>
+                <li>Ideal para desarrollo web, análisis de datos, y aprendizaje automático.</li>
+            </ul>
+        </div>
+
+        <div class="buttons nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <pre id="modalCode"></pre>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlide(slideIndex);
+
+        function showSlide(n) {
+            const slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+                slides[i].classList.add("hidden");
+            }
+            slides[n].classList.add("active");
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % document.getElementsByClassName("slide").length;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + document.getElementsByClassName("slide").length) % document.getElementsByClassName("slide").length;
+            showSlide(slideIndex);
+        }
+
+        function openModal(library) {
+            const modal = document.getElementById("myModal");
+            const modalCode = document.getElementById("modalCode");
+            const codeExamples = {
+                numpy: `pip install numpy\nimport numpy as np\n\n# Crear una matriz de 2x3\nmatriz = np.array([[1, 2, 3], [4, 5, 6]])\nprint(matriz)`,
+                pandas: `pip install pandas\nimport pandas as pd\n\n# Crear un DataFrame\ndata = {'Nombre': ['Juan', 'Ana', 'Pedro'],\n        'Edad': [28, 24, 35]}\ndf = pd.DataFrame(data)\nprint(df)`,
+                matplotlib: `pip install matplotlib\nimport matplotlib.pyplot as plt\n\n# Crear un gráfico simple\nx = [1, 2, 3, 4, 5]\ny = [2, 3, 5, 7, 11]\nplt.plot(x, y)\nplt.title('Gráfico de Ejemplo')\nplt.xlabel('Eje X')\nplt.ylabel('Eje Y')\nplt.show()`,
+                seaborn: `pip install seaborn\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Crear un gráfico de dispersión\ntips = sns.load_dataset('tips')\nsns.scatterplot(data=tips, x='total_bill', y='tip', hue='day')\nplt.title('Propinas por Cuenta Total')\nplt.show()`,
+                flask: `pip install Flask\nfrom flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef home():\n    return "¡Hola, Flask!"\n\nif __name__ == '__main__':\n    app.run(debug=True)`,
+                django: `pip install django\n# Ejemplo de configuración de un proyecto Django\ndjango-admin startproject mi_proyecto`,
+                sklearn: `pip install scikit-learn\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\n\n# Datos de ejemplo\nX = np.array([[1], [2], [3], [4]])\ny = np.array([2, 3, 5, 7])\n\n# Crear y entrenar el modelo\nmodelo = LinearRegression()\nmodelo.fit(X, y)\nprint(modelo.predict([[5]]))  # Predecir el valor para X=5`,
+                tensorflow: `pip install tensorflow\nimport tensorflow as tf\n\n# Crear un modelo simple\nmodelo = tf.keras.Sequential([\n    tf.keras.layers.Dense(10, activation='relu', input_shape=(32,)),\n    tf.keras.layers.Dense(1)\n])\nmodelo.compile(optimizer='adam', loss='mean_squared_error')`,
+                pytorch: `pip install torch\nimport torch\nimport torch.nn as nn\n\n# Definir una red neuronal simple\nclass RedNeuronal(nn.Module):\n    def __init__(self):\n        super(RedNeuronal, self).__init__()\n        self.capa1 = nn.Linear(2, 2)\n\n    def forward(self, x):\n        return self.capa1(x)\n\n# Crear una instancia de la red y pasar un tensor\nmodelo = RedNeuronal()\nentrada = torch.tensor([[1.0, 2.0]])\nsalida = modelo(entrada)\nprint(salida)`
+            };
+            modalCode.textContent = codeExamples[library];
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -11,3 +11,21 @@ pagina web dinamica con validacion de formularios
  
  Recuerda que también puedes combinar estas ideas y agregar tus propias funcionalidades 
  para hacerlas más desafiantes y divertidas.
+
+ **b. Definición del Alcance del Proyecto:**
+- Definir las secciones y funcionalidades necesarias del sitio web:
+- **Header:** Título, logo y menú de navegación.
+- **Main:** Secciones principales como información general, servicios, galería de imágenes, testimonios, etc.
+- **Footer:** Información de contacto y enlaces adicionales.
+
+ Asignación de Roles y Responsabilidades:**
+- Asignar roles dentro del equipo:
+- Líder de proyecto.
+- Diseñador.
+- Desarrolladores.
+- Tester.
+- Definir responsabilidades específicas para cada rol.
+
+**d. Creación del Boceto y Wireframe:**
+- Diseñar el wireframe del sitio web utilizando papel y lápiz o herramientas digitales.
+- Definir el esquema de colores y la tipografía.

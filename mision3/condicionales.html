@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionales y Switch en Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(imagenes/fondo.jpeg);
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .slide {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            margin: 10px 0;
+            color: #ff00c3;
+        }
+        p, ul {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: square;
+        }
+        .container {
+            width: 80%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .nav {
+            margin: 20px;
+            text-align: center;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .hidden {
+            display: none;
+        }
+        pre {
+            color: #00ff08;
+            cursor: pointer;
+        }
+        /* Estilos del modal */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.9); 
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: transparent;
+            margin: 5% auto; 
+            padding: 20px;
+            border: none;
+            width: 80%; 
+            color: #00ff08;
+            font-size: 1.5em;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slide active">
+            <h1>Condicionales en Python</h1>
+            <h2>1. Estructuras Condicionales</h2>
+            <p>Los condicionales en Python nos permiten ejecutar código basado en condiciones:</p>
+            <pre onclick="openModal('if_else')">if x > 10:\n    print("Mayor que 10")\nelse:\n    print("Menor o igual a 10")</pre>
+        </div>
+        <div class="slide">
+            <h2>2. Estructura <code>elif</code></h2>
+            <p>El uso de <code>elif</code> permite evaluar múltiples condiciones:</p>
+            <pre onclick="openModal('if_elif_else')">if x > 10:\n    print("Mayor que 10")\nelif x == 10:\n    print("Igual a 10")\nelse:\n    print("Menor que 10")</pre>
+        </div>
+        <div class="slide">
+            <h2>3. Alternativa al Switch con Diccionarios</h2>
+            <p>Python no tiene <code>switch</code>, pero podemos usar diccionarios para simularlo:</p>
+            <pre onclick="openModal('switch_dict')">opciones = {\n    1: "Opción 1",\n    2: "Opción 2",\n    3: "Opción 3"\n}\nresultado = opciones.get(seleccion, "Opción no válida")\nprint(resultado)</pre>
+        </div>
+        <div class="slide">
+            <h2>4. Condicionales en Expresiones</h2>
+            <p>Condicional en una sola línea:</p>
+            <pre onclick="openModal('inline_conditional')">print("Mayor que 10") if x > 10 else print("Menor o igual a 10")</pre>
+        </div>
+        <div class="slide">
+            <h2>5. Conclusiones</h2>
+            <p>Python ofrece flexibilidad en la construcción de condicionales y soluciones eficientes para seleccionar valores.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="plusSlides(-1)">&#10094; Anterior</button>
+            <button onclick="plusSlides(1)">Siguiente &#10095;</button>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar código -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <pre id="code"></pre>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlide(n) {
+            const slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[n].style.display = "flex";  
+        }
+
+        function plusSlides(n) {
+            slideIndex += n;
+            if (slideIndex >= document.getElementsByClassName("slide").length) {
+                slideIndex = 0;
+            }
+            if (slideIndex < 0) {
+                slideIndex = document.getElementsByClassName("slide").length - 1;
+            }
+            showSlide(slideIndex);
+        }
+
+        function openModal(example) {
+            const modal = document.getElementById("myModal");
+            const codeElement = document.getElementById("code");
+            const codeExamples = {
+                if_else: `if x > 10:\n    print("Mayor que 10")\nelse:\n    print("Menor o igual a 10")`,
+                if_elif_else: `if x > 10:\n    print("Mayor que 10")\nelif x == 10:\n    print("Igual a 10")\nelse:\n    print("Menor que 10")`,
+                switch_dict: `opciones = {\n    1: "Opción 1",\n    2: "Opción 2",\n    3: "Opción 3"\n}\nresultado = opciones.get(seleccion, "Opción no válida")\nprint(resultado)`,
+                inline_conditional: `print("Mayor que 10") if x > 10 else print("Menor o igual a 10")`
+            };
+
+            codeElement.textContent = codeExamples[example];
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>

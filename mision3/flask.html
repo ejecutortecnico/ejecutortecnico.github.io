@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipos de Datos en Python</title>
+    <title>Flask Básico</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url(imagenes/fondo.jpeg);
+            background-image: url(simagenes/fondo.jpeg);
             backdrop-filter: blur(5px) brightness(50%);
             background-size: cover;
             background-repeat: no-repeat;
-            height: 100vh;
+            height: 100vh; /* Asegúrate de que el body ocupe el 100% de la altura */
         }
         .container {
             width: 80%;
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            justify-content: center; /* Centra verticalmente */
+            align-items: center; /* Centra horizontalmente */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             padding: 20px;
@@ -68,11 +68,12 @@
             display: none;
         }
         pre {
-            color: #00ff08;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            font-size: 1.5em;
+            color: #00ff08; /* Color del texto del código */
+            white-space: pre-wrap; /* Permite el ajuste de línea */
+            word-wrap: break-word; /* Permite el ajuste de palabra */
+            font-size: 1.5em; /* Aumentar el tamaño de fuente en el modal */
         }
+        /* Estilo para el modal */
         .modal {
             display: none;
             position: fixed;
@@ -82,15 +83,16 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
             padding-top: 60px;
         }
         .modal-content {
             margin: 5% auto;
             padding: 20px;
             width: 90%;
-            color: white;
-            overflow: auto;
+            height: auto; /* Cambiar a auto para ajuste automático */
+            color: white; /* Color del texto del modal */
+            overflow: auto; /* Permitir desplazamiento si es necesario */
         }
         .close {
             color: #aaa;
@@ -109,20 +111,33 @@
 <body>
     <div class="container">
         <div class="slide active">
-            <h1>Tipos de Datos en Python</h1>
-            <p>Exploraremos los diferentes tipos de datos que ofrece Python.</p>
+            <h1>Flask Básico</h1>
+            <p>Aprenderemos sobre el framework Flask para crear aplicaciones web.</p>
             <div class="nav">
                 <button onclick="nextSlide()">Siguiente</button>
             </div>
         </div>
 
         <div class="slide hidden">
-            <h2>1. Números</h2>
-            <p>Python soporta diferentes tipos de números:</p>
-            <p onclick="openModal('numeros')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
-                entero = 10<br>
-                flotante = 10.5<br>
-                complejo = 3 + 4j
+            <h2>1. Instalación de Flask</h2>
+            <p>Para instalar Flask, utiliza pip:</p>
+            <p onclick="openModal('example1')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">pip install Flask</p>
+            <div class="nav">
+                <button onclick="prevSlide()">Anterior</button>
+                <button onclick="nextSlide()">Siguiente</button>
+            </div>
+        </div>
+
+        <div class="slide hidden">
+            <h2>2. Crear una Aplicación Básica</h2>
+            <p>Ejemplo de una aplicación Flask simple:</p>
+            <p onclick="openModal('example2')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
+                from flask import Flask<br>
+                app = Flask(__name__)<br>
+                @app.route('/')<br>
+                &nbsp;&nbsp;&nbsp;def home():<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "¡Hola, Flask!"<br>
+                app.run(debug=True)
             </p>
             <div class="nav">
                 <button onclick="prevSlide()">Anterior</button>
@@ -131,11 +146,12 @@
         </div>
 
         <div class="slide hidden">
-            <h2>2. Cadenas de Texto</h2>
-            <p>Las cadenas se definen usando comillas simples o dobles:</p>
-            <p onclick="openModal('cadenas')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
-                texto1 = "Hola, mundo"<br>
-                texto2 = 'Python es genial'
+            <h2>3. Rutas y Vistas</h2>
+            <p>Definición de varias rutas:</p>
+            <p onclick="openModal('example3')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
+                @app.route('/sobre')<br>
+                &nbsp;&nbsp;&nbsp;def sobre():<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Página sobre"
             </p>
             <div class="nav">
                 <button onclick="prevSlide()">Anterior</button>
@@ -144,51 +160,17 @@
         </div>
 
         <div class="slide hidden">
-            <h2>3. Listas</h2>
-            <p>Las listas son colecciones ordenadas:</p>
-            <p onclick="openModal('listas')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
-                lista = [1, 2, 3, 4, 5]<br>
-                lista.append(6)<br>
-                lista.remove(2)
+            <h2>4. Plantillas con Jinja2</h2>
+            <p>Uso de plantillas en Flask:</p>
+            <p onclick="openModal('example4')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
+                from flask import render_template<br>
+                @app.route('/pagina')<br>
+                &nbsp;&nbsp;&nbsp;def pagina():<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return render_template('pagina.html')
             </p>
             <div class="nav">
                 <button onclick="prevSlide()">Anterior</button>
                 <button onclick="nextSlide()">Siguiente</button>
-            </div>
-        </div>
-
-        <div class="slide hidden">
-            <h2>4. Tuplas</h2>
-            <p>Las tuplas son similares a las listas, pero son inmutables:</p>
-            <p onclick="openModal('tuplas')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
-                tupla = (1, 2, 3)<br>
-                print(tupla[0])  # Accede al primer elemento
-            </p>
-            <div class="nav">
-                <button onclick="prevSlide()">Anterior</button>
-                <button onclick="nextSlide()">Siguiente</button>
-            </div>
-        </div>
-
-        <div class="slide hidden">
-            <h2>5. Diccionarios</h2>
-            <p>Los diccionarios almacenan pares clave-valor:</p>
-            <p onclick="openModal('diccionarios')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
-                diccionario = {"nombre": "Juan", "edad": 30}<br>
-                diccionario["profesión"] = "Ingeniero"
-            </p>
-            <div class="nav">
-                <button onclick="prevSlide()">Anterior</button>
-                <button onclick="nextSlide()">Siguiente</button>
-            </div>
-        </div>
-
-        <div class="slide hidden">
-            <h2>Conclusiones</h2>
-            <p>Python ofrece una variedad de tipos de datos que permiten almacenar y manipular información de diversas maneras. Comprender estos tipos es esencial para programar de manera efectiva en Python.</p>
-            <div class="nav">
-                <button onclick="prevSlide()">Anterior</button>
-                <button onclick="nextSlide()">Finalizar</button>
             </div>
         </div>
     </div>
@@ -214,7 +196,7 @@
         function nextSlide() {
             slideIndex++;
             if (slideIndex >= document.querySelectorAll(".slide").length) {
-                slideIndex = document.querySelectorAll(".slide").length - 1; // Última diapositiva
+                slideIndex = 0; // Volver al inicio
             }
             showSlide(slideIndex);
         }
@@ -222,7 +204,7 @@
         function prevSlide() {
             slideIndex--;
             if (slideIndex < 0) {
-                slideIndex = 0; // Primera diapositiva
+                slideIndex = document.querySelectorAll(".slide").length - 1; // Ir a la última
             }
             showSlide(slideIndex);
         }
@@ -231,14 +213,13 @@
             const modal = document.getElementById("myModal");
             const codeElement = document.getElementById("codeElement");
             const codeExamples = {
-                'numeros': `entero = 10\nflotante = 10.5\ncomplejo = 3 + 4j`,
-                'cadenas': `texto1 = "Hola, mundo"\nt texto2 = 'Python es genial'`,
-                'listas': `lista = [1, 2, 3, 4, 5]\nlista.append(6)\nlista.remove(2)`,
-                'tuplas': `tupla = (1, 2, 3)\nprint(tupla[0])  # Accede al primer elemento`,
-                'diccionarios': `diccionario = {"nombre": "Juan", "edad": 30}\ndiccionario["profesión"] = "Ingeniero"`,
+                'example1': `pip install Flask`,
+                'example2': `from flask import Flask\napp = Flask(__name__)\n@app.route('/')\ndef home():\n    return "¡Hola, Flask!"\napp.run(debug=True)`,
+                'example3': `@app.route('/sobre')\ndef sobre():\n    return "Página sobre"`,
+                'example4': `from flask import render_template\n@app.route('/pagina')\ndef pagina():\n    return render_template('pagina.html')`
             };
 
-            codeElement.textContent = codeExamples[example];
+            codeElement.textContent = codeExamples[example] || "Código no encontrado.";
             modal.style.display = "block";
         }
 
@@ -247,16 +228,7 @@
             modal.style.display = "none";
         }
 
-        // Controlar el cierre del modal al hacer clic fuera del contenido
-        window.onclick = function(event) {
-            const modal = document.getElementById("myModal");
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        // Inicializar mostrando la primera diapositiva
-        showSlide(slideIndex);
+        showSlide(slideIndex); // Mostrar la primera diapositiva al cargar
     </script>
 </body>
 </html>

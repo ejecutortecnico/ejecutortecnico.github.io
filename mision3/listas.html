@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipos de Datos en Python</title>
+    <title>Métodos de Listas en Python</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -109,20 +109,19 @@
 <body>
     <div class="container">
         <div class="slide active">
-            <h1>Tipos de Datos en Python</h1>
-            <p>Exploraremos los diferentes tipos de datos que ofrece Python.</p>
+            <h1>Métodos de Listas en Python</h1>
+            <p>Exploraremos los diferentes métodos disponibles para manipular listas en Python.</p>
             <div class="nav">
                 <button onclick="nextSlide()">Siguiente</button>
             </div>
         </div>
 
         <div class="slide hidden">
-            <h2>1. Números</h2>
-            <p>Python soporta diferentes tipos de números:</p>
-            <p onclick="openModal('numeros')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
-                entero = 10<br>
-                flotante = 10.5<br>
-                complejo = 3 + 4j
+            <h2>1. append()</h2>
+            <p>Agrega un elemento al final de la lista.</p>
+            <p onclick="openModal('append')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
+                lista = [1, 2, 3]<br>
+                lista.append(4)
             </p>
             <div class="nav">
                 <button onclick="prevSlide()">Anterior</button>
@@ -131,11 +130,11 @@
         </div>
 
         <div class="slide hidden">
-            <h2>2. Cadenas de Texto</h2>
-            <p>Las cadenas se definen usando comillas simples o dobles:</p>
-            <p onclick="openModal('cadenas')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
-                texto1 = "Hola, mundo"<br>
-                texto2 = 'Python es genial'
+            <h2>2. extend()</h2>
+            <p>Agrega múltiples elementos al final de la lista.</p>
+            <p onclick="openModal('extend')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
+                lista = [1, 2, 3]<br>
+                lista.extend([4, 5, 6])
             </p>
             <div class="nav">
                 <button onclick="prevSlide()">Anterior</button>
@@ -144,11 +143,23 @@
         </div>
 
         <div class="slide hidden">
-            <h2>3. Listas</h2>
-            <p>Las listas son colecciones ordenadas:</p>
-            <p onclick="openModal('listas')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
-                lista = [1, 2, 3, 4, 5]<br>
-                lista.append(6)<br>
+            <h2>3. insert()</h2>
+            <p>Inserta un elemento en una posición específica.</p>
+            <p onclick="openModal('insert')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
+                lista = [1, 2, 3]<br>
+                lista.insert(1, 'nuevo')
+            </p>
+            <div class="nav">
+                <button onclick="prevSlide()">Anterior</button>
+                <button onclick="nextSlide()">Siguiente</button>
+            </div>
+        </div>
+
+        <div class="slide hidden">
+            <h2>4. remove()</h2>
+            <p>Elimina el primer elemento con el valor especificado.</p>
+            <p onclick="openModal('remove')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
+                lista = [1, 2, 3, 2]<br>
                 lista.remove(2)
             </p>
             <div class="nav">
@@ -158,11 +169,11 @@
         </div>
 
         <div class="slide hidden">
-            <h2>4. Tuplas</h2>
-            <p>Las tuplas son similares a las listas, pero son inmutables:</p>
-            <p onclick="openModal('tuplas')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
-                tupla = (1, 2, 3)<br>
-                print(tupla[0])  # Accede al primer elemento
+            <h2>5. pop()</h2>
+            <p>Elimina y devuelve el último elemento de la lista.</p>
+            <p onclick="openModal('pop')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
+                lista = [1, 2, 3]<br>
+                elemento = lista.pop()
             </p>
             <div class="nav">
                 <button onclick="prevSlide()">Anterior</button>
@@ -171,11 +182,11 @@
         </div>
 
         <div class="slide hidden">
-            <h2>5. Diccionarios</h2>
-            <p>Los diccionarios almacenan pares clave-valor:</p>
-            <p onclick="openModal('diccionarios')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
-                diccionario = {"nombre": "Juan", "edad": 30}<br>
-                diccionario["profesión"] = "Ingeniero"
+            <h2>6. sort()</h2>
+            <p>Ordena los elementos de la lista en su lugar.</p>
+            <p onclick="openModal('sort')" style="cursor: pointer; color: #00ff08; text-decoration: underline;">
+                lista = [3, 1, 2]<br>
+                lista.sort()
             </p>
             <div class="nav">
                 <button onclick="prevSlide()">Anterior</button>
@@ -185,7 +196,7 @@
 
         <div class="slide hidden">
             <h2>Conclusiones</h2>
-            <p>Python ofrece una variedad de tipos de datos que permiten almacenar y manipular información de diversas maneras. Comprender estos tipos es esencial para programar de manera efectiva en Python.</p>
+            <p>Los métodos de listas en Python permiten manipular fácilmente colecciones de datos. Dominar estos métodos es esencial para trabajar con listas en Python.</p>
             <div class="nav">
                 <button onclick="prevSlide()">Anterior</button>
                 <button onclick="nextSlide()">Finalizar</button>
@@ -231,11 +242,12 @@
             const modal = document.getElementById("myModal");
             const codeElement = document.getElementById("codeElement");
             const codeExamples = {
-                'numeros': `entero = 10\nflotante = 10.5\ncomplejo = 3 + 4j`,
-                'cadenas': `texto1 = "Hola, mundo"\nt texto2 = 'Python es genial'`,
-                'listas': `lista = [1, 2, 3, 4, 5]\nlista.append(6)\nlista.remove(2)`,
-                'tuplas': `tupla = (1, 2, 3)\nprint(tupla[0])  # Accede al primer elemento`,
-                'diccionarios': `diccionario = {"nombre": "Juan", "edad": 30}\ndiccionario["profesión"] = "Ingeniero"`,
+                'append': `lista = [1, 2, 3]\nlista.append(4)  # lista ahora es [1, 2, 3, 4]`,
+                'extend': `lista = [1, 2, 3]\nlista.extend([4, 5, 6])  # lista ahora es [1, 2, 3, 4, 5, 6]`,
+                'insert': `lista = [1, 2, 3]\nlista.insert(1, 'nuevo')  # lista ahora es [1, 'nuevo', 2, 3]`,
+                'remove': `lista = [1, 2, 3, 2]\nlista.remove(2)  # lista ahora es [1, 3, 2]`,
+                'pop': `lista = [1, 2, 3]\nelemento = lista.pop()  # elemento es 3, lista ahora es [1, 2]`,
+                'sort': `lista = [3, 1, 2]\nlista.sort()  # lista ahora es [1, 2, 3]`
             };
 
             codeElement.textContent = codeExamples[example];

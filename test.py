@@ -1,4 +1,2 @@
-import pandas as pd
-serie = pd.Series([1, 2, 3, 4, 5])
-datos = {"Nombre": ["Ana", "Juan", "Pedro"], "Edad": [25, 30, 35]}
-df = pd.DataFrame(datos)
+x=10;
+print("Mayor que 10") if x > 10 else print("Menor o igual a 10")

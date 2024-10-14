@@ -15,7 +15,10 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-image: url('images/fondo.jpeg');
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size: cover;
+            background-repeat: no-repeat;
         }
         .container {
             width: 80%;
@@ -24,10 +27,16 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             padding: 20px;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+
+        p, ul {
+            color: #ffffff;
         }
         .slide {
             display: none;
@@ -41,14 +50,22 @@
         button {
             padding: 10px 20px;
             margin: 0 5px;
-            background-color: #007bff;
+            background-color: #d49afe;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: darkmagenta;
+        }
+
+        pre {
+            color: #00ff08;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -116,6 +133,41 @@
             </div>	
 		  </div>
         </div>
+        <div class="slide" >
+            <h1>¿Qué es una variable en JavaScript?</h1>
+            <p>Una variable en JavaScript es un contenedor para almacenar datos. Se puede usar para guardar números, textos, objetos y más.</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" >
+            <h1>Declaración de variables</h1>
+            <p>En JavaScript, puedes declarar una variable usando las palabras clave <code>var</code>, <code>let</code> o <code>const</code>.</p>
+            <pre>
+// Declarar una variable con let
+let mensaje = "Hola, Mundo!";
+            </pre>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" >
+            <h1>Asignar un nuevo valor</h1>
+            <p>Una variable declarada con <code>let</code> puede cambiar su valor más adelante:</p>
+            <pre>
+// Reasignar un nuevo valor a la variable
+mensaje = "JavaScript es genial!";
+            </pre>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide">
+            <h1>Uso de <code>const</code></h1>
+            <p>Las variables declaradas con <code>const</code> no pueden cambiar su valor después de ser asignadas.</p>
+            <pre>
+// Declarar una variable constante con const
+const pi = 3.1416;
+            </pre>
+        </div>
+
 		
 		<div class="slide">
             <div class="row">

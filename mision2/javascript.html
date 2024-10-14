@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript para niños</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('images/fondo.jpeg');
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+        }
+        .active {
+            display: flex;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p, ul {
+            color: #ffffff;
+        }
+        pre {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .nav {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide active" id="slide1">
+        <h1>¡Aprendamos JavaScript!</h1>
+        <p>JavaScript es un lenguaje de programación que nos permite hacer cosas divertidas con las páginas web. ¡Vamos a descubrirlo!</p>
+    </div>
+
+    <div class="slide" id="slide2">
+        <h2>¿Qué es JavaScript?</h2>
+        <p>JavaScript es un lenguaje que permite agregar interacción a las páginas web, como hacer que los botones funcionen o que las imágenes cambien.</p>
+        <pre>
+// Este es un ejemplo de JavaScript
+alert("¡Hola, Mundo!");
+        </pre>
+    </div>
+
+    <div class="slide" id="slide3">
+        <h2>Variables</h2>
+        <p>Las variables son como cajitas donde guardamos información.</p>
+        <pre>
+// Un ejemplo de variable
+var nombre = "Ana";
+alert(nombre);
+        </pre>
+    </div>
+
+    <div class="slide" id="slide4">
+        <h2>Funciones</h2>
+        <p>Las funciones son como instrucciones que le damos a la computadora para hacer algo.</p>
+        <pre>
+// Un ejemplo de función
+function saludar() {
+    alert("¡Hola a todos!");
+}
+saludar();
+        </pre>
+    </div>
+
+    <div class="slide" id="slide5">
+        <h2>Eventos</h2>
+        <p>Los eventos son acciones que ocurren en una página web, como cuando hacemos clic en un botón.</p>
+        <button onclick="alert('¡Hiciste clic!')">Haz clic aquí</button>
+    </div>
+
+    <div class="nav">
+        <button onclick="anterior()">Anterior</button>
+        <button onclick="siguiente()">Siguiente</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function mostrarSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = 'none'; // Oculta todas las diapositivas
+                if (i === index) {
+                    slide.style.display = 'flex'; // Muestra la diapositiva actual
+                }
+            });
+        }
+
+        function anterior() {
+            currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
+            mostrarSlide(currentSlide);
+        }
+
+        function siguiente() {
+            currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
+            mostrarSlide(currentSlide);
+        }
+
+        // Mostrar la primera diapositiva al cargar la página
+        mostrarSlide(currentSlide);
+    </script>
+
+</body>
+</html>

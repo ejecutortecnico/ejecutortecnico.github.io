@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación de Variables en JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('images/fondo.jpeg');
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .container {
+            width: 80%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .active {
+            display: flex;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p, ul {
+            color: #ffffff;
+        }
+        pre {
+            background-color: #333;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 700px;
+            overflow-x: auto;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1 -->
+        <div class="slide active" id="slide1">
+            <h1>¿Qué es una variable en JavaScript?</h1>
+            <p>Una variable en JavaScript es un contenedor para almacenar datos. Se puede usar para guardar números, textos, objetos y más.</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" id="slide2">
+            <h1>Declaración de variables</h1>
+            <p>En JavaScript, puedes declarar una variable usando las palabras clave <code>var</code>, <code>let</code> o <code>const</code>.</p>
+            <pre>
+// Declarar una variable con let
+let mensaje = "Hola, Mundo!";
+            </pre>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" id="slide3">
+            <h1>Asignar un nuevo valor</h1>
+            <p>Una variable declarada con <code>let</code> puede cambiar su valor más adelante:</p>
+            <pre>
+// Reasignar un nuevo valor a la variable
+mensaje = "JavaScript es genial!";
+            </pre>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide" id="slide4">
+            <h1>Uso de <code>const</code></h1>
+            <p>Las variables declaradas con <code>const</code> no pueden cambiar su valor después de ser asignadas.</p>
+            <pre>
+// Declarar una variable constante con const
+const pi = 3.1416;
+            </pre>
+        </div>
+
+        <!-- Navegación -->
+        <div class="nav">
+            <button onclick="showSlide(1)">1</button>
+            <button onclick="showSlide(2)">2</button>
+            <button onclick="showSlide(3)">3</button>
+            <button onclick="showSlide(4)">4</button>
+        </div>
+    </div>
+
+    <script>
+        function showSlide(slideNumber) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            document.getElementById('slide' + slideNumber).classList.add('active');
+        }
+    </script>
+</body>
+</html>

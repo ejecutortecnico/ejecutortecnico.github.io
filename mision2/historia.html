@@ -8,14 +8,17 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+          font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-image: url(images/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            color: #333;
         }
         .container {
             width: 80%;
@@ -24,7 +27,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             padding: 20px;
@@ -38,17 +40,30 @@
         .controls {
             margin-top: 20px;
         }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: square;
+            font-size: 1.2em;
+            text-align: left;
+        }
         button {
             padding: 10px 20px;
-            margin: 0 5px;
-            background-color: #007bff;
+            margin: 5px;
+            background-color: #d49afe;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: darkmagenta;
         }
     </style>
 </head>
@@ -65,37 +80,37 @@
             <div class="col">
                     <div class="row">
                        <!-- Button trigger modal -->
-                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal1">
-                        Objetivos
+                       <button type="button"  data-bs-toggle="modal" data-bs-target="#modal1">
+                        1994
                     </button>
                     <br />
                     </div>
                     <div class="row">
                        <!-- Button trigger modal -->
-                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal2">
-                       Habilidades
+                       <button type="button" data-bs-toggle="modal" data-bs-target="#modal2">
+                       1995
                     </button>
                     <br />
                           </div>
                     <div class="row">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal3">
-                            Launch demo modal
+                        <button type="button"  data-bs-toggle="modal" data-bs-target="#modal3">
+                            1997
                         </button>
                         <br />
                     </div>
 
                     <div class="row">
                        <!-- Button trigger modal -->
-                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal4">
-                        Launch demo modal
+                       <button type="button"  data-bs-toggle="modal" data-bs-target="#modal4">
+                        1998
                     </button>
                     <br />
                     </div>
                     <div class="row">
                        <!-- Button trigger modal -->
-                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal5">
-                        Launch demo modal
+                       <button type="button"  data-bs-toggle="modal" data-bs-target="#modal5">
+                        2002
                     </button>
                           </div>
                    

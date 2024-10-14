@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Condicionales y Switch en Python</title>
+    <title>Bucles en Python</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,25 +70,23 @@
             color: #00ff08;
             cursor: pointer;
         }
-        /* Estilos del modal */
         .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
+            display: none;
+            position: fixed;
+            z-index: 1;
             left: 0;
             top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.9); 
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
             padding-top: 60px;
         }
         .modal-content {
             background-color: transparent;
-            margin: 5% auto; 
+            margin: 5% auto;
             padding: 20px;
             border: none;
-            width: 80%; 
+            width: 80%;
             color: #00ff08;
             font-size: 1.5em;
         }
@@ -109,29 +107,38 @@
 <body>
     <div class="container">
         <div class="slide active">
-            <h1>Condicionales en Python</h1>
-            <h2>1. Estructuras Condicionales</h2>
-            <p>Los condicionales en Python nos permiten ejecutar código basado en condiciones:</p>
-            <pre onclick="openModal('if_else')">if x > 10:\n    print("Mayor que 10")\nelse:\n    print("Menor o igual a 10")</pre>
+            <h1>Bucles en Python</h1>
+            <h2>Introducción a los bucles</h2>
+            <p>Los bucles permiten repetir un bloque de código varias veces.</p>
         </div>
+
         <div class="slide">
-            <h2>2. Estructura <code>elif</code></h2>
-            <p>El uso de <code>elif</code> permite evaluar múltiples condiciones:</p>
-            <pre onclick="openModal('if_elif_else')">if x > 10:\n    print("Mayor que 10")\nelif x == 10:\n    print("Igual a 10")\nelse:\n    print("Menor que 10")</pre>
+            <h2>1. Bucle While</h2>
+            <p>Ejemplo de un bucle <code>while</code>:</p>
+            <pre onclick="openModal('while')"># Bucle While\ncontador = 0\nwhile contador < 5:\n    print(contador)\n    contador += 1</pre>
         </div>
+
         <div class="slide">
-            <h2>3. Alternativa al Switch con Diccionarios</h2>
-            <p>Python no tiene <code>switch</code>, pero podemos usar diccionarios para simularlo:</p>
-            <pre onclick="openModal('switch_dict')">opciones = {\n    1: "Opción 1",\n    2: "Opción 2",\n    3: "Opción 3"\n}\nresultado = opciones.get(seleccion, "Opción no válida")\nprint(resultado)</pre>
+            <h2>2. Bucle For</h2>
+            <p>Ejemplo de un bucle <code>for</code>:</p>
+            <pre onclick="openModal('for')"># Bucle For\nfor i in range(5):\n    print(i)</pre>
         </div>
+
         <div class="slide">
-            <h2>4. Condicionales en Expresiones</h2>
-            <p>Condicional en una sola línea:</p>
-            <pre onclick="openModal('inline_conditional')">print("Mayor que 10") if x > 10 else print("Menor o igual a 10")</pre>
+            <h2>3. Uso de Break</h2>
+            <p>Ejemplo del uso de <code>break</code> para salir de un bucle:</p>
+            <pre onclick="openModal('break')"># Uso de Break\nfor i in range(10):\n    if i == 5:\n        break\n    print(i)</pre>
         </div>
+
         <div class="slide">
-            <h2>5. Conclusiones</h2>
-            <p>Python ofrece flexibilidad en la construcción de condicionales y soluciones eficientes para seleccionar valores.</p>
+            <h2>4. Uso de Continue</h2>
+            <p>Ejemplo del uso de <code>continue</code> para saltar una iteración:</p>
+            <pre onclick="openModal('continue')"># Uso de Continue\nfor i in range(5):\n    if i == 2:\n        continue\n    print(i)</pre>
+        </div>
+
+        <div class="slide">
+            <h2>Conclusiones</h2>
+            <p>Los bucles son esenciales para la ejecución repetitiva en Python y permiten controlar el flujo con <code>break</code> y <code>continue</code>.</p>
         </div>
 
         <div class="nav">
@@ -140,7 +147,6 @@
         </div>
     </div>
 
-    <!-- Modal para mostrar código -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -154,9 +160,9 @@
         function showSlide(n) {
             const slides = document.getElementsByClassName("slide");
             for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
+                slides[i].style.display = "none";
             }
-            slides[n].style.display = "flex";  
+            slides[n].style.display = "flex";
         }
 
         function plusSlides(n) {
@@ -174,18 +180,10 @@
             const modal = document.getElementById("myModal");
             const codeElement = document.getElementById("code");
             const codeExamples = {
-                if_else: `if condicion : #se finaliza con dos puntos :
-    código a realizar#(indentado con 4 espacios)
-elif condicion:
-    código a realizar #(indentando con 4 espacios)
-elif condicion:
-    código a realizar #(indentando con 4 espacios)
-else:
-    código a realizar #(indentado con 4 espacios)
-`,
-                if_elif_else: `if x > 10:\n    print("Mayor que 10")\nelif x == 10:\n    print("Igual a 10")\nelse:\n    print("Menor que 10")`,
-                switch_dict: `opciones = {\n    1: "Opción 1",\n    2: "Opción 2",\n    3: "Opción 3"\n}\nresultado = opciones.get(seleccion, "Opción no válida")\nprint(resultado)`,
-                inline_conditional: `print("Mayor que 10") if x > 10 else print("Menor o igual a 10")`
+                while: `# Bucle While\ncontador = 0\nwhile contador < 5:\n    print(contador)\n    contador += 1`,
+                for: `# Bucle For\nfor i in range(5):\n    print(i)`,
+                break: `# Uso de Break\nfor i in range(10):\n    if i == 5:\n        break\n    print(i)`,
+                continue: `# Uso de Continue\nfor i in range(5):\n    if i == 2:\n        continue\n    print(i)`
             };
 
             codeElement.textContent = codeExamples[example];

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones Incorporadas en Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(imagenes/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .function-name {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: underline;
+        }
+        .function-name:hover {
+            color: darkmagenta;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .modal {
+            display: none; /* Por defecto oculto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #2e2e2e;
+            color: #00ff08;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            font-size: 1.2em;
+            overflow-x: auto;
+        }
+        .close-btn {
+            color: #ff00c3;
+            font-size: 1.5em;
+            font-weight: bold;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Funciones Incorporadas en Python</h1>
+        <ul>
+            <li><span class="function-name" onclick="openModal('abs() - Devuelve el valor absoluto de un número.')">abs()</span></li>
+            <li><span class="function-name" onclick="openModal('dict() - Crea un diccionario en Python.')">dict()</span></li>
+            <li><span class="function-name" onclick="openModal('help() - Muestra la ayuda del sistema para una función o módulo.')">help()</span></li>
+            <li><span class="function-name" onclick="openModal('min() - Devuelve el valor mínimo de una secuencia.')">min()</span></li>
+            <li><span class="function-name" onclick="openModal('setattr() - Establece un atributo en un objeto.')">setattr()</span></li>
+            <li><span class="function-name" onclick="openModal('all() - Devuelve True si todos los elementos en un iterable son verdaderos.')">all()</span></li>
+            <li><span class="function-name" onclick="openModal('dir() - Devuelve una lista de nombres en el ámbito local.')">dir()</span></li>
+            <li><span class="function-name" onclick="openModal('hex() - Convierte un número en su representación hexadecimal.')">hex()</span></li>
+            <li><span class="function-name" onclick="openModal('next() - Obtiene el siguiente elemento de un iterable.')">next()</span></li>
+            <li><span class="function-name" onclick="openModal('slice() - Crea un objeto de segmento.')">slice()</span></li>
+            <!-- Añadir más funciones de la lista de acuerdo a tu solicitud -->
+        </ul>
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar el contenido de la función -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <pre id="modalCode"></pre>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("hidden", i !== index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function openModal(description) {
+            document.getElementById("modalCode").innerText = description;
+            document.getElementById("codeModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("codeModal").style.display = "none";
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones en Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(imagenes/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        ul {
+            list-style-type: square;
+            font-size: 1.2em;
+            text-align: left;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Funciones en Python</h1>
+            <p>Las funciones en Python son bloques de código reutilizables que realizan una tarea específica. Aprenderás a definir, usar y manipular funciones en Python.</p>
+        </div>
+        
+        <div id="slide2" class="slide">
+            <h2>Definición de una Función</h2>
+            <p>Las funciones en Python se definen usando la palabra clave <code>def</code> seguida del nombre de la función y paréntesis.</p>
+            <pre>
+def saludar():
+    print("¡Hola, mundo!")
+
+# Llamar a la función
+saludar()  # Imprime "¡Hola, mundo!"
+            </pre>
+        </div>
+        
+        <div id="slide3" class="slide">
+            <h2>Funciones con Parámetros</h2>
+            <p>Las funciones pueden aceptar parámetros que permiten personalizar su comportamiento. Ejemplo:</p>
+            <pre>
+def saludar(nombre):
+    print(f"¡Hola, {nombre}!")
+
+# Llamar a la función con un argumento
+saludar("Ana")  # Imprime "¡Hola, Ana!"
+            </pre>
+        </div>
+        
+        <div id="slide4" class="slide">
+            <h2>Funciones con Retorno</h2>
+            <p>Las funciones pueden devolver un valor usando la palabra clave <code>return</code>. Ejemplo:</p>
+            <pre>
+def sumar(a, b):
+    return a + b
+
+resultado = sumar(5, 3)
+print(resultado)  # Imprime 8
+            </pre>
+        </div>
+        
+        <div id="slide5" class="slide">
+            <h2>Funciones Anónimas (Lambda)</h2>
+            <p>Las funciones lambda son funciones anónimas que se pueden definir en una sola línea. Ejemplo:</p>
+            <pre>
+suma = lambda x, y: x + y
+
+resultado = suma(4, 7)
+print(resultado)  # Imprime 11
+            </pre>
+        </div>
+        
+        <div id="slide6" class="slide">
+            <h2>Conclusión</h2>
+            <p>Las funciones en Python son fundamentales para organizar y reutilizar el código. Puedes usarlas con parámetros, retornos y funciones lambda para escribir código más eficiente y modular.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

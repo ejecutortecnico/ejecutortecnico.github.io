@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a la Visualización de Datos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('imagenes/fondo.jpeg');
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1, h2 {
+            color: #ff00c3;
+        }
+
+        p, ul {
+            color: #ffffff;
+        }
+
+        .container {
+            width: 80%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .nav button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="container" id="slide1">
+            <h1>1. Introducción a la Visualización de Datos</h1>
+            <h2>a. Importancia de la Visualización de Datos</h2>
+            <ul>
+                <li>Facilita la comprensión de datos complejos.</li>
+                <li>Ayuda a identificar patrones y tendencias.</li>
+                <li>Mejora la comunicación de resultados.</li>
+            </ul>
+        </div>
+
+        <div class="container hidden" id="slide2">
+            <h2>b. Principios de una Buena Visualización</h2>
+            <ul>
+                <li>Claridad y simplicidad.</li>
+                <li>Precisión y honestidad en la representación de los datos.</li>
+                <li>Relevancia y foco en el mensaje principal.</li>
+            </ul>
+        </div>
+
+        <div class="nav">
+            <button onclick="showSlide(1)">Anterior</button>
+            <button onclick="showSlide(2)">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        function showSlide(slideNumber) {
+            document.getElementById('slide' + currentSlide).classList.add('hidden');
+            document.getElementById('slide' + slideNumber).classList.remove('hidden');
+            currentSlide = slideNumber;
+        }
+    </script>
+</body>
+</html>

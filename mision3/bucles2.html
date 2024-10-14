@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación: Bucle For en Python</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(imagenes/fondo.jpeg);
+            backdrop-filter: blur(5px) brightness(50%);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .slide {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            margin: 10px 0;
+            color: #ff00c3;
+        }
+        p, ul {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: square;
+        }
+        .container {
+            width: 80%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .nav {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .hidden {
+            display: none;
+        }
+        pre {
+            color: #00ff08;
+            cursor: pointer;
+        }
+        
+        /* Estilos del modal */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #2a2a2a;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .modal-content h2 {
+            color: #ff00c3;
+        }
+        .close {
+            color: #ffffff;
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #ff00c3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Diapositivas -->
+        <div class="slide" id="slide1">
+            <h1>Bucle For en Python</h1>
+            <p>Iterar sobre una lista:</p>
+            <pre onclick="openModal()">frutas = ['manzana', 'banana', 'cereza']<br>for fruta en frutas:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(fruta)</pre>
+        </div>
+        
+        <div class="slide hidden" id="slide2">
+            <h2>Usando rangos en for</h2>
+            <pre onclick="openModal()">for i in range(5):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(i)</pre>
+        </div>
+        
+        <!-- Botones de navegación -->
+        <div class="nav">
+            <button onclick="showPrevious()">Anterior</button>
+            <button onclick="showNext()">Siguiente</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Información Adicional</h2>
+            <p>El bucle <strong>for</strong> permite iterar sobre elementos en una lista o rango. Es útil para recorrer colecciones de datos de manera eficiente.</p>
+            <pre>
+frutas = ['manzana', 'banana', 'cereza']
+for fruta en frutas:
+    print(fruta)  # Imprime cada fruta de la lista
+            </pre>
+        </div>
+    </div>
+
+    <script>
+        // Variables para el sistema de navegación
+        let currentSlide = 1;
+        const totalSlides = 2;
+
+        // Función para mostrar la diapositiva anterior
+        function showPrevious() {
+            if (currentSlide > 1) {
+                document.getElementById(`slide${currentSlide}`).classList.add('hidden');
+                currentSlide--;
+                document.getElementById(`slide${currentSlide}`).classList.remove('hidden');
+            }
+        }
+
+        // Función para mostrar la siguiente diapositiva
+        function showNext() {
+            if (currentSlide < totalSlides) {
+                document.getElementById(`slide${currentSlide}`).classList.add('hidden');
+                currentSlide++;
+                document.getElementById(`slide${currentSlide}`).classList.remove('hidden');
+            }
+        }
+
+        // Función para abrir el modal
+        function openModal() {
+            document.getElementById('myModal').style.display = 'flex';
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        // Cerrar el modal al hacer clic fuera de él
+        window.onclick = function(event) {
+            const modal = document.getElementById('myModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

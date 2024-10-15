@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Variables en JavaScript</title>
+    <title>Funciones en JavaScript</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -79,60 +79,72 @@
 <body>
     <div class="container">
         <div id="slide1" class="slide active">
-            <h1>Variables en JavaScript</h1>
-            <p>Las variables en JavaScript son contenedores para almacenar datos. Se pueden declarar usando <code>var</code>, <code>let</code> y <code>const</code>.</p>
+            <h1>Funciones en JavaScript</h1>
+            <p>Las funciones son bloques de código reutilizables que pueden ser llamados en cualquier parte de un programa. Permiten modular el código y hacerlo más legible.</p>
         </div>
         
         <div id="slide2" class="slide">
-            <h2>Declaración de Variables</h2>
-            <p>Las variables en JavaScript se pueden declarar con las palabras clave <code>var</code>, <code>let</code> y <code>const</code>.</p>
+            <h2>Definición de una Función</h2>
+            <p>Las funciones en JavaScript se definen usando la palabra clave <code>function</code> seguida del nombre de la función y paréntesis.</p>
             <pre>
-// Usando var
-var nombre = "Ana";
+function saludar() {
+    console.log("¡Hola, mundo!");
+}
 
-// Usando let
-let edad = 25;
-
-// Usando const
-const PI = 3.1416;
+saludar();  // Imprime "¡Hola, mundo!"
             </pre>
         </div>
         
         <div id="slide3" class="slide">
-            <h2>Var vs Let vs Const</h2>
-            <p>Cada forma de declarar variables tiene sus propias características:</p>
-            <ul>
-                <li><strong>var</strong>: Tiene un ámbito de función y permite redeclaraciones.</li>
-                <li><strong>let</strong>: Tiene un ámbito de bloque y no permite redeclaraciones en el mismo ámbito.</li>
-                <li><strong>const</strong>: Se utiliza para variables cuyo valor no cambia. No se puede reasignar ni redeclarar.</li>
-            </ul>
+            <h2>Funciones con Parámetros</h2>
+            <p>Las funciones pueden recibir parámetros que permiten personalizar su comportamiento. Ejemplo:</p>
+            <pre>
+function saludar(nombre) {
+    console.log("¡Hola, " + nombre + "!");
+}
+
+saludar("Ana");  // Imprime "¡Hola, Ana!"
+            </pre>
         </div>
         
         <div id="slide4" class="slide">
-            <h2>Tipos de Datos en JavaScript</h2>
-            <p>JavaScript soporta varios tipos de datos, incluyendo:</p>
-            <ul>
-                <li><strong>Números</strong>: Representa números, tanto enteros como flotantes. Ejemplo: <code>let numero = 42;</code></li>
-                <li><strong>Cadenas</strong>: Secuencias de texto. Ejemplo: <code>let texto = "Hola, mundo";</code></li>
-                <li><strong>Booleanos</strong>: Valores de verdadero o falso. Ejemplo: <code>let esVerdad = true;</code></li>
-                <li><strong>Arreglos</strong>: Listas de valores. Ejemplo: <code>let numeros = [1, 2, 3, 4];</code></li>
-                <li><strong>Objetos</strong>: Colecciones de propiedades. Ejemplo: <code>let persona = {nombre: "Ana", edad: 25};</code></li>
-            </ul>
+            <h2>Funciones con Retorno</h2>
+            <p>Las funciones pueden devolver un valor usando la palabra clave <code>return</code>. Ejemplo:</p>
+            <pre>
+function sumar(a, b) {
+    return a + b;
+}
+
+let resultado = sumar(5, 3);
+console.log(resultado);  // Imprime 8
+            </pre>
         </div>
         
         <div id="slide5" class="slide">
-            <h2>Ámbito de Variables</h2>
-            <p>El ámbito de una variable define dónde puede ser utilizada. En JavaScript, las variables pueden tener:</p>
-            <ul>
-                <li><strong>Ámbito Global</strong>: Las variables declaradas fuera de cualquier bloque tienen un alcance global.</li>
-                <li><strong>Ámbito de Bloque</strong>: Las variables declaradas dentro de un bloque (usando <code>let</code> o <code>const</code>) solo son accesibles dentro de ese bloque.</li>
-                <li><strong>Ámbito de Función</strong>: Las variables declaradas dentro de una función solo son accesibles dentro de esa función.</li>
-            </ul>
+            <h2>Funciones Anónimas</h2>
+            <p>Las funciones anónimas no tienen nombre y se pueden asignar a variables. Ejemplo:</p>
+            <pre>
+let saludo = function() {
+    console.log("Hola desde una función anónima");
+};
+
+saludo();  // Imprime "Hola desde una función anónima"
+            </pre>
         </div>
         
         <div id="slide6" class="slide">
+            <h2>Funciones Flecha</h2>
+            <p>Las funciones flecha son una forma concisa de escribir funciones en JavaScript. Ejemplo:</p>
+            <pre>
+let multiplicar = (x, y) => x * y;
+
+console.log(multiplicar(4, 5));  // Imprime 20
+            </pre>
+        </div>
+        
+        <div id="slide7" class="slide">
             <h2>Conclusión</h2>
-            <p>Las variables son fundamentales para almacenar y manipular datos en JavaScript. Comprender la diferencia entre <code>var</code>, <code>let</code> y <code>const</code> te ayudará a escribir código más seguro y eficiente.</p>
+            <p>Las funciones son esenciales para estructurar y reutilizar el código en JavaScript. Desde funciones simples, pasando por funciones anónimas y de flecha, permiten escribir código más modular y eficiente.</p>
         </div>
 
         <div class="nav">

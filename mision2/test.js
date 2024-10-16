@@ -1,3 +1,7 @@
-const etiqueta = document.getElementById("label1")
-etiqueta.style.color = "blue";
-etiqueta.style.fontSize = "20px"
+function saludar(){
+const miinput = document.getElementById("miinput")
+let nombre = miinput.value
+console.log("hola mundo" + nombre)
+}
+
+saludar()

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción al Análisis de Datos con Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(imagenes/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        ul {
+            list-style-type: square;
+            font-size: 1.2em;
+            text-align: left;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Introducción al Análisis de Datos con Python</h1>
+            <p>Python es una de las herramientas más poderosas para el análisis de datos. En esta presentación, exploraremos cómo utilizar Python y sus bibliotecas para analizar y visualizar datos.</p>
+        </div>
+        
+        <div id="slide2" class="slide">
+            <h2>¿Qué es el Análisis de Datos?</h2>
+            <p>El análisis de datos implica el proceso de inspeccionar, limpiar y modelar datos para descubrir información útil, llegar a conclusiones y apoyar la toma de decisiones.</p>
+            <ul>
+                <li><strong>Inspección:</strong> Revisión inicial de los datos.</li>
+                <li><strong>Limpieza:</strong> Eliminar o corregir datos erróneos.</li>
+                <li><strong>Modelado:</strong> Aplicar fórmulas y transformaciones para obtener información.</li>
+            </ul>
+        </div>
+        
+        <div id="slide3" class="slide">
+            <h2>Bibliotecas Esenciales en Python</h2>
+            <p>Python ofrece varias bibliotecas especializadas para el análisis de datos:</p>
+            <ul>
+                <li><strong>Pandas:</strong> Manipulación de datos tabulares como DataFrames.</li>
+                <li><strong>NumPy:</strong> Cálculo numérico eficiente con matrices y arreglos.</li>
+                <li><strong>Matplotlib:</strong> Visualización de datos mediante gráficos.</li>
+                <li><strong>Seaborn:</strong> Extensión de Matplotlib para gráficos estadísticos avanzados.</li>
+            </ul>
+        </div>
+        
+        <div id="slide4" class="slide">
+            <h2>Introducción a Pandas</h2>
+            <p>Pandas es una de las bibliotecas más populares para la manipulación de datos en Python. Facilita el manejo de grandes conjuntos de datos con estructuras como Series y DataFrames.</p>
+            <pre>
+# Instalar Pandas
+!pip install pandas
+
+# Importar Pandas
+import pandas as pd
+
+# Cargar un archivo CSV
+df = pd.read_csv("data.csv")
+
+# Ver las primeras filas del DataFrame
+print(df.head())
+            </pre>
+        </div>
+        
+        <div id="slide5" class="slide">
+            <h2>Manipulación de Datos con Pandas</h2>
+            <p>Pandas permite seleccionar, filtrar y modificar datos de manera eficiente.</p>
+            <pre>
+# Seleccionar una columna
+columna = df["Nombre"]
+
+# Filtrar datos
+filtro = df[df["Edad"] > 30]
+
+# Modificar un valor
+df.at[0, "Edad"] = 26
+
+# Eliminar una columna
+df = df.drop("ColumnaInnecesaria", axis=1)
+            </pre>
+        </div>
+        
+        <div id="slide6" class="slide">
+            <h2>Visualización de Datos con Matplotlib</h2>
+            <p>Matplotlib es una biblioteca esencial para la creación de gráficos en Python.</p>
+            <pre>
+# Instalar Matplotlib
+!pip install matplotlib
+
+# Importar Matplotlib
+import matplotlib.pyplot as plt
+
+# Crear un gráfico de líneas
+plt.plot(df["Fecha"], df["Valor"])
+plt.title("Gráfico de Líneas")
+plt.xlabel("Fecha")
+plt.ylabel("Valor")
+plt.show()
+            </pre>
+        </div>
+        
+        <div id="slide7" class="slide">
+            <h2>Análisis Numérico con NumPy</h2>
+            <p>NumPy facilita cálculos numéricos con matrices multidimensionales y funciones matemáticas avanzadas.</p>
+            <pre>
+# Instalar NumPy
+!pip install numpy
+
+# Importar NumPy
+import numpy as np
+
+# Crear un arreglo NumPy
+arreglo = np.array([1, 2, 3, 4, 5])
+
+# Calcular la media
+media = np.mean(arreglo)
+
+# Crear una matriz
+matriz = np.array([[1, 2], [3, 4]])
+
+# Calcular la transpuesta
+transpuesta = np.transpose(matriz)
+            </pre>
+        </div>
+        
+        <div id="slide8" class="slide">
+            <h2>Conclusión</h2>
+            <p>El análisis de datos con Python se vuelve eficiente y poderoso cuando se utilizan bibliotecas como Pandas, NumPy y Matplotlib. Con estas herramientas, puedes manipular, analizar y visualizar grandes volúmenes de datos con facilidad.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

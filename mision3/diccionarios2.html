@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funciones en JavaScript</title>
+    <title>Ejercicios Prácticos de Diccionarios en Python</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url(images/fondo.jpeg);
+            background-image: url(imagenes/fondo.jpeg);
             background-size: cover;
             background-repeat: no-repeat;
             display: flex;
@@ -79,74 +79,93 @@
 <body>
     <div class="container">
         <div id="slide1" class="slide active">
-            <h1>Funciones en JavaScript</h1>
-            <p>Las funciones son bloques de código reutilizables que pueden ser llamados en cualquier parte de un programa. Permiten modular el código y hacerlo más legible.</p>
+            <h1>Ejercicios Prácticos de Diccionarios en Python</h1>
+            <p>Los diccionarios en Python son colecciones desordenadas de pares clave-valor. A continuación, te presentamos algunos ejercicios prácticos para trabajar con ellos.</p>
         </div>
         
         <div id="slide2" class="slide">
-            <h2>Definición de una Función</h2>
-            <p>Las funciones en JavaScript se definen usando la palabra clave <code>function</code> seguida del nombre de la función y paréntesis.</p>
+            <h2>Ejercicio 1: Crear un Diccionario</h2>
+            <p>Crea un diccionario llamado <code>alumno</code> que contenga las claves: "nombre", "edad", "curso". Luego, imprime el diccionario completo.</p>
             <pre>
-function saludar() {
-    console.log("¡Hola, mundo!");
+# Solución
+alumno = {
+    "nombre": "Juan",
+    "edad": 20,
+    "curso": "Matemáticas"
 }
 
-saludar();  // Imprime "¡Hola, mundo!"
+# Imprimir el diccionario
+print(alumno)
             </pre>
         </div>
         
         <div id="slide3" class="slide">
-            <h2>Funciones con Parámetros</h2>
-            <p>Las funciones pueden recibir parámetros que permiten personalizar su comportamiento. Ejemplo:</p>
+            <h2>Ejercicio 2: Acceder a Elementos</h2>
+            <p>Dado el diccionario <code>alumno</code>, imprime solo el valor de la clave "nombre".</p>
             <pre>
-function saludar(nombre) {
-    console.log("¡Hola, " + nombre + "!");
-}
-
-saludar("Ana");  // Imprime "¡Hola, Ana!"
-const elemento = document.getElementById("miinput")
-let nombre = elemento.value
+# Solución
+print(alumno["nombre"])  # Imprime: Juan
             </pre>
         </div>
         
         <div id="slide4" class="slide">
-            <h2>Funciones con Retorno</h2>
-            <p>Las funciones pueden devolver un valor usando la palabra clave <code>return</code>. Ejemplo:</p>
+            <h2>Ejercicio 3: Agregar un Elemento</h2>
+            <p>Agrega al diccionario <code>alumno</code> la clave "nota" con el valor 8.5.</p>
             <pre>
-function sumar(a, b) {
-    return a + b;
-}
-
-let resultado = sumar(5, 3);
-console.log(resultado);  // Imprime 8
+# Solución
+alumno["nota"] = 8.5
+print(alumno)
             </pre>
         </div>
         
         <div id="slide5" class="slide">
-            <h2>Funciones Anónimas</h2>
-            <p>Las funciones anónimas no tienen nombre y se pueden asignar a variables. Ejemplo:</p>
+            <h2>Ejercicio 4: Eliminar un Elemento</h2>
+            <p>Elimina la clave "curso" del diccionario <code>alumno</code>.</p>
             <pre>
-let saludo = function() {
-    console.log("Hola desde una función anónima");
-};
-
-saludo();  // Imprime "Hola desde una función anónima"
+# Solución
+del alumno["curso"]
+print(alumno)
             </pre>
         </div>
         
         <div id="slide6" class="slide">
-            <h2>Funciones Flecha</h2>
-            <p>Las funciones flecha son una forma concisa de escribir funciones en JavaScript. Ejemplo:</p>
+            <h2>Ejercicio 5: Recorrer un Diccionario</h2>
+            <p>Utiliza un bucle <code>for</code> para recorrer e imprimir las claves y los valores del diccionario <code>alumno</code>.</p>
             <pre>
-let multiplicar = (x, y) => x * y;
-
-console.log(multiplicar(4, 5));  // Imprime 20
+# Solución
+for clave, valor in alumno.items():
+    print(clave, ":", valor)
             </pre>
         </div>
         
         <div id="slide7" class="slide">
+            <h2>Ejercicio 6: Diccionario Anidado</h2>
+            <p>Crea un diccionario llamado <code>clase</code> que contenga dos alumnos, cada uno representado como un diccionario con su "nombre", "edad" y "nota".</p>
+            <pre>
+# Solución
+clase = {
+    "alumno1": {"nombre": "Ana", "edad": 21, "nota": 9.0},
+    "alumno2": {"nombre": "Carlos", "edad": 22, "nota": 7.5}
+}
+
+# Imprimir el diccionario completo
+print(clase)
+            </pre>
+        </div>
+        
+        <div id="slide8" class="slide">
+            <h2>Ejercicio 7: Modificar un Valor en Diccionario Anidado</h2>
+            <p>Cambia la nota del "alumno1" a 9.5 en el diccionario <code>clase</code>.</p>
+            <pre>
+# Solución
+clase["alumno1"]["nota"] = 9.5
+print(clase["alumno1"])
+            </pre>
+        </div>
+
+        <div id="slide9" class="slide">
             <h2>Conclusión</h2>
-            <p>Las funciones son esenciales para estructurar y reutilizar el código en JavaScript. Desde funciones simples, pasando por funciones anónimas y de flecha, permiten escribir código más modular y eficiente.</p>
+            <p>Trabajar con diccionarios en Python te permite gestionar datos de manera eficiente. Practicar con diferentes escenarios te ayudará a dominar esta estructura.</p>
         </div>
 
         <div class="nav">

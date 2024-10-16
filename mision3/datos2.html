@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funciones en JavaScript</title>
+    <title>Manejo de Datos con Pandas y Matplotlib</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url(images/fondo.jpeg);
+            background-image: url(imagenes/fondo.jpeg);
             background-size: cover;
             background-repeat: no-repeat;
             display: flex;
@@ -79,74 +79,101 @@
 <body>
     <div class="container">
         <div id="slide1" class="slide active">
-            <h1>Funciones en JavaScript</h1>
-            <p>Las funciones son bloques de código reutilizables que pueden ser llamados en cualquier parte de un programa. Permiten modular el código y hacerlo más legible.</p>
+            <h1>Manejo de Datos con Pandas y Matplotlib</h1>
+            <p>Python ofrece poderosas bibliotecas como Pandas y Matplotlib para la manipulación y visualización de datos. Esta presentación explora cómo trabajar con datos de manera eficiente.</p>
         </div>
         
         <div id="slide2" class="slide">
-            <h2>Definición de una Función</h2>
-            <p>Las funciones en JavaScript se definen usando la palabra clave <code>function</code> seguida del nombre de la función y paréntesis.</p>
+            <h2>Introducción a Pandas</h2>
+            <p>Pandas es una biblioteca para la manipulación y el análisis de datos en Python. Se utiliza para trabajar con estructuras de datos como Series y DataFrames.</p>
             <pre>
-function saludar() {
-    console.log("¡Hola, mundo!");
-}
+# Instalar Pandas
+!pip install pandas
 
-saludar();  // Imprime "¡Hola, mundo!"
+# Importar Pandas
+import pandas as pd
             </pre>
         </div>
         
         <div id="slide3" class="slide">
-            <h2>Funciones con Parámetros</h2>
-            <p>Las funciones pueden recibir parámetros que permiten personalizar su comportamiento. Ejemplo:</p>
+            <h2>Cargando Datos con Pandas</h2>
+            <p>Pandas facilita la carga de datos desde diferentes fuentes, como archivos CSV, Excel, y bases de datos SQL. Ejemplo de carga de un archivo CSV:</p>
             <pre>
-function saludar(nombre) {
-    console.log("¡Hola, " + nombre + "!");
-}
+# Cargar un archivo CSV en un DataFrame
+df = pd.read_csv("data.csv")
 
-saludar("Ana");  // Imprime "¡Hola, Ana!"
-const elemento = document.getElementById("miinput")
-let nombre = elemento.value
+# Ver las primeras filas del DataFrame
+print(df.head())
             </pre>
         </div>
         
         <div id="slide4" class="slide">
-            <h2>Funciones con Retorno</h2>
-            <p>Las funciones pueden devolver un valor usando la palabra clave <code>return</code>. Ejemplo:</p>
+            <h2>Manipulación de Datos con Pandas</h2>
+            <p>Pandas permite manipular los datos de manera sencilla, incluyendo selección de columnas, filtrado de datos, y agregación.</p>
             <pre>
-function sumar(a, b) {
-    return a + b;
-}
+# Seleccionar una columna
+columna = df["Nombre"]
 
-let resultado = sumar(5, 3);
-console.log(resultado);  // Imprime 8
+# Filtrar datos
+filtro = df[df["Edad"] > 30]
+
+# Agregar datos (promedio de una columna)
+promedio = df["Salario"].mean()
             </pre>
         </div>
         
         <div id="slide5" class="slide">
-            <h2>Funciones Anónimas</h2>
-            <p>Las funciones anónimas no tienen nombre y se pueden asignar a variables. Ejemplo:</p>
+            <h2>Visualización de Datos con Matplotlib</h2>
+            <p>Matplotlib es una biblioteca para la creación de gráficos y visualización de datos en Python.</p>
             <pre>
-let saludo = function() {
-    console.log("Hola desde una función anónima");
-};
+# Instalar Matplotlib
+!pip install matplotlib
 
-saludo();  // Imprime "Hola desde una función anónima"
+# Importar Matplotlib
+import matplotlib.pyplot as plt
             </pre>
         </div>
         
         <div id="slide6" class="slide">
-            <h2>Funciones Flecha</h2>
-            <p>Las funciones flecha son una forma concisa de escribir funciones en JavaScript. Ejemplo:</p>
+            <h2>Gráficos Básicos con Matplotlib</h2>
+            <p>Matplotlib permite crear gráficos simples como gráficos de líneas, barras y dispersión. Ejemplo de un gráfico de líneas:</p>
             <pre>
-let multiplicar = (x, y) => x * y;
-
-console.log(multiplicar(4, 5));  // Imprime 20
+# Crear un gráfico de líneas
+plt.plot(df["Fecha"], df["Valor"])
+plt.title("Gráfico de Líneas")
+plt.xlabel("Fecha")
+plt.ylabel("Valor")
+plt.show()
             </pre>
         </div>
         
         <div id="slide7" class="slide">
+            <h2>Gráficos de Barras con Matplotlib</h2>
+            <p>También podemos crear gráficos de barras para comparar diferentes categorías de datos.</p>
+            <pre>
+# Crear un gráfico de barras
+plt.bar(df["Categoría"], df["Cantidad"])
+plt.title("Gráfico de Barras")
+plt.xlabel("Categoría")
+plt.ylabel("Cantidad")
+plt.show()
+            </pre>
+        </div>
+        
+        <div id="slide8" class="slide">
+            <h2>Combinar Pandas y Matplotlib</h2>
+            <p>Es común utilizar Pandas para la manipulación de datos y luego Matplotlib para la visualización. Ejemplo de combinación de ambas bibliotecas:</p>
+            <pre>
+# Agrupar datos y graficar
+df_agrupado = df.groupby("Categoría")["Cantidad"].sum()
+df_agrupado.plot(kind="bar", title="Cantidad por Categoría")
+plt.show()
+            </pre>
+        </div>
+
+        <div id="slide9" class="slide">
             <h2>Conclusión</h2>
-            <p>Las funciones son esenciales para estructurar y reutilizar el código en JavaScript. Desde funciones simples, pasando por funciones anónimas y de flecha, permiten escribir código más modular y eficiente.</p>
+            <p>Pandas y Matplotlib son herramientas esenciales para el manejo y visualización de datos en Python. Con ellas, puedes realizar análisis de datos y crear visualizaciones informativas de manera eficiente.</p>
         </div>
 
         <div class="nav">

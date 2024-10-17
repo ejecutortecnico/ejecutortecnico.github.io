@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos en JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(images/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        ul {
+            list-style-type: square;
+            font-size: 1.2em;
+            text-align: left;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Eventos en JavaScript</h1>
+            <p>Los eventos en JavaScript permiten interactuar con los usuarios. Podemos responder a eventos como clics, movimientos del ratón o el envío de formularios.</p>
+        </div>
+        
+        <div id="slide2" class="slide">
+            <h2>¿Qué es un Evento?</h2>
+            <p>Un evento es cualquier cosa que ocurra en una página web, como hacer clic en un botón, mover el mouse o presionar una tecla.</p>
+            <ul>
+                <li><strong>Eventos de ratón:</strong> click, mouseover, mouseout</li>
+                <li><strong>Eventos de teclado:</strong> keydown, keyup</li>
+                <li><strong>Eventos de formulario:</strong> submit, change</li>
+            </ul>
+        </div>
+        
+        <div id="slide3" class="slide">
+            <h2>Agregar un Evento con <code>addEventListener</code></h2>
+            <p>Podemos usar el método <code>addEventListener</code> para agregar un evento a un elemento.</p>
+            <pre>
+// Seleccionar un elemento
+let boton = document.getElementById("miBoton");
+
+// Agregar un evento de clic
+boton.addEventListener("click", function() {
+    alert("¡Botón clickeado!");
+});
+            </pre>
+        </div>
+        
+        <div id="slide4" class="slide">
+            <h2>Eliminar un Evento con <code>removeEventListener</code></h2>
+            <p>También podemos eliminar un evento usando <code>removeEventListener</code>. Primero necesitamos definir la función que se eliminará.</p>
+            <pre>
+function mostrarAlerta() {
+    alert("¡Botón clickeado!");
+}
+
+boton.addEventListener("click", mostrarAlerta);
+
+// Eliminar el evento
+boton.removeEventListener("click", mostrarAlerta);
+            </pre>
+        </div>
+        
+        <div id="slide5" class="slide">
+            <h2>Eventos del Teclado</h2>
+            <p>Podemos escuchar eventos del teclado, como cuando se presiona una tecla.</p>
+            <pre>
+document.addEventListener("keydown", function(evento) {
+    console.log("Tecla presionada: " + evento.key);
+});
+            </pre>
+        </div>
+        
+        <div id="slide6" class="slide">
+            <h2>Eventos del Ratón</h2>
+            <p>Los eventos de ratón, como <code>mouseover</code> y <code>mouseout</code>, se activan cuando el usuario mueve el ratón sobre un elemento.</p>
+            <pre>
+let caja = document.getElementById("miCaja");
+
+caja.addEventListener("mouseover", function() {
+    caja.style.backgroundColor = "blue";
+});
+
+caja.addEventListener("mouseout", function() {
+    caja.style.backgroundColor = "white";
+});
+            </pre>
+        </div>
+        
+        <div id="slide7" class="slide">
+            <h2>Eventos de Formularios</h2>
+            <p>Podemos escuchar eventos de formularios, como cuando se envía un formulario o cambia un campo de texto.</p>
+            <pre>
+let formulario = document.getElementById("miFormulario");
+
+formulario.addEventListener("submit", function(evento) {
+    evento.preventDefault();  // Evita que el formulario se envíe
+    alert("Formulario enviado");
+});
+            </pre>
+        </div>
+        
+        <div id="slide8" class="slide">
+            <h2>Conclusión</h2>
+            <p>Los eventos son fundamentales para hacer nuestras páginas web interactivas. Comprender cómo usarlos te permitirá crear experiencias de usuario más dinámicas y atractivas.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

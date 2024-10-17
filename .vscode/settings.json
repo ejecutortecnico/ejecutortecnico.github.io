@@ -1,3 +1,4 @@
 {
-    "workbench.editor.languageDetection": true
+    "workbench.editor.languageDetection": true,
+    "liveServer.settings.port": 5501
 }

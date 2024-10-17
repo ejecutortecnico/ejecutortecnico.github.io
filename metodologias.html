@@ -1,109 +1,84 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metodologías para Enseñar Programación en JavaScript</title>
-    <style>
-        /* Estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('imagenes/fondo.jpeg');
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-        }
-        h1, h2 {
-            color: #2c3e50;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        .container {
-            max-width: 800px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            border-radius: 8px;
-        }
-        .methodology {
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        button:hover {
-            background-color: #2980b9;
-        }
-    </style>
-</head>
-<body>
-    <h1>Metodologías para Enseñar Programación en JavaScript</h1>
-    
-    <div class="container">
-        <div class="methodology">
-            <h2>1. Aprendizaje Basado en Proyectos (PBL)</h2>
-            <p>Fomenta la creación de proyectos prácticos para que los estudiantes vean resultados inmediatos de su código. Esto motiva a los alumnos y les permite aplicar conceptos en contextos reales.</p>
-            <p><strong>Ejemplo:</strong> Crear una calculadora simple o un juego interactivo usando JavaScript.</p>
-        </div>
+<html>
+    <head> 
+        <title>Clase de repaso</title>
+        <link rel="stylesheet" href="stilo.css">
+    </head>
 
-        <div class="methodology">
-            <h2>2. Método de Instrucción Directa y Práctica Guiada</h2>
-            <p>Consiste en explicar los conceptos de JavaScript con ejemplos claros, seguido de ejercicios guiados para afianzar el conocimiento.</p>
-            <p><strong>Ejemplo:</strong> Introducir el concepto de funciones y luego realizar ejercicios prácticos.</p>
+   
+    <body class="cuerpo">
+        <div class="contendorg">
+            <p class="caja">a</p>
+            <p class="caja">b</p>
+            <p class="caja">c</p>
+            <p class="caja">d</p>
+            <p class="caja">e</p>
         </div>
+        <a href="https://spinthewheel.io/es">hola</a> 
+        <img src="imagen1.png"  height="200px" width="400px">
+        <section>
+          <u>hols</u><h1> basado en proyectos</h1> 
+          <br><br>
+          <p>  Descripción: Los estudiantes trabajan en proyectos prácticos desde el principio. Esto les permite aplicar los conceptos teóricos mientras desarrollan un producto tangible, como una página web, una aplicación móvil o un videojuego.
+               Ventajas: Desarrolla habilidades de resolución de problemas y pensamiento crítico, fomenta la creatividad y ofrece un aprendizaje más contextual.
+               Ideal para: Estudiantes que aprenden haciendo y aquellos interesados en aplicaciones prácticas inmediatas de la programación.
+          </p>
+        </section>
+  
+<h2>
+2. Aprendizaje dirigido por el instructor
+</h2>
+    <p> El instructor lidera el proceso de aprendizaje, proporcionando explicaciones detalladas de los conceptos y mostrando cómo resolver problemas específicos. Los estudiantes siguen ejemplos paso a paso.
+    Ventajas: Buena para introducir conceptos complejos de manera estructurada. Los estudiantes obtienen una base sólida antes de intentar proyectos más grandes por su cuenta.
+    Ideal para: Principiantes absolutos o estudiantes que prefieren una guía clara y directa.</p>
+<button> clik </button>
+3. Aprendizaje colaborativo o en pares
 
-        <div class="methodology">
-            <h2>3. Descomposición de Problemas (Problem Decomposition)</h2>
-            <p>Enseña a descomponer problemas complejos en componentes más pequeños, facilitando la resolución y estructuración del pensamiento lógico.</p>
-            <p><strong>Ejemplo:</strong> Al crear una aplicación de tareas, dividir el proyecto en funciones como "añadir tarea" y "eliminar tarea".</p>
-        </div>
+    Descripción: Los estudiantes trabajan en equipos o en pares para resolver problemas de programación. Este enfoque fomenta la colaboración y la discusión sobre los desafíos de la programación.
+    Ventajas: Ayuda a los estudiantes a compartir conocimientos, obtener diferentes perspectivas y desarrollar habilidades de trabajo en equipo.
+    Ideal para: Estudiantes que disfrutan de la interacción social o aquellos que aprenden mejor explicando conceptos a otros.
 
-        <div class="methodology">
-            <h2>4. Pair Programming (Programación en Parejas)</h2>
-            <p>Un alumno escribe el código mientras el otro revisa y da sugerencias, promoviendo el aprendizaje colaborativo.</p>
-            <p><strong>Ejemplo:</strong> Un estudiante se encarga de la validación de datos en un formulario mientras el otro se enfoca en el diseño.</p>
-        </div>
+4. Enseñanza basada en problemas (Problem-based Learning, PBL)
 
-        <div class="methodology">
-            <h2>5. Gamificación</h2>
-            <p>Incorpora elementos de juego en el aprendizaje, motivando a los estudiantes y comprometiéndolos más con la programación.</p>
-            <p><strong>Ejemplo:</strong> Crear un sistema de puntos y logros por cada tema o concepto completado en JavaScript.</p>
-        </div>
+    Descripción: Los estudiantes enfrentan problemas complejos y abiertos que deben resolver utilizando la programación. La teoría se introduce conforme se necesitan herramientas para resolver el problema.
+    Ventajas: Fomenta el pensamiento crítico, la creatividad y la aplicación directa de habilidades de programación en situaciones del mundo real.
+    Ideal para: Estudiantes avanzados o aquellos que prefieren un enfoque autodirigido.
 
-        <div class="methodology">
-            <h2>6. Clase Invertida (Flipped Classroom)</h2>
-            <p>El material teórico se estudia en casa y las clases se usan para resolver problemas y dudas.</p>
-            <p><strong>Ejemplo:</strong> Proveer un video explicativo sobre estructuras de control en JavaScript y en clase enfocarse en ejercicios prácticos.</p>
-        </div>
+5. Gamificación
 
-        <div class="methodology">
-            <h2>7. Uso de Entornos de Desarrollo en Línea</h2>
-            <p>Permiten a los estudiantes escribir y ejecutar JavaScript en tiempo real sin configurar un entorno local.</p>
-            <p><strong>Ejemplo:</strong> Experimentar con efectos interactivos en una página web.</p>
-        </div>
+    Descripción: Introducción de elementos de juego, como desafíos, recompensas, niveles y competencias, para motivar el aprendizaje de la programación.
+    Ventajas: Hace el aprendizaje más divertido y atractivo, y puede motivar a los estudiantes a seguir progresando.
+    Ideal para: Niños y adolescentes, o cualquier estudiante que responda bien a la competencia amistosa y los logros.
 
-        <div class="methodology">
-            <h2>8. Código Abierto y Revisión de Código (Code Review)</h2>
-            <p>Los estudiantes comparten y revisan el código en grupo, aprendiendo mejores prácticas y cómo escribir código limpio.</p>
-            <p><strong>Ejemplo:</strong> Organizar sesiones donde los estudiantes revisen el código de otros en pequeños grupos.</p>
-        </div>
+6. Metodología del aprendizaje invertido (Flipped Classroom)
 
-        <div class="methodology">
-            <h2>9. Competencias de Coding (Coding Challenges)</h2>
-            <p>Ejercicios cortos de lógica y algoritmos que fortalecen habilidades de programación y pensamiento crítico.</p>
-            <p><strong>Ejemplo:</strong> Resolver problemas cortos en plataformas como LeetCode o HackerRank.</p>
-        </div>
-    </div>
+    Descripción: Los estudiantes aprenden los conceptos teóricos en casa a través de videos o lecturas, y luego utilizan el tiempo en clase para resolver ejercicios prácticos y participar en actividades colaborativas.
+    Ventajas: Permite más tiempo para la práctica y la resolución de problemas durante la clase, mientras que los estudiantes aprenden la teoría a su propio ritmo.
+    Ideal para: Estudiantes autodirigidos que prefieren aprender a su propio ritmo y utilizar el tiempo en clase para resolver problemas.
 
-    <button onclick="alert('¡Buena suerte enseñando JavaScript!')">Finalizar Presentación</button>
+7. Método de enseñanza de "code along"
+
+    Descripción: El instructor escribe el código en vivo frente a los estudiantes, quienes siguen el proceso escribiendo el mismo código en sus computadoras. Se explica cada paso a medida que se va programando.
+    Ventajas: Permite a los estudiantes aprender observando y practicando al mismo tiempo, lo que refuerza la comprensión del código y la sintaxis.
+    Ideal para: Principiantes que necesitan observar y seguir ejemplos claros para entender los conceptos.
+
+8. Aprendizaje adaptativo
+
+    Descripción: Utiliza plataformas tecnológicas que ajustan el contenido y el ritmo de aprendizaje según el progreso del estudiante. Los sistemas adaptativos analizan las respuestas del estudiante y ajustan los ejercicios y lecciones en consecuencia.
+    Ventajas: Ofrece una experiencia personalizada que se adapta al ritmo de cada estudiante, ayudando a llenar las brechas de conocimiento.
+    Ideal para: Estudiantes que aprenden a diferentes ritmos y requieren una enseñanza personalizada.
+
+9. Programación en pares (Pair Programming)
+
+    Descripción: Dos estudiantes trabajan juntos en un solo ordenador; uno escribe el código (el "conductor"), mientras que el otro revisa el código y sugiere mejoras (el "navegante"). Se alternan regularmente.
+    Ventajas: Refuerza el trabajo colaborativo, mejora la calidad del código y fomenta el intercambio de ideas y conocimientos.
+    Ideal para: Estudiantes de nivel intermedio a avanzado que desean mejorar sus habilidades de colaboración y comunicación.
+
+10. Aprendizaje basado en retos (Challenge-based Learning)
+
+    Descripción: Los estudiantes reciben un desafío específico que deben resolver utilizando la programación. Pueden ser retos a nivel individual o en grupo.
+    Ventajas: Promueve la creatividad, la motivación intrínseca y la capacidad de resolver problemas de manera autónoma.
+    Ideal para: Estudiantes que disfrutan de retos y quieren experimentar el aprendizaje como un proceso de descubrimiento.
+
+    <script src="app.js"></script>
 </body>
-</html>
+    </html>

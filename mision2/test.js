@@ -1,7 +1,5 @@
-function saludar(){
-const miinput = document.getElementById("miinput")
-let nombre = miinput.value
-console.log("hola mundo" + nombre)
-}
-
-saludar()
+i = 0;
+do {
+console.log("Número: " + i);
+i++;
+} while (i < 5);

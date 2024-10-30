@@ -26,6 +26,7 @@ function juego(){
         inputs.setAttribute("id", "Div" + i);
         inputs.style.width = "10px";
         marcoJuego.appendChild(inputs);
+
     }
 }
 

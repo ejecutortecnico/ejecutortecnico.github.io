@@ -3,7 +3,6 @@ from flask import Flask, render_template
 # Crear la aplicación de Flask
 app = Flask(__name__)
 
-
 # Definir una ruta básica
 @app.route("/")
 def home():

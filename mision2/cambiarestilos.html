@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación del DOM: Cambiar Clases y Estilos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(images/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Manipulación del DOM: Cambiar Clases y Estilos</h1>
+            <p>El DOM permite modificar el contenido, las clases y los estilos de los elementos HTML de manera dinámica. A continuación, veremos cómo realizar estas modificaciones con JavaScript.</p>
+        </div>
+        
+        <div id="slide2" class="slide">
+            <h2>Seleccionar Elementos del DOM</h2>
+            <p>Primero, necesitamos seleccionar los elementos del DOM para poder modificarlos. Esto se puede hacer con métodos como <code>getElementById</code>, <code>querySelector</code> o <code>getElementsByClassName</code>.</p>
+            <pre>
+let elemento = document.getElementById("miElemento");  // Selecciona por ID
+let parrafo = document.querySelector("p");  // Selecciona el primer &lt;p&gt;
+let elementos = document.getElementsByClassName("clase");  // Selecciona todos los elementos con la clase
+            </pre>
+        </div>
+        
+        <div id="slide3" class="slide">
+            <h2>Cambiar Clases con <code>classList</code></h2>
+            <p>Podemos utilizar <code>classList</code> para agregar, eliminar o alternar clases en un elemento. Esto nos permite cambiar dinámicamente la apariencia de un elemento.</p>
+            <pre>
+// Seleccionar el elemento
+let caja = document.getElementById("miCaja");
+
+// Agregar una clase
+caja.classList.add("highlight");
+
+// Eliminar una clase
+caja.classList.remove("highlight");
+
+// Alternar una clase (si está, la quita; si no está, la añade)
+caja.classList.toggle("highlight");
+            </pre>
+        </div>
+        
+        <div id="slide4" class="slide">
+            <h2>Cambiar Estilos con <code>style</code></h2>
+            <p>Podemos cambiar los estilos CSS de un elemento utilizando la propiedad <code>style</code>. Esta propiedad nos permite modificar cualquier estilo en línea del elemento.</p>
+            <pre>
+// Cambiar el color de fondo
+caja.style.backgroundColor = "lightblue";
+
+// Cambiar el tamaño de la fuente
+caja.style.fontSize = "20px";
+
+// Ocultar el elemento
+caja.style.display = "none";
+
+// Mostrar el elemento
+caja.style.display = "block";
+            </pre>
+        </div>
+        
+        <div id="slide5" class="slide">
+            <h2>Ejemplo Práctico</h2>
+            <p>Aquí tienes un ejemplo completo donde se manipulan clases y estilos mediante un botón que cambia los estilos de una caja cuando se hace clic.</p>
+            <pre>
+// Selecciona la caja y el botón
+let caja = document.getElementById("miCaja");
+let boton = document.getElementById("miBoton");
+
+// Agregar evento para cambiar estilos al hacer clic
+boton.addEventListener("click", function() {
+    caja.classList.toggle("highlight");  // Alterna la clase 'highlight'
+    caja.style.backgroundColor = "lightgreen";  // Cambia el color de fondo
+});
+            </pre>
+        </div>
+        
+        <div id="slide6" class="slide">
+            <h2>Conclusión</h2>
+            <p>Modificar clases y estilos en el DOM con JavaScript permite crear páginas web más interactivas y dinámicas. Utilizando <code>classList</code> y <code>style</code>, puedes controlar cómo se muestran y comportan los elementos en tu página.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="tabla1"></table>
+
+    <script>
+        const table = document.getElementById("tabla1")
+        
+        for(let j=0 ; j<10;j++){
+            const tr = document.createElement("tr")
+            for(let i =0; i< 5; i++){
+            const td = document.createElement("td")
+            td.innerHTML = "contenido" + i
+            tr.appendChild(td)
+        }
+        }
+       
+        table.appendChild(tr)
+    </script>
+</body>
+</html>

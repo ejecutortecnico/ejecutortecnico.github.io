@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="asistencias">Asistencias</label>
+    <input id="asistencias" type="text">
+    <label for="trabajos">Trabajos</label>
+    <input id="trabajos" type="text">
+    <button id="boton">Calcular</button>
+
+    <script>
+        const asistencias = document.getElementById("asistencias")
+        const trabajos = document.getElementById("trabajos")
+        const boton = document.getElementById("boton")
+        boton.addEventListener("click", calcular)
+        function calcular(){
+            if(asistencias.value == 40 && trabajos.value == 3){
+                alert("recibe beneficio")
+            }else{
+                alert("no recibe beneficio")
+            }
+        }
+    </script>
+</body>
+</html>

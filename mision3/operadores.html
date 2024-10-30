@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores en Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(imagenes/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Operadores en Python</h1>
+            <p>En Python, los operadores se utilizan para realizar operaciones con variables y valores. A continuación, aprenderás sobre los operadores más comunes.</p>
+        </div>
+        
+        <div id="slide2" class="slide">
+            <h2>Operadores Aritméticos</h2>
+            <p>Se usan para realizar operaciones matemáticas básicas.</p>
+            <ul>
+                <li><code>+</code>: Suma</li>
+                <li><code>-</code>: Resta</li>
+                <li><code>*</code>: Multiplicación</li>
+                <li><code>/</code>: División</li>
+                <li><code>%</code>: Módulo (resto)</li>
+                <li><code>**</code>: Potencia</li>
+                <li><code>//</code>: División entera</li>
+            </ul>
+            <pre>
+# Ejemplos de operadores aritméticos
+x = 10
+y = 3
+print(x + y)   # 13
+print(x - y)   # 7
+print(x * y)   # 30
+print(x / y)   # 3.333...
+print(x % y)   # 1
+print(x ** y)  # 1000
+print(x // y)  # 3
+            </pre>
+        </div>
+        
+        <div id="slide3" class="slide">
+            <h2>Operadores de Comparación</h2>
+            <p>Comparan dos valores y devuelven <code>True</code> o <code>False</code>.</p>
+            <ul>
+                <li><code>==</code>: Igual a</li>
+                <li><code>!=</code>: Diferente de</li>
+                <li><code>></code>: Mayor que</li>
+                <li><code><</code>: Menor que</li>
+                <li><code>>=</code>: Mayor o igual a</li>
+                <li><code><=</code>: Menor o igual a</li>
+            </ul>
+            <pre>
+# Ejemplos de operadores de comparación
+a = 5
+b = 10
+print(a == b)   # False
+print(a != b)   # True
+print(a > b)    # False
+print(a < b)    # True
+print(a >= b)   # False
+print(a <= b)   # True
+            </pre>
+        </div>
+        
+        <div id="slide4" class="slide">
+            <h2>Operadores Lógicos</h2>
+            <p>Se utilizan para combinar condiciones.</p>
+            <ul>
+                <li><code>and</code>: Devuelve <code>True</code> si ambas condiciones son verdaderas.</li>
+                <li><code>or</code>: Devuelve <code>True</code> si al menos una condición es verdadera.</li>
+                <li><code>not</code>: Devuelve el valor opuesto de la condición.</li>
+            </ul>
+            <pre>
+# Ejemplos de operadores lógicos
+a = True
+b = False
+print(a and b)  # False
+print(a or b)   # True
+print(not a)    # False
+            </pre>
+        </div>
+        
+        <div id="slide5" class="slide">
+            <h2>Operadores de Asignación</h2>
+            <p>Se utilizan para asignar valores a las variables.</p>
+            <ul>
+                <li><code>=</code>: Asignación simple</li>
+                <li><code>+=</code>: Suma y asigna</li>
+                <li><code>-=</code>: Resta y asigna</li>
+                <li><code>*=</code>: Multiplica y asigna</li>
+                <li><code>/=</code>: Divide y asigna</li>
+                <li><code>%=</code>: Módulo y asigna</li>
+            </ul>
+            <pre>
+# Ejemplos de operadores de asignación
+x = 5
+x += 3   # x = x + 3 -> x es ahora 8
+x -= 2   # x = x - 2 -> x es ahora 6
+x *= 4   # x = x * 4 -> x es ahora 24
+x /= 6   # x = x / 6 -> x es ahora 4.0
+            </pre>
+        </div>
+        
+        <div id="slide6" class="slide">
+            <h2>Conclusión</h2>
+            <p>Los operadores en Python son esenciales para realizar cálculos, comparar valores y manejar la lógica del programa. Practicar estos operadores te ayudará a escribir código más eficiente y funcional.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

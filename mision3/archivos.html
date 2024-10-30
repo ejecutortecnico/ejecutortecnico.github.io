@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leer Archivos CSV en Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(imagenes/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Leer Archivos CSV en Python</h1>
+            <p>Los archivos CSV (valores separados por comas) son una forma común de almacenar datos tabulares. Python ofrece varias formas de abrir y leer estos archivos.</p>
+        </div>
+        
+        <div id="slide2" class="slide">
+            <h2>¿Qué es un Archivo CSV?</h2>
+            <p>Un archivo CSV almacena datos en un formato de texto simple, donde cada línea representa una fila y las columnas están separadas por comas.</p>
+            <ul>
+                <li>Formato ligero y fácil de leer.</li>
+                <li>Utilizado para exportar e importar datos.</li>
+            </ul>
+        </div>
+        
+        <div id="slide3" class="slide">
+            <h2>Abrir y Leer un Archivo CSV</h2>
+            <p>Python proporciona el módulo <code>csv</code> para trabajar con archivos CSV. Para abrir y leer el archivo, usamos <code>open()</code> y <code>csv.reader</code>.</p>
+            <pre>
+import csv
+
+# Abrir el archivo CSV
+with open("datos.csv", "r") as archivo:
+    lector = csv.reader(archivo)
+    for fila in lector:
+        print(fila)  # Imprime cada fila como una lista
+            </pre>
+        </div>
+        
+        <div id="slide4" class="slide">
+            <h2>Leer un CSV con Encabezados</h2>
+            <p>Si el archivo CSV tiene encabezados, podemos usar <code>csv.DictReader</code> para leer cada fila como un diccionario, donde las claves son los encabezados.</p>
+            <pre>
+import csv
+
+# Leer un CSV con encabezados
+with open("datos.csv", "r") as archivo:
+    lector = csv.DictReader(archivo)
+    for fila in lector:
+        print(fila)  # Imprime cada fila como un diccionario
+            </pre>
+        </div>
+        
+        <div id="slide5" class="slide">
+            <h2>Acceder a Datos Específicos</h2>
+            <p>Al leer un CSV con <code>csv.DictReader</code>, podemos acceder a valores específicos utilizando las claves del diccionario.</p>
+            <pre>
+with open("datos.csv", "r") as archivo:
+    lector = csv.DictReader(archivo)
+    for fila in lector:
+        print(fila["Nombre"], fila["Edad"])  # Accede a columnas específicas
+            </pre>
+        </div>
+        
+        <div id="slide6" class="slide">
+            <h2>Escribir en un Archivo CSV</h2>
+            <p>Para escribir datos en un archivo CSV, podemos usar <code>csv.writer</code> y el método <code>writerow()</code> para escribir filas.</p>
+            <pre>
+import csv
+
+# Crear un archivo CSV y escribir en él
+with open("salida.csv", "w", newline="") as archivo:
+    escritor = csv.writer(archivo)
+    escritor.writerow(["Nombre", "Edad"])  # Escribir encabezados
+    escritor.writerow(["Ana", 28])         # Escribir datos
+    escritor.writerow(["Luis", 35])
+            </pre>
+        </div>
+        
+        <div id="slide7" class="slide">
+            <h2>Conclusión</h2>
+            <p>Los archivos CSV son una forma práctica de manejar datos tabulares en Python. Con el módulo <code>csv</code>, puedes leer y escribir archivos de manera fácil y eficiente.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

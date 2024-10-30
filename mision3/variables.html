@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables en Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(imagenes/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Variables en Python</h1>
+            <p>Las variables son contenedores para almacenar datos. En Python, no es necesario declarar el tipo de dato, ya que es de tipado dinámico.</p>
+        </div>
+        
+        <div id="slide2" class="slide">
+            <h2>Declaración de Variables</h2>
+            <p>En Python, asignar una variable es sencillo. Solo necesitas un nombre y el valor que deseas almacenar.</p>
+            <pre>
+# Declaración de variables
+nombre = "Ana"
+edad = 25
+altura = 1.75
+            </pre>
+        </div>
+        
+        <div id="slide3" class="slide">
+            <h2>Tipos de Datos Comunes</h2>
+            <p>Python soporta varios tipos de datos básicos:</p>
+            <ul>
+                <li><strong>str</strong>: Cadenas de texto.</li>
+                <li><strong>int</strong>: Números enteros.</li>
+                <li><strong>float</strong>: Números decimales.</li>
+                <li><strong>bool</strong>: Booleanos (True/False).</li>
+            </ul>
+            <pre>
+# Ejemplos de tipos de datos
+texto = "Hola"
+numero_entero = 10
+numero_decimal = 10.5
+es_mayor = True
+            </pre>
+        </div>
+        
+        <div id="slide4" class="slide">
+            <h2>Cambio de Valores</h2>
+            <p>Las variables en Python pueden cambiar de valor durante la ejecución del programa.</p>
+            <pre>
+# Asignar un nuevo valor a una variable
+edad = 30
+print(edad)  # Imprime: 30
+            </pre>
+        </div>
+        
+        <div id="slide5" class="slide">
+            <h2>Buenas Prácticas</h2>
+            <p>Para escribir código claro y fácil de entender, sigue estas buenas prácticas:</p>
+            <ul>
+                <li>Usa nombres descriptivos para tus variables.</li>
+                <li>Usa minúsculas y guiones bajos para separar palabras (<code>nombre_completo</code>).</li>
+                <li>Evita palabras reservadas como nombres de variables.</li>
+            </ul>
+            <pre>
+# Ejemplo de buena práctica
+nombre_completo = "Ana García"
+edad_usuario = 28
+            </pre>
+        </div>
+        
+        <div id="slide6" class="slide">
+            <h2>Conclusión</h2>
+            <p>Las variables son esenciales en cualquier lenguaje de programación. Python facilita su uso al no requerir declarar el tipo de dato explícitamente, lo que hace el código más simple y legible.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

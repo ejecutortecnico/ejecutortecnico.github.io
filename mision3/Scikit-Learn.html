@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización de Datos con Matplotlib</title>
+    <title>Introducción a Scikit-Learn en Python</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -74,132 +74,104 @@
 <body>
     <div class="container">
         <div id="slide1" class="slide active">
-            <h1>Visualización de Datos con Matplotlib en Python</h1>
-            <p>Matplotlib es una biblioteca de Python para la visualización de datos. Permite crear gráficos de todo tipo, desde gráficos de barras hasta mapas de calor.</p>
+            <h1>Introducción a Scikit-Learn (sklearn) en Python</h1>
+            <p>Scikit-Learn es una biblioteca de machine learning en Python que facilita la creación, entrenamiento y evaluación de modelos de aprendizaje automático.</p>
         </div>
         
         <div id="slide2" class="slide">
-            <h2>1. Importar Matplotlib</h2>
-            <p>Para empezar, necesitamos importar la biblioteca Matplotlib.</p>
+            <h2>1. Importación de Scikit-Learn</h2>
+            <p>Para comenzar, necesitas instalar e importar Scikit-Learn.</p>
             <pre>
-# Importar Matplotlib
-import matplotlib.pyplot as plt
+# Instalación de Scikit-Learn
+!pip install scikit-learn
+
+# Importar el módulo
+import sklearn
             </pre>
         </div>
 
         <div id="slide3" class="slide">
-            <h2>2. Gráfico de Barras</h2>
-            <p>Los gráficos de barras son útiles para comparar cantidades entre diferentes categorías.</p>
+            <h2>2. Preprocesamiento de Datos</h2>
+            <p>Scikit-Learn proporciona herramientas para el preprocesamiento de datos, como la normalización y el escalado.</p>
             <pre>
-import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
 
-# Datos de ejemplo
-categorias = ["A", "B", "C", "D"]
-valores = [10, 15, 7, 10]
-
-# Crear gráfico de barras
-plt.bar(categorias, valores, color="skyblue")
-plt.title("Gráfico de Barras")
-plt.xlabel("Categorías")
-plt.ylabel("Valores")
-plt.show()
+# Ejemplo de escalado
+scaler = StandardScaler()
+datos_escalados = scaler.fit_transform(datos)
             </pre>
         </div>
 
         <div id="slide4" class="slide">
-            <h2>3. Gráfico de Líneas</h2>
-            <p>Los gráficos de líneas son ideales para mostrar tendencias a lo largo del tiempo o una secuencia.</p>
+            <h2>3. Dividir Datos en Entrenamiento y Prueba</h2>
+            <p>Dividir los datos en conjuntos de entrenamiento y prueba es una práctica común para evaluar el rendimiento del modelo.</p>
             <pre>
-import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 
-# Datos de ejemplo
-x = [1, 2, 3, 4, 5]
-y = [2, 3, 5, 7, 11]
-
-# Crear gráfico de líneas
-plt.plot(x, y, marker="o", color="green", linestyle="--")
-plt.title("Gráfico de Líneas")
-plt.xlabel("Eje X")
-plt.ylabel("Eje Y")
-plt.show()
+X_entrenamiento, X_prueba, y_entrenamiento, y_prueba = train_test_split(X, y, test_size=0.2, random_state=42)
             </pre>
         </div>
 
         <div id="slide5" class="slide">
-            <h2>4. Gráfico de Dispersión (Scatter Plot)</h2>
-            <p>Los gráficos de dispersión muestran la relación entre dos variables.</p>
+            <h2>4. Modelos de Machine Learning</h2>
+            <p>Scikit-Learn incluye modelos populares, como Regresión Lineal, Bosques Aleatorios y Máquinas de Vectores de Soporte.</p>
             <pre>
-import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
-# Datos de ejemplo
-x = [5, 7, 8, 7, 2, 17, 2, 9]
-y = [99, 86, 87, 88, 100, 86, 103, 87]
+# Crear y entrenar el modelo
+modelo = LinearRegression()
+modelo.fit(X_entrenamiento, y_entrenamiento)
 
-# Crear gráfico de dispersión
-plt.scatter(x, y, color="purple")
-plt.title("Gráfico de Dispersión")
-plt.xlabel("Eje X")
-plt.ylabel("Eje Y")
-plt.show()
+# Realizar predicciones
+predicciones = modelo.predict(X_prueba)
             </pre>
         </div>
 
         <div id="slide6" class="slide">
-            <h2>5. Histograma</h2>
-            <p>Los histogramas muestran la distribución de un conjunto de datos dividiéndolo en intervalos.</p>
+            <h2>5. Evaluación del Modelo</h2>
+            <p>Scikit-Learn proporciona métricas para evaluar el rendimiento de los modelos, como el MSE para regresión y la precisión para clasificación.</p>
             <pre>
-import matplotlib.pyplot as plt
+from sklearn.metrics import mean_squared_error, accuracy_score
 
-# Datos de ejemplo
-datos = [1, 2, 2, 3, 4, 4, 4, 5, 5, 6, 7, 8, 8, 9]
+# Evaluación para regresión
+error = mean_squared_error(y_prueba, predicciones)
 
-# Crear histograma
-plt.hist(datos, bins=5, color="orange", edgecolor="black")
-plt.title("Histograma")
-plt.xlabel("Valores")
-plt.ylabel("Frecuencia")
-plt.show()
+# Para clasificación
+precision = accuracy_score(y_prueba, predicciones_clasificacion)
             </pre>
         </div>
 
         <div id="slide7" class="slide">
-            <h2>6. Mapas de Calor</h2>
-            <p>Los mapas de calor representan valores en una cuadrícula, y cada valor se muestra en un color específico.</p>
+            <h2>6. Selección de Modelos y Validación Cruzada</h2>
+            <p>La validación cruzada es una técnica para evaluar la estabilidad del modelo utilizando varias divisiones de los datos.</p>
             <pre>
-import matplotlib.pyplot as plt
-import numpy as np
+from sklearn.model_selection import cross_val_score
 
-# Datos de ejemplo
-datos = np.random.rand(10, 10)
-
-# Crear mapa de calor
-plt.imshow(datos, cmap="viridis", interpolation="nearest")
-plt.title("Mapa de Calor")
-plt.colorbar()
-plt.show()
+# Validación cruzada
+puntuaciones = cross_val_score(modelo, X, y, cv=5)
+media_puntuacion = puntuaciones.mean()
             </pre>
         </div>
 
         <div id="slide8" class="slide">
-            <h2>7. Gráfico Circular (Pie Chart)</h2>
-            <p>Los gráficos circulares muestran proporciones de un total, útiles para categorías.</p>
+            <h2>7. Pipelines en Scikit-Learn</h2>
+            <p>Los pipelines permiten encadenar múltiples pasos de procesamiento y modelado, simplificando el flujo de trabajo.</p>
             <pre>
-import matplotlib.pyplot as plt
+from sklearn.pipeline import Pipeline
 
-# Datos de ejemplo
-categorias = ["Categoría A", "Categoría B", "Categoría C"]
-tamaños = [40, 35, 25]
+# Crear pipeline con escalado y modelo
+pipeline = Pipeline([
+    ('scaler', StandardScaler()),
+    ('modelo', LinearRegression())
+])
 
-# Crear gráfico circular
-plt.pie(tamaños, labels=categorias, autopct="%1.1f%%", startangle=140)
-plt.title("Gráfico Circular")
-plt.show()
+pipeline.fit(X_entrenamiento, y_entrenamiento)
             </pre>
         </div>
 
         <div id="slide9" class="slide">
             <h2>Conclusión</h2>
-            <p>Matplotlib es una herramienta poderosa para la visualización de datos en Python. Practicar con diferentes tipos de gráficos ayuda a comunicar patrones e información de manera visual.</p>
+            <p>Scikit-Learn es una herramienta completa para el aprendizaje automático en Python, desde el preprocesamiento hasta la evaluación y optimización de modelos.</p>
         </div>
 
         <div class="nav">

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación de Datos con Pandas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(imagenes/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Manipulación de Datos con Pandas en Python</h1>
+            <p>Pandas es una biblioteca de Python para el análisis y manipulación de datos. Proporciona estructuras de datos eficientes y herramientas avanzadas para explorar, limpiar y transformar datos.</p>
+        </div>
+        
+        <div id="slide2" class="slide">
+            <h2>1. Importación de Pandas</h2>
+            <p>Para comenzar a usar Pandas, primero necesitamos importarlo.</p>
+            <pre>
+pip install pandas //instala pandas
+import pandas as pd  //importa pandas
+            </pre>
+        </div>
+
+        <div id="slide3" class="slide">
+            <h2>2. Creación de Estructuras de Datos</h2>
+            <p>Pandas tiene dos estructuras de datos principales: Series y DataFrames.</p>
+            <pre>
+# Crear una Serie
+serie = pd.Series([1, 2, 3, 4, 5])
+
+# Crear un DataFrame
+datos = {"Nombre": ["Ana", "Juan", "Pedro"], "Edad": [25, 30, 35]}
+df = pd.DataFrame(datos)
+            </pre>
+        </div>
+
+        <div id="slide4" class="slide">
+            <h2>3. Lectura y Escritura de Archivos</h2>
+            <p>Pandas permite leer y escribir datos en varios formatos, como CSV, Excel y SQL.</p>
+            <pre>
+# Leer un archivo CSV
+df = pd.read_csv("archivo.csv")
+
+# Escribir en un archivo CSV
+df.to_csv("salida.csv", index=False)
+            </pre>
+        </div>
+
+        <div id="slide5" class="slide">
+            <h2>4. Exploración de Datos</h2>
+            <p>Algunas funciones útiles para explorar y entender los datos en un DataFrame.</p>
+            <pre>
+df.head()       # Primeras 5 filas
+df.tail()       # Últimas 5 filas
+df.info()       # Información general
+df.describe()   # Estadísticas descriptivas
+            </pre>
+        </div>
+
+        <div id="slide6" class="slide">
+            <h2>5. Selección y Filtrado de Datos</h2>
+            <p>Podemos seleccionar y filtrar datos de un DataFrame utilizando etiquetas, índices o condiciones.</p>
+            <pre>
+# Selección de columna
+df["Nombre"]
+
+# Selección de varias columnas
+df[["Nombre", "Edad"]]
+
+# Filtrado de datos
+df[df["Edad"] > 30]
+            </pre>
+        </div>
+
+        <div id="slide7" class="slide">
+            <h2>6. Modificación de Datos</h2>
+            <p>Pandas permite modificar y actualizar datos en un DataFrame de varias formas.</p>
+            <pre>
+# Agregar una nueva columna
+df["Salario"] = [3000, 4000, 5000]
+
+# Modificar valores
+df["Edad"] = df["Edad"] + 1
+
+# Eliminar una columna
+df = df.drop("Salario", axis=1)
+            </pre>
+        </div>
+
+        <div id="slide8" class="slide">
+            <h2>7. Agrupación y Agregación de Datos</h2>
+            <p>La agrupación es útil para realizar análisis de datos basados en categorías.</p>
+            <pre>
+# Agrupar por una columna y calcular la media
+df.groupby("Edad").mean()
+
+# Agregar múltiples funciones
+df.groupby("Edad").agg(["mean", "sum", "count"])
+            </pre>
+        </div>
+
+        <div id="slide9" class="slide">
+            <h2>8. Manejo de Valores Nulos</h2>
+            <p>Pandas ofrece varias formas de gestionar valores nulos en los datos.</p>
+            <pre>
+# Identificar valores nulos
+df.isnull().sum()
+
+# Eliminar filas con valores nulos
+df = df.dropna()
+
+# Rellenar valores nulos
+df = df.fillna(0)
+            </pre>
+        </div>
+
+        <div id="slide10" class="slide">
+            <h2>9. Operaciones Avanzadas con Pandas</h2>
+            <p>Pandas ofrece funciones avanzadas como operaciones de fusión, combinación y ordenamiento de datos.</p>
+            <pre>
+# Combinar DataFrames
+df1 = pd.DataFrame({"A": [1, 2, 3]})
+df2 = pd.DataFrame({"A": [4, 5, 6]})
+df_concat = pd.concat([df1, df2])
+
+# Fusionar DataFrames
+df_merge = pd.merge(df1, df2, on="A", how="inner")
+
+# Ordenar datos
+df.sort_values(by="Edad", ascending=False)
+            </pre>
+        </div>
+
+        <div id="slide11" class="slide">
+            <h2>10. Visualización de Datos con Pandas</h2>
+            <p>Pandas permite visualizar datos rápidamente mediante gráficos integrados (requiere Matplotlib).</p>
+            <pre>
+import matplotlib.pyplot as plt
+
+# Gráfico de barras
+df["Edad"].plot(kind="bar")
+plt.show()
+
+# Histograma
+df["Edad"].plot(kind="hist")
+plt.show()
+            </pre>
+        </div>
+
+        <div id="slide12" class="slide">
+            <h2>Conclusión</h2>
+            <p>Pandas es una herramienta poderosa para manipular y analizar datos. Practicar sus funciones y métodos te permitirá realizar análisis de datos de manera más eficiente.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

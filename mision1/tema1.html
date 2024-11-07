@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Básico de HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(images/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Curso Básico de HTML</h1>
+            <p>Este curso de HTML está diseñado para principiantes y cubre los fundamentos de HTML en cuatro clases.</p>
+        </div>
+        
+        <!-- Clase 1 -->
+        <div id="slide2" class="slide">
+            <h2>Clase 1: Introducción a HTML y Estructura Básica</h2>
+            <p>HTML es el lenguaje de marcado para estructurar páginas web.</p>
+            <ul>
+                <li>¿Qué es HTML?</li>
+                <li>Elementos y etiquetas</li>
+                <li>La estructura básica de una página HTML</li>
+            </ul>
+            <pre>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Página Web</title>
+</head>
+<body>
+    <h1>¡Bienvenidos a HTML!</h1>
+    <p>Este es un párrafo básico en HTML.</p>
+</body>
+</html>
+            </pre>
+        </div>
+
+        <div id="slide3" class="slide">
+            <h2>Clase 1: Elementos de Texto</h2>
+            <p>Los elementos de texto en HTML incluyen títulos, párrafos y listas.</p>
+            <ul>
+                <li>Títulos (<code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>)</li>
+                <li>Párrafos (<code>&lt;p&gt;</code>)</li>
+                <li>Listas (<code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code>)</li>
+            </ul>
+            <pre>
+<h1>Título 1</h1>
+<p>Este es un párrafo.</p>
+<ul>
+    <li>Elemento de lista</li>
+    <li>Otro elemento de lista</li>
+</ul>
+            </pre>
+        </div>
+
+        <!-- Clase 2 -->
+        <div id="slide4" class="slide">
+            <h2>Clase 2: Imágenes y Enlaces</h2>
+            <p>Aprende a añadir imágenes y enlaces a una página HTML.</p>
+            <ul>
+                <li>Etiquetas <code>&lt;img&gt;</code> y <code>&lt;a&gt;</code></li>
+                <li>Atributos importantes como <code>src</code>, <code>alt</code> y <code>href</code></li>
+            </ul>
+            <pre>
+<!-- Imagen -->
+<img src="imagenes/logo.png" alt="Descripción de la imagen">
+
+<!-- Enlace -->
+<a href="https://www.ejemplo.com">Visita nuestro sitio</a>
+            </pre>
+        </div>
+
+        <div id="slide5" class="slide">
+            <h2>Clase 2: Tablas en HTML</h2>
+            <p>Las tablas son útiles para mostrar datos estructurados.</p>
+            <ul>
+                <li>Elementos <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code> y <code>&lt;td&gt;</code></li>
+            </ul>
+            <pre>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Edad</th>
+    </tr>
+    <tr>
+        <td>Ana</td>
+        <td>25</td>
+    </tr>
+</table>
+            </pre>
+        </div>
+
+        <!-- Clase 3 -->
+        <div id="slide6" class="slide">
+            <h2>Clase 3: Formularios</h2>
+            <p>Los formularios permiten a los usuarios enviar información.</p>
+            <ul>
+                <li>Elementos <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;label&gt;</code> y <code>&lt;button&gt;</code></li>
+                <li>Atributos como <code>type</code>, <code>name</code>, y <code>placeholder</code></li>
+            </ul>
+            <pre>
+<form action="/submit" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+    <button type="submit">Enviar</button>
+</form>
+            </pre>
+        </div>
+
+        <div id="slide7" class="slide">
+            <h2>Clase 3: Atributos y Estilos en HTML</h2>
+            <p>Los atributos y estilos mejoran la apariencia y funcionalidad de los elementos HTML.</p>
+            <ul>
+                <li>Uso de <code>style</code> para estilos en línea</li>
+                <li>Atributos <code>id</code> y <code>class</code> para identificar elementos</li>
+            </ul>
+            <pre>
+<p id="intro" style="color: blue; font-weight: bold;">
+    Este párrafo es azul y negrita.
+</p>
+            </pre>
+        </div>
+
+        <!-- Clase 4 -->
+        <div id="slide8" class="slide">
+            <h2>Clase 4: Introducción al CSS</h2>
+            <p>CSS se usa para estilizar elementos HTML. Aquí aprenderás conceptos básicos.</p>
+            <ul>
+                <li>Tipos de selectores: <code>elemento</code>, <code>#id</code>, <code>.clase</code></li>
+                <li>Propiedades básicas de CSS (colores, márgenes, alineación)</li>
+            </ul>
+            <pre>
+<style>
+    h1 {
+        color: #ff00c3;
+        text-align: center;
+    }
+    .destacado {
+        font-size: 1.5em;
+        color: red;
+    }
+</style>
+            </pre>
+        </div>
+
+        <div id="slide9" class="slide">
+            <h2>Clase 4: Estructura Avanzada de Página</h2>
+            <p>Organización de la página con secciones y contenedores.</p>
+            <ul>
+                <li>Elementos <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code></li>
+                <li>Uso de contenedores <code>&lt;div&gt;</code></li>
+            </ul>
+            <pre>
+<header>
+    <h1>Mi Sitio Web</h1>
+</header>
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+<section>
+    <h2>Bienvenidos</h2>
+    <p>Este es el contenido principal.</p>
+</section>
+<footer>
+    <p>&copy; 2023 Mi Sitio Web</p>
+</footer>
+            </pre>
+        </div>
+
+        <div id="slide10" class="slide">
+            <h2>Conclusión del Curso de HTML Básico</h2>
+            <p>Has aprendido los fundamentos de HTML para crear páginas web. Practica estos conceptos para mejorar tus habilidades.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

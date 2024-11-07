@@ -5,10 +5,9 @@ tecnologias usadas
 que aprendieron
 que desafios encontraron
 recomendaciones
-WireFrame, o bosquejo de la pagina
 Conclusiones
 Anexos:
-DOCUMENTACION DE LA PAGINA, (MANUAL DE USUARIO)
+DOCUMENTACION DE EL APLICATIVO, (MANUAL DE USUARIO)
 Pantallazos de la pagina
 CODIGO IMPRESO EN PDF o adjunto en zip optimizado para pocos mb 
 ORDENADO Y LEGIBLE

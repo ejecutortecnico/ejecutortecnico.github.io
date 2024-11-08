@@ -16,7 +16,8 @@ for fila in cursor1:
     nombre= fila[1]
     apellido = fila[2]
 conexion1.close()
-
+print(nombre)
+print(apellido)
 
 # Crear la aplicación de Flask
 app = Flask(__name__)

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas en HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(images/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Tablas en HTML</h1>
+            <p>Las tablas en HTML permiten organizar y presentar datos de manera estructurada.</p>
+        </div>
+
+        <div id="slide2" class="slide">
+            <h2>1. Estructura Básica de una Tabla</h2>
+            <p>Una tabla básica se define usando la etiqueta <code>&lt;table&gt;</code>. Dentro de la tabla, se organizan filas y celdas.</p>
+            <pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Celda 1&lt;/td&gt;
+        &lt;td&gt;Celda 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Celda 3&lt;/td&gt;
+        &lt;td&gt;Celda 4&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+            </pre>
+        </div>
+
+        <div id="slide3" class="slide">
+            <h2>2. Encabezados de Tabla</h2>
+            <p>Para definir los encabezados, usa la etiqueta <code>&lt;th&gt;</code> en lugar de <code>&lt;td&gt;</code>. Los encabezados suelen aparecer en la primera fila.</p>
+            <pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Nombre&lt;/th&gt;
+        &lt;th&gt;Edad&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Ana&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+            </pre>
+        </div>
+
+        <div id="slide4" class="slide">
+            <h2>3. Agrupación de Celdas</h2>
+            <p>HTML permite combinar celdas en una tabla usando los atributos <code>colspan</code> y <code>rowspan</code> para extender columnas o filas.</p>
+            <pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th colspan="2"&gt;Encabezado Extendido&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Celda 1&lt;/td&gt;
+        &lt;td&gt;Celda 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td rowspan="2"&gt;Celda Extendida&lt;/td&gt;
+        &lt;td&gt;Celda 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Celda 4&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+            </pre>
+        </div>
+
+        <div id="slide5" class="slide">
+            <h2>4. Estilos en Tablas</h2>
+            <p>Las tablas pueden estilizarse usando CSS para mejorar su apariencia.</p>
+            <pre>
+&lt;style&gt;
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    th {
+        background-color: #f4f4f4;
+    }
+&lt;/style&gt;
+            </pre>
+        </div>
+
+        <div id="slide6" class="slide">
+            <h2>5. Ejemplo Completo de Tabla</h2>
+            <p>Ejemplo de una tabla completa con encabezados y estilos aplicados.</p>
+            <pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Nombre&lt;/th&gt;
+        &lt;th&gt;Edad&lt;/th&gt;
+        &lt;th&gt;Ciudad&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Ana&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+        &lt;td&gt;Madrid&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Juan&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+        &lt;td&gt;Barcelona&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+            </pre>
+        </div>
+
+        <div id="slide7" class="slide">
+            <h2>Conclusión</h2>
+            <p>Las tablas en HTML son una herramienta útil para organizar y mostrar datos. Practica con los diferentes atributos y estilos para mejorar su presentación.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

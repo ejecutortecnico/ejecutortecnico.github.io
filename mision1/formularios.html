@@ -1,19 +1,208 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<title>formularios html</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios en HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(images/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Formularios en HTML</h1>
+            <p>Los formularios en HTML permiten a los usuarios enviar datos a un servidor o interactuar con la página web.</p>
+        </div>
 
-<form action="http://35.193.82.16/submit.php" method="post" >
-  <label for="nombre">Nombre:</label>
-  <input type="text" id="nombre" name="nombre"><br><br>  
-  <label for="clave">clave:</label>
-  <input type="text" id="clave" name="clave"><br><br>
-  <input type="submit" value="Enviar">
-</form>
+        <div id="slide2" class="slide">
+            <h2>1. Estructura Básica de un Formulario</h2>
+            <p>Los formularios están definidos por la etiqueta <code>&lt;form&gt;</code> y pueden contener varios elementos de entrada.</p>
+            <pre>
+&lt;form action="/enviar_datos" method="post"&gt;
+    &lt;!-- Contenido del formulario --&gt;
+&lt;/form&gt;
+            </pre>
+        </div>
 
+        <div id="slide3" class="slide">
+            <h2>2. Elementos de Entrada</h2>
+            <p>Los formularios pueden incluir diferentes tipos de entradas como texto, correo y contraseñas.</p>
+            <pre>
+&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+&lt;input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre"&gt;
 
+&lt;label for="email"&gt;Correo:&lt;/label&gt;
+&lt;input type="email" id="email" name="email" placeholder="correo@ejemplo.com"&gt;
 
+&lt;label for="password"&gt;Contraseña:&lt;/label&gt;
+&lt;input type="password" id="password" name="password"&gt;
+            </pre>
+        </div>
+
+        <div id="slide4" class="slide">
+            <h2>3. Botones de Envío y Restablecimiento</h2>
+            <p>Los botones permiten enviar el formulario o restablecer sus campos.</p>
+            <pre>
+&lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;button type="reset"&gt;Restablecer&lt;/button&gt;
+            </pre>
+        </div>
+
+        <div id="slide5" class="slide">
+            <h2>4. Selectores de Opciones</h2>
+            <p>HTML permite crear opciones seleccionables como botones de radio, casillas de verificación y menús desplegables.</p>
+            <pre>
+&lt;label&gt;Género:&lt;/label&gt;
+&lt;input type="radio" name="genero" value="masculino"&gt; Masculino
+&lt;input type="radio" name="genero" value="femenino"&gt; Femenino
+
+&lt;label&gt;Aficiones:&lt;/label&gt;
+&lt;input type="checkbox" name="aficion" value="deporte"&gt; Deporte
+&lt;input type="checkbox" name="aficion" value="música"&gt; Música
+
+&lt;label for="pais"&gt;País:&lt;/label&gt;
+&lt;select id="pais" name="pais"&gt;
+    &lt;option value="mexico"&gt;México&lt;/option&gt;
+    &lt;option value="españa"&gt;España&lt;/option&gt;
+&lt;/select&gt;
+            </pre>
+        </div>
+
+        <div id="slide6" class="slide">
+            <h2>5. Ejemplo Completo de Formulario</h2>
+            <p>Este es un ejemplo de formulario que incluye varios tipos de entradas para datos personales.</p>
+            <pre>
+&lt;form action="/enviar_datos" method="post"&gt;
+    &lt;label for="nombre"&gt;Nombre Completo:&lt;/label&gt;
+    &lt;input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre completo"&gt;
+
+    &lt;label for="email"&gt;Correo Electrónico:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required placeholder="correo@ejemplo.com"&gt;
+
+    &lt;label for="password"&gt;Contraseña:&lt;/label&gt;
+    &lt;input type="password" id="password" name="password" required&gt;
+
+    &lt;label&gt;Género:&lt;/label&gt;
+    &lt;input type="radio" name="genero" value="masculino"&gt; Masculino
+    &lt;input type="radio" name="genero" value="femenino"&gt; Femenino
+
+    &lt;label&gt;Intereses:&lt;/label&gt;
+    &lt;input type="checkbox" name="interes" value="deportes"&gt; Deportes
+    &lt;input type="checkbox" name="interes" value="musica"&gt; Música
+    &lt;input type="checkbox" name="interes" value="lectura"&gt; Lectura
+
+    &lt;label for="pais"&gt;País:&lt;/label&gt;
+    &lt;select id="pais" name="pais"&gt;
+        &lt;option value="mexico"&gt;México&lt;/option&gt;
+        &lt;option value="españa"&gt;España&lt;/option&gt;
+        &lt;option value="argentina"&gt;Argentina&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;label for="mensaje"&gt;Mensaje:&lt;/label&gt;
+    &lt;textarea id="mensaje" name="mensaje" rows="4" cols="50" placeholder="Escribe tu mensaje aquí..."&gt;&lt;/textarea&gt;
+
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+    &lt;button type="reset"&gt;Restablecer&lt;/button&gt;
+&lt;/form&gt;
+            </pre>
+        </div>
+
+        <div id="slide7" class="slide">
+            <h2>Conclusión</h2>
+            <p>Los formularios en HTML son esenciales para recoger y enviar datos del usuario. Practica con diferentes tipos de entrada para dominar este tema.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
 </body>
 </html>

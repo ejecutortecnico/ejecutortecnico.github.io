@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings en JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(images/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        .example-box {
+            margin-top: 10px;
+            padding: 15px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .btn-example {
+            background-color: #ff00c3;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .btn-example:hover {
+            background-color: #c700a1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Strings en JavaScript</h1>
+            <p>Aprende cómo trabajar con cadenas de texto en JavaScript.</p>
+        </div>
+
+        <div id="slide2" class="slide">
+            <h2>1. Creación de Strings</h2>
+            <p>Existen diferentes maneras de crear cadenas:</p>
+            <pre>
+// Usando comillas simples
+let saludo = 'Hola, mundo';
+
+// Usando comillas dobles
+let frase = "JavaScript es genial";
+
+// Usando plantillas literales (template literals)
+let nombre = 'Ana';
+let mensaje = `Hola, ${nombre}`;
+            </pre>
+        </div>
+
+        <div id="slide3" class="slide">
+            <h2>2. Propiedades de los Strings</h2>
+            <p>Los strings tienen propiedades útiles, como <code>length</code>:</p>
+            <pre>
+let texto = "JavaScript";
+console.log(texto.length); // 10
+            </pre>
+            <div class="example-box">
+                <button class="btn-example" onclick="mostrarLength()">Ver longitud</button>
+                <p id="output1"></p>
+            </div>
+        </div>
+
+        <div id="slide4" class="slide">
+            <h2>3. Métodos Comunes de Strings</h2>
+            <p>Algunos métodos útiles para trabajar con strings:</p>
+            <pre>
+// Convertir a mayúsculas
+let texto = "javascript";
+console.log(texto.toUpperCase()); // "JAVASCRIPT"
+
+// Reemplazar parte de un string
+let saludo = "Hola, mundo";
+let nuevoSaludo = saludo.replace("mundo", "amigo");
+console.log(nuevoSaludo); // "Hola, amigo"
+            </pre>
+            <div class="example-box">
+                <button class="btn-example" onclick="usarMetodos()">Aplicar Métodos</button>
+                <p id="output2"></p>
+            </div>
+        </div>
+
+        <div id="slide5" class="slide">
+            <h2>4. Plantillas Literales</h2>
+            <p>Las plantillas literales permiten incluir variables de manera sencilla:</p>
+            <pre>
+let producto = 'Laptop';
+let precio = 1500;
+let mensaje = `El precio de la ${producto} es $${precio}`;
+console.log(mensaje);
+            </pre>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function mostrarLength() {
+            let texto = "JavaScript";
+            document.getElementById('output1').textContent = 'Longitud del texto: ' + texto.length;
+        }
+
+        function usarMetodos() {
+            let texto = "javascript";
+            let textoMayus = texto.toUpperCase();
+            let saludo = "Hola, mundo";
+            let nuevoSaludo = saludo.replace("mundo", "amigo");
+            document.getElementById('output2').textContent = `Texto en mayúsculas: ${textoMayus}, Reemplazo: ${nuevoSaludo}`;
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

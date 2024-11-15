@@ -8,7 +8,16 @@ recomendaciones
 Conclusiones
 Anexos:
 DOCUMENTACION DE EL APLICATIVO, (MANUAL DE USUARIO)
+Boceto
 Pantallazos de la pagina
-CODIGO IMPRESO EN PDF o adjunto en zip optimizado para pocos mb 
+CODIGO adjunto en zip optimizado para pocos mb 
 ORDENADO Y LEGIBLE
+
+Asignación de Roles y Responsabilidades:**
+ - Asignar roles dentro del equipo:
+ - Líder de proyecto.
+ - Diseñador.
+ - Desarrolladores.
+ - Tester.
+ - Definir responsabilidades específicas para cada rol.
 

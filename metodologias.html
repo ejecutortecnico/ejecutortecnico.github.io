@@ -1,84 +1,178 @@
-<html>
-    <head> 
-        <title>Clase de repaso</title>
-        <link rel="stylesheet" href="stilo.css">
-    </head>
-
-   
-    <body class="cuerpo">
-        <div class="contendorg">
-            <p class="caja">a</p>
-            <p class="caja">b</p>
-            <p class="caja">c</p>
-            <p class="caja">d</p>
-            <p class="caja">e</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodologías para Enseñar JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(mision3/imagenes/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        pre {
+            background-color: #2e2e2e;
+            color: #00ff08;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Metodologías para Enseñar JavaScript</h1>
+            <p>Enseñar JavaScript requiere una combinación de teoría, práctica, y herramientas interactivas que mantengan a los estudiantes comprometidos.</p>
         </div>
-        <a href="https://spinthewheel.io/es">hola</a> 
-        <img src="imagen1.png"  height="200px" width="400px">
-        <section>
-          <u>hols</u><h1> basado en proyectos</h1> 
-          <br><br>
-          <p>  Descripción: Los estudiantes trabajan en proyectos prácticos desde el principio. Esto les permite aplicar los conceptos teóricos mientras desarrollan un producto tangible, como una página web, una aplicación móvil o un videojuego.
-               Ventajas: Desarrolla habilidades de resolución de problemas y pensamiento crítico, fomenta la creatividad y ofrece un aprendizaje más contextual.
-               Ideal para: Estudiantes que aprenden haciendo y aquellos interesados en aplicaciones prácticas inmediatas de la programación.
-          </p>
-        </section>
-  
-<h2>
-2. Aprendizaje dirigido por el instructor
-</h2>
-    <p> El instructor lidera el proceso de aprendizaje, proporcionando explicaciones detalladas de los conceptos y mostrando cómo resolver problemas específicos. Los estudiantes siguen ejemplos paso a paso.
-    Ventajas: Buena para introducir conceptos complejos de manera estructurada. Los estudiantes obtienen una base sólida antes de intentar proyectos más grandes por su cuenta.
-    Ideal para: Principiantes absolutos o estudiantes que prefieren una guía clara y directa.</p>
-<button> clik </button>
-3. Aprendizaje colaborativo o en pares
 
-    Descripción: Los estudiantes trabajan en equipos o en pares para resolver problemas de programación. Este enfoque fomenta la colaboración y la discusión sobre los desafíos de la programación.
-    Ventajas: Ayuda a los estudiantes a compartir conocimientos, obtener diferentes perspectivas y desarrollar habilidades de trabajo en equipo.
-    Ideal para: Estudiantes que disfrutan de la interacción social o aquellos que aprenden mejor explicando conceptos a otros.
+        <div id="slide2" class="slide">
+            <h2>1. Aprendizaje Basado en Proyectos</h2>
+            <p>El aprendizaje basado en proyectos permite a los estudiantes aplicar conceptos de JavaScript en tareas reales y prácticas.</p>
+            <ul>
+                <li>Crear proyectos pequeños: Calculadoras, listas de tareas, juegos sencillos.</li>
+                <li>Establecer objetivos claros para cada proyecto.</li>
+                <li>Fomentar la creatividad y el pensamiento crítico.</li>
+            </ul>
+        </div>
 
-4. Enseñanza basada en problemas (Problem-based Learning, PBL)
+        <div id="slide3" class="slide">
+            <h2>2. Práctica con Ejemplos Interactivos</h2>
+            <p>Usar editores en línea como CodePen, JSFiddle, o Replit para escribir y probar código en tiempo real.</p>
+            <pre>
+// Ejemplo de función en JavaScript
+function saludo(nombre) {
+    return "¡Hola, " + nombre + "!";
+}
+console.log(saludo("Estudiante"));
+            </pre>
+        </div>
 
-    Descripción: Los estudiantes enfrentan problemas complejos y abiertos que deben resolver utilizando la programación. La teoría se introduce conforme se necesitan herramientas para resolver el problema.
-    Ventajas: Fomenta el pensamiento crítico, la creatividad y la aplicación directa de habilidades de programación en situaciones del mundo real.
-    Ideal para: Estudiantes avanzados o aquellos que prefieren un enfoque autodirigido.
+        <div id="slide4" class="slide">
+            <h2>3. Enseñar desde lo Básico hasta lo Avanzado</h2>
+            <p>Es importante construir una base sólida en JavaScript antes de avanzar a temas más complejos.</p>
+            <ul>
+                <li>Variables, operadores y tipos de datos.</li>
+                <li>Estructuras de control: bucles y condicionales.</li>
+                <li>Funciones, objetos, y arrays.</li>
+                <li>DOM, eventos, y manipulación del documento.</li>
+            </ul>
+        </div>
 
-5. Gamificación
+        <div id="slide5" class="slide">
+            <h2>4. Práctica Continua con Desafíos</h2>
+            <p>Proporcionar ejercicios de práctica y desafíos para reforzar conceptos y habilidades en JavaScript.</p>
+            <ul>
+                <li>Ejercicios diarios y semanales.</li>
+                <li>Desafíos de lógica, algoritmos, y manipulación de datos.</li>
+                <li>Competencias amistosas para fomentar la motivación.</li>
+            </ul>
+        </div>
 
-    Descripción: Introducción de elementos de juego, como desafíos, recompensas, niveles y competencias, para motivar el aprendizaje de la programación.
-    Ventajas: Hace el aprendizaje más divertido y atractivo, y puede motivar a los estudiantes a seguir progresando.
-    Ideal para: Niños y adolescentes, o cualquier estudiante que responda bien a la competencia amistosa y los logros.
+        <div id="slide6" class="slide">
+            <h2>5. Introducción a Herramientas y Bibliotecas</h2>
+            <p>Para preparar a los estudiantes para el entorno laboral, introducir herramientas y bibliotecas populares.</p>
+            <ul>
+                <li>Control de versiones con Git y GitHub.</li>
+                <li>Frameworks básicos como jQuery o React (para introducción).</li>
+                <li>Conceptos de APIs y uso básico de Fetch.</li>
+            </ul>
+        </div>
 
-6. Metodología del aprendizaje invertido (Flipped Classroom)
+        <div id="slide7" class="slide">
+            <h2>6. Evaluación y Retroalimentación</h2>
+            <p>Evaluar regularmente el progreso de los estudiantes y proporcionar retroalimentación constructiva.</p>
+            <ul>
+                <li>Evaluaciones prácticas en cada tema.</li>
+                <li>Retroalimentación personalizada en proyectos y ejercicios.</li>
+                <li>Clases de repaso y aclaración de dudas.</li>
+            </ul>
+        </div>
 
-    Descripción: Los estudiantes aprenden los conceptos teóricos en casa a través de videos o lecturas, y luego utilizan el tiempo en clase para resolver ejercicios prácticos y participar en actividades colaborativas.
-    Ventajas: Permite más tiempo para la práctica y la resolución de problemas durante la clase, mientras que los estudiantes aprenden la teoría a su propio ritmo.
-    Ideal para: Estudiantes autodirigidos que prefieren aprender a su propio ritmo y utilizar el tiempo en clase para resolver problemas.
+        <div id="slide8" class="slide">
+            <h2>Conclusión</h2>
+            <p>Combinar teoría, práctica, y herramientas interactivas ayuda a los estudiantes a aprender JavaScript de manera efectiva y atractiva.</p>
+        </div>
 
-7. Método de enseñanza de "code along"
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
 
-    Descripción: El instructor escribe el código en vivo frente a los estudiantes, quienes siguen el proceso escribiendo el mismo código en sus computadoras. Se explica cada paso a medida que se va programando.
-    Ventajas: Permite a los estudiantes aprender observando y practicando al mismo tiempo, lo que refuerza la comprensión del código y la sintaxis.
-    Ideal para: Principiantes que necesitan observar y seguir ejemplos claros para entender los conceptos.
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
 
-8. Aprendizaje adaptativo
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
 
-    Descripción: Utiliza plataformas tecnológicas que ajustan el contenido y el ritmo de aprendizaje según el progreso del estudiante. Los sistemas adaptativos analizan las respuestas del estudiante y ajustan los ejercicios y lecciones en consecuencia.
-    Ventajas: Ofrece una experiencia personalizada que se adapta al ritmo de cada estudiante, ayudando a llenar las brechas de conocimiento.
-    Ideal para: Estudiantes que aprenden a diferentes ritmos y requieren una enseñanza personalizada.
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
 
-9. Programación en pares (Pair Programming)
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
 
-    Descripción: Dos estudiantes trabajan juntos en un solo ordenador; uno escribe el código (el "conductor"), mientras que el otro revisa el código y sugiere mejoras (el "navegante"). Se alternan regularmente.
-    Ventajas: Refuerza el trabajo colaborativo, mejora la calidad del código y fomenta el intercambio de ideas y conocimientos.
-    Ideal para: Estudiantes de nivel intermedio a avanzado que desean mejorar sus habilidades de colaboración y comunicación.
-
-10. Aprendizaje basado en retos (Challenge-based Learning)
-
-    Descripción: Los estudiantes reciben un desafío específico que deben resolver utilizando la programación. Pueden ser retos a nivel individual o en grupo.
-    Ventajas: Promueve la creatividad, la motivación intrínseca y la capacidad de resolver problemas de manera autónoma.
-    Ideal para: Estudiantes que disfrutan de retos y quieren experimentar el aprendizaje como un proceso de descubrimiento.
-
-    <script src="app.js"></script>
+        showSlide(currentSlide);
+    </script>
 </body>
-    </html>
+</html>

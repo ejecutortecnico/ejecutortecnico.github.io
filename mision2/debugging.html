@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manipulación del DOM en JavaScript</title>
+    <title>Depuración en JavaScript</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -79,77 +79,70 @@
 <body>
     <div class="container">
         <div id="slide1" class="slide active">
-            <h1>Manipulación del DOM en JavaScript</h1>
-            <p>Aprende cómo interactuar y modificar elementos HTML mediante el DOM.</p>
+            <h1>Depuración en JavaScript</h1>
+            <p>La depuración es el proceso de encontrar y corregir errores en tu código.</p>
         </div>
 
         <div id="slide2" class="slide">
-            <h2>1. Selección de Elementos del DOM</h2>
-            <p>Cómo seleccionar elementos con distintos métodos:</p>
+            <h2>1. Uso de la Consola</h2>
+            <p>La consola de los navegadores es una herramienta poderosa para depurar.</p>
             <pre>
-// Selección por ID
-const titulo = document.getElementById('miTitulo');
-
-// Selección por clase
-const elementos = document.getElementsByClassName('miClase');
-
-// Selección por selector CSS
-const parrafo = document.querySelector('p');
-const todosLosParrafos = document.querySelectorAll('p');
+// Imprimir mensajes en la consola
+console.log("Mensaje de depuración");
+console.error("Mensaje de error");
+console.warn("Mensaje de advertencia");
             </pre>
-            <div class="example-box">
-                <h3 id="miTitulo">Este es un Título</h3>
-                <p>Este es un párrafo.</p>
-                <button class="btn-example" onclick="cambiarTexto()">Haz clic para cambiar el título</button>
-            </div>
         </div>
 
         <div id="slide3" class="slide">
-            <h2>2. Modificación de Contenido</h2>
-            <p>Modificar el contenido de los elementos seleccionados:</p>
-            <pre>
-// Cambiar el texto de un elemento
-const titulo = document.getElementById('miTitulo');
-titulo.textContent = 'Nuevo Título Modificado';
-
-// Cambiar el contenido HTML
-const parrafo = document.querySelector('p');
-parrafo.innerHTML = '<strong>Párrafo Modificado</strong>';
-            </pre>
+            <h2>2. Breakpoints (Puntos de Interrupción)</h2>
+            <p>Los breakpoints permiten detener la ejecución del código en una línea específica para inspeccionar su estado.</p>
+            <ul>
+                <li>Accede a las herramientas de desarrollo (DevTools) del navegador.</li>
+                <li>Selecciona el archivo JavaScript relevante.</li>
+                <li>Haz clic en la línea donde quieres agregar un breakpoint.</li>
+            </ul>
         </div>
 
         <div id="slide4" class="slide">
-            <h2>3. Manipulación de Atributos y Estilos</h2>
-            <p>Cómo modificar atributos y estilos:</p>
+            <h2>3. Uso de 'debugger'</h2>
+            <p>El statement <code>debugger</code> puede detener la ejecución cuando se alcanza.</p>
             <pre>
-// Cambiar un atributo
-const enlace = document.querySelector('a');
-enlace.setAttribute('href', 'https://www.ejemplo.com');
-
-// Cambiar estilos
-const caja = document.querySelector('.miClase');
-caja.style.backgroundColor = 'blue';
+function sumar(a, b) {
+    debugger; // Pausa la ejecución aquí
+    return a + b;
+}
+console.log(sumar(2, 3));
             </pre>
         </div>
 
         <div id="slide5" class="slide">
-            <h2>4. Creación y Eliminación de Elementos</h2>
-            <p>Agregar y eliminar elementos en el DOM:</p>
+            <h2>4. Errores Comunes y Cómo Detectarlos</h2>
+            <p>Algunos de los errores más comunes incluyen:</p>
+            <ul>
+                <li><strong>Errores de sintaxis:</strong> Faltan paréntesis, puntos y comas.</li>
+                <li><strong>Errores de referencia:</strong> Variables no definidas.</li>
+                <li><strong>Errores de tipo:</strong> Operar con diferentes tipos de datos.</li>
+            </ul>
             <pre>
-// Crear un nuevo elemento
-const nuevoDiv = document.createElement('div');
-nuevoDiv.textContent = 'Soy un nuevo DIV';
-document.body.appendChild(nuevoDiv);
-
-// Eliminar un elemento
-const elementoParaEliminar = document.querySelector('p');
-elementoParaEliminar.remove();
+// Error de referencia: variable no definida
+console.log(variableNoDefinida);
             </pre>
         </div>
 
         <div id="slide6" class="slide">
+            <h2>5. Herramientas de Depuración</h2>
+            <p>Herramientas útiles para depuración:</p>
+            <ul>
+                <li><strong>DevTools del navegador:</strong> Consola, breakpoints, inspección de variables.</li>
+                <li><strong>Linters:</strong> Herramientas como ESLint para detectar errores antes de ejecutarse.</li>
+                <li><strong>Extensiones:</strong> Extensiones de depuración en editores de código como VSCode.</li>
+            </ul>
+        </div>
+
+        <div id="slide7" class="slide">
             <h2>Conclusión</h2>
-            <p>El DOM te permite interactuar dinámicamente con elementos HTML, abriendo posibilidades para crear aplicaciones web interactivas.</p>
+            <p>La depuración es esencial para escribir código JavaScript de calidad. Utiliza las herramientas disponibles para identificar y resolver problemas de manera eficiente.</p>
         </div>
 
         <div class="nav">
@@ -176,11 +169,6 @@ elementoParaEliminar.remove();
         function prevSlide() {
             currentSlide = (currentSlide - 1 + slides.length) % slides.length;
             showSlide(currentSlide);
-        }
-
-        function cambiarTexto() {
-            const titulo = document.getElementById('miTitulo');
-            titulo.textContent = 'Título Cambiado con JavaScript';
         }
 
         showSlide(currentSlide);

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos Prácticos para Practicar JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(images/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        .example-box {
+            margin-top: 10px;
+            padding: 15px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: left;
+        }
+        ul {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Proyectos Prácticos para Practicar JavaScript</h1>
+            <p>Explora una serie de proyectos prácticos diseñados para ayudarte a mejorar tus habilidades de programación en JavaScript.</p>
+        </div>
+
+        <div id="slide2" class="slide">
+            <h2>1. Generador de Contraseñas Aleatorias</h2>
+            <p>Crea una aplicación que genere contraseñas aleatorias de longitud personalizada.</p>
+            <div class="example-box">
+                <h3>Ideas y Retos:</h3>
+                <ul>
+                    <li>Permitir al usuario elegir la longitud de la contraseña.</li>
+                    <li>Incluir opciones para caracteres especiales, números y letras mayúsculas.</li>
+                    <li>Copiar la contraseña al portapapeles con un botón.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="slide3" class="slide">
+            <h2>2. Reloj Digital en Tiempo Real</h2>
+            <p>Desarrolla un reloj digital que muestre la hora actual y se actualice en tiempo real.</p>
+            <div class="example-box">
+                <h3>Ideas y Retos:</h3>
+                <ul>
+                    <li>Mostrar la hora en formato de 12 o 24 horas.</li>
+                    <li>Estilizar el reloj para que sea visualmente atractivo.</li>
+                    <li>Añadir una opción de temporizador o cronómetro.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="slide4" class="slide">
+            <h2>3. Calculadora Básica</h2>
+            <p>Construye una calculadora que realice operaciones aritméticas simples (suma, resta, multiplicación, división).</p>
+            <div class="example-box">
+                <h3>Ideas y Retos:</h3>
+                <ul>
+                    <li>Implementar una interfaz gráfica para los botones y la pantalla de resultados.</li>
+                    <li>Manejar operaciones en cadena (por ejemplo, 5 + 3 * 2).</li>
+                    <li>Controlar posibles errores como división por cero.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="slide5" class="slide">
+            <h2>4. Juego de Piedra, Papel o Tijera</h2>
+            <p>Crea un juego interactivo donde el usuario juegue contra la computadora.</p>
+            <div class="example-box">
+                <h3>Ideas y Retos:</h3>
+                <ul>
+                    <li>Generar la elección de la computadora de manera aleatoria.</li>
+                    <li>Mostrar el resultado de cada ronda (ganar, perder, empatar).</li>
+                    <li>Contar y mostrar el puntaje del usuario y de la computadora.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="slide6" class="slide">
+            <h2>5. To-Do List (Lista de Tareas)</h2>
+            <p>Construye una lista de tareas donde el usuario pueda añadir, marcar como completadas y eliminar tareas.</p>
+            <div class="example-box">
+                <h3>Ideas y Retos:</h3>
+                <ul>
+                    <li>Permitir al usuario añadir nuevas tareas.</li>
+                    <li>Marcar tareas como completadas o no completadas.</li>
+                    <li>Guardar la lista en el almacenamiento local del navegador.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="slide7" class="slide">
+            <h2>Conclusión</h2>
+            <p>Estos proyectos son una excelente forma de practicar tus habilidades de JavaScript y resolver problemas reales.</p>
+            <p>¡Elige un proyecto y comienza a codificar hoy!</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

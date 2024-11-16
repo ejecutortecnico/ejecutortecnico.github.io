@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strings en JavaScript</title>
+    <title>Strings en JavaScript - Presentación Mejorada</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -89,28 +89,28 @@
     <div class="container">
         <div id="slide1" class="slide active">
             <h1>Strings en JavaScript</h1>
-            <p>Aprende cómo trabajar con cadenas de texto en JavaScript.</p>
+            <p>Aprende cómo trabajar y manipular cadenas de texto en JavaScript.</p>
         </div>
 
         <div id="slide2" class="slide">
             <h2>1. Creación de Strings</h2>
-            <p>Existen diferentes maneras de crear cadenas:</p>
+            <p>Los strings pueden ser definidos de varias maneras:</p>
             <pre>
-// Usando comillas simples
+// Comillas simples
 let saludo = 'Hola, mundo';
 
-// Usando comillas dobles
-let frase = "JavaScript es genial";
+// Comillas dobles
+let frase = "JavaScript es asombroso";
 
-// Usando plantillas literales (template literals)
-let nombre = 'Ana';
+// Plantillas literales
+let nombre = 'Carlos';
 let mensaje = `Hola, ${nombre}`;
             </pre>
         </div>
 
         <div id="slide3" class="slide">
-            <h2>2. Propiedades de los Strings</h2>
-            <p>Los strings tienen propiedades útiles, como <code>length</code>:</p>
+            <h2>2. Propiedad <code>length</code></h2>
+            <p>Obtén la longitud de un string:</p>
             <pre>
 let texto = "JavaScript";
 console.log(texto.length); // 10
@@ -123,16 +123,21 @@ console.log(texto.length); // 10
 
         <div id="slide4" class="slide">
             <h2>3. Métodos Comunes de Strings</h2>
-            <p>Algunos métodos útiles para trabajar con strings:</p>
+            <p>Algunos métodos útiles:</p>
             <pre>
-// Convertir a mayúsculas
+// Mayúsculas y minúsculas
 let texto = "javascript";
 console.log(texto.toUpperCase()); // "JAVASCRIPT"
+console.log(texto.toLowerCase()); // "javascript"
 
-// Reemplazar parte de un string
+// Reemplazo de texto
 let saludo = "Hola, mundo";
 let nuevoSaludo = saludo.replace("mundo", "amigo");
 console.log(nuevoSaludo); // "Hola, amigo"
+
+// Eliminación de espacios
+let fraseConEspacios = "  Hola, JavaScript   ";
+console.log(fraseConEspacios.trim()); // "Hola, JavaScript"
             </pre>
             <div class="example-box">
                 <button class="btn-example" onclick="usarMetodos()">Aplicar Métodos</button>
@@ -141,14 +146,26 @@ console.log(nuevoSaludo); // "Hola, amigo"
         </div>
 
         <div id="slide5" class="slide">
-            <h2>4. Plantillas Literales</h2>
-            <p>Las plantillas literales permiten incluir variables de manera sencilla:</p>
+            <h2>4. Métodos Avanzados de Strings</h2>
+            <p>Otros métodos útiles:</p>
             <pre>
-let producto = 'Laptop';
-let precio = 1500;
-let mensaje = `El precio de la ${producto} es $${precio}`;
-console.log(mensaje);
+// Buscar una subcadena
+let frase = "Bienvenido a JavaScript";
+console.log(frase.includes("JavaScript")); // true
+
+// Obtener una parte del string
+let subcadena = frase.slice(12, 22);
+console.log(subcadena); // "JavaScript"
+
+// Dividir un string en un array
+let lista = "manzana,banana,uva";
+let arrayFrutas = lista.split(",");
+console.log(arrayFrutas); // ["manzana", "banana", "uva"]
             </pre>
+            <div class="example-box">
+                <button class="btn-example" onclick="usarMetodosAvanzados()">Ver más métodos</button>
+                <p id="output3"></p>
+            </div>
         </div>
 
         <div class="nav">
@@ -185,9 +202,23 @@ console.log(mensaje);
         function usarMetodos() {
             let texto = "javascript";
             let textoMayus = texto.toUpperCase();
+            let textoMinus = texto.toLowerCase();
             let saludo = "Hola, mundo";
             let nuevoSaludo = saludo.replace("mundo", "amigo");
-            document.getElementById('output2').textContent = `Texto en mayúsculas: ${textoMayus}, Reemplazo: ${nuevoSaludo}`;
+            let fraseConEspacios = "  Hola, JavaScript   ";
+            let textoTrim = fraseConEspacios.trim();
+            document.getElementById('output2').textContent = 
+                `Mayúsculas: ${textoMayus}, Minúsculas: ${textoMinus}, Reemplazo: ${nuevoSaludo}, Trim: ${textoTrim}`;
+        }
+
+        function usarMetodosAvanzados() {
+            let frase = "Bienvenido a JavaScript";
+            let incluyeTexto = frase.includes("JavaScript");
+            let subcadena = frase.slice(12, 22);
+            let lista = "manzana,banana,uva";
+            let arrayFrutas = lista.split(",");
+            document.getElementById('output3').textContent = 
+                `Includes: ${incluyeTexto}, Subcadena: ${subcadena}, Array: ${arrayFrutas}`;
         }
 
         showSlide(currentSlide);

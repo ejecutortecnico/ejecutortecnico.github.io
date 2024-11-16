@@ -7,7 +7,7 @@ que desafios encontraron
 recomendaciones
 Conclusiones
 Anexos:
-DOCUMENTACION DE EL APLICATIVO, (MANUAL DE USUARIO)
+DOCUMENTACION DE EL APLICATIVO, (MANUAL DE USUARIO) (Opcional)
 Boceto
 Pantallazos de la pagina
 CODIGO adjunto en zip optimizado para pocos mb 

@@ -4,65 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('images/fondo.jpeg');
-            backdrop-filter: blur(5px) brightness(50%);
-            background-size: cover;
-            background-repeat: no-repeat;
-            color: white;
-        }
-        .slide {
-            display: none;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 20px;
-            text-align: center;
-        }
-        .active {
-            display: flex;
-        }
-        h1, h2 {
-            color: #ff00c3;
-        }
-        p, ul {
-            color: #ffffff;
-        }
-        pre {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #00ff08;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .nav {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-        }
-        .nav button {
-            padding: 10px 20px;
-            margin: 0 5px;
-            background-color: #d49afe;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .nav button:hover {
-            background-color: darkmagenta;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
-
+    <div class="container">
     <div class="slide active" id="slide1">
         <h1>¡Aprendamos JavaScript!</h1>
         <p>JavaScript es un lenguaje de programación que nos permite hacer cosas divertidas con las páginas web. ¡Vamos a descubrirlo!</p>
@@ -109,7 +54,7 @@ saludar();
         <button onclick="anterior()">Anterior</button>
         <button onclick="siguiente()">Siguiente</button>
     </div>
-
+    </div>
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
@@ -118,7 +63,7 @@ saludar();
             slides.forEach((slide, i) => {
                 slide.style.display = 'none'; // Oculta todas las diapositivas
                 if (i === index) {
-                    slide.style.display = 'flex'; // Muestra la diapositiva actual
+                    slide.style.display = 'block'; // Muestra la diapositiva actual
                 }
             });
         }

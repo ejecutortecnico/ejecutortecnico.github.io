@@ -18,3 +18,9 @@ function jugar(){
     }
     
 }
+
+usuario = {
+    nombre:"nombre",
+    apellido:"apellido",
+    password:"22342342"
+}

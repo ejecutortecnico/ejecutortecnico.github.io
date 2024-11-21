@@ -197,20 +197,33 @@ df.sort_values(by="Edad", ascending=False)
             </pre>
         </div>
 
+       
         <div id="slide11" class="slide">
-            <h2>10. Visualización de Datos con Pandas</h2>
-            <p>Pandas permite visualizar datos rápidamente mediante gráficos integrados (requiere Matplotlib).</p>
+            <h2>10. Cálculo de Media, Mediana y Desviación Estándar</h2>
+            <p>Pandas incluye métodos para calcular estadísticas descriptivas fácilmente:</p>
+            <ul>
+                <li><strong>Media:</strong> Representa el promedio de los valores.</li>
+                <li><strong>Mediana:</strong> El valor central cuando los datos están ordenados.</li>
+                <li><strong>Desviación estándar:</strong> Mide la dispersión de los datos.</li>
+            </ul>
+            <p>Ejemplo práctico:</p>
             <pre>
-import matplotlib.pyplot as plt
+import pandas as pd
 
-# Gráfico de barras
-df["Edad"].plot(kind="bar")
-plt.show()
+# Crear un DataFrame
+datos = {"Edades": [25, 30, 35, 40, 45]}
+df = pd.DataFrame(datos)
 
-# Histograma
-df["Edad"].plot(kind="hist")
-plt.show()
+# Calcular estadísticas
+media = df["Edades"].mean()
+mediana = df["Edades"].median()
+desviacion = df["Edades"].std()
+
+print("Media:", media)
+print("Mediana:", mediana)
+print("Desviación estándar:", desviacion)
             </pre>
+          
         </div>
 
         <div id="slide12" class="slide">

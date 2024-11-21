@@ -3,108 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introducción a la Visualización de Datos</title>
+    <title>Análisis de Datos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('images');
-            backdrop-filter: blur(5px) brightness(50%);
+            background-image: url(images/fondo.jpeg);
             background-size: cover;
             background-repeat: no-repeat;
-        }
-
-        .slide {
-            width: 100%;
-            height: 100vh;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
-
         h1, h2 {
             color: #ff00c3;
         }
-
-        p, ul {
-            color: #ffffff;
+        p {
+            font-size: 1.2em;
         }
-
-        .container {
-            width: 80%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 20px;
-        }
-
         .nav {
-            display: flex;
-            justify-content: center;
             margin-top: 20px;
         }
-
         .nav button {
             padding: 10px 20px;
-            margin: 0 5px;
+            margin: 5px;
             background-color: #d49afe;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-
         .nav button:hover {
             background-color: darkmagenta;
         }
-
-        .hidden {
+        .slide {
             display: none;
+        }
+        .slide.active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="slide">
-        <div class="container" id="slide1">
-            <h1>1. Introducción a la Visualización de Datos</h1>
-            <h2>a. Importancia de la Visualización de Datos</h2>
-            <ul>
-                <li>Facilita la comprensión de datos complejos.</li>
-                <li>Ayuda a identificar patrones y tendencias.</li>
-                <li>Mejora la comunicación de resultados.</li>
-            </ul>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Análisis de Datos</h1>
+            <p>El análisis de datos implica examinar, limpiar y modelar datos con el objetivo de descubrir información útil, llegar a conclusiones y apoyar la toma de decisiones.</p>
         </div>
 
-        <div class="container hidden" id="slide2">
-            <h2>b. Principios de una Buena Visualización</h2>
+        <div id="slide2" class="slide">
+            <h2>Análisis Exploratorio</h2>
+            <p>Consiste en examinar los datos para identificar patrones, valores atípicos y relaciones. Herramientas comunes incluyen:</p>
             <ul>
-                <li>Claridad y simplicidad.</li>
-                <li>Precisión y honestidad en la representación de los datos.</li>
-                <li>Relevancia y foco en el mensaje principal.</li>
+                <li>Tablas resumen</li>
+                <li>Gráficos de dispersión</li>
+                <li>Histogramas</li>
             </ul>
+            <p>Ejemplo: Identificar correlaciones entre las variables en un conjunto de datos.</p>
+        </div>
+
+        <div id="slide3" class="slide">
+            <h2>Análisis Estadístico</h2>
+            <p>Se basa en técnicas estadísticas para interpretar los datos. Se divide en descriptivo e inferencial:</p>
+            <ul>
+                <li>**Descriptivo:** Resume los datos (media, mediana, moda).</li>
+                <li>**Inferencial:** Extrae conclusiones para una población a partir de una muestra.</li>
+            </ul>
+            <p>Ejemplo: Estimar la media de ingresos en una región a partir de una muestra.</p>
+        </div>
+
+        <div id="slide4" class="slide">
+            <h2>Análisis Descriptivo</h2>
+            <p>Se centra en describir las características principales de los datos.</p>
+            <ul>
+                <li>Medidas de tendencia central (media, mediana, moda).</li>
+                <li>Medidas de dispersión (desviación estándar, varianza).</li>
+            </ul>
+            <p>Ejemplo: Calcular la media de calificaciones de un curso.</p>
+        </div>
+
+        <div id="slide5" class="slide">
+            <h2>Análisis Inferencial</h2>
+            <p>Permite hacer predicciones o generalizaciones sobre una población a partir de una muestra.</p>
+            <ul>
+                <li>Pruebas de hipótesis</li>
+                <li>Intervalos de confianza</li>
+            </ul>
+            <p>Ejemplo: Determinar si existe una diferencia significativa entre dos grupos.</p>
+        </div>
+
+        <div id="slide6" class="slide">
+            <h2>Análisis Predictivo</h2>
+            <p>Utiliza modelos matemáticos y estadísticos para predecir resultados futuros basándose en datos históricos.</p>
+            <ul>
+                <li>Regresión lineal</li>
+                <li>Árboles de decisión</li>
+                <li>Modelos de aprendizaje automático</li>
+            </ul>
+            <p>Ejemplo: Predecir las ventas futuras de un producto basado en datos pasados.</p>
+        </div>
+
+        <div id="slide7" class="slide">
+            <h2>Conclusión</h2>
+            <p>El análisis de datos es clave en la toma de decisiones en cualquier ámbito. Comprender sus tipos ayuda a seleccionar el método adecuado según el objetivo.</p>
+            <p>¡Comienza a practicar con tus propios datos!</p>
         </div>
 
         <div class="nav">
-            <button onclick="showSlide(1)">Anterior</button>
-            <button onclick="showSlide(2)">Siguiente</button>
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
         </div>
     </div>
 
     <script>
-        let currentSlide = 1;
-        function showSlide(slideNumber) {
-            document.getElementById('slide' + currentSlide).classList.add('hidden');
-            document.getElementById('slide' + slideNumber).classList.remove('hidden');
-            currentSlide = slideNumber;
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
         }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
     </script>
 </body>
 </html>

@@ -3,57 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diccionarios en Python</title>
+    <title>Ejercicios Prácticos de Diccionarios en Python</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-image: url(images/fondo.jpeg);
-            backdrop-filter: blur(5px) brightness(50%);
             background-size: cover;
             background-repeat: no-repeat;
-        }
-        .slide {
-            width: 100%;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        h1, h2 {
-            margin: 10px 0;
-            color: #ff00c3;
-        }
-        p, ul {
-            font-size: 1.2em;
-            color: #ffffff;
-            margin: 10px 0;
-        }
-        ul {
-            list-style-type: square;
+            height: 100vh;
+            color: #333;
         }
         .container {
             width: 80%;
-            height: 100vh;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 20px;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        ul {
+            list-style-type: square;
+            font-size: 1.2em;
+            text-align: left;
         }
         .nav {
-            margin: 20px;
-            text-align: center;
+            margin-top: 20px;
         }
         .nav button {
             padding: 10px 20px;
-            margin: 0 5px;
+            margin: 5px;
             background-color: #d49afe;
             color: white;
             border: none;
@@ -63,151 +58,143 @@
         .nav button:hover {
             background-color: darkmagenta;
         }
-        .hidden {
+        .slide {
             display: none;
         }
+        .slide.active {
+            display: block;
+        }
         pre {
+            background-color: #2e2e2e;
             color: #00ff08;
-            cursor: pointer; /* Cambiado para indicar que es clickeable */
-        }
-        /* Estilos del modal */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.9); 
-            padding-top: 60px;
-        }
-        .modal-content {
-            background-color: transparent;
-            margin: 5% auto; 
-            padding: 20px;
-            border: none;
-            width: 80%; 
-            color: #00ff08;
-            font-size: 1.5em;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="slide active">
-            <h1>Diccionarios en Python</h1>
-            <h2>1. Introducción a los Diccionarios</h2>
-            <p>Los diccionarios son estructuras de datos que almacenan pares clave-valor.</p>
-            <p>Creación de un diccionario:</p>
-            <pre onclick="openModal('create')">diccionario = {"nombre": "Juan", "edad": 30}</pre>
+        <div id="slide1" class="slide active">
+            <h1>Ejercicios Prácticos de Diccionarios en Python</h1>
+            <p>Los diccionarios en Python son colecciones desordenadas de pares clave-valor. A continuación, te presentamos algunos ejercicios prácticos para trabajar con ellos.</p>
         </div>
-        <div class="slide">
-            <h2>2. Métodos de Diccionarios</h2>
-            <p><strong>Obtener un valor:</strong></p>
-            <pre onclick="openModal('get')">valor = diccionario.get("nombre")</pre>
-            <p><strong>Agregar un nuevo par clave-valor:</strong></p>
-            <pre onclick="openModal('add')">diccionario["profesión"] = "Ingeniero"</pre>
+        
+        <div id="slide2" class="slide">
+            <h2>Ejercicio 1: Crear un Diccionario</h2>
+            <p>Crea un diccionario llamado <code>alumno</code> que contenga las claves: "nombre", "edad", "curso". Luego, imprime el diccionario completo.</p>
+            <pre>
+# Solución
+alumno = {
+    "nombre": "Juan",
+    "edad": 20,
+    "curso": "Matemáticas"
+}
+
+# Imprimir el diccionario
+print(alumno)
+            </pre>
         </div>
-        <div class="slide">
-            <h2>3. Métodos de Diccionarios (continuación)</h2>
-            <p><strong>Eliminar un elemento:</strong></p>
-            <pre onclick="openModal('remove')">del diccionario["edad"]</pre>
-            <p><strong>Ver todas las claves:</strong></p>
-            <pre onclick="openModal('keys')">claves = diccionario.keys()</pre>
+        
+        <div id="slide3" class="slide">
+            <h2>Ejercicio 2: Acceder a Elementos</h2>
+            <p>Dado el diccionario <code>alumno</code>, imprime solo el valor de la clave "nombre".</p>
+            <pre>
+# Solución
+print(alumno["nombre"])  # Imprime: Juan
+            </pre>
         </div>
-        <div class="slide">
-            <h2>4. Métodos de Diccionarios (continuación)</h2>
-            <p><strong>Ver todos los valores:</strong></p>
-            <pre onclick="openModal('values')">valores = diccionario.values()</pre>
-            <p><strong>Unir dos diccionarios:</strong></p>
-            <pre onclick="openModal('update')">diccionario.update({"ciudad": "Madrid"})</pre>
+        
+        <div id="slide4" class="slide">
+            <h2>Ejercicio 3: Agregar un Elemento</h2>
+            <p>Agrega al diccionario <code>alumno</code> la clave "nota" con el valor 8.5.</p>
+            <pre>
+# Solución
+alumno["nota"] = 8.5
+print(alumno)
+            </pre>
         </div>
-        <div class="slide">
-            <h2>5. Conclusiones</h2>
-            <p>Los diccionarios son versátiles y permiten un acceso rápido a los datos mediante claves.</p>
+        
+        <div id="slide5" class="slide">
+            <h2>Ejercicio 4: Eliminar un Elemento</h2>
+            <p>Elimina la clave "curso" del diccionario <code>alumno</code>.</p>
+            <pre>
+# Solución
+del alumno["curso"]
+print(alumno)
+            </pre>
+        </div>
+        
+        <div id="slide6" class="slide">
+            <h2>Ejercicio 5: Recorrer un Diccionario</h2>
+            <p>Utiliza un bucle <code>for</code> para recorrer e imprimir las claves y los valores del diccionario <code>alumno</code>.</p>
+            <pre>
+# Solución
+for clave, valor in alumno.items():
+    print(clave, ":", valor)
+            </pre>
+        </div>
+        
+        <div id="slide7" class="slide">
+            <h2>Ejercicio 6: Diccionario Anidado</h2>
+            <p>Crea un diccionario llamado <code>clase</code> que contenga dos alumnos, cada uno representado como un diccionario con su "nombre", "edad" y "nota".</p>
+            <pre>
+# Solución
+clase = {
+    "alumno1": {"nombre": "Ana", "edad": 21, "nota": 9.0},
+    "alumno2": {"nombre": "Carlos", "edad": 22, "nota": 7.5}
+}
+
+# Imprimir el diccionario completo
+print(clase)
+            </pre>
+        </div>
+        
+        <div id="slide8" class="slide">
+            <h2>Ejercicio 7: Modificar un Valor en Diccionario Anidado</h2>
+            <p>Cambia la nota del "alumno1" a 9.5 en el diccionario <code>clase</code>.</p>
+            <pre>
+# Solución
+clase["alumno1"]["nota"] = 9.5
+print(clase["alumno1"])
+            </pre>
+        </div>
+
+        <div id="slide9" class="slide">
+            <h2>Conclusión</h2>
+            <p>Trabajar con diccionarios en Python te permite gestionar datos de manera eficiente. Practicar con diferentes escenarios te ayudará a dominar esta estructura.</p>
         </div>
 
         <div class="nav">
-            <button onclick="plusSlides(-1)">&#10094; Anterior</button>
-            <button onclick="plusSlides(1)">Siguiente &#10095;</button>
-        </div>
-    </div>
-
-    <!-- Modal para mostrar código -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <pre id="code"></pre>
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
         </div>
     </div>
 
     <script>
-        let slideIndex = 0;
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
 
-        function showSlide(n) {
-            const slides = document.getElementsByClassName("slide");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slides[n].style.display = "flex";  
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
         }
 
-        function plusSlides(n) {
-            slideIndex += n;
-            if (slideIndex >= document.getElementsByClassName("slide").length) {
-                slideIndex = 0;
-            }
-            if (slideIndex < 0) {
-                slideIndex = document.getElementsByClassName("slide").length - 1;
-            }
-            showSlide(slideIndex);
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
         }
 
-        function openModal(example) {
-            const modal = document.getElementById("myModal");
-            const codeElement = document.getElementById("code");
-            const codeExamples = {
-                create: `diccionario = {"nombre": "Juan", "edad": 30}`,
-                get: `valor = diccionario.get("nombre")`,
-                add: `diccionario["profesión"] = "Ingeniero"`,
-                remove: `del diccionario["edad"]`,
-                keys: `claves = diccionario.keys()`,
-                values: `valores = diccionario.values()`,
-                update: `diccionario.update({"ciudad": "Madrid"})`
-            };
-
-            codeElement.textContent = codeExamples[example];
-            modal.style.display = "block";
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
         }
 
-        function closeModal() {
-            const modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById("myModal");
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        showSlide(slideIndex);
+        showSlide(currentSlide);
     </script>
 </body>
 </html>

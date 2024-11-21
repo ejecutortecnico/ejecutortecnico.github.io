@@ -100,7 +100,7 @@
             </ul>
             <pre><code>import seaborn as sns
 import matplotlib.pyplot as plt
-
+tips = sns.load_dataset("tips")
 # Ejemplo de scatterplot
 sns.scatterplot(data=tips, x="total_bill", y="tip", hue="day")
 plt.show()</code></pre>
@@ -136,9 +136,75 @@ sns.boxplot(data=tips, x="day", y="total_bill")
 plt.show()</code></pre>
         </div>
 
+         <!-- Slide pairplot -->
+        <div class="slide hidden">
+            <h2>5. Visualización con PairPlot</h2>
+            <p>El método <b>pairplot</b> se utiliza para explorar relaciones entre múltiples variables de un dataset.</p>
+            <pre><code>import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Datos de ejemplo
+data = sns.load_dataset("iris")
+
+# PairPlot
+sns.pairplot(data, hue="species", diag_kind="kde")
+plt.show()</code></pre>
+        </div>
+
+        <!-- Slide heatmap -->
+        <div class="slide hidden">
+            <h2>6. Visualización con HeatMap</h2>
+            <p>El método <b>heatmap</b> es útil para visualizar matrices de datos, como correlaciones entre variables.</p>
+            <pre><code>import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Datos de ejemplo
+data = sns.load_dataset("tips")
+
+# Matriz de correlación
+corr = data.corr()
+
+# Heatmap
+sns.heatmap(corr, annot=True, cmap="coolwarm", fmt=".2f")
+plt.title("Mapa de Calor de Correlaciones")
+plt.show()</code></pre>
+        </div>
+
+        <!-- Slide kdeplot -->
+        <div class="slide hidden">
+            <h2>7. Visualización con KDEPlot</h2>
+            <p>El método <b>kdeplot</b> se utiliza para visualizar la distribución de datos en forma de curva de densidad.</p>
+            <pre><code>import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Datos de ejemplo
+data = sns.load_dataset("iris")
+
+# Gráfico KDE
+sns.kdeplot(data=data, x="sepal_length", hue="species", fill=True)
+plt.title("Densidad de Longitud del Sépalo")
+plt.show()</code></pre>
+        </div>
+
+        <!-- Slide barplot -->
+        <div class="slide hidden">
+            <h2>8. Visualización con BarPlot</h2>
+            <p>El método <b>barplot</b> se utiliza para crear gráficos de barras que representan datos categóricos.</p>
+            <pre><code>import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Datos de ejemplo
+data = sns.load_dataset("titanic")
+
+# Gráfico de barras
+sns.barplot(data=data, x="class", y="fare", hue="sex")
+plt.title("Tarifa Promedio por Clase y Sexo")
+plt.show()</code></pre>
+        </div>
+
         <!-- Slide 6 -->
         <div class="slide hidden">
-            <h2>5. Ejemplo Completo</h2>
+            <h2>9. Ejemplo Completo</h2>
             <p>Combina varios elementos para crear una visualización rica y personalizada.</p>
             <pre><code>import seaborn as sns
 import matplotlib.pyplot as plt

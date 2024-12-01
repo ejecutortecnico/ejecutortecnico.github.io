@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Intermedio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <h1>CSS Intermedio</h1>
+            <h2>Avanza al Siguiente Nivel</h2>
+            <p>En esta sección exploraremos características más avanzadas de CSS para diseñar interfaces modernas y dinámicas.</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide hidden">
+            <h2>1. Pseudoclases</h2>
+            <p>Las pseudoclases permiten estilizar elementos en estados específicos:</p>
+            <ul>
+                <li><b>:hover:</b> Cuando el mouse pasa sobre un elemento.</li>
+                <li><b>:nth-child(n):</b> Para apuntar a elementos según su posición.</li>
+                <li><b>:focus:</b> Cuando un campo tiene el foco.</li>
+            </ul>
+            <pre><code>a:hover {
+    color: red;
+}
+li:nth-child(odd) {
+    background-color: lightgray;
+}</code></pre>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide hidden">
+            <h2>2. Pseudoelementos</h2>
+            <p>Los pseudoelementos te permiten agregar contenido o estilos específicos:</p>
+            <ul>
+                <li><b>::before:</b> Inserta contenido antes del elemento.</li>
+                <li><b>::after:</b> Inserta contenido después del elemento.</li>
+                <li><b>::first-line:</b> Aplica estilos a la primera línea de un texto.</li>
+            </ul>
+            <pre><code>p::before {
+    content: "🔹 ";
+    color: blue;
+}</code></pre>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide hidden">
+            <h2>3. Layouts con Flexbox</h2>
+            <p>Flexbox es un modelo de diseño poderoso para alinear elementos:</p>
+            <ul>
+                <li><b>display: flex;</b> Activa Flexbox en el contenedor.</li>
+                <li><b>justify-content:</b> Controla la alineación horizontal.</li>
+                <li><b>align-items:</b> Controla la alineación vertical.</li>
+            </ul>
+            <pre><code>.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}</code></pre>
+            <p>¡Perfecto para crear diseños responsivos!</p>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide hidden">
+            <h2>4. Layouts con Grid</h2>
+            <p>CSS Grid es ideal para crear layouts complejos:</p>
+            <ul>
+                <li><b>display: grid;</b> Activa Grid en el contenedor.</li>
+                <li><b>grid-template-columns:</b> Define columnas.</li>
+                <li><b>grid-gap:</b> Define espacios entre filas y columnas.</li>
+            </ul>
+            <pre><code>.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}</code></pre>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide hidden">
+            <h2>5. Transiciones y Animaciones</h2>
+            <p>CSS permite agregar efectos de transición y animación:</p>
+            <ul>
+                <li><b>transition:</b> Aplica un efecto suave entre cambios de estilo.</li>
+                <li><b>@keyframes:</b> Define una animación personalizada.</li>
+            </ul>
+            <pre><code>button {
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: darkblue;
+}
+
+@keyframes mover {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100px); }
+}</code></pre>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide hidden">
+            <h2>Conclusión</h2>
+            <p>Con estos conceptos intermedios, puedes crear diseños más complejos y dinámicos.</p>
+            <p>Experimenta con layouts, animaciones y estados dinámicos para mejorar tus interfaces.</p>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav">
+            <button onclick="previousSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.add('hidden');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.remove('hidden');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+    </script>
+</body>
+</html>

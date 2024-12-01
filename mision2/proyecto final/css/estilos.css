@@ -1,9 +1,0 @@
-#sitios{
-    display: grid;
-    grid-template-columns: auto auto auto;
-}
-
-img{
-    width: 100px;
-    height: 100px;
-}

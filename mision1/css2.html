@@ -18,7 +18,7 @@
         </div>
 
         <!-- Slide 2 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>1. Pseudoclases</h2>
             <p>Las pseudoclases permiten estilizar elementos en estados específicos:</p>
             <ul>
@@ -35,7 +35,7 @@ li:nth-child(odd) {
         </div>
 
         <!-- Slide 3 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>2. Pseudoelementos</h2>
             <p>Los pseudoelementos te permiten agregar contenido o estilos específicos:</p>
             <ul>
@@ -50,7 +50,7 @@ li:nth-child(odd) {
         </div>
 
         <!-- Slide 4 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>3. Layouts con Flexbox</h2>
             <p>Flexbox es un modelo de diseño poderoso para alinear elementos:</p>
             <ul>
@@ -67,7 +67,7 @@ li:nth-child(odd) {
         </div>
 
         <!-- Slide 5 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>4. Layouts con Grid</h2>
             <p>CSS Grid es ideal para crear layouts complejos:</p>
             <ul>
@@ -83,7 +83,7 @@ li:nth-child(odd) {
         </div>
 
         <!-- Slide 6 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>5. Transiciones y Animaciones</h2>
             <p>CSS permite agregar efectos de transición y animación:</p>
             <ul>
@@ -104,35 +104,19 @@ button:hover {
         </div>
 
         <!-- Slide 7 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>Conclusión</h2>
             <p>Con estos conceptos intermedios, puedes crear diseños más complejos y dinámicos.</p>
             <p>Experimenta con layouts, animaciones y estados dinámicos para mejorar tus interfaces.</p>
+            <button onclick="irpagina('css3.html')">CSS 3</button>
         </div>
 
         <!-- Navigation Buttons -->
         <div class="nav">
-            <button onclick="previousSlide()">Anterior</button>
+            <button onclick="prevSlide()">Anterior</button>
             <button onclick="nextSlide()">Siguiente</button>
         </div>
     </div>
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-
-        function showSlide(index) {
-            slides[currentSlide].classList.add('hidden');
-            currentSlide = (index + slides.length) % slides.length;
-            slides[currentSlide].classList.remove('hidden');
-        }
-
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function previousSlide() {
-            showSlide(currentSlide - 1);
-        }
-    </script>
+    <script src="../js/slide.js"></script>
 </body>
 </html>

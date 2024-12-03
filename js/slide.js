@@ -18,3 +18,7 @@ let currentSlide = 0;
         }
 
         showSlide(currentSlide);
+
+        function irpagina(pagina){
+            window.location.href = pagina;
+        }

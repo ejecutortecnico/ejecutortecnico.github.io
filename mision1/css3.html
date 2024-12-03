@@ -18,7 +18,7 @@
         </div>
 
         <!-- Slide 2 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>1. Variables en CSS</h2>
             <p>Las variables permiten reutilizar valores en todo el archivo CSS:</p>
             <pre><code>:root {
@@ -33,7 +33,7 @@ button {
         </div>
 
         <!-- Slide 3 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>2. Funciones Avanzadas</h2>
             <p>CSS incluye funciones avanzadas para cálculos y efectos dinámicos:</p>
             <ul>
@@ -49,7 +49,7 @@ button {
         </div>
 
         <!-- Slide 4 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>3. Unidades Relativas y Absolutas</h2>
             <p>Usa unidades avanzadas para diseños responsivos:</p>
             <ul>
@@ -65,7 +65,7 @@ button {
         </div>
 
         <!-- Slide 5 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>4. Animaciones Complejas</h2>
             <p>CSS permite animaciones sofisticadas:</p>
             <pre><code>@keyframes girar {
@@ -80,7 +80,7 @@ div {
         </div>
 
         <!-- Slide 6 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>5. Optimización de CSS</h2>
             <p>Mejora el rendimiento del diseño con técnicas avanzadas:</p>
             <ul>
@@ -94,7 +94,7 @@ div {
         </div>
 
         <!-- Slide 7 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>Conclusión</h2>
             <p>CSS avanzado te permite construir interfaces robustas y dinámicas con eficiencia.</p>
             <p>Explora y experimenta con variables, animaciones y optimización para llevar tus diseños al siguiente nivel.</p>
@@ -106,23 +106,7 @@ div {
             <button onclick="nextSlide()">Siguiente</button>
         </div>
     </div>
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-
-        function showSlide(index) {
-            slides[currentSlide].classList.add('hidden');
-            currentSlide = (index + slides.length) % slides.length;
-            slides[currentSlide].classList.remove('hidden');
-        }
-
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function previousSlide() {
-            showSlide(currentSlide - 1);
-        }
-    </script>
+    
+    <script src="../js/slide.js"></script>
 </body>
 </html>

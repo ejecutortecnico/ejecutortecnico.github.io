@@ -18,7 +18,7 @@
         </div>
 
         <!-- Slide 2 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>1. Sintaxis Básica</h2>
             <p>Un bloque CSS básico tiene la siguiente estructura:</p>
             <pre><code>selector {
@@ -31,7 +31,7 @@
         </div>
 
         <!-- Slide 3 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>2. Tipos de Selectores</h2>
             <p>CSS ofrece varios tipos de selectores para apuntar a elementos específicos:</p>
             <ul>
@@ -49,7 +49,7 @@
         </div>
 
         <!-- Slide 4 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>3. Propiedades Comunes</h2>
             <p>Algunas de las propiedades CSS más utilizadas son:</p>
             <ul>
@@ -66,7 +66,7 @@
         </div>
 
         <!-- Slide 5 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>4. Uso de Clases y Estilos Inline</h2>
             <p>Aplica clases en HTML para estilizar elementos:</p>
             <pre><code>&lt;div class="mi-clase"&gt;Texto estilizado&lt;/div&gt;</code></pre>
@@ -76,35 +76,20 @@
         </div>
 
         <!-- Slide 6 -->
-        <div class="slide hidden">
+        <div class="slide">
             <h2>5. Conclusión</h2>
             <p>CSS es fundamental para crear páginas atractivas y bien diseñadas. Aprende a usarlo junto con HTML para llevar tus proyectos al siguiente nivel.</p>
             <p>¡Experimenta con colores, fuentes y estilos para personalizar tu diseño!</p>
+            <button onclick="irpagina('css2.html')">CSS 2</button>
         </div>
 
         <!-- Navigation Buttons -->
         <div class="nav">
-            <button onclick="previousSlide()">Anterior</button>
+            <button onclick="prevSlide()">Anterior</button>
             <button onclick="nextSlide()">Siguiente</button>
         </div>
     </div>
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-
-        function showSlide(index) {
-            slides[currentSlide].classList.add('hidden');
-            currentSlide = (index + slides.length) % slides.length;
-            slides[currentSlide].classList.remove('hidden');
-        }
-
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function previousSlide() {
-            showSlide(currentSlide - 1);
-        }
-    </script>
+    
+    <script src="../js/slide.js"></script>
 </body>
 </html>

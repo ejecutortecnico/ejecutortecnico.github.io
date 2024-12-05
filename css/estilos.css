@@ -70,3 +70,37 @@ pre {
     max-width: 100%;
     overflow-x: auto;
 }
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9); 
+    padding-top: 60px;
+}
+.modal-content {
+    background-color: transparent;
+    margin: 5% auto; 
+    padding: 20px;
+    border: none;
+    width: 80%; 
+    color: #00ff08;
+    font-size: 1.5em;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}

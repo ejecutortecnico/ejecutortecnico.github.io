@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h2>Simulación (Lección 5) - Desarrollo y Entrenamiento de un Modelo de Machine Learning</h2>
+              </div>
+              
+              <div class="slide">
+                <h3>Objetivos</h3>
+                <ul>
+                  <li>Desarrollar y entrenar un modelo de machine learning utilizando un conjunto de datos real.</li>
+                  <li>Aplicar técnicas de preprocesamiento de datos para preparar los datos para el modelado.</li>
+                  <li>Evaluar el rendimiento inicial del modelo utilizando métricas apropiadas.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Recolección y Preprocesamiento de Datos</h3>
+                <p><strong>Objetivo:</strong> Recolectar y preparar los datos necesarios para el desarrollo del modelo.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Recolección de Datos</h4>
+                <p>Uso de un conjunto de datos público (por ejemplo, el conjunto de datos de Titanic de Kaggle).</p>
+                <pre><code>
+              import pandas as pd
+              # Cargar el conjunto de datos de Titanic
+              url = 'https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv'
+              df = pd.read_csv(url)
+              print(df.head())
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Preprocesamiento de Datos</h4>
+                <p>Limpieza y transformación de datos para el modelado.</p>
+                <pre><code>
+              # Eliminar columnas innecesarias
+              df.drop(columns=['Name', 'Ticket', 'Cabin'], inplace=True)
+              # Manejo de datos faltantes
+              df['Age'].fillna(df['Age'].mean(), inplace=True)
+              df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
+              # Codificación de variables categóricas
+              df = pd.get_dummies(df, columns=['Sex', 'Embarked'], drop_first=True)
+              print(df.head())
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>División de Datos</h4>
+                <p>Dividir el conjunto de datos en conjuntos de entrenamiento y prueba.</p>
+                <pre><code>
+              from sklearn.model_selection import train_test_split
+              X = df.drop(columns=['Survived'])
+              y = df['Survived']
+              X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+              print(X_train.shape, X_test.shape)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Construcción y Entrenamiento del Modelo</h3>
+                <p><strong>Objetivo:</strong> Construir y entrenar un modelo de machine learning utilizando el conjunto de datos preparado.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Selección del Algoritmo</h4>
+                <p>Seleccionar un algoritmo de clasificación adecuado (por ejemplo, Random Forest).</p>
+                <pre><code>
+              from sklearn.ensemble import RandomForestClassifier
+              model = RandomForestClassifier(n_estimators=100, random_state=42)
+              model.fit(X_train, y_train)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Entrenamiento del Modelo</h4>
+                <p>Entrenar el modelo utilizando el conjunto de entrenamiento.</p>
+                <pre><code>
+              model.fit(X_train, y_train)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Evaluación Inicial del Modelo</h4>
+                <p>Evaluar el rendimiento del modelo utilizando el conjunto de prueba.</p>
+                <pre><code>
+              from sklearn.metrics import accuracy_score, classification_report
+              y_pred = model.predict(X_test)
+              print(f'Accuracy: {accuracy_score(y_test, y_pred)}')
+              print(classification_report(y_test, y_pred))
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>3. Visualización de Resultados</h3>
+                <p><strong>Objetivo:</strong> Visualizar los resultados del modelo y analizar su rendimiento.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Matriz de Confusión</h4>
+                <p>Visualizar la matriz de confusión para entender mejor los resultados del modelo.</p>
+                <pre><code>
+              from sklearn.metrics import confusion_matrix
+              import seaborn as sns
+              import matplotlib.pyplot as plt
+              cm = confusion_matrix(y_test, y_pred)
+              sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+              plt.xlabel('Predicted')
+              plt.ylabel('Actual')
+              plt.show()
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Curvas ROC y AUC</h4>
+                <p>Visualizar la curva ROC y calcular el AUC para evaluar el rendimiento del modelo.</p>
+                <pre><code>
+              from sklearn.metrics import roc_curve, roc_auc_score
+              y_proba = model.predict_proba(X_test)[:, 1]
+              fpr, tpr, _ = roc_curve(y_test, y_proba)
+              auc = roc_auc_score(y_test, y_proba)
+              plt.plot(fpr, tpr, label=f'AUC = {auc:.2f}')
+              plt.xlabel('False Positive Rate')
+              plt.ylabel('True Positive Rate')
+              plt.title('ROC Curve')
+              plt.legend(loc='best')
+              plt.show()
+                </code></pre>
+              </div>
+              
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

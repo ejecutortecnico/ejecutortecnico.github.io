@@ -10,7 +10,147 @@
 </head>
     <body>
         <div class="container">
-    
+            <div class="slide">
+                <h2>Preparación y Simulación (Lección 4) - Ajuste, Mejora del Chatbot y Configuración del Entorno</h2>
+              </div>
+              
+              <div class="slide">
+                <h3>Ajuste y Mejora del Chatbot</h3>
+                <h3>Objetivos:</h3>
+                <ul>
+                  <li>Evaluar el rendimiento del chatbot y realizar ajustes para mejorar su precisión.</li>
+                  <li>Documentar el desarrollo y las mejoras realizadas en el chatbot.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Evaluación del Desempeño del Chatbot</h3>
+                <p><strong>Objetivo:</strong> Evaluar el rendimiento del chatbot mediante métricas de precisión y retroalimentación del usuario.</p>
+                <h4>1.1 Métricas de Evaluación:</h4>
+                <p>Precisión, recall, F1-score.</p>
+                <pre><code>
+                from sklearn.metrics import classification_report
+                y_true = ["greet", "ask_weather"]
+                y_pred = ["greet", "ask_weather"]
+                print(classification_report(y_true, y_pred))
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>1.2 Recopilación de Retroalimentación:</h4>
+                <p>Obtener comentarios de los usuarios para identificar áreas de mejora.</p>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Ajuste y Optimización del Chatbot</h3>
+                <p><strong>Objetivo:</strong> Realizar ajustes en el modelo y la configuración del chatbot para mejorar su rendimiento.</p>
+                <h4>2.1 Optimización del Modelo:</h4>
+                <p>Ajuste de hiperparámetros y reentrenamiento del modelo.</p>
+                <pre><code>
+                # config.yml
+                pipeline:
+                - name: WhitespaceTokenizer
+                - name: CountVectorsFeaturizer
+                - name: DIETClassifier
+                epochs: 150
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>2.2 Implementación de Mejoras Basadas en Retroalimentación:</h4>
+                <p>Incorporación de nuevas intenciones y respuestas basadas en la retroalimentación recibida.</p>
+                <pre><code>
+                # domain.yml
+                intents:
+                - greet
+                - ask_weather
+                - ask_time
+                - ask_date
+                responses:
+                utter_ask_date:
+                - text: "Today's date is April 1st."
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>3. Documentación y Presentación del Chatbot</h3>
+                <p><strong>Objetivo:</strong> Documentar el desarrollo del chatbot y preparar una presentación para compartir los resultados.</p>
+                <h4>3.1 Documentación del Proceso:</h4>
+                <p>Redacción de un informe detallado sobre el desarrollo, entrenamiento y ajuste del chatbot.</p>
+                <pre><code>
+                # Desarrollo de un Chatbot Básico
+                ## Introducción
+                Descripción del proyecto y objetivos.
+                ## Implementación
+                Detalles sobre la configuración del entorno, el modelo de NLP y las respuestas.
+                ## Evaluación
+                Métricas de evaluación y retroalimentación del usuario.
+                ## Mejoras
+                Ajustes y optimizaciones realizadas para mejorar el rendimiento del chatbot.
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>3.2 Preparación de la Presentación:</h4>
+                <p>Creación de diapositivas para presentar el desarrollo y los resultados del chatbot.</p>
+                <p>Incluir gráficos y tablas para ilustrar los resultados obtenidos.</p>
+              </div>
+              
+              <div class="slide">
+                <h3>Configuración del Entorno para el Desarrollo de Chatbots</h3>
+                <h3>Objetivos:</h3>
+                <ul>
+                  <li>Configurar el entorno de desarrollo necesario para implementar un chatbot.</li>
+                  <li>Instalar y verificar las bibliotecas y herramientas requeridas.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Instalación de Herramientas y Bibliotecas</h3>
+                <p><strong>Objetivo:</strong> Asegurar que todos los participantes tengan el entorno de desarrollo correctamente configurado.</p>
+                <h4>1.1 Instalación de Python y Bibliotecas Esenciales:</h4>
+                <p>Instalación de Python (si no está ya instalado).</p>
+                <p>Instalación de Rasa y otras bibliotecas necesarias.</p>
+                <pre><code>
+                pip install rasa
+                pip install rasa[transformers]
+                pip install spacy
+                python -m spacy download en_core_web_sm
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>1.2 Configuración del Entorno de Desarrollo:</h4>
+                <p>Uso de Visual Studio Code o Jupyter Notebook para el desarrollo.</p>
+                <p>Instalación de extensiones relevantes para la codificación en Python.</p>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Verificación de la Configuración</h3>
+                <p><strong>Objetivo:</strong> Verificar que todas las instalaciones y configuraciones estén funcionando correctamente.</p>
+                <h4>2.1 Prueba de Instalación de Rasa:</h4>
+                <p>Creación de un nuevo proyecto de Rasa.</p>
+                <pre><code>
+                rasa init
+                </code></pre>
+                <p>Ejecución del servidor de Rasa para verificar la instalación.</p>
+                <pre><code>
+                rasa shell
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>2.2 Verificación de SpaCy:</h4>
+                <p>Ejecución de un script de prueba para asegurarse de que SpaCy está funcionando correctamente.</p>
+                <pre><code>
+                import spacy
+                nlp = spacy.load("en_core_web_sm")
+                doc = nlp("Chatbots are transforming customer service.")
+                for token in doc:
+                  print(token.text, token.lemma_, token.pos_)
+                </code></pre>
+              </div>
+              
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

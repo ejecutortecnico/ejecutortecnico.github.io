@@ -10,7 +10,129 @@
 </head>
     <body>
         <div class="container">
-    
+            <div class="slide">
+                <h2>Simulación (Lección 5) - Implementación del Chatbot</h2>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Creación del Proyecto de Chatbot</h3>
+                <p><strong>Objetivo:</strong> Configurar el proyecto de Rasa y definir las intenciones y entidades.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>1.1 Estructura del Proyecto:</h4>
+                <p>Creación de la estructura básica del proyecto de Rasa.</p>
+                <pre><code>rasa init --no-prompt</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>1.2 Definición de Intenciones y Entidades:</h4>
+                <p>Añadir nuevas intenciones y entidades en el archivo de datos de entrenamiento (`nlu.yml`).</p>
+                <pre><code>
+                # nlu.yml
+                nlu:
+                - intent: greet
+                  examples: |
+                    - hello
+                    - hi
+                    - hey
+                    - good morning
+                    - good evening
+                - intent: ask_weather
+                  examples: |
+                    - what's the weather like today?
+                    - tell me the weather
+                    - will it rain today?
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>1.3 Configuración del Dominio:</h4>
+                <p>Definir las respuestas del chatbot en el archivo de dominio (`domain.yml`).</p>
+                <pre><code>
+                # domain.yml
+                intents:
+                - greet
+                - ask_weather
+                responses:
+                  utter_greet:
+                  - text: "Hello! How can I assist you today?"
+                  utter_ask_weather:
+                  - text: "The weather is sunny."
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Entrenamiento del Modelo de NLP</h3>
+                <p><strong>Objetivo:</strong> Entrenar el modelo de Rasa para entender las intenciones del usuario.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>2.1 Entrenamiento del Modelo:</h4>
+                <p>Ejecutar el comando de entrenamiento de Rasa.</p>
+                <pre><code>rasa train</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>2.2 Evaluación del Modelo:</h4>
+                <p>Verificación de la precisión del modelo utilizando datos de prueba.</p>
+                <pre><code>rasa test nlu</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>3. Desarrollo de Acciones Personalizadas</h3>
+                <p><strong>Objetivo:</strong> Implementar acciones personalizadas para mejorar la funcionalidad del chatbot.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>3.1 Definición de Acciones Personalizadas:</h4>
+                <p>Crear un archivo de acciones (`actions.py`) y definir acciones personalizadas.</p>
+                <pre><code>
+                from rasa_sdk import Action, Tracker
+                from rasa_sdk.executor import CollectingDispatcher
+                class ActionTellWeather(Action):
+                    def name(self) -> str:
+                        return "action_tell_weather"
+                    def run(self, dispatcher: CollectingDispatcher,
+                            tracker: Tracker,
+                            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+                        dispatcher.utter_message(text="The weather is sunny.")
+                        return []
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>3.2 Configuración de Acciones Personalizadas:</h4>
+                <p>Añadir las acciones personalizadas en el archivo de dominio (`domain.yml`).</p>
+                <pre><code>
+                actions:
+                - action_tell_weather
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>3.3 Ejecutar el Servidor de Acciones:</h4>
+                <p>Iniciar el servidor de acciones para que el chatbot pueda utilizar las acciones personalizadas.</p>
+                <pre><code>rasa run actions</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>4. Prueba y Depuración del Chatbot</h3>
+                <p><strong>Objetivo:</strong> Probar el chatbot en un entorno interactivo y depurar cualquier problema.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>4.1 Prueba del Chatbot:</h4>
+                <p>Ejecutar el chatbot en modo interactivo para realizar pruebas.</p>
+                <pre><code>rasa shell</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>4.2 Depuración de Problemas:</h4>
+                <p>Identificar y solucionar problemas encontrados durante la prueba.</p>
+                <p>Ajustar el modelo y las respuestas según sea necesario.</p>
+              </div>
+              
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

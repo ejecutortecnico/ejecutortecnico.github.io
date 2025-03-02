@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h2>Preparación (Lección 1) - Introducción a los Fundamentos de Machine Learning</h2>
+              </div>
+              
+              <div class="slide">
+                <h3>Objetivos</h3>
+                <ul>
+                  <li>Comprender los principios básicos del machine learning.</li>
+                  <li>Familiarizarse con los tipos de machine learning y sus aplicaciones.</li>
+                  <li>Conocer los algoritmos más comunes utilizados en machine learning.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Fundamentos de Machine Learning</h3>
+                <p><strong>Objetivo:</strong> Proporcionar una comprensión básica de qué es el machine learning y cómo se aplica en diversos contextos.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Definición de Machine Learning</h4>
+                <ul>
+                  <li>¿Qué es el machine learning?</li>
+                  <li>Diferencia entre machine learning y programación tradicional.</li>
+                  <li>Aplicaciones del machine learning en la vida cotidiana.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Tipos de Machine Learning</h4>
+                <ul>
+                  <li>Aprendizaje Supervisado.</li>
+                  <li>Aprendizaje No Supervisado.</li>
+                  <li>Aprendizaje Semi-supervisado.</li>
+                  <li>Aprendizaje por Refuerzo.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Ciclo de Vida de un Proyecto de Machine Learning</h4>
+                <ul>
+                  <li>Definición del problema.</li>
+                  <li>Recolección y preparación de datos.</li>
+                  <li>Selección de un modelo.</li>
+                  <li>Entrenamiento del modelo.</li>
+                  <li>Evaluación y validación del modelo.</li>
+                  <li>Despliegue y monitoreo del modelo.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Algoritmos Comunes de Machine Learning</h3>
+                <p><strong>Objetivo:</strong> Conocer los algoritmos más utilizados en machine learning y sus aplicaciones.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Regresión Lineal</h4>
+                <p>Conceptos básicos.</p>
+                <pre><code>
+              from sklearn.linear_model import LinearRegression
+              model = LinearRegression()
+              model.fit(X_train, y_train)
+              predictions = model.predict(X_test)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Árboles de Decisión</h4>
+                <p>Conceptos básicos.</p>
+                <pre><code>
+              from sklearn.tree import DecisionTreeClassifier
+              model = DecisionTreeClassifier()
+              model.fit(X_train, y_train)
+              predictions = model.predict(X_test)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Máquinas de Soporte Vectorial (SVM)</h4>
+                <p>Conceptos básicos.</p>
+                <pre><code>
+              from sklearn.svm import SVC
+              model = SVC()
+              model.fit(X_train, y_train)
+              predictions = model.predict(X_test)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Redes Neuronales</h4>
+                <p>Conceptos básicos.</p>
+                <pre><code>
+              from tensorflow.keras.models import Sequential
+              from tensorflow.keras.layers import Dense
+              model = Sequential()
+              model.add(Dense(12, input_dim=8, activation='relu'))
+              model.add(Dense(8, activation='relu'))
+              model.add(Dense(1, activation='sigmoid'))
+              model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+              model.fit(X_train, y_train, epochs=150, batch_size=10)
+              predictions = model.predict(X_test)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>3. Aplicaciones Prácticas de Machine Learning</h3>
+                <p><strong>Objetivo:</strong> Ver cómo se utilizan los algoritmos de machine learning en la práctica a través de estudios de caso.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Estudio de Caso 1: Predicción de Precios de Viviendas</h4>
+                <ul>
+                  <li>Descripción del problema.</li>
+                  <li>Datos utilizados.</li>
+                  <li>Algoritmo aplicado y resultados obtenidos.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Estudio de Caso 2: Detección de Fraudes en Transacciones Bancarias</h4>
+                <ul>
+                  <li>Descripción del problema.</li>
+                  <li>Datos utilizados.</li>
+                  <li>Algoritmo aplicado y resultados obtenidos.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Estudio de Caso 3: Clasificación de Imágenes</h4>
+                <ul>
+                  <li>Descripción del problema.</li>
+                  <li>Datos utilizados.</li>
+                  <li>Algoritmo aplicado y resultados obtenidos.</li>
+                </ul>
+              </div>              
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

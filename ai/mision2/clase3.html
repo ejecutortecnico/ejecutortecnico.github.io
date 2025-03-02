@@ -11,7 +11,90 @@
     <body>
         <div class="container">
     
-
+            <div class="slide">
+                <h2>Preparación (Lección 3) - Implementación de un Chatbot Básico</h2>
+                <h3>Objetivos:</h3>
+                <ul>
+                  <li>Implementar un chatbot básico utilizando técnicas de NLP.</li>
+                  <li>Entrenar y probar el chatbot para asegurar su funcionalidad.</li>
+                  <li>Mejorar el chatbot mediante el ajuste de parámetros y la adición de nuevas funcionalidades.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Implementación del Chatbot</h3>
+                <p><strong>Objetivo:</strong> Desarrollar e implementar un chatbot básico que responda preguntas frecuentes.</p>
+                <h4>1.1 Desarrollo del Modelo de NLP:</h4>
+                <p>Entrenamiento del modelo utilizando ejemplos de diálogo.</p>
+                <pre><code>
+                from rasa.nlu.training_data import load_data
+                from rasa.nlu.model import Trainer
+                from rasa.nlu import config
+                training_data = load_data("data/nlu.md")
+                trainer = Trainer(config.load("config.yml"))
+                interpreter = trainer.train(training_data)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>1.2 Configuración de Respuestas del Chatbot:</h4>
+                <p>Definición de respuestas automáticas a las intenciones del usuario.</p>
+                <pre><code>
+                # domain.yml
+                responses:
+                utter_greet:
+                - text: "Hello! How can I assist you today?"
+                utter_ask_weather:
+                - text: "It's sunny outside."
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>1.3 Prueba del Chatbot:</h4>
+                <p>Evaluación de la precisión del chatbot mediante pruebas interactivas.</p>
+                <pre><code>
+                rasa shell
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Mejora y Ajuste del Chatbot</h3>
+                <p><strong>Objetivo:</strong> Mejorar el chatbot mediante el ajuste de parámetros y la adición de nuevas funcionalidades.</p>
+                <h4>2.1 Ajuste de Parámetros del Modelo:</h4>
+                <p>Optimización del modelo de NLP para mejorar la precisión de las respuestas.</p>
+                <pre><code>
+                # config.yml
+                pipeline:
+                - name: WhitespaceTokenizer
+                - name: CountVectorsFeaturizer
+                - name: DIETClassifier
+                epochs: 100
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>2.2 Adición de Nuevas Funcionalidades:</h4>
+                <p>Implementación de nuevas intenciones y respuestas.</p>
+                <pre><code>
+                # domain.yml
+                intents:
+                - greet
+                - ask_weather
+                - ask_time
+                responses:
+                utter_ask_time:
+                - text: "The current time is 3 PM."
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>2.3 Evaluación y Validación del Chatbot:</h4>
+                <p>Pruebas finales para asegurar la funcionalidad y precisión del chatbot.</p>
+                <pre><code>
+                rasa test
+                </code></pre>
+              </div>
+              
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>
             <button onclick="nextSlide()">Siguiente</button>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h2>Simulación y Prosumidor (Lección 7) - Presentación y Discusión de Resultados</h2>
+              </div>
+              
+              <div class="slide">
+                <h3>Objetivos</h3>
+                <ul>
+                  <li>Presentar los resultados del proyecto de construcción y evaluación de modelos de machine learning.</li>
+                  <li>Recibir retroalimentación y discutir posibles mejoras.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Presentación del Proyecto</h3>
+                <p><strong>Objetivo:</strong> Compartir los hallazgos y resultados obtenidos durante el desarrollo del modelo.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Estructura de la Presentación</h4>
+                <ul>
+                  <li>Introducción al problema y objetivos del proyecto.</li>
+                  <li>Descripción del conjunto de datos y el preprocesamiento realizado.</li>
+                  <li>Implementación del modelo y resultados obtenidos.</li>
+                  <li>Optimización del modelo y resultados finales.</li>
+                  <li>Conclusiones y recomendaciones futuras.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Materiales de Apoyo</h4>
+                <ul>
+                  <li>Diapositivas con gráficos y tablas.</li>
+                  <li>Código fuente documentado y resultados visualizados.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Discusión y Retroalimentación</h3>
+                <p><strong>Objetivo:</strong> Recibir retroalimentación constructiva y discutir posibles mejoras y futuros desarrollos del proyecto.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Evaluación de Resultados</h4>
+                <p>Análisis crítico de los resultados obtenidos y su significado.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Retroalimentación</h4>
+                <p>Recepción de sugerencias y comentarios para mejorar el proyecto.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Planificación de Mejoras Futuras</h4>
+                <p>Identificación de áreas de mejora y planificación de pasos futuros para el proyecto.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Desarrollo de un Pequeño Proyecto de Machine Learning</h2>
+              </div>
+              
+              <div class="slide">
+                <h3>Objetivos</h3>
+                <ul>
+                  <li>Identificar un problema específico que pueda ser resuelto utilizando técnicas de machine learning.</li>
+                  <li>Desarrollar y entrenar un modelo de machine learning para abordar el problema seleccionado.</li>
+                  <li>Evaluar y presentar los resultados del proyecto.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Selección y Definición del Proyecto</h3>
+                <p><strong>Objetivo:</strong> Identificar un problema específico y definir el alcance del proyecto de machine learning.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Selección del Problema</h4>
+                <p>Realizar un brainstorming para identificar posibles problemas que se puedan resolver con machine learning.</p>
+                <ul>
+                  <li>Predicción de precios de viviendas.</li>
+                  <li>Clasificación de correos electrónicos como spam o no spam.</li>
+                  <li>Predicción de enfermedades a partir de datos médicos.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Definición del Proyecto</h4>
+                <p><strong>Título:</strong> Clasificación de correos electrónicos como spam o no spam.</p>
+                <p><strong>Descripción:</strong> Desarrollar un modelo de machine learning que clasifique correos electrónicos en dos categorías: spam y no spam.</p>
+                <ul>
+                  <li>Recolectar y preparar un conjunto de datos de correos electrónicos.</li>
+                  <li>Implementar un algoritmo de clasificación (por ejemplo, Naive Bayes).</li>
+                  <li>Evaluar el rendimiento del modelo.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Recolección y Preprocesamiento de Datos</h3>
+                <p><strong>Objetivo:</strong> Recolectar y preparar los datos necesarios para el proyecto.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Recolección de Datos</h4>
+                <p>Utilizar un conjunto de datos público de correos electrónicos (por ejemplo, el dataset de spam de Enron).</p>
+                <pre><code>
+              import pandas as pd
+              url = 'https://raw.githubusercontent.com/selva86/datasets/master/SMSSpamCollection'
+              df = pd.read_csv(url, sep='\t', header=None, names=['label', 'message'])
+              print(df.head())
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Preprocesamiento de Datos</h4>
+                <p>Limpieza y transformación de los datos para el modelado.</p>
+                <pre><code>
+              import re
+              from nltk.corpus import stopwords
+              def preprocess_text(text):
+                  text = re.sub(r'\W', ' ', text)
+                  text = text.lower()
+                  text = re.sub(r'\s+', ' ', text)
+                  return text
+              df['message'] = df['message'].apply(preprocess_text)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>División de Datos</h4>
+                <p>Dividir el conjunto de datos en entrenamiento y prueba.</p>
+                <pre><code>
+              from sklearn.model_selection import train_test_split
+              X = df['message']
+              y = df['label'].apply(lambda x: 1 if x == 'spam' else 0)
+              X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>3. Construcción y Entrenamiento del Modelo</h3>
+                <p><strong>Objetivo:</strong> Construir y entrenar un modelo de machine learning.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Vectorización del Texto</h4>
+                <pre><code>
+              from sklearn.feature_extraction.text import TfidfVectorizer
+              vectorizer = TfidfVectorizer(max_features=5000)
+              X_train_tfidf = vectorizer.fit_transform(X_train)
+              X_test_tfidf = vectorizer.transform(X_test)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Entrenamiento del Modelo</h4>
+                <pre><code>
+              from sklearn.naive_bayes import MultinomialNB
+              model = MultinomialNB()
+              model.fit(X_train_tfidf, y_train)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>4. Optimización y Evaluación del Modelo</h3>
+              </div>
+              
+              <div class="slide">
+                <h4>Ajuste de Hiperparámetros</h4>
+                <pre><code>
+              from sklearn.model_selection import GridSearchCV
+              param_grid = {'alpha': [0.1, 0.5, 1.0]}
+              grid_search = GridSearchCV(MultinomialNB(), param_grid, cv=5)
+              grid_search.fit(X_train_tfidf, y_train)
+              print(f'Best Parameters: {grid_search.best_params_}')
+              best_model = grid_search.best_estimator_
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Evaluación del Modelo Optimizado</h4>
+                <pre><code>
+              best_model.fit(X_train_tfidf, y_train)
+              y_pred_optimized = best_model.predict(X_test_tfidf)
+              print(f'Optimized Accuracy: {accuracy_score(y_test, y_pred_optimized)}')
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>5. Documentación y Presentación de Resultados</h3>
+                <p>Preparar un informe detallado y diapositivas para presentar los resultados.</p>
+              </div>
+              
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

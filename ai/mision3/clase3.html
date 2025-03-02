@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h2>Preparación (Lección 3) - Construcción y Entrenamiento de Modelos</h2>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Selección de Algoritmos de Machine Learning</h3>
+                <p><strong>Objetivo:</strong> Entender cómo seleccionar el algoritmo de machine learning adecuado para un problema específico.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Criterios de Selección</h4>
+                <ul>
+                  <li>Tipo de problema (regresión, clasificación).</li>
+                  <li>Tamaño y calidad del conjunto de datos.</li>
+                  <li>Interpretabilidad del modelo.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Comparación de Algoritmos</h4>
+                <ul>
+                  <li>Ventajas y desventajas de diferentes algoritmos.</li>
+                  <li>Casos de uso comunes para cada algoritmo.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Construcción y Entrenamiento de Modelos</h3>
+                <p><strong>Objetivo:</strong> Aprender a construir y entrenar modelos de machine learning utilizando diferentes algoritmos.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Regresión Lineal</h4>
+                <p>Construcción y entrenamiento del modelo.</p>
+                <pre><code>
+              from sklearn.linear_model import LinearRegression
+              model = LinearRegression()
+              model.fit(X_train, y_train)
+              predictions = model.predict(X_test)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Árboles de Decisión</h4>
+                <p>Construcción y entrenamiento del modelo.</p>
+                <pre><code>
+              from sklearn.tree import DecisionTreeClassifier
+              model = DecisionTreeClassifier()
+              model.fit(X_train, y_train)
+              predictions = model.predict(X_test)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Máquinas de Soporte Vectorial (SVM)</h4>
+                <p>Construcción y entrenamiento del modelo.</p>
+                <pre><code>
+              from sklearn.svm import SVC
+              model = SVC()
+              model.fit(X_train, y_train)
+              predictions = model.predict(X_test)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Redes Neuronales</h4>
+                <p>Construcción y entrenamiento del modelo.</p>
+                <pre><code>
+              from tensorflow.keras.models import Sequential
+              from tensorflow.keras.layers import Dense
+              model = Sequential()
+              model.add(Dense(12, input_dim=8, activation='relu'))
+              model.add(Dense(8, activation='relu'))
+              model.add(Dense(1, activation='sigmoid'))
+              model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+              model.fit(X_train, y_train, epochs=150, batch_size=10)
+              predictions = model.predict(X_test)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>3. Evaluación del Rendimiento del Modelo</h3>
+                <p><strong>Objetivo:</strong> Aprender a evaluar el rendimiento de los modelos utilizando métricas apropiadas y técnicas de validación.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Métricas de Evaluación</h4>
+                <p>Precisión, recall, F1-score, AUC-ROC.</p>
+                <pre><code>
+              from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+              accuracy = accuracy_score(y_test, predictions)
+              precision = precision_score(y_test, predictions)
+              recall = recall_score(y_test, predictions)
+              f1 = f1_score(y_test, predictions)
+              auc = roc_auc_score(y_test, predictions)
+              print(f'Accuracy: {accuracy}')
+              print(f'Precision: {precision}')
+              print(f'Recall: {recall}')
+              print(f'F1 Score: {f1}')
+              print(f'AUC-ROC: {auc}')
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Validación Cruzada</h4>
+                <p>Aplicación de técnicas de validación cruzada para evaluar el rendimiento del modelo.</p>
+                <pre><code>
+              from sklearn.model_selection import cross_val_score
+              scores = cross_val_score(model, X, y, cv=5)
+              print(f'Cross-Validation Scores: {scores}')
+              print(f'Mean Score: {scores.mean()}')
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>Ajuste de Hiperparámetros</h4>
+                <p>Técnicas para ajustar los hiperparámetros del modelo para mejorar su rendimiento.</p>
+                <pre><code>
+              from sklearn.model_selection import GridSearchCV
+              param_grid = {'C': [0.1, 1, 10], 'gamma': [1, 0.1, 0.01]}
+              grid_search = GridSearchCV(SVC(), param_grid, cv=5)
+              grid_search.fit(X_train, y_train)
+              print(f'Best Parameters: {grid_search.best_params_}')
+              best_model = grid_search.best_estimator_
+              best_predictions = best_model.predict(X_test)
+                </code></pre>
+              </div>
+              
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

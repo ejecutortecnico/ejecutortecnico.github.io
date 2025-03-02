@@ -10,7 +10,88 @@
 </head>
     <body>
         <div class="container">
-    
+            <div class="slide">
+                <h2>Simulación (Lección 6) - Entrenamiento y Prueba del Chatbot</h2>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Entrenamiento del Chatbot con Datos Reales</h3>
+                <p><strong>Objetivo:</strong> Entrenar el chatbot utilizando un conjunto de datos más amplio y realista.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>1.1 Recolección de Datos:</h4>
+                <ul>
+                  <li>Obtener un conjunto de datos de diálogo para entrenar el chatbot.</li>
+                  <li>Formatear los datos según las necesidades del proyecto de Rasa.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>1.2 Entrenamiento del Modelo con Datos Reales:</h4>
+                <p>Añadir nuevos ejemplos de intenciones y entidades en <code>nlu.yml</code>.</p>
+                <p>Entrenar el modelo con los nuevos datos.</p>
+                <pre><code>rasa train</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>1.3 Evaluación del Modelo:</h4>
+                <p>Evaluar la precisión del modelo utilizando un conjunto de datos de prueba.</p>
+                <pre><code>rasa test nlu</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Prueba del Chatbot en un Entorno Simulado</h3>
+                <p><strong>Objetivo:</strong> Evaluar el rendimiento del chatbot en un entorno controlado.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>2.1 Configuración del Entorno de Prueba:</h4>
+                <ul>
+                  <li>Crear un entorno simulado para probar las respuestas del chatbot.</li>
+                  <li>Utilizar Rasa X para una interfaz gráfica de pruebas.</li>
+                </ul>
+                <pre><code>rasa x</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>2.2 Prueba Interactiva:</h4>
+                <ul>
+                  <li>Interactuar con el chatbot y registrar las respuestas.</li>
+                  <li>Identificar áreas de mejora.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>3. Mejora de la Precisión del Chatbot</h3>
+                <p><strong>Objetivo:</strong> Optimizar el rendimiento del chatbot mediante ajustes y mejoras.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>3.1 Ajuste de Hiperparámetros:</h4>
+                <p>Ajustar los hiperparámetros del modelo de NLP para mejorar la precisión.</p>
+                <pre><code>pipeline:
+              - name: WhitespaceTokenizer
+              - name: CountVectorsFeaturizer
+              - name: DIETClassifier
+              epochs: 200</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>3.2 Incorporación de Nuevos Datos:</h4>
+                <ul>
+                  <li>Añadir nuevos ejemplos y mejorar la diversidad del conjunto de datos.</li>
+                  <li>Reentrenar el modelo con los datos adicionales.</li>
+                </ul>
+                <pre><code>rasa train</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h4>3.3 Evaluación Continua:</h4>
+                <p>Realizar pruebas periódicas para asegurar que el chatbot mantiene su precisión y funcionalidad.</p>
+                <pre><code>rasa test nlu</code></pre>
+              </div>
+              
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

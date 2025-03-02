@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 7: Simulación y Prosumidor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Slide: Título de la Lección -->
+<div class="slide active">
+    <h1>Simulación (Lección 5)</h1>
+    <h2>Implementación de Modelos de Regresión en Python</h2>
+    <p>Explora cómo construir y evaluar modelos de regresión lineal y logística utilizando herramientas de Python.</p>
+</div>
+
+<!-- Slide: Objetivos -->
+<div class="slide">
+    <h2>Objetivos</h2>
+    <ul>
+        <li>Implementar modelos de regresión lineal y logística utilizando <code>scikit-learn</code>.</li>
+        <li>Evaluar el rendimiento de los modelos utilizando métricas estándar.</li>
+    </ul>
+</div>
+
+<!-- Slide: Contenidos -->
+<div class="slide">
+    <h2>Contenidos</h2>
+    <ol>
+        <li><strong>Modelos de Regresión Lineal</strong>
+            <ul>
+                <li>Implementación de un modelo de regresión lineal.</li>
+                <li>Evaluación del modelo utilizando MAE, MSE y R2.</li>
+            </ul>
+        </li>
+        <li><strong>Modelos de Regresión Logística</strong>
+            <ul>
+                <li>Implementación de un modelo de regresión logística.</li>
+                <li>Evaluación del modelo utilizando accuracy, precision, recall y F1 score.</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
+<!-- Slide: Implementación de Regresión Lineal -->
+<div class="slide">
+    <h2>Implementación de un Modelo de Regresión Lineal</h2>
+    <p>Pasos para implementar y evaluar un modelo de regresión lineal:</p>
+    <pre style="color: #00ff08;">
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+
+# Cargar datos
+df = pd.read_csv('data.csv')
+
+# Preparación de datos
+X = df[['feature1', 'feature2']]
+y = df['target']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Entrenamiento del modelo
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Predicción y evaluación
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+mae = mean_absolute_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+print(f'MSE: {mse}, MAE: {mae}, R2: {r2}')
+    </pre>
+</div>
+
+<!-- Slide: Implementación de Regresión Logística -->
+<div class="slide">
+    <h2>Implementación de un Modelo de Regresión Logística</h2>
+    <p>Pasos para implementar y evaluar un modelo de regresión logística:</p>
+    <pre style="color: #00ff08;">
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+# Cargar datos
+df = pd.read_csv('data_classification.csv')
+
+# Preparación de datos
+X = df[['feature1', 'feature2']]
+y = df['target']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Entrenamiento del modelo
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Predicción y evaluación
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+print(f'Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}, F1 Score: {f1}')
+    </pre>
+</div>
+
+<!-- Slide: Actividades Prácticas -->
+<div class="slide">
+    <h2>Actividades Prácticas</h2>
+    <ul>
+        <li><strong>Regresión Lineal:</strong> Implementar y evaluar un modelo de regresión lineal en Python.</li>
+        <li><strong>Regresión Logística:</strong> Implementar y evaluar un modelo de regresión logística en Python.</li>
+    </ul>
+</div>
+     
+
+        <!-- Navegación -->
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script src="../../js/slide.js"></script>
+</body>
+</html>

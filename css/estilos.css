@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     color: #ffffff;
-    background-image: url("../images/fondo.jpeg");
+    background-image: url("../../images/fondo.jpeg");
     backdrop-filter: blur(5px) brightness(50%);
     background-size:cover;
     background-repeat: no-repeat;

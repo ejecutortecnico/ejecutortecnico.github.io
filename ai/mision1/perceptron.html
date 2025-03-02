@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <div class="slide">
+    <h2>Ejemplo de Perceptrón</h2>
+    <p>Imagina un perceptrón en tu cerebro que trata de decidir si debes ir a un concierto.</p>
+    <p>¿El artista es bueno? ¿El clima es favorable? ¿Qué importancia tienen estos factores?</p>
+</div><div class="slide">
+    <h2>Criterios y Pesos</h2>
+    <table>
+        <tr>
+            <th>Criterio</th>
+            <th>Entrada (x)</th>
+            <th>Peso (w)</th>
+        </tr>
+        <tr>
+            <td>El artista es bueno</td>
+            <td>x1 = 0 o 1</td>
+            <td>w1 = 0.7</td>
+        </tr>
+        <tr>
+            <td>El clima es bueno</td>
+            <td>x2 = 0 o 1</td>
+            <td>w2 = 0.6</td>
+        </tr>
+        <tr>
+            <td>Un amigo irá</td>
+            <td>x3 = 0 o 1</td>
+            <td>w3 = 0.5</td>
+        </tr>
+        <tr>
+            <td>Se servirá comida</td>
+            <td>x4 = 0 o 1</td>
+            <td>w4 = 0.3</td>
+        </tr>
+        <tr>
+            <td> Se servirá alcohol</td>
+            <td>x5 = 0 o 1</td>
+            <td>w5 = 0.4</td>
+        </tr>
+    </table>
+</div><div class="slide">
+    <h2>El Algoritmo del Perceptrón</h2>
+    <ol>
+        <li>Establecer un valor umbral.</li>
+        <li>Multiplicar todas las entradas por sus pesos.</li>
+        <li>Sumar todos los resultados.</li>
+        <li>Activar la salida.</li>
+    </ol>
+</div><div class="slide">
+    <h2>1. Establecer un Umbral</h2>
+    <p>Umbral = 1.5</p>
+</div><div class="slide">
+    <h2>2. Multiplicar Entradas por sus Pesos</h2>
+    <ul>
+        <li>x1 * w1 = 1 * 0.7 = 0.7</li>
+        <li>x2 * w2 = 0 * 0.6 = 0</li>
+        <li>x3 * w3 = 1 * 0.5 = 0.5</li>
+        <li>x4 * w4 = 0 * 0.3 = 0</li>
+        <li>x5 * w5 = 1 * 0.4 = 0.4</li>
+    </ul>
+</div><div class="slide">
+    <h2>3. Sumar los Resultados</h2>
+    <p>Suma ponderada: 0.7 + 0 + 0.5 + 0 + 0.4 = 1.6</p>
+</div><div class="slide">
+    <h2>4. Activar la Salida</h2>
+    <p>Si la suma es mayor que el umbral, la decisión es positiva.</p>
+    <p><strong>1.6 > 1.5 → Sí, iré al concierto.</strong></p>
+</div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

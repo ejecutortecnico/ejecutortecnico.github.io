@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 7: Simulación y Prosumidor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+      
+        <!-- Slide: Título de la Lección -->
+<div class="slide active">
+    <h1>Simulación y Prosumidores (Lección 7)</h1>
+    <h2>Evaluación y Comparación de Modelos</h2>
+    <p>Comparación de enfoques en Python y R para modelado predictivo.</p>
+</div>
+
+<!-- Slide: Objetivos -->
+<div class="slide">
+    <h2>Objetivos</h2>
+    <ul>
+        <li>Comparar el rendimiento de los modelos implementados en Python y R.</li>
+        <li>Discutir las ventajas y desventajas de cada enfoque.</li>
+    </ul>
+</div>
+
+<!-- Slide: Contenidos -->
+<div class="slide">
+    <h2>Contenidos</h2>
+    <ol>
+        <li><strong>Comparación de Métricas de Evaluación</strong>
+            <ul>
+                <li>Comparar MSE, MAE y R2 para modelos de regresión.</li>
+                <li>Comparar accuracy, precision, recall y F1 score para modelos de clasificación.</li>
+            </ul>
+        </li>
+        <li><strong>Discusión de Resultados</strong>
+            <ul>
+                <li>Análisis de los resultados obtenidos en cada modelo.</li>
+                <li>Discusión sobre las ventajas y desventajas de usar Python vs R para el modelado de datos.</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
+<!-- Slide: Actividades Prácticas -->
+<div class="slide">
+    <h2>Actividades Prácticas</h2>
+    <ol>
+        <li><strong>Comparación de Resultados:</strong>
+            <ul>
+                <li>Comparar y documentar las métricas de evaluación obtenidas en Python y R.</li>
+                <li>Preparar un informe con los hallazgos y conclusiones.</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
+<!-- Slide: Proyecto Práctico -->
+<div class="slide">
+    <h2>Implementación de un Proyecto Práctico</h2>
+    <p><strong>Objetivo General:</strong> Desarrollar un proyecto práctico de modelado de datos que aborde un problema real utilizando herramientas y bibliotecas en Python y R.</p>
+    <p><strong>Objetivos Específicos:</strong></p>
+    <ul>
+        <li>Integrar conocimientos de manipulación de datos, modelado predictivo y evaluación de modelos.</li>
+        <li>Desarrollar un proyecto desde la carga de datos hasta la implementación y evaluación del modelo.</li>
+        <li>Documentar y presentar resultados de manera clara y concisa.</li>
+    </ul>
+</div>
+
+<!-- Slide: Habilidades Digitales -->
+<div class="slide">
+    <h2>Habilidades Digitales a Desarrollar</h2>
+    <ul>
+        <li>Aplicación práctica de técnicas de análisis y modelado de datos.</li>
+        <li>Uso de bibliotecas avanzadas de Python y R para el modelado predictivo.</li>
+        <li>Evaluación y optimización de modelos.</li>
+        <li>Presentación de resultados y conclusiones.</li>
+    </ul>
+</div>
+
+<!-- Slide: Contenidos del Proyecto -->
+<div class="slide">
+    <h2>Contenidos a Abordar</h2>
+    <ol>
+        <li><strong>Selección del Proyecto:</strong> Identificación del problema, selección de datos y planteamiento de objetivos.</li>
+        <li><strong>Carga y Preprocesamiento de Datos:</strong> Cargar, limpiar y explorar datos en Python y R.</li>
+        <li><strong>Implementación del Modelo:</strong> Selección, entrenamiento y evaluación del modelo.</li>
+        <li><strong>Documentación y Presentación:</strong> Preparar un informe detallado y visualización de resultados.</li>
+    </ol>
+</div>
+
+<!-- Slide: Código de Selección de Datos -->
+<div class="slide">
+    <h2>Código: Selección de Datos</h2>
+    <pre style="color: #00ff08;">
+# Python
+import pandas as pd
+df = pd.read_csv('data.csv')
+print(df.head())
+
+# R
+library(tidyverse)
+df <- read_csv('data.csv')
+head(df)
+    </pre>
+</div>
+
+<!-- Slide: Código de Preprocesamiento -->
+<div class="slide">
+    <h2>Código: Preprocesamiento de Datos</h2>
+    <pre style="color: #00ff08;">
+# Python
+df.dropna(inplace=True)  # Eliminar valores faltantes
+df['feature'] = df['feature'].apply(lambda x: x.strip())
+print(df.describe())
+
+# R
+df <- df %>% drop_na() %>% mutate(feature = str_trim(feature))
+summary(df)
+    </pre>
+</div>
+
+<!-- Slide: Implementación de Modelos -->
+<div class="slide">
+    <h2>Código: Implementación de Modelos</h2>
+    <p><strong>Python:</strong></p>
+    <pre style="color: #00ff08;">
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+X = df[['feature1', 'feature2']]
+y = df['target']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+model = LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'MSE: {mse}')
+    </pre>
+    <p><strong>R:</strong></p>
+    <pre style="color: #00ff08;">
+library(caret)
+set.seed(42)
+trainIndex <- createDataPartition(df$target, p = .8, list = FALSE)
+trainData <- df[trainIndex,]
+testData <- df[-trainIndex,]
+model <- train(target ~ feature1 + feature2, data = trainData, method = "lm")
+predictions <- predict(model, newdata = testData)
+mse <- mean((testData$target - predictions)^2)
+print(paste("MSE:", mse))
+    </pre>
+</div>
+
+<!-- Slide: Visualización de Resultados -->
+<div class="slide">
+    <h2>Código: Visualización de Resultados</h2>
+    <p><strong>Python:</strong></p>
+    <pre style="color: #00ff08;">
+import matplotlib.pyplot as plt
+plt.scatter(X_test['feature1'], y_test, color='blue', label='Actual')
+plt.scatter(X_test['feature1'], y_pred, color='red', label='Predicted')
+plt.xlabel('Feature1')
+plt.ylabel('Target')
+plt.title('Actual vs Predicted')
+plt.legend()
+plt.show()
+    </pre>
+    <p><strong>R:</strong></p>
+    <pre style="color: #00ff08;">
+library(ggplot2)
+ggplot(data=testData, aes(x=feature1, y=target)) +
+    geom_point(color='blue') +
+    geom_point(aes(y=predictions), color='red') +
+    labs(title='Actual vs Predicted', x='Feature1', y='Target') +
+    theme_minimal()
+    </pre>
+</div>
+
+        <!-- Navegación -->
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script src="../../js/slide.js"></script>
+</body>
+</html>

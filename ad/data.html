@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis Presentation</title>
+    <link rel="stylesheet" href="../../css/estilos.css"> </head>
+<body>
+    <div class="slide active">
+        <h1>Welcome to the Data Analysis Presentation</h1>
+        <p>This presentation will explore insights from our dataset.</p>
+        <button class="nav-button" onclick="showSlide(1)">Next</button>
+    </div>
+
+    <div class="slide hidden" id="slide1">
+        <h2>Data Overview</h2>
+        <p>Our dataset contains information about [describe your data].</p>
+        <ul>
+            <li>Key variables: [list key variables]</li>
+            <li>Data size: [number of rows and columns]</li>
+        </ul>
+        <button class="nav-button" onclick="showSlide(0)">Previous</button>
+        <button class="nav-button" onclick="showSlide(2)">Next</button>
+    </div>
+
+    <div class="slide hidden" id="slide2">
+        <h2>Exploratory Data Analysis (EDA)</h2>
+        <p>EDA reveals interesting patterns and trends.</p>
+        <img src="images/eda_plot.png" alt="EDA Plot">
+        <p>Key findings:</p>
+        <ul>
+            <li>[Finding 1]</li>
+            <li>[Finding 2]</li>
+        </ul>
+        <button class="nav-button" onclick="showSlide(1)">Previous</button>
+        <button class="nav-button" onclick="showSlide(3)">Next</button>
+    </div>
+
+    <div class="slide hidden" id="slide3">
+        <h2>Model Building and Evaluation</h2>
+        <p>We built a [model type] model to predict [target variable].</p>
+        <pre>
+            # Model code snippet
+            model = ...
+            model.fit(...)
+            predictions = model.predict(...)
+        </pre>
+        <p>Model performance metrics:</p>
+        <ul>
+            <li>Accuracy: [value]</li>
+            <li>Precision: [value]</li>
+            <li>Recall: [value]</li>
+        </ul>
+        <button class="nav-button" onclick="showSlide(2)">Previous</button>
+        <button class="nav-button" onclick="showSlide(4)">Next</button>
+    </div>
+
+    <div class="slide hidden" id="slide4">
+        <h2>Conclusion and Future Work</h2>
+        <p>Our analysis provides valuable insights into [key insights].</p>
+        <p>Future work may involve:</p>
+        <ul>
+            <li>[Future direction 1]</li>
+            <li>[Future direction 2]</li>
+        </ul>
+        <button class="nav-button" onclick="showSlide(3)">Previous</button>
+    </div>
+
+    <script>
+        function showSlide(slideIndex) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => {
+                slide.classList.add('hidden');
+            });
+            slides[slideIndex].classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

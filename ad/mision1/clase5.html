@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación - Análisis Descriptivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <h1>Simulación: Análisis Descriptivo</h1>
+            <h2>Lección 5</h2>
+            <p>Implementa un análisis descriptivo utilizando Python para interpretar patrones en los datos.</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <h2>Objetivos</h2>
+            <ul>
+                <li>Realizar un análisis descriptivo completo utilizando Python.</li>
+                <li>Aplicar técnicas de limpieza, preprocesamiento y visualización de datos.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+            <h2>Carga y Limpieza de Datos</h2>
+            <pre><code># Importar bibliotecas necesarias
+import pandas as pd
+import numpy as np
+
+# Cargar datos desde un archivo CSV
+df = pd.read_csv('ventas.csv')
+print(df.head())
+
+# Identificar y manejar valores faltantes
+print(df.isnull().sum())
+df.fillna(df.mean(), inplace=True)
+
+# Eliminar registros duplicados
+df.drop_duplicates(inplace=True)
+
+# Manejo de outliers
+Q1 = df.quantile(0.25)
+Q3 = df.quantile(0.75)
+IQR = Q3 - Q1
+df = df[~((df < (Q1 - 1.5 * IQR)) | (df > (Q3 + 1.5 * IQR))).any(axis=1)]</code></pre>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide">
+            <h2>Análisis Descriptivo</h2>
+            <pre><code># Estadísticas descriptivas
+print(df.describe())
+
+# Medidas de tendencia central y dispersión
+media = df['ventas'].mean()
+mediana = df['ventas'].median()
+desviacion_estandar = df['ventas'].std()
+print(f'Media: {media}')
+print(f'Mediana: {mediana}')
+print(f'Desviación Estándar: {desviacion_estandar}')</code></pre>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide">
+            <h2>Visualización de Datos</h2>
+            <h3>Histograma</h3>
+            <pre><code># Histograma de ventas
+import matplotlib.pyplot as plt
+
+df['ventas'].hist()
+plt.title('Distribución de Ventas')
+plt.xlabel('Ventas')
+plt.ylabel('Frecuencia')
+plt.show()</code></pre>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide">
+            <h2>Visualización de Datos</h2>
+            <h3>Gráfico de Barras</h3>
+            <pre><code># Gráfico de barras de ventas por categoría
+df.groupby('categoria')['ventas'].mean().plot(kind='bar')
+plt.title('Ventas Promedio por Categoría')
+plt.xlabel('Categoría')
+plt.ylabel('Ventas Promedio')
+plt.show()</code></pre>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide">
+            <h2>Actividad Práctica</h2>
+            <ol>
+                <li>Realizar un análisis descriptivo completo del conjunto de datos <code>ventas.csv</code>.</li>
+                <li>Identificar patrones o anomalías en los datos.</li>
+                <li>Visualizar las relaciones principales utilizando gráficos.</li>
+            </ol>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="slide">
+            <h2>Discusión</h2>
+            <ul>
+                <li>¿Qué patrones identificaste en los datos?</li>
+                <li>¿Qué conclusiones puedes extraer sobre las ventas?</li>
+                <li>Comparte tus hallazgos con el grupo.</li>
+            </ul>
+        </div>
+
+        <!-- Botones de navegación -->
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script src="../../js/slide.js"></script>
+</body>
+</html>

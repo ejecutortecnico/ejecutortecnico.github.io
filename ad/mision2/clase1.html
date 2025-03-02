@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 7: Simulación y Prosumidor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+       <!-- Slide 1 -->
+    <div class="slide active">
+        <h1>Lección 1</h1>
+        <h2>Introducción a Herramientas de Análisis de Datos en Python</h2>
+        <p>Objetivos:</p>
+        <ul>
+            <li>Introducir bibliotecas fundamentales para análisis de datos en Python.</li>
+            <li>Realizar operaciones básicas de manipulación de datos.</li>
+            <li>Crear visualizaciones iniciales para la exploración de datos.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <h2>Instalación y Configuración</h2>
+        <ul>
+            <li>Instalación de Python y Jupyter Notebook.</li>
+            <li>Configuración del entorno de desarrollo.</li>
+        </ul>
+        <code># pip install jupyter</code>
+        <code># jupyter notebook</code>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <h2>Bibliotecas Fundamentales</h2>
+        <ul>
+            <li><strong>pandas:</strong> Manipulación de datos estructurados.</li>
+            <li><strong>numpy:</strong> Operaciones numéricas.</li>
+            <li><strong>matplotlib</strong> y <strong>seaborn:</strong> Visualización de datos.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+        <h2>Operaciones Básicas</h2>
+        <ul>
+            <li>Carga de datos desde archivos CSV.</li>
+            <li>Exploración y limpieza básica de datos.</li>
+            <li>Descripción estadística de datos.</li>
+        </ul>
+        <code>
+import pandas as pd<br>
+df = pd.read_csv('data.csv')<br>
+print(df.head())
+        </code>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+        <h2>Visualización de Datos</h2>
+        <p>Creación de gráficos básicos:</p>
+        <ul>
+            <li>Histogramas</li>
+            <li>Gráficos de barras</li>
+            <li>Gráficos de dispersión</li>
+        </ul>
+        <code>
+import matplotlib.pyplot as plt<br>
+sns.histplot(df['column'], bins=10)<br>
+plt.show()
+        </code>
+    </div>
+        <!-- Navegación -->
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script src="../../js/slide.js"></script>
+</body>
+</html>

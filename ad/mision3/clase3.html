@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 7: Simulación y Prosumidor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="slide">
+            <h2>Normalización, Estandarización y Manejo de Outliers</h2>
+            <h3>Objetivos</h3>
+            <ul>
+              <li>Comprender la importancia de la normalización y estandarización de datos en el análisis predictivo.</li>
+              <li>Aprender técnicas para identificar y manejar outliers en conjuntos de datos.</li>
+              <li>Practicar la implementación de métodos de normalización, estandarización y manejo de outliers utilizando Python y R.</li>
+            </ul>
+          </div>
+          
+          <div class="slide">
+            <h3>Contenidos</h3>
+            <ol>
+              <li><strong>Normalización y Estandarización de Datos</strong>
+                <ul>
+                  <li>Conceptos de normalización y estandarización.</li>
+                  <li>Importancia de la normalización y estandarización en el análisis predictivo.</li>
+                  <li>Técnicas y métodos de normalización y estandarización.</li>
+                </ul>
+              </li>
+              <li><strong>Identificación de Outliers</strong>
+                <ul>
+                  <li>Definición y tipos de outliers.</li>
+                  <li>Métodos para identificar outliers en los datos.</li>
+                </ul>
+              </li>
+              <li><strong>Manejo de Outliers</strong>
+                <ul>
+                  <li>Técnicas para tratar outliers (eliminación, transformación, imputación).</li>
+                  <li>Implementación de métodos de manejo de outliers en Python y R.</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+          
+          <div class="slide">
+            <h3>Actividad 1: Normalización y Estandarización de Datos</h3>
+            <p><strong>Objetivo:</strong> Aplicar técnicas de normalización y estandarización a un conjunto de datos.</p>
+            <pre><code class="language-python">
+          import pandas as pd
+          from sklearn.preprocessing import StandardScaler, MinMaxScaler
+          
+          # Cargar datos
+          df = pd.read_csv('data.csv')
+          
+          # Normalización
+          scaler = MinMaxScaler()
+          df['normalized_feature'] = scaler.fit_transform(df[['numeric_feature']])
+          
+          # Estandarización
+          scaler = StandardScaler()
+          df['standardized_feature'] = scaler.fit_transform(df[['numeric_feature']])
+          
+          print(df.head())
+            </code></pre>
+          </div>
+          
+          <div class="slide">
+            <h3>Actividad 2: Identificación de Outliers</h3>
+            <p><strong>Objetivo:</strong> Identificar outliers en un conjunto de datos utilizando técnicas estadísticas y visuales.</p>
+            <pre><code class="language-python">
+          import pandas as pd
+          import seaborn as sns
+          import matplotlib.pyplot as plt
+          
+          # Cargar datos
+          df = pd.read_csv('data.csv')
+          
+          # Identificación de outliers usando boxplot
+          sns.boxplot(x=df['numeric_feature'])
+          plt.title('Boxplot de Numeric Feature')
+          plt.show()
+          
+          # Identificación de outliers usando IQR
+          Q1 = df['numeric_feature'].quantile(0.25)
+          Q3 = df['numeric_feature'].quantile(0.75)
+          IQR = Q3 - Q1
+          outliers = df[(df['numeric_feature'] < (Q1 - 1.5 * IQR)) | (df['numeric_feature'] > (Q3 + 1.5 * IQR))]
+          print("Outliers identificados:\n", outliers)
+            </code></pre>
+          </div>
+          
+          <div class="slide">
+            <h3>Actividad 3: Manejo de Outliers</h3>
+            <p><strong>Objetivo:</strong> Implementar técnicas para manejar outliers (eliminación, transformación, imputación).</p>
+            <pre><code class="language-python">
+          import pandas as pd
+          import numpy as np
+          
+          # Cargar datos
+          df = pd.read_csv('data.csv')
+          
+          # Eliminación de outliers
+          Q1 = df['numeric_feature'].quantile(0.25)
+          Q3 = df['numeric_feature'].quantile(0.75)
+          IQR = Q3 - Q1
+          df_no_outliers = df[~((df['numeric_feature'] < (Q1 - 1.5 * IQR)) | (df['numeric_feature'] > (Q3 + 1.5 * IQR)))]
+          
+          # Transformación de outliers
+          df['numeric_feature_log'] = np.log1p(df['numeric_feature'])
+          
+          # Imputación de outliers con media
+          mean_value = df['numeric_feature'].mean()
+          df['numeric_feature'] = np.where(df['numeric_feature'] < (Q1 - 1.5 * IQR), mean_value, df['numeric_feature'])
+          df['numeric_feature'] = np.where(df['numeric_feature'] > (Q3 + 1.5 * IQR), mean_value, df['numeric_feature'])
+          
+          print(df.head())
+            </code></pre>
+          </div>
+             
+        <!-- Navegación -->
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script src="../../js/slide.js"></script>
+</body>
+</html>

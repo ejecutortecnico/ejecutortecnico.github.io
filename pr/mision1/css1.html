@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilos CSS Básicos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <h1>Estilos CSS Básicos</h1>
+            <h2>Diseña tus Páginas con Estilo</h2>
+            <p>CSS (Cascading Style Sheets) es el lenguaje que se utiliza para estilizar el diseño de páginas web, controlando colores, tipografías, márgenes y más.</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <h2>1. Sintaxis Básica</h2>
+            <p>Un bloque CSS básico tiene la siguiente estructura:</p>
+            <pre><code>selector {
+    propiedad: valor;
+}</code></pre>
+            <p><b>Ejemplo:</b> Cambiar el color de fondo de un elemento:</p>
+            <pre><code>body {
+    background-color: lightblue;
+}</code></pre>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+            <h2>2. Tipos de Selectores</h2>
+            <p>CSS ofrece varios tipos de selectores para apuntar a elementos específicos:</p>
+            <ul>
+                <li><b>Selector de etiqueta:</b> Apunta a todas las etiquetas de un tipo (`body`, `p`, `h1`).</li>
+                <li><b>Selector de clase:</b> Usa `.` para seleccionar clases (`.mi-clase`).</li>
+                <li><b>Selector de ID:</b> Usa `#` para seleccionar un ID específico (`#mi-id`).</li>
+            </ul>
+            <pre><code>.mi-clase {
+    color: red;
+}
+
+#mi-id {
+    font-size: 20px;
+}</code></pre>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide">
+            <h2>3. Propiedades Comunes</h2>
+            <p>Algunas de las propiedades CSS más utilizadas son:</p>
+            <ul>
+                <li><b>Color:</b> `color` (texto) y `background-color` (fondo).</li>
+                <li><b>Tipografía:</b> `font-family`, `font-size`, `font-weight`.</li>
+                <li><b>Márgenes y rellenos:</b> `margin`, `padding`.</li>
+                <li><b>Dimensiones:</b> `width`, `height`.</li>
+            </ul>
+            <pre><code>h1 {
+    color: #ff00c3;
+    font-size: 36px;
+    margin-bottom: 20px;
+}</code></pre>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide">
+            <h2>4. Uso de Clases y Estilos Inline</h2>
+            <p>Aplica clases en HTML para estilizar elementos:</p>
+            <pre><code>&lt;div class="mi-clase"&gt;Texto estilizado&lt;/div&gt;</code></pre>
+            <p>También puedes usar estilos inline:</p>
+            <pre><code>&lt;p style="color: blue; font-size: 14px;"&gt;Texto azul&lt;/p&gt;</code></pre>
+            <p><b>Nota:</b> Se recomienda usar clases para mantener un código limpio.</p>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide">
+            <h2>5. Conclusión</h2>
+            <p>CSS es fundamental para crear páginas atractivas y bien diseñadas. Aprende a usarlo junto con HTML para llevar tus proyectos al siguiente nivel.</p>
+            <p>¡Experimenta con colores, fuentes y estilos para personalizar tu diseño!</p>
+            <button onclick="irpagina('css2.html')">CSS 2</button>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    
+    <script src="../../js/slide.js"></script>
+</body>
+</html>

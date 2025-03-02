@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <div class="slide">
+    <h2>Preparación y Simulación (Lección 4): Herramientas y Bibliotecas en Python para IA</h2>
+    <p>Exploraremos herramientas y bibliotecas fundamentales para la implementación de algoritmos de inteligencia artificial.</p>
+    <ul>
+        <li>Familiarización con herramientas y bibliotecas de Python.</li>
+        <li>Configuración del entorno de desarrollo.</li>
+        <li>Preprocesamiento de datos y visualización.</li>
+    </ul>
+</div><div class="slide">
+    <h2>1. Introducción a las Bibliotecas de Python para IA</h2>
+    <p><strong>NumPy:</strong> Manipulación de arreglos y operaciones matemáticas.</p>
+    <pre><code>import numpy as np
+array = np.array([1, 2, 3])
+print(array * 2)</code></pre>
+    <p><strong>Pandas:</strong> Manipulación y análisis de datos.</p>
+    <pre><code>import pandas as pd
+data = {'name': ['Alice', 'Bob', 'Charlie'], 'age': [25, 30, 35]}
+df = pd.DataFrame(data)
+print(df)</code></pre>
+    <p><strong>Matplotlib:</strong> Visualización de datos.</p>
+    <pre><code>import matplotlib.pyplot as plt
+plt.plot([1, 2, 3], [4, 5, 6])
+plt.show()</code></pre>
+</div><div class="slide">
+    <h2>2. Preprocesamiento de Datos</h2>
+    <p><strong>Limpieza de Datos:</strong></p>
+    <ul>
+        <li>Identificación y manejo de valores faltantes.</li>
+        <li>Detección y eliminación de duplicados.</li>
+    </ul>
+    <pre><code>df.dropna(inplace=True)
+df.drop_duplicates(inplace=True)</code></pre>
+    <p><strong>Normalización y Estandarización:</strong></p>
+    <pre><code>from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+data_scaled = scaler.fit_transform(df[['age']])
+print(data_scaled)</code></pre>
+</div><div class="slide">
+    <h2>3. Implementación y Visualización</h2>
+    <p><strong>Implementación de un Pipeline Simple:</strong></p>
+    <pre><code>from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LinearRegression
+pipeline = Pipeline([
+    ('scaler', StandardScaler()),
+    ('model', LinearRegression())
+])
+pipeline.fit(X, y)
+predictions = pipeline.predict(X)
+print(predictions)</code></pre>
+    <p><strong>Visualización de Resultados:</strong></p>
+    <pre><code>plt.scatter(X, y, color='blue')
+plt.plot(X, predictions, color='red')
+plt.show()</code></pre>
+</div><div class="slide">
+    <h2>Configuración del Entorno de Trabajo y Herramientas</h2>
+    <p>Configuración del entorno para trabajar con Python y bibliotecas de IA.</p>
+</div><div class="slide">
+    <h2>1. Instalación de Python y Bibliotecas Esenciales</h2>
+    <p><strong>Instalación de Python:</strong></p>
+    <pre><code>python --version</code></pre>
+    <p><strong>Instalación de bibliotecas esenciales con pip:</strong></p>
+    <pre><code>pip install numpy pandas matplotlib scikit-learn</code></pre>
+</div><div class="slide">
+    <h2>2. Configuración de un Entorno de Desarrollo</h2>
+    <p><strong>Visual Studio Code:</strong></p>
+    <ul>
+        <li>Instalación de Visual Studio Code.</li>
+        <li>Instalación de extensiones para Python y Jupyter.</li>
+    </ul>
+    <p><strong>Jupyter Notebook:</strong></p>
+    <pre><code>pip install notebook</code></pre>
+    <p><strong>Creación y ejecución de un notebook:</strong></p>
+    <pre><code>jupyter notebook</code></pre>
+</div><div class="slide">
+    <h2>3. Verificación de la Configuración</h2>
+    <p>Creación de un script simple para verificar la instalación de bibliotecas.</p>
+    <pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn import datasets
+print("Libraries imported successfully!")</code></pre>
+</div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

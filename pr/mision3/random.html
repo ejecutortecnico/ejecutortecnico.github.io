@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo Random en Python</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Módulo Random en Python</h1>
+            <p>El módulo <code>random</code> en Python permite generar números aleatorios y realizar selecciones aleatorias, lo cual es útil en una variedad de aplicaciones, como juegos y simulaciones.</p>
+        </div>
+        
+        <div id="slide2" class="slide">
+            <h2>Importar el Módulo Random</h2>
+            <p>Para usar las funciones del módulo <code>random</code>, primero necesitas importarlo en tu programa.</p>
+            <pre>
+import random
+            </pre>
+        </div>
+        
+        <div id="slide3" class="slide">
+            <h2>Generar Números Aleatorios</h2>
+            <p>Puedes generar números aleatorios con las siguientes funciones:</p>
+            <ul>
+                <li><code>random.randint(a, b)</code>: Genera un entero aleatorio entre <code>a</code> y <code>b</code>, ambos inclusive.</li>
+                <li><code>random.random()</code>: Genera un número decimal aleatorio entre 0 y 1.</li>
+                <li><code>random.uniform(a, b)</code>: Genera un número decimal aleatorio entre <code>a</code> y <code>b</code>.</li>
+            </ul>
+            <pre>
+# Ejemplos de números aleatorios
+print(random.randint(1, 10))     # Ejemplo: 7
+print(random.random())           # Ejemplo: 0.6524
+print(random.uniform(1, 10))     # Ejemplo: 3.785
+            </pre>
+        </div>
+        
+        <div id="slide4" class="slide">
+            <h2>Seleccionar Elementos de una Lista</h2>
+            <p>El módulo <code>random</code> también permite seleccionar elementos aleatorios de listas.</p>
+            <ul>
+                <li><code>random.choice(lista)</code>: Selecciona un elemento al azar de la lista.</li>
+                <li><code>random.sample(lista, k)</code>: Selecciona <code>k</code> elementos únicos de la lista.</li>
+                <li><code>random.shuffle(lista)</code>: Mezcla los elementos de la lista de manera aleatoria.</li>
+            </ul>
+            <pre>
+colores = ["rojo", "azul", "verde", "amarillo"]
+
+print(random.choice(colores))           # Ejemplo: "azul"
+print(random.sample(colores, 2))        # Ejemplo: ["rojo", "verde"]
+random.shuffle(colores)
+print(colores)                          # Ejemplo: ["verde", "amarillo", "rojo", "azul"]
+            </pre>
+        </div>
+        
+        <div id="slide5" class="slide">
+            <h2>Generar Secuencias Aleatorias</h2>
+            <p>Con <code>random.sample()</code> puedes generar secuencias aleatorias sin repetición. Esto es útil para crear sorteos o generar números únicos.</p>
+            <pre>
+# Generar una secuencia aleatoria de 5 números entre 1 y 50
+numeros = random.sample(range(1, 51), 5)
+print(numeros)  # Ejemplo: [12, 45, 7, 29, 3]
+            </pre>
+        </div>
+        
+        <div id="slide6" class="slide">
+            <h2>Semillas para Reproducibilidad</h2>
+            <p>La función <code>random.seed()</code> permite fijar una semilla para generar los mismos resultados aleatorios en diferentes ejecuciones. Esto es útil para pruebas o simulaciones controladas.</p>
+            <pre>
+random.seed(10)
+print(random.randint(1, 10))  # Siempre producirá el mismo resultado con la misma semilla
+            </pre>
+        </div>
+        
+        <div id="slide7" class="slide">
+            <h2>Conclusión</h2>
+            <p>El módulo <code>random</code> es una herramienta versátil para generar datos aleatorios y realizar selecciones aleatorias en Python. Practica sus funciones para entender cómo aprovecharlas en diferentes proyectos.</p>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

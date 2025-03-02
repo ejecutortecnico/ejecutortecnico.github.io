@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <div class="slide">
+    <h2>Simulación (Lección 6) - Implementación de un Modelo de Regresión</h2>
+    <h3>Objetivos:</h3>
+    <ul>
+        <li>Implementar y comprender los modelos de regresión lineal y logística.</li>
+        <li>Evaluar el rendimiento de los modelos utilizando conjuntos de datos reales.</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>1. Introducción a la Regresión Lineal</h2>
+    <h3>Conceptos Básicos:</h3>
+    <ul>
+        <li>Funcionamiento del modelo de regresión lineal.</li>
+        <li>Aplicaciones de la regresión lineal.</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h3>Carga y Exploración del Conjunto de Datos (California Housing):</h3>
+    <pre><code>&lt;!-- Código Python --&gt;
+from sklearn.datasets import fetch_california_housing
+import pandas as pd
+
+# Cargar el conjunto de datos de California Housing
+data = fetch_california_housing(as_frame=True)
+X = data.data
+y = data.target
+
+# Crear un DataFrame para exploración
+df = pd.DataFrame(X, columns=data.feature_names)
+df['target'] = y
+print(df.head())
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h3>Implementación del Modelo de Regresión Lineal:</h3>
+    <pre><code>&lt;!-- Código Python --&gt;
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+
+# Entrenar el modelo
+model = LinearRegression()
+model.fit(X, y)
+
+# Realizar predicciones
+predictions = model.predict(X)
+
+# Visualizar resultados
+plt.scatter(y, predictions)
+plt.xlabel('Precios Reales')
+plt.ylabel('Precios Predichos')
+plt.title('Regresión Lineal: Precios Reales vs. Predichos')
+plt.show()
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h3>Evaluación del Modelo:</h3>
+    <pre><code>&lt;!-- Código Python --&gt;
+from sklearn.metrics import mean_squared_error
+
+# Calcular el error cuadrático medio
+mse = mean_squared_error(y, predictions)
+print(f'Error Cuadrático Medio: {mse}')
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>2. Introducción a la Regresión Logística</h2>
+    <h3>Conceptos Básicos:</h3>
+    <ul>
+        <li>Funcionamiento del modelo de regresión logística.</li>
+        <li>Aplicaciones de la regresión logística.</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h3>Carga y Exploración del Conjunto de Datos (Breast Cancer):</h3>
+    <pre><code>&lt;!-- Código Python --&gt;
+from sklearn.datasets import load_breast_cancer
+import pandas as pd
+
+# Cargar el conjunto de datos de cáncer de mama
+data = load_breast_cancer()
+X = data.data
+y = data.target
+
+# Crear un DataFrame para exploración
+df = pd.DataFrame(X, columns=data.feature_names)
+df['target'] = y
+print(df.head())
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h3>Implementación del Modelo de Regresión Logística:</h3>
+    <pre><code>&lt;!-- Código Python --&gt;
+from sklearn.linear_model import LogisticRegression
+import matplotlib.pyplot as plt
+
+# Entrenar el modelo
+model = LogisticRegression(max_iter=10000)
+model.fit(X, y)
+
+# Realizar predicciones
+predictions = model.predict(X)
+
+# Visualizar resultados
+plt.scatter(y, predictions)
+plt.xlabel('Clases Reales')
+plt.ylabel('Clases Predichas')
+plt.title('Regresión Logística: Clases Reales vs. Predichas')
+plt.show()
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h3>Evaluación del Modelo:</h3>
+    <pre><code>&lt;!-- Código Python --&gt;
+from sklearn.metrics import classification_report
+
+# Generar reporte de clasificación
+report = classification_report(y, predictions)
+print(report)
+    </code></pre>
+</div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

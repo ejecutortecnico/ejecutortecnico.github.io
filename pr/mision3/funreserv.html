@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones Incorporadas en Python</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Funciones Incorporadas en Python</h1>
+        <ul>
+            <li><span class="function-name" onclick="openModal('abs() - Devuelve el valor absoluto de un número.')">abs()</span></li>
+            <li><span class="function-name" onclick="openModal('dict() - Crea un diccionario en Python.')">dict()</span></li>
+            <li><span class="function-name" onclick="openModal('help() - Muestra la ayuda del sistema para una función o módulo.')">help()</span></li>
+            <li><span class="function-name" onclick="openModal('min() - Devuelve el valor mínimo de una secuencia.')">min()</span></li>
+            <li><span class="function-name" onclick="openModal('setattr() - Establece un atributo en un objeto.')">setattr()</span></li>
+            <li><span class="function-name" onclick="openModal('all() - Devuelve True si todos los elementos en un iterable son verdaderos.')">all()</span></li>
+            <li><span class="function-name" onclick="openModal('dir() - Devuelve una lista de nombres en el ámbito local.')">dir()</span></li>
+            <li><span class="function-name" onclick="openModal('hex() - Convierte un número en su representación hexadecimal.')">hex()</span></li>
+            <li><span class="function-name" onclick="openModal('next() - Obtiene el siguiente elemento de un iterable.')">next()</span></li>
+            <li><span class="function-name" onclick="openModal('slice() - Crea un objeto de segmento.')">slice()</span></li>
+            <!-- Añadir más funciones de la lista de acuerdo a tu solicitud -->
+        </ul>
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar el contenido de la función -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <pre id="modalCode"></pre>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("hidden", i !== index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function openModal(description) {
+            document.getElementById("modalCode").innerText = description;
+            document.getElementById("codeModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("codeModal").style.display = "none";
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

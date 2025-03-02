@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodologías para Aprender Python</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(images/fondo.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            min-height: 80vh;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #ff00c3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        ul {
+            list-style-type: square;
+            font-size: 1.2em;
+            text-align: left;
+        }
+        .nav {
+            margin-top: 20px;
+        }
+        .nav button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #d49afe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: darkmagenta;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Slide 1 -->
+        <div id="slide1" class="slide active">
+            <h1>Metodologías para Aprender Programación</h1>
+            <p>Explora estrategias y recursos efectivos para aprender cualquier lenguaje de programación.</p>
+        </div>
+    
+        <!-- Slide 2 -->
+        <div id="slide2" class="slide">
+            <h2>1. Aprendizaje Activo</h2>
+            <p>El aprendizaje activo es clave para desarrollar habilidades en programación:</p>
+            <ul>
+                <li><b>Escribe código todos los días:</b> Practicar regularmente es esencial.</li>
+                <li><b>Divide los conceptos:</b> Aprende temas pequeños como variables, bucles o funciones.</li>
+                <li><b>Experimenta:</b> Crea programas simples que resuelvan problemas cotidianos.</li>
+            </ul>
+        </div>
+    
+        <!-- Slide 3 -->
+        <div id="slide3" class="slide">
+            <h2>2. Proyectos Prácticos</h2>
+            <p>Trabajar en proyectos te ayudará a aplicar lo que aprendes y ganar experiencia:</p>
+            <ul>
+                <li><b>Automatización:</b> Crea scripts para tareas repetitivas (por ejemplo, renombrar archivos).</li>
+                <li><b>Desarrollo web:</b> Aprende frameworks como Flask, Django, React o Node.js.</li>
+                <li><b>Aplicaciones prácticas:</b> Explora proyectos como calculadoras, juegos simples o bots.</li>
+            </ul>
+        </div>
+    
+        <!-- Slide 4 -->
+        <div id="slide4" class="slide">
+            <h2>3. Retos de Programación</h2>
+            <p>Participar en retos y competiciones mejora tus habilidades algorítmicas:</p>
+            <ul>
+                <li><b>Plataformas:</b> Usa sitios como HackerRank, LeetCode, y Codewars.</li>
+                <li><b>Algoritmos:</b> Aprende sobre estructuras de datos y algoritmos básicos.</li>
+                <li><b>Hackatones:</b> Colabora en eventos para resolver problemas reales.</li>
+            </ul>
+        </div>
+    
+        <!-- Slide 5 -->
+        <div id="slide5" class="slide">
+            <h2>4. Recursos de Aprendizaje</h2>
+            <p>Aprovecha recursos gratuitos y pagos para aprender de forma efectiva:</p>
+            <ul>
+                <li><b>Documentación oficial:</b> Lee la documentación de lenguajes como Python, JavaScript o Java.</li>
+                <li><b>Libros y cursos:</b> Libros como "Clean Code" y cursos en Udemy o Coursera.</li>
+                <li><b>Tutoriales:</b> Explora YouTube, blogs y foros como Stack Overflow.</li>
+            </ul>
+        </div>
+    
+        <!-- Slide 6 -->
+        <div id="slide6" class="slide">
+            <h2>5. Enseñar a Otros</h2>
+            <p>Compartir tu conocimiento refuerza tus propios aprendizajes:</p>
+            <ul>
+                <li><b>Blogs:</b> Publica tutoriales sobre temas que domines.</li>
+                <li><b>Videos:</b> Graba explicaciones de temas básicos o avanzados.</li>
+                <li><b>Mentoría:</b> Ayuda a principiantes o colabora con colegas.</li>
+            </ul>
+        </div>
+    
+        <!-- Slide 7 -->
+        <div id="slide7" class="slide">
+            <h2>6. Comunidad</h2>
+            <p>Conéctate con otros desarrolladores para aprender y compartir conocimientos:</p>
+            <ul>
+                <li><b>Redes sociales:</b> Únete a grupos en LinkedIn, Twitter o Discord.</li>
+                <li><b>Foros:</b> Participa en foros como Reddit o Stack Overflow.</li>
+                <li><b>Eventos:</b> Asiste a meetups, conferencias o hackatones.</li>
+            </ul>
+        </div>
+    
+        <!-- Slide 8 -->
+        <div id="slide8" class="slide">
+            <h2>Conclusión</h2>
+            <p>Aprender programación requiere práctica constante, curiosidad y colaboración. Encuentra tu método preferido y ¡empieza a crear!</p>
+        </div>
+    
+        <!-- Navegación -->
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

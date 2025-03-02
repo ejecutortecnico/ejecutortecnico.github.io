@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 7: Simulación y Prosumidor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="slide">
+            <h2>Preparación (Lección 2): Manejo de Datos Duplicados y Transformación de Variables</h2>
+          </div>
+          
+          <div class="slide">
+            <h2>Objetivos</h2>
+            <ul>
+              <li>Aprender a identificar y manejar datos duplicados en conjuntos de datos.</li>
+              <li>Comprender la importancia de la transformación de variables en el análisis de datos.</li>
+              <li>Practicar la implementación de técnicas de codificación de variables categóricas y transformaciones numéricas.</li>
+            </ul>
+          </div>
+          
+          <div class="slide">
+            <h2>Contenidos</h2>
+            <ol>
+              <li><strong>Identificación y Manejo de Datos Duplicados</strong>
+                <ul>
+                  <li>Conceptos y técnicas para identificar datos duplicados.</li>
+                  <li>Métodos para eliminar y tratar datos duplicados.</li>
+                </ul>
+              </li>
+              <li><strong>Transformación de Variables Categóricas</strong>
+                <ul>
+                  <li>Codificación de variables categóricas: One-hot encoding y label encoding.</li>
+                  <li>Ventajas y desventajas de cada método de codificación.</li>
+                </ul>
+              </li>
+              <li><strong>Transformaciones Numéricas</strong>
+                <ul>
+                  <li>Transformaciones logarítmicas y polinómicas.</li>
+                  <li>Normalización y estandarización de datos.</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+          
+          <div class="slide">
+            <h2>Actividades Prácticas</h2>
+            <ol>
+              <li><strong>Identificación y Manejo de Datos Duplicados</strong>
+                <p><strong>Actividad:</strong> Identificar y eliminar datos duplicados en un conjunto de datos utilizando Python y R.</p>
+                <p><strong>Resultado:</strong> Conjunto de datos sin duplicados, listo para análisis posteriores.</p>
+                <pre>
+          import pandas as pd
+          # Cargar datos
+          df = pd.read_csv('data.csv')
+          # Identificar duplicados
+          duplicates = df.duplicated()
+          print("Duplicados encontrados:", duplicates.sum())
+          # Eliminar duplicados
+          df_cleaned = df.drop_duplicates()
+          print("Tamaño del conjunto de datos después de eliminar duplicados:", df_cleaned.shape)
+                </pre>
+              </li>
+              <li><strong>Transformación de Variables Categóricas</strong>
+                <p><strong>Actividad:</strong> Implementar métodos de codificación de variables categóricas utilizando Python y R.</p>
+                <p><strong>Resultado:</strong> Conjunto de datos con variables categóricas codificadas, listo para análisis predictivos.</p>
+                <pre>
+          from sklearn.preprocessing import OneHotEncoder, LabelEncoder
+          # Label encoding
+          label_encoder = LabelEncoder()
+          df['categorical_feature'] = label_encoder.fit_transform(df['categorical_feature'])
+          # One-hot encoding
+          onehot_encoder = OneHotEncoder(sparse=False)
+          categorical_encoded = onehot_encoder.fit_transform(df[['categorical_feature']])
+          df_onehot = pd.DataFrame(categorical_encoded,
+          columns=onehot_encoder.get_feature_names_out(['categorical_feature']))
+          df = pd.concat([df, df_onehot], axis=1).drop('categorical_feature', axis=1)
+          print(df.head())
+                </pre>
+              </li>
+              <li><strong>Transformaciones Numéricas</strong>
+                <p><strong>Actividad:</strong> Aplicar transformaciones logarítmicas, polinómicas y técnicas de normalización y estandarización utilizando Python y R.</p>
+                <p><strong>Resultado:</strong> Conjunto de datos con variables numéricas transformadas, listo para análisis predictivos.</p>
+                <pre>
+          from sklearn.preprocessing import StandardScaler, MinMaxScaler
+          # Transformación logarítmica
+          df['log_feature'] = np.log1p(df['numeric_feature'])
+          # Transformación polinómica
+          df['poly_feature'] = df['numeric_feature'] ** 2
+          # Normalización
+          scaler = MinMaxScaler()
+          df['normalized_feature'] = scaler.fit_transform(df[['numeric_feature']])
+          # Estandarización
+          scaler = StandardScaler()
+          df['standardized_feature'] = scaler.fit_transform(df[['numeric_feature']])
+          print(df.head())
+                </pre>
+              </li>
+            </ol>
+          </div>
+          
+          <div class="slide">
+            <h2>Ejemplo Detallado</h2>
+            <ul>
+              <li><strong>Identificación y Manejo de Datos Duplicados:</strong> Identificar y eliminar duplicados en Python.</li>
+              <li><strong>Transformación de Variables Categóricas:</strong> Implementar One-hot encoding en R.</li>
+              <li><strong>Transformaciones Numéricas:</strong> Aplicar técnicas en Python.</li>
+            </ul>
+          </div>
+          
+          <div class="slide">
+            <h2>Conclusiones</h2>
+            <ul>
+              <li>Identificar y eliminar datos duplicados es crucial para evitar sesgos en el análisis.</li>
+              <li>La transformación de variables mejora la calidad de los modelos predictivos.</li>
+              <li>Seleccionar el método adecuado de codificación o transformación depende del contexto y los datos.</li>
+            </ul>
+          </div>
+                
+        <!-- Navegación -->
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script src="../../js/slide.js"></script>
+</body>
+</html>

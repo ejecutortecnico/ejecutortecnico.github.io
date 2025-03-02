@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays en JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div id="slide1" class="slide active">
+            <h1>Arrays en JavaScript</h1>
+            <p>Aprende a manejar colecciones de datos con Arrays en JavaScript.</p>
+        </div>
+
+        <div id="slide2" class="slide">
+            <h2>1. Creación de Arrays</h2>
+            <p>Cómo crear un array en JavaScript:</p>
+            <pre>
+// Crear un array vacío
+let miArray = [];
+
+// Crear un array con elementos
+let numeros = [1, 2, 3, 4, 5];
+            </pre>
+            <div class="example-box">
+                <button class="btn-example" onclick="mostrarArray()">Ver Array</button>
+                <p id="output1"></p>
+            </div>
+        </div>
+
+        <div id="slide3" class="slide">
+            <h2>2. Métodos Básicos de Arrays</h2>
+            <p>Agregar y eliminar elementos:</p>
+            <pre>
+// Agregar un elemento al final
+numeros.push(6); // [1, 2, 3, 4, 5, 6]
+
+// Eliminar el último elemento
+numeros.pop(); // [1, 2, 3, 4, 5]
+            </pre>
+            <div class="example-box">
+                <button class="btn-example" onclick="modificarArray()">Modificar Array</button>
+                <p id="output2"></p>
+            </div>
+        </div>
+
+        <div id="slide4" class="slide">
+            <h2>3. Iterar sobre Arrays</h2>
+            <p>Usando un bucle para recorrer un array:</p>
+            <pre>
+let frutas = ['manzana', 'banana', 'naranja'];
+for(let i = 0; i < frutas.length; i++) {
+    console.log(frutas[i]);
+}
+            </pre>
+            <div class="example-box">
+                <button class="btn-example" onclick="iterarArray()">Iterar Array</button>
+                <p id="output3"></p>
+            </div>
+        </div>
+
+        <div id="slide5" class="slide">
+            <h2>4. Otros Métodos Útiles</h2>
+            <p>Algunos métodos adicionales:</p>
+            <pre>
+// Encontrar elementos
+let indice = numeros.indexOf(3); // devuelve 2
+
+// Combinar arrays
+let otrosNumeros = [6, 7];
+let combinado = numeros.concat(otrosNumeros); // [1, 2, 3, 4, 5, 6, 7]
+            </pre>
+        </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function mostrarArray() {
+            let numeros = [1, 2, 3, 4, 5];
+            document.getElementById('output1').textContent = 'Array: ' + numeros.join(', ');
+        }
+
+        function modificarArray() {
+            let numeros = [1, 2, 3, 4, 5];
+            numeros.push(6);
+            numeros.pop();
+            document.getElementById('output2').textContent = 'Array modificado: ' + numeros.join(', ');
+        }
+
+        function iterarArray() {
+            let frutas = ['manzana', 'banana', 'naranja'];
+            let resultado = '';
+            for(let i = 0; i < frutas.length; i++) {
+                resultado += frutas[i] + ' ';
+            }
+            document.getElementById('output3').textContent = 'Iteración: ' + resultado;
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

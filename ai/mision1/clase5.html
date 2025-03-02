@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <div class="slide">
+    <h2>Simulación (Lección 5) - Implementación de un Clasificador Simple (k-NN)</h2>
+    <h3>Objetivos:</h3>
+    <ul>
+        <li>Implementar y comprender el algoritmo k-Nearest Neighbors (k-NN).</li>
+        <li>Evaluar el rendimiento del clasificador utilizando un conjunto de datos.</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>1. Introducción al Algoritmo k-Nearest Neighbors (k-NN)</h2>
+    <h3>Conceptos Básicos:</h3>
+    <ul>
+        <li>Funcionamiento del algoritmo k-NN.</li>
+        <li>Parámetros importantes (número de vecinos <code>k</code>).</li>
+    </ul>
+    <h3>Aplicaciones del k-NN:</h3>
+    <ul>
+        <li>Reconocimiento de patrones.</li>
+        <li>Clasificación de textos y documentos.</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>2. Carga y Exploración del Conjunto de Datos (Iris Dataset)</h2>
+    <h3>Carga del Conjunto de Datos:</h3>
+    <pre><code>
+from sklearn.datasets import load_iris
+data = load_iris()
+X = data.data
+y = data.target
+print(data.DESCR)
+    </code></pre>
+    <h3>Exploración de los Datos:</h3>
+    <ul>
+        <li>Descripción de las características y las etiquetas.</li>
+        <li>Visualización de las características utilizando gráficos.</li>
+    </ul>
+    <pre><code>
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame(data.data, columns=data.feature_names)
+df['target'] = data.target
+sns.pairplot(df, hue='target')
+plt.show()
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>3. Implementación del Algoritmo k-NN</h2>
+    <h3>División de Datos en Conjuntos de Entrenamiento y Prueba:</h3>
+    <pre><code>
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h3>Entrenamiento del Modelo k-NN:</h3>
+    <pre><code>
+from sklearn.neighbors import KNeighborsClassifier
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X_train, y_train)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h3>Ajuste de Parámetros y Validación Cruzada</h3>
+    <h4>Ajuste del Número de Vecinos (<code>k</code>):</h4>
+    <pre><code>
+from sklearn.metrics import accuracy_score
+
+for k in range(1, 11):
+    model = KNeighborsClassifier(n_neighbors=k)
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    print(f'k={k}, Accuracy={accuracy}')
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h4>Validación Cruzada:</h4>
+    <pre><code>
+from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(KNeighborsClassifier(n_neighbors=3), X, y, cv=5)
+print(f'Cross-validation scores: {scores}')
+print(f'Mean cross-validation score: {scores.mean()}')
+    </code></pre>
+</div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

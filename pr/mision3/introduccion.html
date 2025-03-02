@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación sobre Python</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="slide" id="slide1">
+            <h1>Introducción a Python</h1>
+            <p>Python es un lenguaje de programación popular, fácil de aprender y con una gran cantidad de aplicaciones.</p>
+        </div>
+
+        <div class="slide" id="slide2">
+            <h2>¿Qué es Python?</h2>
+            <p>Python es un lenguaje de programación de alto nivel, interpretado, orientado a objetos y de propósito general.</p>
+        </div>
+
+        <div class="slide" id="slide3">
+            <h2>Usos de Python</h2>
+            <p>Python se utiliza en desarrollo web, ciencia de datos, inteligencia artificial, automatización, entre otros campos.</p>
+        </div>
+
+        <div class="slide" id="slide4">
+            <h2>Numpy</h2>
+            <p>Numpy es una biblioteca para Python que soporta grandes matrices y matrices multidimensionales.</p>
+            <pre><code>!pip install numpy</code></pre>
+            <pre  onclick="openModal('numpy')"><code>import numpy as np
+
+# Crear una matriz de 2x3
+matriz = np.array([[1, 2, 3], [4, 5, 6]])
+print(matriz)</code></pre>
+        </div>
+
+        <div class="slide" id="slide5">
+            <h2>Pandas</h2>
+            <p>Pandas proporciona estructuras de datos y herramientas de análisis de datos.</p>
+            <pre><code>!pip install pandas</code></pre>
+            <pre  onclick="openModal('pandas')"><code>import pandas as pd
+
+# Crear un DataFrame
+data = {'Nombre': ['Juan', 'Ana', 'Pedro'],
+        'Edad': [28, 24, 35]}
+df = pd.DataFrame(data)
+print(df)</code></pre>
+        </div>
+
+        <div class="slide" id="slide6">
+            <h2>Matplotlib</h2>
+            <p>Matplotlib es una biblioteca para la creación de gráficos en 2D.</p>
+            <pre><code>!pip install matplotlib</code></pre>
+            <pre  onclick="openModal('matplolib')"><code>import matplotlib.pyplot as plt
+
+# Crear un gráfico simple
+x = [1, 2, 3, 4, 5]
+y = [2, 3, 5, 7, 11]
+plt.plot(x, y)
+plt.title('Gráfico de Ejemplo')
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.show()</code></pre>
+        </div>
+
+        <div class="slide" id="slide7">
+            <h2>Seaborn</h2>
+            <p>Seaborn es una biblioteca de visualización basada en Matplotlib.</p>
+            <pre><code>!pip install seaborn</code></pre>
+            <pre onclick="openModal('seaborn')"><code>import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Crear un gráfico de dispersión
+tips = sns.load_dataset('tips')
+sns.scatterplot(data=tips, x='total_bill', y='tip', hue='day')
+plt.title('Propinas por Cuenta Total')
+plt.show()</code></pre>
+        </div>
+
+        <div class="slide" id="slide8">
+            <h2>Flask</h2>
+            <p>Flask es un microframework para crear aplicaciones web en Python.</p>
+            <pre><code>!pip install Flask</code></pre>
+            <pre onclick="openModal('flask')"><code>from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "¡Hola, Flask!"
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+        </div>
+
+        <div class="slide" id="slide9">
+            <h2>Django</h2>
+            <p>Django es un framework web de alto nivel que permite el desarrollo rápido de aplicaciones web.</p>
+            <pre><code>!pip install django</code></pre>
+            <pre onclick="openModal('django')"><code># Ejemplo de configuración de un proyecto Django
+django-admin startproject mi_proyecto</code></pre>
+        </div>
+
+        <div class="slide" id="slide10">
+            <h2>Scikit-Learn</h2>
+            <p>Scikit-Learn es una biblioteca de aprendizaje automático para Python.</p>
+            <pre><code>!pip install scikit-learn</code></pre>
+            <pre  onclick="openModal('sklearn')"><code>from sklearn.linear_model import LinearRegression
+import numpy as np
+
+# Datos de ejemplo
+X = np.array([[1], [2], [3], [4]])
+y = np.array([2, 3, 5, 7])
+
+# Crear y entrenar el modelo
+modelo = LinearRegression()
+modelo.fit(X, y)
+print(modelo.predict([[5]]))  # Predecir el valor para X=5</code></pre>
+        </div>
+
+        <div class="slide" id="slide11">
+            <h2>TensorFlow</h2>
+            <p>TensorFlow es una biblioteca de aprendizaje automático.</p>
+            <pre><code>!pip install tensorflow</code></pre>
+            <pre onclick="openModal('tensorflow')"><code>import tensorflow as tf
+
+# Crear un modelo simple
+modelo = tf.keras.Sequential([
+    tf.keras.layers.Dense(10, activation='relu', input_shape=(32,)),
+    tf.keras.layers.Dense(1)
+])
+modelo.compile(optimizer='adam', loss='mean_squared_error')</code></pre>
+        </div>
+
+        <div class="slide hidden" id="slide12">
+            <h2>PyTorch</h2>
+            <p>PyTorch es una biblioteca de aprendizaje profundo que proporciona flexibilidad y velocidad.</p>
+            <pre ><code>!pip install torch</code></pre>
+            <pre onclick="openModal('pytorch')"><code>import torch
+import torch.nn as nn
+
+# Definir una red neuronal simple
+class RedNeuronal(nn.Module):
+    def __init__(self):
+        super(RedNeuronal, self).__init__()
+        self.capa1 = nn.Linear(2, 2)
+
+    def forward(self, x):
+        return self.capa1(x)
+
+# Crear una instancia de la red y pasar un tensor
+modelo = RedNeuronal()
+entrada = torch.tensor([[1.0, 2.0]])
+salida = modelo(entrada)
+print(salida)</code></pre>
+        </div>
+
+        <div class="slide">
+            <h1>¿Qué es Pygame?</h1>
+            <p><strong>Pygame</strong> es una biblioteca de Python diseñada para desarrollar videojuegos y aplicaciones multimedia. Proporciona herramientas para manejar gráficos, sonido y entrada del usuario de manera sencilla.</p>    
+            <pre><code>!pip install pygame</code></pre>
+            <pre onclick="openModal('pygame')"><code>import pygame
+# Inicializar Pygame
+pygame.init()                    
+# Configuración de la ventana
+screen = pygame.display.set_mode((800, 600))
+pygame.display.set_caption("Mi primer ventana en Pygame")                   
+# Loop principal
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False                       
+    # Rellenar la pantalla con color azul
+    screen.fill((0, 0, 255))
+    pygame.display.flip()            
+pygame.quit()</code></pre>
+        </div>
+        
+        <div class="slide hidden" id="slide13">
+            <h2>Conclusiones</h2>
+            <p>Python es una herramienta poderosa y versátil que es ampliamente utilizada en muchos campos.</p>
+            <ul>
+                <li>Facilidad de aprendizaje y uso.</li>
+                <li>Gran comunidad y soporte.</li>
+                <li>Amplia gama de bibliotecas para diferentes aplicaciones.</li>
+                <li>Ideal para desarrollo web, análisis de datos, y aprendizaje automático.</li>
+            </ul>
+        </div>
+
+        <div class="buttons nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <pre id="modalCode"></pre>
+        </div>
+    </div>
+
+    <script src="../../js/slide.js"></script>
+</body>
+</html>

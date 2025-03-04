@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación sobre APIs y AI en Python</title>
+    <style>
+        .slide {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            text-align: center;
+        }
+        .slide:nth-child(odd) { background-color: #f4f4f4; }
+        .slide:nth-child(even) { background-color: #ddd; }
+    </style>
+</head>
+<body>
+    <div class="slide">¿Qué es una API?</div>
+    <div class="slide">Una API (Interfaz de Programación de Aplicaciones) permite la comunicación entre diferentes sistemas.</div>
+    <div class="slide">Ejemplo: APIs permiten que aplicaciones web usen servicios de terceros, como pagos o mapas.</div>
+    <div class="slide">APIs en Python</div>
+    <div class="slide">Python tiene librerías como requests para consumir APIs de manera sencilla.</div>
+    <div class="slide">Ejemplo en Python:<br><code>import requests<br>response = requests.get('https://api.example.com/data')<br>print(response.json())</code></div>
+    <div class="slide">Usos de APIs en AI</div>
+    <div class="slide">Las APIs de AI permiten acceso a modelos avanzados sin necesidad de entrenarlos desde cero.</div>
+    <div class="slide">Ejemplo: OpenAI, Google Cloud AI, IBM Watson.</div>
+    <div class="slide">Ejemplo de API de AI en Python:<br><code>import openai<br>response = openai.ChatCompletion.create(model='gpt-4', messages=[{"role": "user", "content": "Hola"}])<br>print(response)</code></div>
+    <div class="slide">Conclusión: Las APIs facilitan la integración de inteligencia artificial en proyectos.</div>
+</body>
+</html>

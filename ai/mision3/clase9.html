@@ -13,7 +13,9 @@
             <div class="slide">
                 <h2>1. Recolección y Preprocesamiento de Datos</h2>
                 <p><strong>Objetivo:</strong> Recolectar y preparar los datos de imágenes de rayos X necesarios para el desarrollo del proyecto.</p>
-                
+            </div>
+            
+            <div class="slide">
                 <h3>Recolección de Datos:</h3>
                 <p>Obtener un conjunto de datos de imágenes de rayos X de fuentes públicas (por ejemplo, Kaggle).</p>
                 <pre><code>
@@ -25,7 +27,9 @@
             df = pd.DataFrame({'image_path': images, 'label': labels})
             print(df.head())
                 </code></pre>
+            </div>
             
+            <div class="slide">
                 <h3>Preprocesamiento de Imágenes:</h3>
                 <p>Redimensionamiento y normalización de imágenes.</p>
                 <pre><code>
@@ -44,7 +48,9 @@
             <div class="slide">
                 <h2>2. Implementación del Modelo de Clasificación</h2>
                 <p><strong>Objetivo:</strong> Desarrollar e implementar un modelo de clasificación de imágenes utilizando redes neuronales convolucionales (CNN).</p>
-                
+            </div>
+            
+            <div class="slide">     
                 <h3>Selección del Modelo:</h3>
                 <p>Uso de una red neuronal convolucional (CNN) para la clasificación de imágenes.</p>
                 <pre><code>
@@ -64,7 +70,9 @@
             model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
             print(model.summary())
                 </code></pre>
+            </div>
             
+            <div class="slide">    
                 <h3>Entrenamiento del Modelo:</h3>
                 <pre><code>
             from sklearn.model_selection import train_test_split
@@ -78,13 +86,17 @@
             <div class="slide">
                 <h2>3. Evaluación y Ajuste del Modelo</h2>
                 <p><strong>Objetivo:</strong> Evaluar el rendimiento del modelo y realizar ajustes para mejorar su precisión.</p>
-                
+            </div>
+            
+            <div class="slide">       
                 <h3>Evaluación del Modelo:</h3>
                 <pre><code>
             loss, accuracy = model.evaluate(X_val, y_val)
             print(f'Validation Accuracy: {accuracy}')
                 </code></pre>
+            </div>
             
+            <div class="slide">   
                 <h3>Ajuste de Hiperparámetros:</h3>
                 <p>Exploración de diferentes configuraciones de la red y parámetros de entrenamiento.</p>
                 <pre><code>

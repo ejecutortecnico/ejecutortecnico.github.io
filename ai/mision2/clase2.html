@@ -54,14 +54,6 @@
     </ul>
 </div>
 
-<div class="slide">
-    <h3>Casos de Uso de los Chatbots:</h3>
-    <ul>
-        <li>Atención al cliente.</li>
-        <li>Asistencia en compras en línea.</li>
-        <li>Automatización de tareas administrativas.</li>
-    </ul>
-</div>
 
 <div class="slide">
     <h2>2. Introducción al Procesamiento del Lenguaje Natural (NLP)</h2>
@@ -74,8 +66,156 @@
         <li>Análisis sintáctico y semántico.</li>
     </ul>
 </div>
+<div class="slide" id="slide1">
+    <h2>Introducción al NLP</h2>
+    <p>El Procesamiento del Lenguaje Natural (NLP) es una rama de la inteligencia artificial que permite a las máquinas entender, interpretar y generar lenguaje humano.</p>
+</div>
 
-<div class="slide">
+    <div class="slide" id="slide1">
+        <h2>Tokenización</h2>
+        <p>La tokenización es el proceso de dividir un texto en palabras, frases o elementos más pequeños llamados tokens.</p>
+    </div>
+
+    <div class="slide" id="slide2">
+        <h2>Ejemplo de Tokenización en Python</h2>
+        <p>Podemos usar la biblioteca <code>nltk</code> para tokenizar un texto en palabras:</p>
+        <pre><code>import nltk
+from nltk.tokenize import word_tokenize
+
+nltk.download('punkt')
+nltk.download('punkt_tab')
+texto = "Hola, ¿cómo estás? Espero que estés bien."
+tokens = word_tokenize(texto)
+print(tokens)</code></pre>
+    </div>
+
+    <div class="slide" id="slide3">
+        <h2>Tokenización en frases</h2>
+        <p>También podemos dividir el texto en frases:</p>
+        <pre><code>from nltk.tokenize import sent_tokenize
+
+texto = "Hola, ¿cómo estás? Espero que estés bien. Nos vemos luego."
+frases = sent_tokenize(texto)
+print(frases)</code></pre>
+    </div>
+
+    <div class="slide" id="slide1">
+        <h2>Lematización y Stemming</h2>
+        <p>Estos procesos permiten reducir las palabras a su forma base o raíz.</p>
+    </div>
+
+    <div class="slide" id="slide2">
+        <h2>Ejemplo de Stemming en Python</h2>
+        <p>El stemming reduce una palabra a su raíz eliminando sufijos. Usaremos <code>nltk</code>:</p>
+        <pre><code>import nltk
+from nltk.stem import PorterStemmer
+
+stemmer = PorterStemmer()
+palabras = ["running", "played", "playing", "happily"]
+stems = [stemmer.stem(palabra) for palabra in palabras]
+print(stems)</code></pre>
+    </div>
+
+    <div class="slide" id="slide3">
+        <h2>Ejemplo de Lematización en Python</h2>
+        <p>La lematización reduce una palabra a su forma base teniendo en cuenta su significado. Usaremos <code>WordNetLemmatizer</code>:</p>
+        <pre><code>import nltk
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
+
+nltk.download('wordnet')
+lemmatizer = WordNetLemmatizer()
+palabras = ["running", "played", "better", "dogs"]
+lemmas = [lemmatizer.lemmatize(palabra, pos=wordnet.VERB) for palabra in palabras]
+print(lemmas)</code></pre>
+    </div>
+
+    <div class="slide" id="slide1">
+        <h2>Análisis Sintáctico</h2>
+        <p>El análisis sintáctico (parsing) estructura una oración según la gramática de un idioma. En Python, usamos <code>spaCy</code> para identificar la estructura gramatical.</p>
+    </div>
+
+    <div class="slide" id="slide2">
+        <h2>Ejemplo de Análisis Sintáctico en Python</h2>
+        <p>Utilizaremos <code>spaCy</code> para analizar la estructura de una oración en español.</p>
+        <pre><code>import spacy
+
+# Cargar modelo en español
+spacy.cli.download("es_core_news_sm")
+nlp = spacy.load("es_core_news_sm")
+texto = "El gato negro corre rápidamente por el jardín."
+doc = nlp(texto)
+
+# Mostrar análisis sintáctico
+for token in doc:
+    print(f"Palabra: {token.text}, Etiqueta gramatical: {token.pos_}, Dependencia: {token.dep_}")</code></pre>
+    </div>
+
+    <div class="slide" id="slide3">
+        <h2>Análisis Semántico</h2>
+        <p>El análisis semántico interpreta el significado de las palabras y sus relaciones en un texto.</p>
+    </div>
+
+    <div class="slide" id="slide4">
+        <h2>Ejemplo de Análisis Semántico en Python</h2>
+        <p>Podemos usar <code>spaCy</code> para calcular la similitud semántica entre palabras.</p>
+        <pre><code>import spacy
+spacy.cli.download("es_core_news_md")
+nlp = spacy.load("es_core_news_md")
+palabra1 = nlp("perro")
+palabra2 = nlp("lobo")
+print(f"Similitud entre 'perro' y 'lobo': {palabra1.similarity(palabra2)}")</code></pre>
+    </div>
+    <div class="slide">
+        <h3>Bibliotecas de NLP en Python:</h3>
+        <ul>
+            <li>NLTK.</li>
+            <li>SpaCy.</li>
+        </ul>
+        <pre>
+        <code>
+    import spacy
+    spacy.cli.download("es_core_news_sm")
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp("Chatbots are revolutionizing customer service.")
+    for token in doc:
+        print(token.text, token.lemma_, token.pos_)
+        </code>
+        </pre>
+    </div>
+    <div class="slide" id="slide2">
+        <h2>Aplicaciones de NLP</h2>
+        <ul>
+            <li>Traducción automática (Google Translate)</li>
+            <li>Análisis de sentimientos</li>
+            <li>Chatbots y asistentes virtuales</li>
+            <li>Reconocimiento de voz</li>
+            <li>Resumen de textos</li>
+        </ul>
+    </div>
+    
+    <div class="slide" id="slide3">
+        <h2>Etapas del NLP</h2>
+        <p>El NLP consta de varias etapas clave:</p>
+        <ul>
+            <li>Tokenización: dividir el texto en palabras o frases.</li>
+            <li>Lematización y stemming: reducir palabras a su forma base.</li>
+            <li>Etiquetado gramatical (POS tagging): identificar la categoría gramatical de cada palabra.</li>
+            <li>Análisis sintáctico y semántico.</li>
+        </ul>
+    </div>
+    
+    <div class="slide" id="slide4">
+        <h2>Modelos de NLP</h2>
+        <p>Algunos modelos populares en NLP incluyen:</p>
+        <ul>
+            <li>Bag of Words (BoW)</li>
+            <li>TF-IDF (Term Frequency - Inverse Document Frequency)</li>
+            <li>Word Embeddings (Word2Vec, GloVe, FastText)</li>
+            <li>Modelos neuronales (BERT, GPT, T5)</li>
+        </ul>
+    </div>
+    <div class="slide">
     <h3>Bibliotecas de NLP en Python:</h3>
     <ul>
         <li>NLTK.</li>
@@ -91,6 +231,26 @@ for token in doc:
     </code>
     </pre>
 </div>
+    
+    <div class="slide" id="slide5">
+        <h2>Herramientas y Bibliotecas de NLP</h2>
+        <p>Existen diversas herramientas para NLP, como:</p>
+        <ul>
+            <li>NLTK</li>
+            <li>SpaCy</li>
+            <li>Transformers de Hugging Face</li>
+            <li>Gensim</li>
+            <li>CoreNLP</li>
+        </ul>
+    </div>
+    <div class="slide">
+        <h3>Casos de Uso de los Chatbots:</h3>
+        <ul>
+            <li>Atención al cliente.</li>
+            <li>Asistencia en compras en línea.</li>
+            <li>Automatización de tareas administrativas.</li>
+        </ul>
+    </div>
 
 <div class="slide">
     <h2>3. Diseño y Desarrollo de un Chatbot Básico</h2>

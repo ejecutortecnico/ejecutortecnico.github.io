@@ -158,23 +158,27 @@ print(persona1)  # Salida: Carlos, 30 años
         </div>
     </div>
 
-    <script>
+     <script>
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+        const slides = document.querySelectorAll(".slide");
 
         function showSlide(index) {
-            slides[currentSlide].classList.add('hidden');
-            currentSlide = (index + slides.length) % slides.length;
-            slides[currentSlide].classList.remove('hidden');
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
         }
 
         function nextSlide() {
-            showSlide(currentSlide + 1);
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
         }
 
-        function previousSlide() {
-            showSlide(currentSlide - 1);
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
         }
+
+        showSlide(currentSlide);
     </script>
 </body>
 </html>

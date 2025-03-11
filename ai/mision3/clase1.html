@@ -112,7 +112,68 @@
               predictions = model.predict(X_test)
                 </code></pre>
               </div>
-              
+              <div class="slide">
+                <h2>¿Qué es una Red Neuronal?</h2>
+                <p>Una red neuronal es un sistema de computación inspirado en el funcionamiento del cerebro humano. Está compuesta por nodos (o neuronas) que se organizan en capas: capa de entrada, capas ocultas y capa de salida. Cada nodo recibe entradas, las procesa y transmite una salida.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Neuronas y Conexiones</h2>
+                <p>Las neuronas de una red están conectadas entre sí mediante conexiones. Estas conexiones tienen pesos que determinan la importancia de las entradas. Cuando una entrada pasa a través de una neurona, se multiplica por el peso y pasa por una función de activación que determina si la neurona se activa.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Capas de una Red Neuronal</h2>
+                <p>Una red neuronal se compone de tres tipos de capas: 
+                <ul>
+                    <li><strong>Capa de entrada:</strong> Recibe los datos de entrada.</li>
+                    <li><strong>Capas ocultas:</strong> Realizan el procesamiento de los datos. Pueden ser múltiples capas en redes profundas.</li>
+                    <li><strong>Capa de salida:</strong> Proporciona la salida final del modelo, como la predicción o clasificación.</li>
+                </ul>
+                </p>
+            </div>
+            
+            <div class="slide">
+                <h2>Funciones de Activación</h2>
+                <p>Las funciones de activación determinan si una neurona se activa o no. Algunas de las funciones más comunes son:
+                <ul>
+                    <li><strong>Sigmoide:</strong> Devuelve un valor entre 0 y 1, usado principalmente en clasificación binaria.</li>
+                    <li><strong>ReLU (Rectified Linear Unit):</strong> Proporciona valores positivos o cero, común en redes profundas.</li>
+                    <li><strong>Tangente hiperbólica:</strong> Devuelve un valor entre -1 y 1, a menudo utilizada en redes con salidas continuas.</li>
+                </ul>
+                </p>
+            </div>
+            
+            <div class="slide">
+                <h2>Proceso de Aprendizaje: Backpropagation</h2>
+                <p>El proceso de aprendizaje en redes neuronales es supervisado y se realiza mediante un algoritmo llamado retropropagación (backpropagation). Este algoritmo ajusta los pesos de las conexiones de la red mediante el cálculo del error en la salida y propagándolo hacia atrás para actualizar los pesos de manera eficiente.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Entrenamiento y Validación</h2>
+                <p>El entrenamiento de una red neuronal implica alimentar datos de entrada y calcular el error de salida. El modelo ajusta sus pesos utilizando algoritmos de optimización como el descenso por gradiente. Durante el entrenamiento, los datos se dividen en conjuntos de entrenamiento y validación para evitar el sobreajuste y evaluar la capacidad del modelo para generalizar.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Redes Neuronales Convolucionales (CNN)</h2>
+                <p>Las redes neuronales convolucionales (CNN) son un tipo de red especialmente diseñada para procesar datos con una estructura en forma de grilla, como imágenes. Utilizan capas convolucionales que aplican filtros a las imágenes para extraer características importantes, como bordes y texturas.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Redes Neuronales Recurrentes (RNN)</h2>
+                <p>Las redes neuronales recurrentes (RNN) son útiles para datos secuenciales, como texto o series temporales. Tienen conexiones que permiten que la información fluya hacia atrás en el tiempo, lo que permite que la red tenga una memoria de estados anteriores, ideal para tareas como el procesamiento de lenguaje natural y predicciones temporales.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Overfitting y Underfitting</h2>
+                <p>El overfitting ocurre cuando un modelo aprende demasiado bien los detalles del conjunto de entrenamiento, incluyendo el ruido, lo que afecta su capacidad para generalizar a nuevos datos. El underfitting, por otro lado, sucede cuando el modelo no es lo suficientemente complejo para capturar patrones importantes en los datos.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Optimización y Descenso por Gradiente</h2>
+                <p>El descenso por gradiente es un algoritmo utilizado para minimizar la función de pérdida de la red neuronal. Ajusta los pesos de la red en la dirección de la menor pendiente de la función de pérdida. Se pueden utilizar variantes como el descenso por gradiente estocástico (SGD) y métodos más avanzados como Adam para mejorar la eficiencia del aprendizaje.</p>
+            </div>
+            
               <div class="slide">
                 <h3>3. Aplicaciones Prácticas de Machine Learning</h3>
                 <p><strong>Objetivo:</strong> Ver cómo se utilizan los algoritmos de machine learning en la práctica a través de estudios de caso.</p>

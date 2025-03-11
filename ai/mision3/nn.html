@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h2>Introducción a las Redes Neuronales</h2>
+                <p>Las redes neuronales son un conjunto de algoritmos inspirados en el cerebro humano, diseñados para reconocer patrones. Son la base de muchos algoritmos de Machine Learning y Deep Learning.</p>
+                <p>Una red neuronal se compone de tres tipos de capas:</p>
+                <ul>
+                    <li><strong>Capa de Entrada:</strong> Recibe los datos de entrada.</li>
+                    <li><strong>Capa Oculta:</strong> Realiza los cálculos y transformaciones de los datos.</li>
+                    <li><strong>Capa de Salida:</strong> Devuelve el resultado final de la predicción.</li>
+                </ul>
+                <p>En este ejemplo básico, vamos a construir una red neuronal para resolver un problema de clasificación sencillo.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Red Neuronal Simple en Keras</h2>
+                <p>A continuación, crearemos una red neuronal simple usando la biblioteca Keras de TensorFlow. Esta red será capaz de clasificar imágenes de dígitos (como el conjunto de datos MNIST) en 10 clases diferentes.</p>
+                <pre><code>
+            import tensorflow as tf
+            from tensorflow.keras.models import Sequential
+            from tensorflow.keras.layers import Dense
+            from tensorflow.keras.datasets import mnist
+            
+            # Cargar los datos
+            (x_train, y_train), (x_test, y_test) = mnist.load_data()
+            
+            # Preprocesar los datos
+            x_train = x_train / 255.0
+            x_test = x_test / 255.0
+            x_train = x_train.reshape(-1, 28 * 28)
+            x_test = x_test.reshape(-1, 28 * 28)
+            
+            # Crear el modelo
+            model = Sequential([
+                Dense(128, activation='relu', input_shape=(28*28,)),
+                Dense(10, activation='softmax')
+            ])
+            
+            # Compilar el modelo
+            model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+            
+            # Entrenar el modelo
+            model.fit(x_train, y_train, epochs=5)
+            
+            # Evaluar el modelo
+            model.evaluate(x_test, y_test)
+                </code></pre>
+                <p>Este código crea una red neuronal simple de dos capas. La capa oculta tiene 128 neuronas y usa la función de activación ReLU. La capa de salida tiene 10 neuronas, una por cada clase en el conjunto de datos MNIST, y usa softmax para la clasificación.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Explicación del Código</h2>
+                <p>Vamos a desglosar el código que acabamos de escribir:</p>
+                <ul>
+                    <li><strong>Importar las bibliotecas necesarias:</strong> Usamos TensorFlow y Keras para construir y entrenar la red neuronal.</li>
+                    <li><strong>Cargar y preprocesar los datos:</strong> El conjunto de datos MNIST contiene imágenes de dígitos. Primero normalizamos los valores de los píxeles dividiendo por 255 y aplanamos las imágenes para que puedan ser procesadas por la red neuronal.</li>
+                    <li><strong>Crear el modelo:</strong> La red neuronal tiene una capa densa con 128 neuronas y una capa de salida con 10 neuronas, una por cada clase.</li>
+                    <li><strong>Compilar el modelo:</strong> El modelo se compila usando el optimizador 'Adam' y la función de pérdida 'sparse_categorical_crossentropy'.</li>
+                    <li><strong>Entrenar y evaluar:</strong> El modelo se entrena en 5 épocas y luego se evalúa en el conjunto de test.</li>
+                </ul>
+                <p>Este es un ejemplo muy básico de cómo construir y entrenar una red neuronal para un problema de clasificación de imágenes.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Red Neuronal para Clasificación Binaria</h2>
+                <p>En este ejemplo, vamos a crear una red neuronal simple para clasificación binaria. Este tipo de red es ideal para problemas donde las etiquetas son 0 o 1, como la clasificación de imágenes de gatos vs. perros.</p>
+                <pre><code>
+            import tensorflow as tf
+            from tensorflow.keras.models import Sequential
+            from tensorflow.keras.layers import Dense
+            import numpy as np
+            
+            # Generar datos de ejemplo
+            x_train = np.random.rand(100, 1)  # Datos de entrada
+            y_train = (x_train > 0.5).astype(int)  # Etiquetas binarias
+            
+            # Crear el modelo
+            model = Sequential([
+                Dense(10, activation='relu', input_shape=(1,)),
+                Dense(1, activation='sigmoid')
+            ])
+            
+            # Compilar el modelo
+            model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+            
+            # Entrenar el modelo
+            model.fit(x_train, y_train, epochs=10)
+            
+            # Evaluar el modelo
+            test_data = np.array([[0.4], [0.7]])
+            predictions = model.predict(test_data)
+            print(predictions)
+                </code></pre>
+                <p>Este modelo tiene una capa oculta con 10 neuronas y una capa de salida con una neurona, usando la función de activación sigmoid, ideal para clasificación binaria. El modelo se entrena con datos aleatorios generados para el ejemplo.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Explicación de la Red Neuronal Binaria</h2>
+                <p>Desglosamos el código del modelo de clasificación binaria:</p>
+                <ul>
+                    <li><strong>Generación de datos:</strong> Usamos datos aleatorios generados con `np.random.rand()`. Las etiquetas son 1 si el valor es mayor que 0.5, y 0 en caso contrario.</li>
+                    <li><strong>Modelo:</strong> La red neuronal tiene una capa densa con 10 neuronas (con ReLU como función de activación) y una capa de salida con una neurona usando la activación sigmoid.</li>
+                    <li><strong>Compilación y entrenamiento:</strong> Usamos 'binary_crossentropy' como función de pérdida, que es adecuada para clasificación binaria, y entrenamos el modelo durante 10 épocas.</li>
+                    <li><strong>Predicción:</strong> Finalmente, hacemos predicciones sobre nuevos datos de prueba.</li>
+                </ul>
+                <p>Este ejemplo muestra cómo crear una red neuronal simple para resolver un problema de clasificación binaria. Este tipo de redes es común para tareas como la detección de fraude o clasificación de imágenes en dos categorías.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Red Neuronal Multicapa</h2>
+                <p>A medida que las redes neuronales se vuelven más complejas, se pueden agregar más capas ocultas para mejorar su capacidad de aprender patrones complejos. Aquí mostramos cómo crear una red neuronal con múltiples capas ocultas.</p>
+                <pre><code>
+            import tensorflow as tf
+            from tensorflow.keras.models import Sequential
+            from tensorflow.keras.layers import Dense
+            
+            # Crear el modelo con varias capas ocultas
+            model = Sequential([
+                Dense(64, activation='relu', input_shape=(28*28,)),
+                Dense(64, activation='relu'),
+                Dense(10, activation='softmax')  # Capa de salida para clasificación multicategoría
+            ])
+            
+            # Compilar el modelo
+            model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+            
+            # Entrenar el modelo con MNIST (en este caso se asume que ya has preprocesado los datos)
+            model.fit(x_train, y_train, epochs=5)
+                </code></pre>
+                <p>Este modelo tiene dos capas ocultas con 64 neuronas cada una y usa ReLU como función de activación. La capa de salida tiene 10 neuronas, una por cada clase de MNIST, usando softmax.</p>
+            </div>
+            
+              
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

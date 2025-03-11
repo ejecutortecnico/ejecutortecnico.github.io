@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones en JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="slide">
+            <h2>Introducción a MongoDB Atlas y Node.js</h2>
+            <p>MongoDB Atlas es la versión en la nube de MongoDB, lo que facilita la configuración y administración de bases de datos sin necesidad de mantener servidores locales. Con MongoDB Atlas, puedes conectar tu aplicación Node.js a una base de datos remota sin tener que instalar MongoDB en tu máquina.</p>
+            <p>En esta presentación, aprenderemos cómo conectar una aplicación Node.js a **MongoDB Atlas** usando Mongoose y realizar operaciones CRUD en la base de datos en la nube.</p>
+        </div>
+        
+        <div class="slide">
+            <h2>Pasos para Configurar MongoDB Atlas</h2>
+            <p>Para comenzar a trabajar con **MongoDB Atlas**, sigue estos pasos:</p>
+            <ol>
+                <li><a href="https://www.mongodb.com/cloud/atlas">Regístrate en MongoDB Atlas</a> y crea una nueva cuenta si aún no tienes una.</li>
+                <li>Crea un nuevo clúster de base de datos en **MongoDB Atlas**. Elige una opción gratuita o de pago según tus necesidades.</li>
+                <li>Crea una nueva base de datos (por ejemplo, <strong>miBaseDeDatos</strong>) y una colección (por ejemplo, <strong>usuarios</strong>).</li>
+                <li>Agrega un usuario a tu clúster y configura los permisos de acceso. Asegúrate de obtener el <strong>URI de conexión</strong> de Atlas, que se verá algo así:</li>
+                <pre><code>mongodb+srv://<usuario>:<contraseña>@cluster0.mongodb.net/miBaseDeDatos?retryWrites=true&w=majority</code></pre>
+            </ol>
+        </div>
+        
+        <div class="slide">
+            <h2>Crear un Proyecto en Node.js</h2>
+            <p>1. Crea una nueva carpeta para tu proyecto.</p>
+            <p>2. Inicia un proyecto Node.js con el comando:</p>
+            <pre><code>npm init -y</code></pre>
+            <p>3. Instala los paquetes necesarios:</p>
+            <ul>
+                <li><strong>Express:</strong> Framework para crear aplicaciones web con Node.js.</li>
+                <li><strong>Mongoose:</strong> Librería que facilita el trabajo con MongoDB en Node.js.</li>
+            </ul>
+            <p>Ejecuta este comando para instalar los paquetes:</p>
+            <pre><code>npm install express mongoose dotenv</code></pre>
+            <p>El paquete **dotenv** se utiliza para manejar de forma segura las variables de entorno como la URI de conexión a MongoDB Atlas.</p>
+        </div>
+        
+        <div class="slide">
+            <h2>Conectar Node.js a MongoDB Atlas</h2>
+            <p>Ahora vamos a conectar nuestra aplicación Node.js a MongoDB Atlas utilizando **Mongoose**. A continuación, configuramos la conexión en un archivo de configuración seguro usando **dotenv** para manejar la URI de conexión.</p>
+            <p>Primero, crea un archivo `.env` en la raíz de tu proyecto y coloca tu URI de conexión:</p>
+            <pre><code>
+        MONGO_URI=mongodb+srv://<usuario>:<contraseña>@cluster0.mongodb.net/miBaseDeDatos?retryWrites=true&w=majority
+            </code></pre>
+            <p>A continuación, en tu archivo principal de Node.js, agrega el siguiente código:</p>
+            <pre><code>
+        const express = require('express');
+        const mongoose = require('mongoose');
+        require('dotenv').config(); // Cargar variables de entorno
+        
+        // Crear una instancia de Express
+        const app = express();
+        
+        // Conectar a MongoDB Atlas
+        mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
+        .then(() => console.log('Conexión exitosa a MongoDB Atlas'))
+        .catch((err) => console.log('Error de conexión:', err));
+        
+        // Iniciar el servidor
+        app.listen(3000, () => {
+            console.log('Servidor corriendo en el puerto 3000');
+        });
+            </code></pre>
+            <p>Este código establece una conexión con tu base de datos en **MongoDB Atlas** usando la URI almacenada en el archivo `.env`.</p>
+        </div>
+        
+        <div class="slide">
+            <h2>Definir un Esquema de Datos con Mongoose</h2>
+            <p>Una vez que tenemos nuestra base de datos conectada a MongoDB Atlas, podemos definir un esquema de datos para organizar nuestra colección.</p>
+            <p>Vamos a crear un esquema para el modelo "Usuario", que tiene un nombre, un correo electrónico y una edad:</p>
+            <pre><code>
+        const mongoose = require('mongoose');
+        
+        // Definir el esquema de datos
+        const usuarioSchema = new mongoose.Schema({
+            nombre: { type: String, required: true },
+            correo: { type: String, required: true, unique: true },
+            edad: { type: Number, required: true }
+        });
+        
+        // Crear el modelo a partir del esquema
+        const Usuario = mongoose.model('Usuario', usuarioSchema);
+            </code></pre>
+            <p>Este código define un esquema y un modelo para la colección de "usuarios".</p>
+        </div>
+        
+        <div class="slide">
+            <h2>Crear un Nuevo Usuario en MongoDB Atlas</h2>
+            <p>Ahora que tenemos nuestro modelo definido, podemos agregar un nuevo documento de usuario en la base de datos alojada en **MongoDB Atlas**.</p>
+            <pre><code>
+        const nuevoUsuario = new Usuario({
+            nombre: 'Juan Pérez',
+            correo: 'juan@example.com',
+            edad: 28
+        });
+        
+        // Guardar el usuario en la base de datos de MongoDB Atlas
+        nuevoUsuario.save()
+        .then(() => console.log('Usuario guardado exitosamente'))
+        .catch((err) => console.log('Error al guardar el usuario:', err));
+            </code></pre>
+            <p>Este código crea un nuevo usuario en la colección "usuarios" y lo guarda en la base de datos alojada en MongoDB Atlas.</p>
+        </div>
+        
+        <div class="slide">
+            <h2>Leer Datos de MongoDB Atlas</h2>
+            <p>Podemos leer los datos desde nuestra base de datos en **MongoDB Atlas** de manera similar a cómo lo haríamos localmente. Utilizaremos el método <code>find()</code> de Mongoose para obtener todos los usuarios:</p>
+            <pre><code>
+        Usuario.find()
+        .then((usuarios) => {
+            console.log('Usuarios encontrados:', usuarios);
+        })
+        .catch((err) => console.log('Error al leer los usuarios:', err));
+            </code></pre>
+            <p>Este código obtiene todos los usuarios de la colección "usuarios" y los imprime en la consola.</p>
+        </div>
+        
+        <div class="slide">
+            <h2>Actualizar Datos en MongoDB Atlas</h2>
+            <p>Para actualizar datos, podemos utilizar el método <code>findByIdAndUpdate()</code> o <code>updateOne()</code>. A continuación, vamos a actualizar la edad de un usuario específico:</p>
+            <pre><code>
+        const idUsuario = 'id_del_usuario_a_actualizar'; // Reemplaza con un ID real
+        
+        Usuario.findByIdAndUpdate(idUsuario, { edad: 30 })
+        .then(() => console.log('Usuario actualizado'))
+        .catch((err) => console.log('Error al actualizar el usuario:', err));
+            </code></pre>
+            <p>Este código actualiza el campo <strong>edad</strong> de un usuario específico en MongoDB Atlas usando su <strong>ID</strong>.</p>
+        </div>
+        
+        <div class="slide">
+            <h2>Eliminar Datos en MongoDB Atlas</h2>
+            <p>Si deseas eliminar un documento, puedes usar el método <code>findByIdAndDelete()</code> o <code>deleteOne()</code>. A continuación, eliminamos un usuario por su ID:</p>
+            <pre><code>
+        const idUsuario = 'id_del_usuario_a_eliminar'; // Reemplaza con un ID real
+        
+        Usuario.findByIdAndDelete(idUsuario)
+        .then(() => console.log('Usuario eliminado'))
+        .catch((err) => console.log('Error al eliminar el usuario:', err));
+            </code></pre>
+            <p>Este código elimina el documento de un usuario en MongoDB Atlas usando su <strong>ID</strong>.</p>
+        </div>
+        
+        <div class="slide">
+            <h2>Resumen y Conclusiones</h2>
+            <p>Hemos aprendido cómo conectar una aplicación Node.js con **MongoDB Atlas**, cómo realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y cómo manejar la configuración segura mediante el uso de variables de entorno.</p>
+            <p>Con MongoDB Atlas y Node.js, puedes crear aplicaciones escalables y de alto rendimiento sin necesidad de preocuparte por la administración de bases de datos locales. ¡Ahora es el momento de explorar más funciones de MongoDB Atlas y construir aplicaciones aún más complejas!</p>
+        </div>
+        
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script src="../../js/slide.js"></script>
+</body>
+</html>

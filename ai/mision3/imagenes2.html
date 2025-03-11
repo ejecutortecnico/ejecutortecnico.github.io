@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h2>Aumento de Datos en Machine Learning</h2>
+                <p>El aumento de datos (data augmentation) es una técnica utilizada para aumentar la cantidad de datos disponibles para entrenar un modelo, mediante la creación de nuevas imágenes a partir de transformaciones de las imágenes originales. Esto es útil cuando se tiene un conjunto de datos limitado.</p>
+                <p>Algunas transformaciones comunes incluyen rotaciones, desplazamientos, inversiones y escalado.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Transformaciones Comunes en Aumento de Datos</h2>
+                <p>Existen varias transformaciones que puedes aplicar para aumentar el tamaño de tu conjunto de datos y mejorar la generalización del modelo. Aquí están algunas de ellas:</p>
+                <ul>
+                    <li><strong>Rotación:</strong> Gira la imagen en un rango de grados.</li>
+                    <li><strong>Desplazamiento (Shift):</strong> Mueve la imagen en el eje X o Y.</li>
+                    <li><strong>Espejado (Flip):</strong> Invierte la imagen horizontal o verticalmente.</li>
+                    <li><strong>Escalado:</strong> Cambia el tamaño de la imagen.</li>
+                    <li><strong>Shearing:</strong> Aplica una distorsión en el ángulo de la imagen.</li>
+                </ul>
+                <p>Estas transformaciones pueden ser útiles para entrenar modelos de visión por computadora robustos que no se sobreajusten a los datos específicos de entrenamiento.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Redimensionamiento de Imágenes</h2>
+                <p>Las imágenes de entrada deben tener un tamaño consistente para ser procesadas por los modelos de Machine Learning. El redimensionamiento es un paso común antes de alimentar las imágenes al modelo. En TensorFlow, por ejemplo, se puede redimensionar imágenes con la función `tf.image.resize()`:</p>
+                <pre><code>
+            import tensorflow as tf
+            
+            # Cargar la imagen
+            image = tf.io.read_file('imagen.jpg')
+            image = tf.image.decode_jpeg(image, channels=3)
+            
+            # Redimensionar la imagen
+            resized_image = tf.image.resize(image, [224, 224])
+            
+            # Mostrar la imagen redimensionada
+            import matplotlib.pyplot as plt
+            plt.imshow(resized_image.numpy())
+            plt.axis('off')
+            plt.show()
+                </code></pre>
+                <p>Este ejemplo redimensiona la imagen a 224x224 píxeles, un tamaño comúnmente utilizado en modelos preentrenados como VGG16 o ResNet.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Uso de la Biblioteca TensorFlow para Cargar y Procesar Imágenes</h2>
+                <p>TensorFlow también proporciona varias utilidades para cargar y preprocesar imágenes. Usamos `tf.image` para aplicar transformaciones directamente sobre las imágenes, y se puede aprovechar su rendimiento optimizado para manejar grandes cantidades de datos de imágenes.</p>
+                <p>A continuación se muestra cómo cargar y preprocesar imágenes con TensorFlow:</p>
+                <pre><code>
+            import tensorflow as tf
+            
+            # Cargar y decodificar la imagen
+            image_path = 'imagen.jpg'
+            image = tf.io.read_file(image_path)
+            image = tf.image.decode_jpeg(image, channels=3)
+            
+            # Preprocesar la imagen
+            image = tf.image.convert_image_dtype(image, tf.float32)  # Normalización
+            image = tf.image.resize(image, [224, 224])  # Redimensionar
+            
+            # Mostrar la imagen
+            import matplotlib.pyplot as plt
+            plt.imshow(image.numpy())
+            plt.axis('off')
+            plt.show()
+                </code></pre>
+                <p>Este código realiza el procesamiento necesario para convertir una imagen a un formato adecuado para alimentar un modelo, que incluye la normalización (dividiendo por 255) y la redimensión a un tamaño fijo.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Normalización de Imágenes</h2>
+                <p>La normalización es el proceso de escalar los valores de los píxeles de las imágenes a un rango específico, normalmente [0, 1] o [-1, 1]. Esto mejora la eficiencia y estabilidad del entrenamiento de modelos.</p>
+                <p>En TensorFlow, podemos hacer esto fácilmente con la función `convert_image_dtype()`:</p>
+                <pre><code>
+            import tensorflow as tf
+            
+            # Cargar y decodificar la imagen
+            image_path = 'imagen.jpg'
+            image = tf.io.read_file(image_path)
+            image = tf.image.decode_jpeg(image, channels=3)
+            
+            # Normalizar la imagen
+            normalized_image = tf.image.convert_image_dtype(image, tf.float32)
+            
+            # Mostrar la imagen normalizada
+            import matplotlib.pyplot as plt
+            plt.imshow(normalized_image.numpy())
+            plt.axis('off')
+            plt.show()
+                </code></pre>
+                <p>Este código convierte los valores de los píxeles a un rango entre 0 y 1, lo cual es útil para alimentar redes neuronales.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Transferencia de Aprendizaje en Visión por Computadora</h2>
+                <p>La transferencia de aprendizaje (transfer learning) es una técnica en la que un modelo preentrenado en una gran base de datos, como ImageNet, es ajustado para tareas específicas. Esto permite que los modelos se entrenen con menos datos y en menos tiempo.</p>
+                <p>En TensorFlow, se puede utilizar un modelo preentrenado como base para construir una red más profunda:</p>
+                <pre><code>
+            import tensorflow as tf
+            from tensorflow.keras.applications import VGG16
+            from tensorflow.keras.layers import Dense, Flatten
+            from tensorflow.keras.models import Model
+            
+            # Cargar el modelo VGG16 preentrenado sin la capa superior (clasificación)
+            base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+            
+            # Congelar las capas base para evitar su entrenamiento
+            base_model.trainable = False
+            
+            # Añadir capas personalizadas encima del modelo preentrenado
+            model = Model(inputs=base_model.input, outputs=Dense(1, activation='sigmoid')(Flatten()(base_model.output)))
+            
+            # Compilar el modelo
+            model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+            
+            # Ver la arquitectura del modelo
+            model.summary()
+                </code></pre>
+                <p>Este código muestra cómo usar un modelo preentrenado (VGG16 en este caso) y agregarle nuevas capas para un problema específico. La base del modelo se congela para evitar que se entrene de nuevo.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Visualización de Resultados de Predicción con Imágenes</h2>
+                <p>Una vez que un modelo de Machine Learning ha sido entrenado, puedes usarlo para hacer predicciones sobre nuevas imágenes. Para ver cómo el modelo está prediciendo, puedes visualizar las imágenes junto con sus etiquetas predichas.</p>
+                <p>Este es un ejemplo de cómo visualizar las predicciones:</p>
+                <pre><code>
+            import tensorflow as tf
+            import matplotlib.pyplot as plt
+            import numpy as np
+            
+            # Cargar la imagen
+            image = tf.io.read_file('imagen.jpg')
+            image = tf.image.decode_jpeg(image, channels=3)
+            image = tf.image.resize(image, [224, 224])
+            
+            # Preprocesar la imagen para el modelo
+            image = tf.image.convert_image_dtype(image, tf.float32)
+            image = np.expand_dims(image, axis=0)
+            
+            # Hacer la predicción
+            predictions = model.predict(image)
+            
+            # Mostrar la imagen y la predicción
+            plt.imshow(image[0])
+            plt.title(f"Predicción: {predictions[0]}")
+            plt.axis('off')
+            plt.show()
+                </code></pre>
+                <p>Este ejemplo muestra cómo tomar una imagen de entrada, pasarla por el modelo y visualizar la imagen junto con la predicción realizada por el modelo.</p>
+            </div>
+            
+              
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

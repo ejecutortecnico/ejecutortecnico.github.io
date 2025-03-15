@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Basico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide active">
+                <h1>Introducción al Reconocimiento de Imágenes</h1>
+                <p>En esta presentación, exploraremos cómo usar redes neuronales profundas para reconocer dígitos escritos a mano utilizando el dataset MNIST.</p>
+            </div>
+        
+            <!-- Slide 2 -->
+            <div class="slide">
+                <h2>¿Qué es el MNIST?</h2>
+                <p>El MNIST (Modified National Institute of Standards and Technology) es un conjunto de datos de imágenes de dígitos escritos a mano, ampliamente utilizado en el aprendizaje automático y la visión por computadora.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/PNG_transparency_demonstration_1.png/220px-PNG_transparency_demonstration_1.png" alt="Ejemplo MNIST" class="image">
+            </div>
+        
+            <!-- Slide 3 -->
+            <div class="slide">
+                <h2>Estructura del Dataset</h2>
+                <ul>
+                    <li>70,000 imágenes de dígitos escritos a mano.</li>
+                    <li>60,000 imágenes para entrenamiento y 10,000 para prueba.</li>
+                    <li>Cada imagen es de 28x28 píxeles en escala de grises.</li>
+                </ul>
+            </div>
+        
+            <!-- Slide 4 -->
+            <div class="slide">
+                <h2>Cargar el Dataset MNIST en Python</h2>
+                <p>Usamos la librería `Keras` para cargar el dataset MNIST en Python.</p>
+                <pre><code>
+        # Cargar el dataset MNIST
+        from tensorflow.keras.datasets import mnist
+        
+        # Cargar los datos de entrenamiento y prueba
+        (x_train, y_train), (x_test, y_test) = mnist.load_data()
+        
+        # Normalizar las imágenes a valores entre 0 y 1
+        x_train, x_test = x_train / 255.0, x_test / 255.0
+                </code></pre>
+            </div>
+        
+            <!-- Slide 5 -->
+            <div class="slide">
+                <h2>Entrenando un Modelo de Red Neuronal</h2>
+                <p>Ahora, vamos a crear y entrenar un modelo de red neuronal utilizando Keras.</p>
+                <pre><code>
+        # Importar las librerías necesarias
+        from tensorflow.keras.models import Sequential
+        from tensorflow.keras.layers import Dense, Flatten
+        from tensorflow.keras.optimizers import Adam
+        
+        # Crear el modelo secuencial
+        model = Sequential([
+            Flatten(input_shape=(28, 28)),  # Convertir las imágenes 28x28 a un vector
+            Dense(128, activation='relu'),  # Capa densa con 128 neuronas
+            Dense(10, activation='softmax')  # Capa de salida con 10 clases
+        ])
+        
+        # Compilar el modelo
+        model.compile(optimizer=Adam(),
+                      loss='sparse_categorical_crossentropy',
+                      metrics=['accuracy'])
+        
+        # Entrenar el modelo
+        model.fit(x_train, y_train, epochs=5)
+                </code></pre>
+            </div>
+        
+            <!-- Slide 6 -->
+            <div class="slide">
+                <h2>Evaluando el Modelo</h2>
+                <p>Después de entrenar el modelo, podemos evaluarlo utilizando el conjunto de prueba.</p>
+                <pre><code>
+        # Evaluar el modelo
+        test_loss, test_acc = model.evaluate(x_test, y_test)
+        
+        print(f"Precisión en el conjunto de prueba: {test_acc}")
+                </code></pre>
+            </div>
+        
+            <!-- Slide 7 -->
+            <div class="slide">
+                <h2>Predicción de una Imagen</h2>
+                <p>Finalmente, podemos usar el modelo para hacer predicciones sobre nuevas imágenes.</p>
+                <pre><code>
+        # Hacer una predicción sobre una imagen
+        import numpy as np
+        import matplotlib.pyplot as plt
+        
+        # Seleccionar una imagen aleatoria del conjunto de prueba
+        image = x_test[0]
+        
+        # Predecir el dígito
+        prediction = model.predict(np.expand_dims(image, axis=0))
+        predicted_digit = np.argmax(prediction)
+        
+        # Mostrar la imagen y la predicción
+        plt.imshow(image, cmap='gray')
+        plt.title(f"Predicción: {predicted_digit}")
+        plt.show()
+                </code></pre>
+            </div>
+        
+            <!-- Slide 8 -->
+            <div class="slide">
+                <h2>Precisión del Modelo</h2>
+                <p>Al evaluar el modelo con el conjunto de datos de prueba, podemos calcular la precisión del modelo para medir su efectividad en la clasificación de imágenes.</p>
+            </div>
+        
+            <!-- Slide 9 -->
+            <div class="slide">
+                <h2>Conclusiones</h2>
+                <p>El dataset MNIST es una excelente herramienta para comenzar con el aprendizaje automático en reconocimiento de imágenes. Hemos cubierto desde la preparación de los datos hasta la evaluación del modelo.</p>
+            </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

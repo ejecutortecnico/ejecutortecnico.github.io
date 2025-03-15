@@ -64,6 +64,82 @@
                 </pre>
                 <p>En este caso, usamos `SELECT` para obtener datos, y `WHERE` para aplicar un filtro.</p>
               </div>
+              <div class="slide">
+                <h1>Relaciones en Bases de Datos</h1>
+                <p>En una base de datos relacional, las relaciones entre tablas son fundamentales para organizar la información de manera eficiente.</p>
+                <p>Existen tres tipos principales de relaciones:</p>
+                <ul>
+                    <li><strong>Uno a Uno</strong>: Cada fila de una tabla se relaciona con una única fila de otra tabla.</li>
+                    <li><strong>Uno a Muchos</strong>: Una fila de una tabla se puede relacionar con varias filas de otra tabla.</li>
+                    <li><strong>Muchos a Muchos</strong>: Varias filas de una tabla se pueden relacionar con varias filas de otra tabla, generalmente usando una tabla intermedia.</li>
+                </ul>
+            </div>
+            
+            <div class="slide">
+                <h1>Creación de Relaciones en MySQL</h1>
+                <p>Para crear relaciones entre tablas, se utilizan claves primarias y claves foráneas. La clave primaria asegura la unicidad de cada fila, mientras que la clave foránea conecta dos tablas.</p>
+                <pre>
+                CREATE TABLE clientes (
+                    id_cliente INT PRIMARY KEY,
+                    nombre VARCHAR(100)
+                );
+            
+                CREATE TABLE pedidos (
+                    id_pedido INT PRIMARY KEY,
+                    id_cliente INT,
+                    fecha DATE,
+                    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+                );
+                </pre>
+            </div>
+            
+            <div class="slide">
+                <h1>Introducción a los JOINs</h1>
+                <p>Un <strong>JOIN</strong> se utiliza para combinar filas de dos o más tablas en una base de datos en función de una condición de relación.</p>
+                <p>Existen varios tipos de JOIN:</p>
+                <ul>
+                    <li><strong>INNER JOIN</strong>: Devuelve solo las filas que tienen coincidencias en ambas tablas.</li>
+                    <li><strong>LEFT JOIN</strong>: Devuelve todas las filas de la tabla de la izquierda, junto con las filas coincidentes de la tabla de la derecha.</li>
+                    <li><strong>RIGHT JOIN</strong>: Devuelve todas las filas de la tabla de la derecha, junto con las filas coincidentes de la tabla de la izquierda.</li>
+                    <li><strong>FULL JOIN</strong>: Devuelve filas cuando hay una coincidencia en una de las tablas.</li>
+                </ul>
+            </div>
+            
+            <div class="slide">
+                <h1>Ejemplo de INNER JOIN</h1>
+                <p>El siguiente ejemplo muestra cómo combinar las tablas `clientes` y `pedidos` utilizando un <strong>INNER JOIN</strong> para obtener los pedidos realizados por cada cliente:</p>
+                <pre>
+                SELECT clientes.nombre, pedidos.fecha
+                FROM clientes
+                INNER JOIN pedidos ON clientes.id_cliente = pedidos.id_cliente;
+                </pre>
+            </div>
+            
+            <div class="slide">
+                <h1>Ejemplo de LEFT JOIN</h1>
+                <p>El siguiente ejemplo muestra cómo obtener todos los clientes, incluso aquellos que no han realizado pedidos:</p>
+                <pre>
+                SELECT clientes.nombre, pedidos.fecha
+                FROM clientes
+                LEFT JOIN pedidos ON clientes.id_cliente = pedidos.id_cliente;
+                </pre>
+            </div>
+            
+            <div class="slide">
+                <h1>Ejemplo de RIGHT JOIN</h1>
+                <p>En este caso, si existiera una tabla `pagos` con algunos pagos no relacionados a un cliente, se usaría un <strong>RIGHT JOIN</strong> para obtener todos los pagos, aunque no tengan un cliente asociado:</p>
+                <pre>
+                SELECT pagos.monto, clientes.nombre
+                FROM pagos
+                RIGHT JOIN clientes ON pagos.id_cliente = clientes.id_cliente;
+                </pre>
+            </div>
+            
+            <div class="slide">
+                <h1>Conclusión</h1>
+                <p>Las relaciones entre tablas y los JOINs son herramientas poderosas para consultar y combinar datos en bases de datos relacionales.</p>
+                <p>Al comprender cómo usar las claves foráneas y los diferentes tipos de JOIN, podrás estructurar consultas más complejas y útiles para trabajar con bases de datos.</p>
+            </div>
             
               <!-- Diapositiva 5: Ventajas de las bases de datos -->
               <div class="slide">

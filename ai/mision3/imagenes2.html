@@ -106,26 +106,13 @@
                 <p>En TensorFlow, se puede utilizar un modelo preentrenado como base para construir una red más profunda:</p>
                 <pre><code>
 import tensorflow as tf
-from tensorflow.keras.applications import VGG16
-from tensorflow.keras.layers import Dense, Flatten
-from tensorflow.keras.models import Model
 import matplotlib.pyplot as plt
+import numpy as np
 
-# Cargar el modelo VGG16 preentrenado sin la capa superior (clasificación)
-base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+# Cargar el modelo preentrenado ResNet50, sin la capa superior (fully connected layers)
+model = tf.keras.applications.ResNet50(weights='imagenet')
 
-# Congelar las capas base para evitar su entrenamiento
-base_model.trainable = False
-
-# Añadir capas personalizadas encima del modelo preentrenado
-model = Model(inputs=base_model.input, outputs=Dense(1, activation='sigmoid')(Flatten()(base_model.output)))
-
-# Compilar el modelo
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-
-# Ver la arquitectura del modelo
-model.summary()
-
+# Cargar la imagen
 img_path = 'imagen.jpg'
 image = tf.io.read_file(img_path)
 image = tf.image.decode_jpeg(image, channels=3)
@@ -154,6 +141,7 @@ plt.show()
 print("Las 3 principales predicciones:")
 for i in decoded_predictions:
     print(f"{i[1]}: {i[2]*100:.2f}%")
+                    
                 </code></pre>
                 <p>Este código muestra cómo usar un modelo preentrenado (VGG16 en este caso) y agregarle nuevas capas para un problema específico. La base del modelo se congela para evitar que se entrene de nuevo.</p>
             </div>

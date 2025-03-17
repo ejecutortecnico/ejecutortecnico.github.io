@@ -105,25 +105,55 @@
                 <p>La transferencia de aprendizaje (transfer learning) es una técnica en la que un modelo preentrenado en una gran base de datos, como ImageNet, es ajustado para tareas específicas. Esto permite que los modelos se entrenen con menos datos y en menos tiempo.</p>
                 <p>En TensorFlow, se puede utilizar un modelo preentrenado como base para construir una red más profunda:</p>
                 <pre><code>
-            import tensorflow as tf
-            from tensorflow.keras.applications import VGG16
-            from tensorflow.keras.layers import Dense, Flatten
-            from tensorflow.keras.models import Model
-            
-            # Cargar el modelo VGG16 preentrenado sin la capa superior (clasificación)
-            base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
-            
-            # Congelar las capas base para evitar su entrenamiento
-            base_model.trainable = False
-            
-            # Añadir capas personalizadas encima del modelo preentrenado
-            model = Model(inputs=base_model.input, outputs=Dense(1, activation='sigmoid')(Flatten()(base_model.output)))
-            
-            # Compilar el modelo
-            model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-            
-            # Ver la arquitectura del modelo
-            model.summary()
+import tensorflow as tf
+from tensorflow.keras.applications import VGG16
+from tensorflow.keras.layers import Dense, Flatten
+from tensorflow.keras.models import Model
+import matplotlib.pyplot as plt
+
+# Cargar el modelo VGG16 preentrenado sin la capa superior (clasificación)
+base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+
+# Congelar las capas base para evitar su entrenamiento
+base_model.trainable = False
+
+# Añadir capas personalizadas encima del modelo preentrenado
+model = Model(inputs=base_model.input, outputs=Dense(1, activation='sigmoid')(Flatten()(base_model.output)))
+
+# Compilar el modelo
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Ver la arquitectura del modelo
+model.summary()
+
+img_path = 'imagen.jpg'
+image = tf.io.read_file(img_path)
+image = tf.image.decode_jpeg(image, channels=3)
+image = tf.image.resize(image, [224, 224])  # Redimensionar la imagen a 224x224 para ResNet50
+
+# Normalizar la imagen para que esté en el rango correcto para el modelo preentrenado
+image = tf.image.convert_image_dtype(image, tf.float32)
+image = tf.keras.applications.resnet50.preprocess_input(image)  # Normalización específica de ResNet50
+
+# Expande las dimensiones de la imagen para que sea compatible con la entrada del modelo
+image = np.expand_dims(image, axis=0)
+
+# Hacer la predicción
+predictions = model.predict(image)
+
+# Decodificar las predicciones (obtendremos la clase predicha con la probabilidad más alta)
+decoded_predictions = tf.keras.applications.resnet50.decode_predictions(predictions, top=3)[0]
+
+# Mostrar la imagen y las 3 predicciones principales
+plt.imshow(image[0])
+plt.title(f"Predicción: {decoded_predictions[0][1]} ({decoded_predictions[0][2]*100:.2f}%)")
+plt.axis('off')
+plt.show()
+
+# Imprimir las 3 mejores predicciones
+print("Las 3 principales predicciones:")
+for i in decoded_predictions:
+    print(f"{i[1]}: {i[2]*100:.2f}%")
                 </code></pre>
                 <p>Este código muestra cómo usar un modelo preentrenado (VGG16 en este caso) y agregarle nuevas capas para un problema específico. La base del modelo se congela para evitar que se entrene de nuevo.</p>
             </div>

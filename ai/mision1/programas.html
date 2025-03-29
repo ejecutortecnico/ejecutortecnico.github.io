@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide active">
+                <h2>Hola Mundo</h2>
+                <pre><code>print("Hola, mundo!")</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Suma de Dos Números</h2>
+                <pre><code>a = int(input("Ingrese el primer número: "))
+            b = int(input("Ingrese el segundo número: "))
+            print("La suma es:", a + b)</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Condicionales</h2>
+                <pre><code>edad = int(input("Ingrese su edad: "))
+            if edad >= 18:
+                print("Eres mayor de edad.")
+            else:
+                print("Eres menor de edad.")</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Bucle For</h2>
+                <pre><code>for i in range(5):
+                print("Número:", i)</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Funciones</h2>
+                <pre><code>def saludar(nombre):
+                return f"Hola, {nombre}!"
+            
+            print(saludar("Carlos"))</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Números Pares</h2>
+                <pre><code>for i in range(0, 11, 2):
+                print(i)</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Factorial de un Número</h2>
+                <pre><code>def factorial(n):
+                if n == 0:
+                    return 1
+                return n * factorial(n - 1)
+            
+            print(factorial(5))</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Adivinar un Número</h2>
+                <pre><code>import random
+            numero_secreto = random.randint(1, 10)
+            intento = int(input("Adivina el número (1-10): "))
+            if intento == numero_secreto:
+                print("¡Adivinaste!")
+            else:
+                print("Intenta de nuevo.")</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Lista Invertida</h2>
+                <pre><code>lista = [1, 2, 3, 4, 5]
+            print("Lista invertida:", list(reversed(lista)))</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Verificar Palíndromo</h2>
+                <pre><code>palabra = input("Ingrese una palabra: ")
+            if palabra == palabra[::-1]:
+                print("Es un palíndromo.")
+            else:
+                print("No es un palíndromo.")</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Contar Vocales</h2>
+                <pre><code>texto = input("Ingrese un texto: ")
+            vocales = "aeiouAEIOU"
+            contador = sum(1 for letra in texto if letra in vocales)
+            print("Número de vocales:", contador)</code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Conversión de Temperatura</h2>
+                <pre><code>celsius = float(input("Ingrese la temperatura en Celsius: "))
+            fahrenheit = (celsius * 9/5) + 32
+            print("Temperatura en Fahrenheit:", fahrenheit)</code></pre>
+            </div>
+            
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

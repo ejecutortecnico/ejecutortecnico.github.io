@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios Melbourne</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h2>Predicción de Precios de Vivienda en Melbourne</h2>
+                <p>Utilizando Scikit-Learn para construir un modelo predictivo con datos de Kaggle.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Datos de Kaggle</h2>
+                <p>El dataset contiene información sobre propiedades en Melbourne, incluyendo precios, ubicación y características.</p>
+                <pre><code>import pandas as pd
+            
+# Cargar los datos
+df = pd.read_csv('melb_data.csv')
+df.head()
+            </code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Exploración de Datos</h2>
+                <p>Análisis exploratorio de datos (EDA) para entender la distribución y las relaciones entre variables.</p>
+                <pre><code>import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Visualizar la distribución de precios
+sns.histplot(df['Price'], bins=50, kde=True)
+plt.show()
+
+# Relación entre número de habitaciones y precio
+plt.figure(figsize=(8, 6))
+sns.boxplot(x=df['Rooms'], y=df['Price'])
+plt.xlabel("Número de Habitaciones")
+plt.ylabel("Precio")
+plt.title("Relación entre Habitaciones y Precio")
+plt.show()
+            </code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Preprocesamiento</h2>
+                <p>Eliminación de valores nulos, codificación de variables categóricas y escalado de datos numéricos.</p>
+                <pre><code>from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
+# Eliminar valores nulos
+df = df.dropna()
+
+# Seleccionar características relevantes
+features = ['Rooms', 'Bathroom', 'Landsize', 'BuildingArea', 'YearBuilt']
+X = df[features]
+y = df['Price']
+
+# Dividir los datos en entrenamiento y prueba
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            </code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Selección de Modelo</h2>
+                <p>Probamos modelos como regresión lineal, árboles de decisión y random forest para encontrar el mejor rendimiento.</p>
+                <pre><code>from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+
+# Crear modelos
+lr = LinearRegression()
+dt = DecisionTreeRegressor()
+rf = RandomForestRegressor(n_estimators=100, random_state=42)
+            </code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Entrenamiento y Evaluación</h2>
+                <p>División de datos en entrenamiento y prueba, ajuste del modelo y evaluación con métricas como RMSE y R².</p>
+                <pre><code>from sklearn.metrics import mean_squared_error, r2_score
+            
+# Entrenar y evaluar cada modelo
+models = {
+    'Linear Regression': lr,
+    'Decision Tree': dt,
+    'Random Forest': rf
+}
+
+results = {}
+
+for name, model in models.items():
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    rmse = mean_squared_error(y_test, y_pred, squared=False)
+    r2 = r2_score(y_test, y_pred)
+    results[name] = (rmse, r2)
+    print(f"{name}: RMSE = {rmse:.2f}, R² = {r2:.2f}")
+
+# Comparación de modelos
+plt.figure(figsize=(8, 6))
+names = list(results.keys())
+rmse_values = [results[name][0] for name in names]
+r2_values = [results[name][1] for name in names]
+
+plt.subplot(2, 1, 1)
+plt.bar(names, rmse_values, color=['blue', 'green', 'red'])
+plt.ylabel("RMSE")
+plt.title("Comparación de Modelos - RMSE")
+
+plt.subplot(2, 1, 2)
+plt.bar(names, r2_values, color=['blue', 'green', 'red'])
+plt.ylabel("R²")
+plt.title("Comparación de Modelos - R²")
+
+plt.tight_layout()
+plt.show()
+            </code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Resultados y Conclusiones</h2>
+                <p>Revisión de los resultados obtenidos y consideraciones para mejorar el modelo.</p>
+                <p>El modelo Random Forest mostró el mejor desempeño, pero podríamos mejorarlo ajustando hiperparámetros.</p>
+            </div>
+            
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

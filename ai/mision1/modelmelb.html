@@ -10,18 +10,43 @@
 </head>
     <body>
         <div class="container">
+            
+            <div class="slide">
+                <h2>¿Qué es un modelo de IA?</h2>
+                <p>Un modelo de Inteligencia Artificial (IA) es un sistema que aprende patrones a partir de datos para hacer predicciones o tomar decisiones.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>¿Qué es Scikit-learn?</h2>
+                <p>Scikit-learn es una biblioteca de Python para el aprendizaje automático que proporciona herramientas para la clasificación, regresión, clustering y reducción de dimensionalidad.</p>
+            </div>
+            
+            <div class="slide">
+                <h2>Construcción de un modelo en Scikit-learn</h2>
+                <p>Para construir un modelo en Scikit-learn, se sigue generalmente el siguiente flujo de trabajo:</p>
+                <ul>
+                    <li>Importar los datos</li>
+                    <li>Preprocesar los datos</li>
+                    <li>Seleccionar un modelo</li>
+                    <li>Entrenar el modelo</li>
+                    <li>Evaluar el modelo</li>
+                    <li>Hacer predicciones</li>
+                </ul>
+            </div>
             <div class="slide">
                 <h2>Predicción de Precios de Vivienda en Melbourne</h2>
                 <p>Utilizando Scikit-Learn para construir un modelo predictivo con datos de Kaggle.</p>
             </div>
             
             <div class="slide">
-                <h2>Datos de Kaggle</h2>
-                <p>El dataset contiene información sobre propiedades en Melbourne, incluyendo precios, ubicación y características.</p>
+                <h2>Desacargar dataset de precios en Melbourne</h2>
+                <p>El dataset contiene información sobre propiedades en Melbourne, incluyendo precios, ubicación y características.<br> <a href="https://discoduro.app/drive/s/SlyNyNNa9BVytWdz1YtBerOrHiufNp">DESCARGAR</a></p>
                 <pre><code>import pandas as pd
-            
-# Cargar los datos
+
+# Cargar los datos desde el archivo CSV
 df = pd.read_csv('melb_data.csv')
+
+# Mostrar las primeras filas del dataset
 df.head()
             </code></pre>
             </div>
@@ -32,7 +57,7 @@ df.head()
                 <pre><code>import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Visualizar la distribución de precios
+# Visualizar la distribución de precios de las viviendas
 sns.histplot(df['Price'], bins=50, kde=True)
 plt.show()
 
@@ -48,70 +73,86 @@ plt.show()
             
             <div class="slide">
                 <h2>Preprocesamiento</h2>
-                <p>Eliminación de valores nulos, codificación de variables categóricas y escalado de datos numéricos.</p>
+                <p>Eliminación de valores nulos, selección de características y división de los datos.</p>
                 <pre><code>from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-# Eliminar valores nulos
+# Eliminar valores nulos para evitar problemas con el modelo
 df = df.dropna()
 
-# Seleccionar características relevantes
+# Seleccionar características relevantes para la predicción
 features = ['Rooms', 'Bathroom', 'Landsize', 'BuildingArea', 'YearBuilt']
-X = df[features]
-y = df['Price']
+X = df[features]  # Variables independientes
+y = df['Price']   # Variable objetivo
 
-# Dividir los datos en entrenamiento y prueba
+# Dividir los datos en conjuntos de entrenamiento (80%) y prueba (20%)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
             </code></pre>
             </div>
             
             <div class="slide">
                 <h2>Selección de Modelo</h2>
-                <p>Probamos modelos como regresión lineal, árboles de decisión y random forest para encontrar el mejor rendimiento.</p>
+                <p>Probamos modelos de aprendizaje automático para encontrar el mejor rendimiento.</p>
                 <pre><code>from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 
-# Crear modelos
-lr = LinearRegression()
-dt = DecisionTreeRegressor()
-rf = RandomForestRegressor(n_estimators=100, random_state=42)
+# Crear instancias de los modelos
+lr = LinearRegression()  # Regresión Lineal
+dt = DecisionTreeRegressor()  # Árbol de Decisión
+rf = RandomForestRegressor(n_estimators=100, random_state=42)  # Random Forest
             </code></pre>
             </div>
             
             <div class="slide">
-                <h2>Entrenamiento y Evaluación</h2>
-                <p>División de datos en entrenamiento y prueba, ajuste del modelo y evaluación con métricas como RMSE y R².</p>
-                <pre><code>from sklearn.metrics import mean_squared_error, r2_score
-            
-# Entrenar y evaluar cada modelo
+                <h2>Entrenamiento de Modelos</h2>
+                <p>Entrenamos los modelos utilizando los datos de entrenamiento.</p>
+                <pre><code># Diccionario para almacenar los modelos
 models = {
     'Linear Regression': lr,
     'Decision Tree': dt,
     'Random Forest': rf
 }
 
+# Entrenar cada modelo
+for name, model in models.items():
+    model.fit(X_train, y_train)  # Entrenar el modelo
+            </code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Evaluación de Modelos</h2>
+                <p>Evaluamos el rendimiento de los modelos utilizando métricas como RMSE y R².</p>
+                <pre><code>from sklearn.metrics import mean_squared_error, r2_score
+
 results = {}
 
+# Evaluar cada modelo
 for name, model in models.items():
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
-    rmse = mean_squared_error(y_test, y_pred, squared=False)
-    r2 = r2_score(y_test, y_pred)
+    y_pred = model.predict(X_test)  # Hacer predicciones
+    rmse = mean_squared_error(y_test, y_pred, squared=False)  # Error cuadrático medio
+    r2 = r2_score(y_test, y_pred)  # Coeficiente de determinación
     results[name] = (rmse, r2)
     print(f"{name}: RMSE = {rmse:.2f}, R² = {r2:.2f}")
-
-# Comparación de modelos
+            </code></pre>
+            </div>
+            
+            <div class="slide">
+                <h2>Comparación Visual de Modelos</h2>
+                <p>Visualizamos las métricas de rendimiento para comparar los modelos.</p>
+                <pre><code># Comparación visual de los modelos
 plt.figure(figsize=(8, 6))
 names = list(results.keys())
 rmse_values = [results[name][0] for name in names]
 r2_values = [results[name][1] for name in names]
 
+# Gráfico de RMSE
 plt.subplot(2, 1, 1)
 plt.bar(names, rmse_values, color=['blue', 'green', 'red'])
 plt.ylabel("RMSE")
 plt.title("Comparación de Modelos - RMSE")
 
+# Gráfico de R²
 plt.subplot(2, 1, 2)
 plt.bar(names, r2_values, color=['blue', 'green', 'red'])
 plt.ylabel("R²")

@@ -189,6 +189,38 @@ nuevo_texto = texto.translate(tabla)
 
 print(nuevo_texto)  # hl mgs
     </code></pre>
+</div>	
+<div class="slide">
+    <h1>Eliminar puntuación con <code>translate()</code></h1>
+    <p>Podemos usar <code>translate()</code> para eliminar signos de puntuación en un texto.</p>
+</div>
+
+<div class="slide">
+    <h1>Ejemplo: Eliminar puntuación</h1>
+    <p>Usamos <code>str.maketrans()</code> pasando un diccionario vacío y los caracteres a eliminar.</p>
+    <pre><code>
+import string
+
+# Crear una tabla para eliminar puntuación
+tabla = str.maketrans("", "", string.punctuation)
+
+# Texto con puntuación
+texto = "¡Hola! ¿Cómo estás?"
+
+# Aplicar la traducción
+texto_limpio = texto.translate(tabla)
+
+print(texto_limpio)  # Hola Como estas
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>¿Cómo funciona?</h1>
+    <ul>
+        <li><code>string.punctuation</code> contiene todos los signos de puntuación.</li>
+        <li>Pasamos una tabla vacía para no reemplazar nada.</li>
+        <li>Los caracteres en <code>string.punctuation</code> se eliminan.</li>
+    </ul>
 </div>	    
         <div class="nav">
             <button onclick="plusSlides(-1)">&#10094; Anterior</button>

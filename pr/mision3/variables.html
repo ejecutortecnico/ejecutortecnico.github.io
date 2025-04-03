@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../css/estilos.css">
 </head>
 <body>
-    <div class="container>
+    <div class="container">
 	 <div class="slide">
     <h1>¿Qué es una variable?</h1>
     <p>Una variable es un espacio en la memoria donde guardamos un valor para usarlo después.</p>
@@ -93,40 +93,6 @@ print(suma)  # 15
 print(multiplicacion)  # 50
     </code></pre>
 </div>
-<div class="slide">
-    <h1>Método <code>translate()</code></h1>
-    <p>El método <code>translate()</code> se usa para reemplazar caracteres en una cadena usando una tabla de traducción.</p>
-</div>
-
-<div class="slide">
-    <h1>¿Cómo funciona <code>translate()</code>?</h1>
-    <p>Para usar <code>translate()</code>, primero creamos una tabla con <code>str.maketrans()</code>.</p>
-    <pre><code>
-# Crear una tabla de traducción
-tabla = str.maketrans("aeiou", "12345")
-
-# Aplicar la traducción a una cadena
-texto = "hola amigos"
-nuevo_texto = texto.translate(tabla)
-
-print(nuevo_texto)  # h4l1 1m3g4s
-    </code></pre>
-</div>
-
-<div class="slide">
-    <h1>Eliminar caracteres con <code>translate()</code></h1>
-    <p>Podemos eliminar caracteres asignándoles <code>None</code> en la tabla de traducción.</p>
-    <pre><code>
-# Crear una tabla de eliminación
-tabla = str.maketrans("", "", "aeiou")
-
-# Aplicar la traducción
-texto = "hola amigos"
-nuevo_texto = texto.translate(tabla)
-
-print(nuevo_texto)  # hl mgs
-    </code></pre>
-</div>	
 <div class="slide">
     <h1>Ejercicios de tarea</h1>
     <p>Practica lo aprendido resolviendo estos ejercicios.</p>

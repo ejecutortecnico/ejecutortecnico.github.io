@@ -9,7 +9,91 @@
 </head>
 <body>
     <div class="container>
-	    
+	 <div class="slide">
+    <h1>¿Qué es una variable?</h1>
+    <p>Una variable es un espacio en la memoria donde guardamos un valor para usarlo después.</p>
+</div>
+
+<div class="slide">
+    <h1>Declarar una variable</h1>
+    <p>En Python, solo escribimos un nombre y le asignamos un valor con <code>=</code>.</p>
+    <pre><code>
+# Guardamos un número en una variable
+edad = 25
+
+# Mostramos el valor
+print(edad)  # 25
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>Tipos de variables</h1>
+    <p>Las variables pueden guardar diferentes tipos de datos.</p>
+    <pre><code>
+nombre = "Ana"      # Texto (string)
+edad = 30           # Número entero (int)
+altura = 1.75       # Número decimal (float)
+es_mayor = True     # Valor lógico (booleano)
+
+print(nombre, edad, altura, es_mayor)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>Cambiar el valor de una variable</h1>
+    <p>Podemos actualizar el valor de una variable en cualquier momento.</p>
+    <pre><code>
+x = 10  # x empieza con 10
+print(x)  # 10
+
+x = 20  # Ahora x vale 20
+print(x)  # 20
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>Asignación múltiple</h1>
+    <p>Podemos asignar varios valores a varias variables en una sola línea.</p>
+    <pre><code>
+a, b, c = 5, 10, 15
+
+print(a)  # 5
+print(b)  # 10
+print(c)  # 15
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>Nombrar variables</h1>
+    <p>Reglas básicas para nombrar variables:</p>
+    <ul>
+        <li>Pueden contener letras, números y guion bajo (_).</li>
+        <li>No pueden empezar con un número.</li>
+        <li>No deben ser palabras reservadas de Python.</li>
+    </ul>
+    <pre><code>
+nombre_usuario = "Carlos"  # Correcto
+edad2 = 25  # Correcto
+2edad = 30  # Incorrecto (empieza con número)
+print = "Hola"  # Incorrecto (print es una palabra reservada)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>Variables en operaciones</h1>
+    <p>Podemos usar variables en operaciones matemáticas.</p>
+    <pre><code>
+a = 10
+b = 5
+
+suma = a + b
+multiplicacion = a * b
+
+print(suma)  # 15
+print(multiplicacion)  # 50
+    </code></pre>
+</div>
+	
 <div class="slide">
     <h1>Ejercicios de tarea</h1>
     <p>Practica lo aprendido resolviendo estos ejercicios.</p>
@@ -87,6 +171,11 @@ print(mensaje)
     <h1>¡Practica y diviértete!</h1>
     <p>Intenta los ejercicios y experimenta con las variables en Python.</p>
 </div>
+<div class="slide">
+    <h1>Conclusión</h1>
+    <p>Las variables nos permiten guardar datos y usarlos en nuestro código.</p>
+</div>   
+
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>
             <button onclick="nextSlide()">Siguiente</button>

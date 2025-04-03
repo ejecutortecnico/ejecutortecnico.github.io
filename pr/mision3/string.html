@@ -156,6 +156,40 @@ texto = "python es genial"
 print(texto.capitalize())  # "Python es genial"
     </code></pre>
 </div>
+<div class="slide">
+    <h1>Método <code>translate()</code></h1>
+    <p>El método <code>translate()</code> se usa para reemplazar caracteres en una cadena usando una tabla de traducción.</p>
+</div>
+
+<div class="slide">
+    <h1>¿Cómo funciona <code>translate()</code>?</h1>
+    <p>Para usar <code>translate()</code>, primero creamos una tabla con <code>str.maketrans()</code>.</p>
+    <pre><code>
+# Crear una tabla de traducción
+tabla = str.maketrans("aeiou", "12345")
+
+# Aplicar la traducción a una cadena
+texto = "hola amigos"
+nuevo_texto = texto.translate(tabla)
+
+print(nuevo_texto)  # h4l1 1m3g4s
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>Eliminar caracteres con <code>translate()</code></h1>
+    <p>Podemos eliminar caracteres asignándoles <code>None</code> en la tabla de traducción.</p>
+    <pre><code>
+# Crear una tabla de eliminación
+tabla = str.maketrans("", "", "aeiou")
+
+# Aplicar la traducción
+texto = "hola amigos"
+nuevo_texto = texto.translate(tabla)
+
+print(nuevo_texto)  # hl mgs
+    </code></pre>
+</div>	    
         <div class="nav">
             <button onclick="plusSlides(-1)">&#10094; Anterior</button>
             <button onclick="plusSlides(1)">Siguiente &#10095;</button>

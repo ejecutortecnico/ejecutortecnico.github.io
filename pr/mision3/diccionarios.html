@@ -15,85 +15,157 @@
             <p>Los diccionarios en Python son colecciones desordenadas de pares clave-valor. A continuación, te presentamos algunos ejercicios prácticos para trabajar con ellos.</p>
         </div>
         
-        <div id="slide2" class="slide">
-            <h2>Ejercicio 1: Crear un Diccionario</h2>
-            <p>Crea un diccionario llamado <code>alumno</code> que contenga las claves: "nombre", "edad", "curso". Luego, imprime el diccionario completo.</p>
+        <div class="slide">
+            <h3>Ejercicio 1: Crear un diccionario</h3>
+            <p>Crea un diccionario con información de una persona y muestra sus valores.</p>
             <pre>
-# Solución
-alumno = {
-    "nombre": "Juan",
-    "edad": 20,
-    "curso": "Matemáticas"
+                <code>
+persona = {
+    "nombre": "Carlos",
+    "edad": 30,
+    "ciudad": "Bogotá"
 }
 
-# Imprimir el diccionario
-print(alumno)
+print(persona["nombre"])
+print(persona["edad"])
+print(persona["ciudad"])
+                </code>
             </pre>
         </div>
         
-        <div id="slide3" class="slide">
-            <h2>Ejercicio 2: Acceder a Elementos</h2>
-            <p>Dado el diccionario <code>alumno</code>, imprime solo el valor de la clave "nombre".</p>
+        <div class="slide">
+            <h3>Ejercicio 2: Agregar y modificar valores</h3>
+            <p>Añade una nueva clave y actualiza un valor en el diccionario.</p>
             <pre>
-# Solución
-print(alumno["nombre"])  # Imprime: Juan
-            </pre>
-        </div>
-        
-        <div id="slide4" class="slide">
-            <h2>Ejercicio 3: Agregar un Elemento</h2>
-            <p>Agrega al diccionario <code>alumno</code> la clave "nota" con el valor 8.5.</p>
-            <pre>
-# Solución
-alumno["nota"] = 8.5
-print(alumno)
-            </pre>
-        </div>
-        
-        <div id="slide5" class="slide">
-            <h2>Ejercicio 4: Eliminar un Elemento</h2>
-            <p>Elimina la clave "curso" del diccionario <code>alumno</code>.</p>
-            <pre>
-# Solución
-del alumno["curso"]
-print(alumno)
-            </pre>
-        </div>
-        
-        <div id="slide6" class="slide">
-            <h2>Ejercicio 5: Recorrer un Diccionario</h2>
-            <p>Utiliza un bucle <code>for</code> para recorrer e imprimir las claves y los valores del diccionario <code>alumno</code>.</p>
-            <pre>
-# Solución
-for clave, valor in alumno.items():
-    print(clave, ":", valor)
-            </pre>
-        </div>
-        
-        <div id="slide7" class="slide">
-            <h2>Ejercicio 6: Diccionario Anidado</h2>
-            <p>Crea un diccionario llamado <code>clase</code> que contenga dos alumnos, cada uno representado como un diccionario con su "nombre", "edad" y "nota".</p>
-            <pre>
-# Solución
-clase = {
-    "alumno1": {"nombre": "Ana", "edad": 21, "nota": 9.0},
-    "alumno2": {"nombre": "Carlos", "edad": 22, "nota": 7.5}
-}
+                <code>
+persona["profesión"] = "Ingeniero"
+persona["edad"] = 31
 
-# Imprimir el diccionario completo
-print(clase)
+print(persona)
+                </code>
             </pre>
         </div>
         
-        <div id="slide8" class="slide">
-            <h2>Ejercicio 7: Modificar un Valor en Diccionario Anidado</h2>
-            <p>Cambia la nota del "alumno1" a 9.5 en el diccionario <code>clase</code>.</p>
+        <div class="slide">
+            <h3>Ejercicio 3: Recorrer un diccionario</h3>
+            <p>Imprime todas las claves y valores usando un bucle.</p>
             <pre>
-# Solución
-clase["alumno1"]["nota"] = 9.5
-print(clase["alumno1"])
+                <code>
+for clave, valor in persona.items():
+    print(f"{clave}: {valor}")
+                </code>
             </pre>
         </div>
+        
+        <div class="slide">
+            <h3>Ejercicio 4: Verificar si una clave existe</h3>
+            <p>Solicita una clave al usuario y verifica si está en el diccionario.</p>
+            <pre>
+                <code>
+clave = input("Ingrese una clave: ")
+
+if clave in persona:
+    print(f"{clave} existe y su valor es: {persona[clave]}")
+else:
+    print(f"{clave} no existe en el diccionario.")
+                </code>
+            </pre>
+        </div>
+        
+        <div class="slide">
+            <h3>Ejercicio 5: Eliminar elementos</h3>
+            <p>Elimina una clave específica del diccionario.</p>
+            <pre>
+                <code>
+del persona["ciudad"]
+print(persona)
+                </code>
+            </pre>
+        </div>
+        
+        <div class="slide">
+            <h3>Ejercicio 6: Contar elementos</h3>
+            <p>Cuenta cuántos pares clave-valor hay en el diccionario.</p>
+            <pre>
+                <code>
+print(len(persona))
+                </code>
+            </pre>
+        </div>
+        
+        <div class="slide">
+            <h3>Ejercicio 7: Combinar dos diccionarios</h3>
+            <p>Une dos diccionarios en uno solo.</p>
+            <pre>
+                <code>
+dic1 = {"a": 1, "b": 2}
+dic2 = {"c": 3, "d": 4}
+
+dic1.update(dic2)
+print(dic1)
+                </code>
+            </pre>
+        </div>
+        
+        <div class="slide">
+            <h3>Ejercicio 8: Diccionario con valores predeterminados</h3>
+            <p>Crea un diccionario con claves y valores predeterminados.</p>
+            <pre>
+                <code>
+claves = ["nombre", "edad", "ciudad"]
+dic_predeterminado = dict.fromkeys(claves, "Desconocido")
+
+print(dic_predeterminado)
+                </code>
+            </pre>
+        </div>
+        
+        <div class="slide">
+            <h3>Ejercicio 9: Contar palabras en una frase</h3>
+            <p>Cuenta la frecuencia de palabras en una frase.</p>
+            <pre>
+                <code>
+frase = "python es genial y python es poderoso"
+palabras = frase.split()
+
+contador = {}
+
+for palabra in palabras:
+    contador[palabra] = contador.get(palabra, 0) + 1
+
+print(contador)
+                </code>
+            </pre>
+        </div>
+        
+        <div class="slide">
+            <h3>Ejercicio 10: Invertir un diccionario</h3>
+            <p>Intercambia las claves y valores de un diccionario.</p>
+            <pre>
+                <code>
+diccionario = {"rojo": "red", "azul": "blue", "verde": "green"}
+invertido = {valor: clave for clave, valor in diccionario.items()}
+
+print(invertido)
+                </code>
+            </pre>
+        </div>
+        
+        <div class="slide">
+            <h3>Ejercicio 11: Uso del método get</h3>
+            <p>Obtén un valor de un diccionario de forma segura usando el método <code>get()</code>.</p>
+            <pre>
+                <code>
+persona = {"nombre": "Carlos", "edad": 30}
+
+# Intentar obtener la clave "profesión" con un valor por defecto
+profesion = persona.get("profesión", "No especificado")
+
+print(profesion)
+                </code>
+            </pre>
+        </div>
+        
 
         <div id="slide9" class="slide">
             <h2>Conclusión</h2>

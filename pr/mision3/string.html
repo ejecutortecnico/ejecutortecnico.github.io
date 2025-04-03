@@ -10,37 +10,152 @@
 </head>
 <body>
     <div class="container">
-        <div class="slide active">
-            <h1>Métodos de Cadenas en Python</h1>
-            <h2>1. .upper()</h2>
-            <p>Convierte todos los caracteres a mayúsculas.</p>
-            <pre onclick="openModal('upper')">'texto'.upper()  # 'TEXTO'</pre>
-        </div>
-        <div class="slide">
-            <h2>2. .lower()</h2>
-            <p>Convierte todos los caracteres a minúsculas.</p>
-            <pre onclick="openModal('lower')">'TEXTO'.lower()  # 'texto'</pre>
-        </div>
-        <div class="slide">
-            <h2>3. .strip()</h2>
-            <p>Elimina espacios en blanco al inicio y al final de la cadena.</p>
-            <pre onclick="openModal('strip')">'   texto   '.strip()  # 'texto'</pre>
-        </div>
-        <div class="slide">
-            <h2>4. .replace()</h2>
-            <p>Reemplaza una subcadena por otra.</p>
-            <pre onclick="openModal('replace')">'Hola, mundo'.replace('mundo', 'Python')  # 'Hola, Python'</pre>
-        </div>
-        <div class="slide">
-            <h2>5. .split()</h2>
-            <p>Divide una cadena en una lista usando un separador.</p>
-            <pre onclick="openModal('split')">'uno, dos, tres'.split(',')  # ['uno', ' dos', ' tres']</pre>
-        </div>
-        <div class="slide">
-            <h2>Conclusiones</h2>
-            <p>Los métodos de cadenas son fundamentales para la manipulación de texto en Python.</p>
-        </div>
+       
+<div class="slide">
+    <h1>Métodos de Strings en Python</h1>
+    <p>Exploraremos métodos útiles para manipular cadenas de texto.</p>
+</div>
 
+<div class="slide">
+    <h1>1. Método upper()</h1>
+    <p>Convierte todas las letras de un string en mayúsculas.</p>
+    <pre><code>
+texto = "Hola, mundo"
+print(texto.upper())  # "HOLA, MUNDO"
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>2. Método lower()</h1>
+    <p>Convierte todas las letras en minúsculas.</p>
+    <pre><code>
+texto = "Hola, Mundo"
+print(texto.lower())  # "hola, mundo"
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>3. Método strip()</h1>
+    <p>Elimina espacios en blanco al inicio y al final.</p>
+    <pre><code>
+texto = "  Python  "
+print(texto.strip())  # "Python"
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>4. Método replace()</h1>
+    <p>Reemplaza una subcadena por otra.</p>
+    <pre><code>
+texto = "Me gusta Python"
+print(texto.replace("Python", "Java"))  # "Me gusta Java"
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>5. Método split()</h1>
+    <p>Divide un string en una lista usando un separador.</p>
+    <pre><code>
+texto = "manzana,banana,uva"
+print(texto.split(","))  # ['manzana', 'banana', 'uva']
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>6. Método join()</h1>
+    <p>Une los elementos de una lista en un solo string con un separador.</p>
+    <pre><code>
+lista = ["Python", "es", "genial"]
+print(" ".join(lista))  # "Python es genial"
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>7. Método find()</h1>
+    <p>Busca una subcadena y devuelve su índice (o -1 si no la encuentra).</p>
+    <pre><code>
+texto = "Aprender Python"
+print(texto.find("Python"))  # 9
+print(texto.find("Java"))    # -1
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>8. Método count()</h1>
+    <p>Cuenta cuántas veces aparece una subcadena en el texto.</p>
+    <pre><code>
+texto = "banana banana banana"
+print(texto.count("banana"))  # 3
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>9. Método startswith()</h1>
+    <p>Verifica si una cadena comienza con una subcadena específica.</p>
+    <pre><code>
+texto = "Hola, mundo"
+print(texto.startswith("Hola"))  # True
+print(texto.startswith("Mundo"))  # False
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>10. Método endswith()</h1>
+    <p>Verifica si una cadena termina con una subcadena específica.</p>
+    <pre><code>
+texto = "archivo.txt"
+print(texto.endswith(".txt"))  # True
+print(texto.endswith(".jpg"))  # False
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>11. Método isdigit()</h1>
+    <p>Verifica si todos los caracteres de una cadena son dígitos.</p>
+    <pre><code>
+texto = "12345"
+print(texto.isdigit())  # True
+print("123a".isdigit())  # False
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>12. Método isalpha()</h1>
+    <p>Verifica si todos los caracteres de una cadena son letras.</p>
+    <pre><code>
+texto = "Python"
+print(texto.isalpha())  # True
+print("Python3".isalpha())  # False
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>13. Método isalnum()</h1>
+    <p>Verifica si todos los caracteres son letras o números.</p>
+    <pre><code>
+texto = "Python3"
+print(texto.isalnum())  # True
+print("Python 3".isalnum())  # False (espacio no es alfanumérico)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>14. Método title()</h1>
+    <p>Convierte la primera letra de cada palabra en mayúscula.</p>
+    <pre><code>
+texto = "bienvenidos a python"
+print(texto.title())  # "Bienvenidos A Python"
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h1>15. Método capitalize()</h1>
+    <p>Convierte solo la primera letra de la cadena en mayúscula.</p>
+    <pre><code>
+texto = "python es genial"
+print(texto.capitalize())  # "Python es genial"
+    </code></pre>
+</div>
         <div class="nav">
             <button onclick="plusSlides(-1)">&#10094; Anterior</button>
             <button onclick="plusSlides(1)">Siguiente &#10095;</button>

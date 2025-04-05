@@ -18,14 +18,14 @@
               <div class="slide">
                 <h2>Diccionario de respuestas</h2>
                 <pre><code>
-              respuestas = {
-                  "hola": "¡Hola! ¿En qué puedo ayudarte?",
-                  "buenos días": "¡Buenos días! Espero que tengas un excelente día.",
-                  "adiós": "Adiós, ¡espero verte pronto!",
-                  "bye": "Adiós, ¡cuídate mucho!",
-                  "tu nombre": "Soy un chatbot creado en Python. Aún no tengo nombre",
-                  "clima": "No tengo acceso a información en tiempo real, pero podrías consultar el pronóstico en línea."
-              }
+respuestas = {
+    "hola": "¡Hola! ¿En qué puedo ayudarte?",
+    "buenos días": "¡Buenos días! Espero que tengas un excelente día.",
+    "adiós": "Adiós, ¡espero verte pronto!",
+    "bye": "Adiós, ¡cuídate mucho!",
+    "tu nombre": "Soy un chatbot creado en Python. Aún no tengo nombre",
+    "clima": "No tengo acceso a información en tiempo real, pero podrías consultar el pronóstico en línea."
+}
                 </code></pre>
                 <p>Este diccionario asocia palabras clave con respuestas. El chatbot buscará coincidencias exactas en este conjunto.</p>
               </div>
@@ -33,12 +33,12 @@
               <div class="slide">
                 <h2>Función obtener_respuesta</h2>
                 <pre><code>
-              def obtener_respuesta(mensaje):
-                  mensaje = mensaje.lower()
-                  if mensaje in respuestas:
-                      return respuestas[mensaje]
-                  else:
-                      return "Lo siento, no entiendo esa pregunta."
+def obtener_respuesta(mensaje):
+    mensaje = mensaje.lower()
+    if mensaje in respuestas:
+        return respuestas[mensaje]
+    else:
+        return "Lo siento, no entiendo esa pregunta."
                 </code></pre>
                 <p>La función convierte el mensaje a minúsculas y verifica si está en el diccionario. Si no, da una respuesta por defecto.</p>
               </div>
@@ -46,7 +46,7 @@
               <div class="slide">
                 <h2>Inicio de la conversación</h2>
                 <pre><code>
-              print("¡Hola! Soy un chatbot. Escribe 'salir' para terminar la conversación.")
+print("¡Hola! Soy un chatbot. Escribe 'salir' para terminar la conversación.")
                 </code></pre>
                 <p>Se muestra un mensaje de bienvenida e instrucción para salir del programa escribiendo "salir".</p>
               </div>
@@ -54,13 +54,13 @@
               <div class="slide">
                 <h2>Bucle de conversación</h2>
                 <pre><code>
-              while True:
-                  usuario = input("Tú: ")
-                  if usuario.lower() == "salir":
-                      print("Chatbot: ¡Adiós!")
-                      break
-                  respuesta = obtener_respuesta(usuario)
-                  print("Chatbot:", respuesta)
+while True:
+    usuario = input("Tú: ")
+    if usuario.lower() == "salir":
+        print("Chatbot: ¡Adiós!")
+        break
+    respuesta = obtener_respuesta(usuario)
+    print("Chatbot:", respuesta)
                 </code></pre>
                 <p>Este bucle permite que el usuario interactúe continuamente con el chatbot hasta escribir "salir".</p>
               </div>

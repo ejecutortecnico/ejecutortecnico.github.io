@@ -3,208 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentación clase 3</title>
+    <title>Estilos CSS Básicos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../css/estilos.css">
 </head>
 <body>
-
     <div class="container">
-        <!-- Diapositiva 1 -->
+        <!-- Slide 1 -->
         <div class="slide active">
-            <div class="row">
-                <div class="col">
-                    <img src="../../images/logo.png"  width="200" height="100" />
-                </div>
-                <div class="col">
-                    <h1>Selectores CSS</h1>
-                </div>
-            </div>
-			<div class="row">
-                <div class="col">
-                    <p>
-                            En CSS, los selectores son patrones que se utilizan para seleccionar los elementos que desea diseñar.
-                    </p>
-                    </div>
-                <div class="col">
-                  <img src="../../images/selectores.png" alt="Selectores" onclick="window.modal.showModal();" style="height: 50%; width: 50%;">
-            <dialog id="modal" style="height: auto; width: auto;">
-                <img src="../../images/selectores.png" alt="Selectores modal" style="height: 100%; width: 50%;">
-            <button onclick="window.modal.close();">Cerrar</button>
-            </dialog>
-                </div>
-                <div class="col">
-                    <img src="../../images/selectores2.png" alt="Selectores HTML" onclick="window.modal2.showModal();" style="height: 100%; width: 100%;">
-                </div>
-                <dialog id="modal2" style="height: auto; width: auto;">
-                    <img src="../../images/selectores2.png" alt="Selectores modal" style="height: 50%; width: 100%;">
-                <button onclick="window.modal2.close();">Cerrar</button>
-                </dialog>
-		    </div>
-		</div>
-
-        <div class="slide">
-            <div class="row">
-                <div class="col">
-                    <img src="../../images/logo.png"  width="200" height="100" />
-                </div>
-                <div class="col">
-                    <h1>Jerarquia CSS</h1>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col">
-                   <p>
-                    CSS en línea (CSS aplicado directamente en la etiqueta)<br>
-                    CSS interno (CSS aplicado entre etiquetas style en la misma página).<br>
-                    CSS externo (CSS aplicado externamente (desde la ruta del archivo u otro sitio web) con la etiqueta link).<br>
-                    Class<br>
-                    Id<br>
-                    !important<br>
-                   </p> 
-                </div>
-                <div class="col">
-                    <img src="../../images/jerarquia.png" alt="Box Model" onclick="window.modal3.showModal();" style="height: 100%; width: 100%;">
-                    </div>
-                    <dialog id="modal3" style="height: auto; width: auto;">
-                        <img src="../../images/jerarquia.png" alt="div modal" style="height: 100%; width: 50%;">
-                    <button onclick="window.modal3.close();">Cerrar</button>
-                    </dialog>
-                    </div>
+            <h1>Estilos CSS Básicos</h1>
+            <h2>Diseña tus Páginas con Estilo</h2>
+            <p>CSS (Cascading Style Sheets) es el lenguaje que se utiliza para estilizar el diseño de páginas web, controlando colores, tipografías, márgenes y más.</p>
         </div>
 
+        <!-- Slide 2 -->
         <div class="slide">
-            <div class="row">
-                <div class="col">
-                    <img src="../../images/logo.png"  width="200" height="100" />
-                </div>
-                <div class="col">
-                    <h1>Etiqueta DIV</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p>
-                          El elemento de HTML div es el contenedor genérico para el contenido. No tiene efecto en el contenido o en el diseño hasta que se le aplica un estilo de alguna manera usando CSS
-                    </p>
-                                  </div>
-                <div class="col">
-                    <img src="../../images/div.png" alt="Box Model" onclick="window.modal4.showModal();" style="height: 100%; width: 100%;">
-                </div>
-                <dialog id="modal4" style="height: auto; width: auto;">
-                        <img src="../../images/div.png" alt="div modal" style="height: 50%; width: 100%;">
-                    <button onclick="window.modal4.close();">Cerrar</button>
-                </dialog>
-            </div>
+            <h2>1. Sintaxis Básica</h2>
+            <p>Un bloque CSS básico tiene la siguiente estructura:</p>
+            <pre><code>selector {
+    propiedad: valor;
+}</code></pre>
+            <p><b>Ejemplo:</b> Cambiar el color de fondo de un elemento:</p>
+            <pre><code>body {
+    background-color: lightblue;
+}</code></pre>
         </div>
 
-    <div class="slide">
-        <div class="row">
-            <div class="col">
-                <img src="../../images/logo.png"  width="200" height="100" />
-            </div>
-            <div class="col">
-                <h1>Modelo de Caja</h1>
-            </div>
-        </div>
-            
-            <div class="row">
-                <div class="col">
-                    <p>
-                       El modelo de caja comprende algunas propiedades que definen como se verá tu sitio: 
-                    box-sizing, border, padding y margin. Estas propiedades finalmente afectan como tu 
-                    contenido será desplegado. 
-                    </p>
-                    
-                </div>
-                <div class="col">
-                    <img src="../../images/boxmodel.png" alt="Box Model"  onclick="window.modal5.showModal();" style="height: 100%; width: 100%;">
-                    </div>
-                    <dialog id="modal5" style="height: auto; width: auto;">
-                        <img src="../../images/boxmodel.png" alt="box modal" style="height: 50%; width: 50%;">
-                        <img src="../../images/box-model-1.png" alt="Box Model" style="height: 50%; width: 50%;">   
-                    <button onclick="window.modal5.close();">Cerrar</button>
-                    </dialog>
-                <div class="col">
-                    <img src="../../images/box-model-1.png" alt="Box Model" style="height: 100%; width: 100%;">   
-                    </div>
-                    </div>
-            </div>
-
-
-        <!-- Diapositiva 2 -->
+        <!-- Slide 3 -->
         <div class="slide">
-            <div class="row">
-                <div class="col">
-                    <img src="../../images/logo.png"  width="200" height="100" />
-                </div>
-                <div class="col">
-                    <h1>Display FLex</h1>
-                </div>
-            </div>
-            
-			<div class="row">
-                <div class="col">
-                    <p>
-                         El módulo de diseño de caja flexible facilita el diseño de una estructura
-                     de diseño flexible y responsiva sin utilizar flotación ni posicionamiento.
-                    </p>
-                   
-                </div>
-                <div class="col">
-                    <p>
-                       Para comenzar a utilizar el modelo Flexbox, primero debemos definir un contenedor flexible.
-                   
-                    </p>
-                      </div>
-                <div class="col">
-                    <img src="../../images/contenedor.png" alt="Box Model" style="height: 100%; width: 100%;">
-                 </div>
-		         </div>
-                </div>
+            <h2>2. Tipos de Selectores</h2>
+            <p>CSS ofrece varios tipos de selectores para apuntar a elementos específicos:</p>
+            <ul>
+                <li><b>Selector de etiqueta:</b> Apunta a todas las etiquetas de un tipo (`body`, `p`, `h1`).</li>
+                <li><b>Selector de clase:</b> Usa `.` para seleccionar clases (`.mi-clase`).</li>
+                <li><b>Selector de ID:</b> Usa `#` para seleccionar un ID específico (`#mi-id`).</li>
+            </ul>
+            <pre><code>.mi-clase {
+    color: red;
+}
 
-        <!-- Diapositiva 3 -->
-        <div class="slide">
-            <div class="row">
-                <div class="col">
-                    <img src="../../images/logo.png"  width="200" height="100" />
-                </div>
-                <div class="col">
-                    <h1>Display Grid</h1>
-                </div>
-            </div>
-            
-			<div class="row">
-                <div class="col">
-                   <p>
-                    El módulo de diseño de cuadrícula CSS ofrece un sistema de diseño basado en cuadrícula,
-                    con filas y columnas, lo que facilita el diseño de páginas web sin tener que utilizar 
-                    flotantes y posicionamiento.
-                   </p> 
-                </div>
-                <div class="col">
-                  <img src="../../images/grid.png" alt="grid box" style="height: 100%; width: 100%;">
-                    </div>
-                <div class="col">
-                    <img src="../../images/grid.png" alt="grid Box" style="height: 100%; width: 100%;">   
-                 </div>
-		         </div>
+#mi-id {
+    font-size: 20px;
+}</code></pre>
         </div>
 
+        <!-- Slide 4 -->
         <div class="slide">
-            <h2>Conclusión</h2>
+            <h2>3. Propiedades Comunes</h2>
+            <p>Algunas de las propiedades CSS más utilizadas son:</p>
+            <ul>
+                <li><b>Color:</b> `color` (texto) y `background-color` (fondo).</li>
+                <li><b>Tipografía:</b> `font-family`, `font-size`, `font-weight`.</li>
+                <li><b>Márgenes y rellenos:</b> `margin`, `padding`.</li>
+                <li><b>Dimensiones:</b> `width`, `height`.</li>
+            </ul>
+            <pre><code>h1 {
+    color: #ff00c3;
+    font-size: 36px;
+    margin-bottom: 20px;
+}</code></pre>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide">
+            <h2>4. Uso de Clases y Estilos Inline</h2>
+            <p>Aplica clases en HTML para estilizar elementos:</p>
+            <pre><code>&lt;div class="mi-clase"&gt;Texto estilizado&lt;/div&gt;</code></pre>
+            <p>También puedes usar estilos inline:</p>
+            <pre><code>&lt;p style="color: blue; font-size: 14px;"&gt;Texto azul&lt;/p&gt;</code></pre>
+            <p><b>Nota:</b> Se recomienda usar clases para mantener un código limpio.</p>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide">
+            <h2>5. Conclusión</h2>
             <p>CSS es fundamental para crear páginas atractivas y bien diseñadas. Aprende a usarlo junto con HTML para llevar tus proyectos al siguiente nivel.</p>
             <p>¡Experimenta con colores, fuentes y estilos para personalizar tu diseño!</p>
-            <button onclick="irpagina('css1.html')">CSS 1</button>
+            <button onclick="irpagina('css2.html')">CSS 2</button>
         </div>
-        <!-- Controles -->
+
+        <!-- Navigation Buttons -->
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>
             <button onclick="nextSlide()">Siguiente</button>
         </div>
     </div>
+    
     <script src="../../js/slide.js"></script>
 </body>
 </html>

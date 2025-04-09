@@ -10,7 +10,78 @@
 </head>
     <body>
         <div class="container">
-    
+    <div>
+  <h2>¿Qué es un Intent?</h2>
+  <p>
+    Un <strong>Intent</strong> representa la intención del usuario al enviar un mensaje.
+    Por ejemplo, "quiero saber mi saldo" podría estar asociado al intent <code>consultar_saldo</code>.
+  </p>
+  <pre><code>
+## intent:consultar_saldo
+- ¿Cuál es mi saldo?
+- Quiero ver mi saldo bancario
+- ¿Cuánto dinero tengo en mi cuenta?
+  </code></pre>
+</div>
+
+<div>
+  <h2>¿Qué son las Entities?</h2>
+  <p>
+    Las <strong>Entities</strong> (entidades) son los datos específicos que se extraen del mensaje del usuario. 
+    Por ejemplo, si alguien dice "Quiero transferir 100 euros a Juan", se pueden extraer las entidades: 
+    cantidad=100 y destinatario=Juan.
+  </p>
+  <pre><code>
+## intent:transferencia
+- Quiero transferir [100](cantidad) euros a [Juan](destinatario)
+- Envía [250](cantidad) a [Carlos](destinatario)
+  </code></pre>
+</div>
+
+<div>
+  <h2>¿Qué son los Slots?</h2>
+  <p>
+    Los <strong>Slots</strong> son variables que Rasa utiliza para almacenar información extraída del usuario.
+    Permiten que el bot recuerde datos durante la conversación.
+  </p>
+  <pre><code>
+slots:
+  cantidad:
+    type: float
+  destinatario:
+    type: text
+  </code></pre>
+</div>
+
+<div>
+  <h2>NLU: Natural Language Understanding</h2>
+  <p>
+    El componente de <strong>NLU</strong> se encarga de interpretar el lenguaje del usuario.
+    Extrae los intents y entities a partir del texto recibido.
+  </p>
+</div>
+
+<div>
+  <h2>DM: Dialogue Management</h2>
+  <p>
+    <strong>Dialogue Management</strong> (DM) gestiona el flujo de la conversación. 
+    Decide qué acción debe tomar el bot en cada momento, dependiendo del estado actual del diálogo.
+  </p>
+</div>
+
+<div>
+  <h2>NLG: Natural Language Generation</h2>
+  <p>
+    <strong>NLG</strong> es la parte encargada de generar las respuestas que verá el usuario. 
+    En Rasa se define en el archivo <code>domain.yml</code> bajo la sección de respuestas.
+  </p>
+  <pre><code>
+responses:
+  utter_saldo:
+  - text: "Tu saldo actual es de 500 euros."
+  </code></pre>
+</div>
+
             <div class="slide">
                 <h2>Preparación (Lección 3) - Implementación de un Chatbot Básico</h2>
                 <h3>Objetivos:</h3>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <div class="slide">
+  <h2>¿Qué es Bootstrap 5?</h2>
+  <p>Bootstrap 5 es un framework CSS que facilita el diseño responsivo y componentes reutilizables.</p>
+</div>
+
+<div class="slide">
+  <h2>Incluir Bootstrap 5 en tu proyecto</h2>
+  <p>Usa el CDN para incluir Bootstrap rápidamente:</p>
+  <pre><code>&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo de Grid System</h2>
+  <p>Bootstrap utiliza un sistema de 12 columnas:</p>
+  <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-6"&gt;Columna 1&lt;/div&gt;
+    &lt;div class="col-6"&gt;Columna 2&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>Botones con Bootstrap</h2>
+  <p>Usar clases para estilizar botones fácilmente:</p>
+  <pre><code>&lt;button class="btn btn-primary"&gt;Botón primario&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Éxito&lt;/button&gt;
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>Alertas</h2>
+  <p>Bootstrap proporciona componentes listos como las alertas:</p>
+  <pre><code>&lt;div class="alert alert-warning" role="alert"&gt;
+  Esta es una alerta de advertencia.
+&lt;/div&gt;
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>Formularios</h2>
+  <p>Diseña formularios responsivos fácilmente:</p>
+  <pre><code>&lt;form&gt;
+  &lt;div class="mb-3"&gt;
+    &lt;label class="form-label"&gt;Correo&lt;/label&gt;
+    &lt;input type="email" class="form-control"&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn btn-primary"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+  </code></pre>
+</div>
+
+          <div class="slide">
+  <h2>Navbar básica</h2>
+  <p>Una barra de navegación básica para sitios web:</p>
+  <pre><code>&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;MiSitio&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+    &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>Cards (Tarjetas)</h2>
+  <p>Muy útiles para mostrar contenido agrupado visualmente:</p>
+  <pre><code>&lt;div class="card" style="width: 18rem;"&gt;
+  &lt;img src="https://via.placeholder.com/150" class="card-img-top" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Título de tarjeta&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Algo de texto dentro de esta tarjeta.&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Ir a algún lugar&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>Modal (Ventana emergente)</h2>
+  <p>Para mostrar contenido en un popup centrado:</p>
+  <pre><code>&lt;!-- Botón para abrir modal --&gt;
+&lt;button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#miModal"&gt;
+  Abrir modal
+&lt;/button&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div class="modal fade" id="miModal" tabindex="-1"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;
+        &lt;h5 class="modal-title"&gt;Título del modal&lt;/h5&gt;
+        &lt;button type="button" class="btn-close" data-bs-dismiss="modal"&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;
+        Contenido del modal aquí.
+      &lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;button type="button" class="btn btn-secondary" data-bs-dismiss="modal"&gt;Cerrar&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>Spinner (Cargando)</h2>
+  <p>Indicador de carga simple:</p>
+  <pre><code>&lt;div class="spinner-border text-primary" role="status"&gt;
+  &lt;span class="visually-hidden"&gt;Cargando...&lt;/span&gt;
+&lt;/div&gt;
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>Tablas con estilo</h2>
+  <p>Tablas con diseño agradable por defecto:</p>
+  <pre><code>&lt;table class="table table-striped"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;#&lt;/th&gt;
+      &lt;th&gt;Nombre&lt;/th&gt;
+      &lt;th&gt;Correo&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;Juan&lt;/td&gt;&lt;td&gt;juan@example.com&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;Ana&lt;/td&gt;&lt;td&gt;ana@example.com&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+  </code></pre>
+</div>
+
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

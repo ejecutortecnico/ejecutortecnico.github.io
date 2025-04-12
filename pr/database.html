@@ -35,20 +35,39 @@
 		cursor.execute("create database tienda")
 		#usar sql de phpmyadmin
                 CREATE DATABASE tienda;
-            
-                USE tienda;
-            
+                </pre>
+                <p>En este ejemplo creamos una base de datos llamada `tienda` con una tabla `productos` que tiene tres columnas: id, nombre y precio.</p>
+              </div>
+		
+		<div class="slide">
+                <h2>Ejemplo: Base de Datos Relacional con MySQL</h2>
+                <p>En MySQL, las bases de datos se componen de tablas que almacenan los datos en filas y columnas. Aquí un ejemplo simple:</p>
+                <pre>
+		USE tienda;
                 CREATE TABLE productos (
                   id INT AUTO_INCREMENT PRIMARY KEY,
                   nombre VARCHAR(100),
                   precio DECIMAL(10, 2)
                 );
-            
+                </pre>
+                <p>En este ejemplo creamos una base de datos llamada `tienda` con una tabla `productos` que tiene tres columnas: id, nombre y precio.</p>
+              </div>
+	              <div class="slide">
+                <h2>Ejemplo: Base de Datos Relacional con MySQL</h2>
+                <p>En MySQL, las bases de datos se componen de tablas que almacenan los datos en filas y columnas. Aquí un ejemplo simple:</p>
+                <pre>
                 INSERT INTO productos (nombre, precio)
                 VALUES ('Camiseta', 19.99),
                        ('Pantalón', 39.99),
                        ('Zapatos', 59.99);
-            
+                </pre>
+                <p>En este ejemplo creamos una base de datos llamada `tienda` con una tabla `productos` que tiene tres columnas: id, nombre y precio.</p>
+              </div>
+
+		<div class="slide">
+                <h2>Ejemplo: Base de Datos Relacional con MySQL</h2>
+                <p>En MySQL, las bases de datos se componen de tablas que almacenan los datos en filas y columnas. Aquí un ejemplo simple:</p>
+                <pre>
                 SELECT * FROM productos;
                 </pre>
                 <p>En este ejemplo creamos una base de datos llamada `tienda` con una tabla `productos` que tiene tres columnas: id, nombre y precio.</p>

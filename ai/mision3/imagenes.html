@@ -26,19 +26,21 @@
                 <h2>Cargar y Mostrar una Imagen con OpenCV</h2>
                 <p>OpenCV es una de las bibliotecas más utilizadas para la visión por computadora. A continuación se muestra cómo cargar y mostrar una imagen:</p>
                 <pre><code>
-            import cv2
+import cv2
+from google.colab.patches import cv2_imshow # Import cv2_imshow
+
             
-            # Cargar la imagen
-            image = cv2.imread('imagen.jpg')
-            
-            # Mostrar la imagen
-            cv2.imshow('Imagen', image)
-            
-            # Esperar a que el usuario presione una tecla
-            cv2.waitKey(0)
-            
-            # Cerrar todas las ventanas
-            cv2.destroyAllWindows()
+# Cargar la imagen
+image = cv2.imread('foto.jpg')
+
+# Mostrar la imagen
+cv2_imshow(image)
+
+# Esperar a que el usuario presione una tecla
+cv2.waitKey(0)
+
+# Cerrar todas las ventanas
+cv2.destroyAllWindows()
                 </code></pre>
                 <p>Este código carga una imagen desde un archivo y la muestra en una ventana. Recuerda que OpenCV usa el formato BGR (no RGB) por defecto para las imágenes.</p>
             </div>
@@ -47,13 +49,14 @@
                 <h2>Cargar y Mostrar una Imagen con Pillow</h2>
                 <p>Pillow es una biblioteca de procesamiento de imágenes muy fácil de usar. A continuación se muestra cómo cargar y mostrar una imagen con Pillow:</p>
                 <pre><code>
-            from PIL import Image
-            
-            # Cargar la imagen
-            image = Image.open('imagen.jpg')
-            
-            # Mostrar la imagen
-            image.show()
+from PIL import Image
+import matplotlib.pyplot as plt
+# Cargar la imagen
+image = Image.open('imagen.jpg')
+
+# Mostrar la imagen
+plt.imshow(image)
+plt.show()
                 </code></pre>
                 <p>La función `Image.open()` carga la imagen y `image.show()` abre la imagen en el visor predeterminado de imágenes del sistema operativo.</p>
             </div>

@@ -3,167 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inteligencia Artificial Basico</title>
+    <title>JavaScript</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../css/estilos.css">
 </head>
     <body>
         <div class="container">
-    
-
             <div class="slide">
-                <h2>Preparación (Lección 3) - Implementación de un Chatbot Básico</h2>
-                <h3>Objetivos:</h3>
-                <ul>
-                  <li>Implementar un chatbot básico utilizando técnicas de NLP.</li>
-                  <li>Entrenar y probar el chatbot para asegurar su funcionalidad.</li>
-                  <li>Mejorar el chatbot mediante el ajuste de parámetros y la adición de nuevas funcionalidades.</li>
-                </ul>
-              </div>
-              <div class="slide">
-  <h2>¿Qué es un Intent?</h2>
-  <p>
-    Un <strong>Intent</strong> representa la intención del usuario al enviar un mensaje.
-    Por ejemplo, "quiero saber mi saldo" podría estar asociado al intent <code>consultar_saldo</code>.
-  </p>
-  <pre><code>
-## intent:consultar_saldo
-- ¿Cuál es mi saldo?
-- Quiero ver mi saldo bancario
-- ¿Cuánto dinero tengo en mi cuenta?
-  </code></pre>
-</div>
-
-<div class="slide">
-  <h2>¿Qué son las Entities?</h2>
-  <p>
-    Las <strong>Entities</strong> (entidades) son los datos específicos que se extraen del mensaje del usuario. 
-    Por ejemplo, si alguien dice "Quiero transferir 100 euros a Juan", se pueden extraer las entidades: 
-    cantidad=100 y destinatario=Juan.
-  </p>
-  <pre><code>
-## intent:transferencia
-- Quiero transferir [100](cantidad) euros a [Juan](destinatario)
-- Envía [250](cantidad) a [Carlos](destinatario)
-  </code></pre>
-</div>
-
-<div class="slide">
-  <h2>¿Qué son los Slots?</h2>
-  <p>
-    Los <strong>Slots</strong> son variables que Rasa utiliza para almacenar información extraída del usuario.
-    Permiten que el bot recuerde datos durante la conversación.
-  </p>
-  <pre><code>
-slots:
-  cantidad:
-    type: float
-  destinatario:
-    type: text
-  </code></pre>
-</div>
-
-<div class="slide">
-  <h2>NLU: Natural Language Understanding</h2>
-  <p>
-    El componente de <strong>NLU</strong> se encarga de interpretar el lenguaje del usuario.
-    Extrae los intents y entities a partir del texto recibido.
-  </p>
-</div>
-
-<div class="slide">
-  <h2>DM: Dialogue Management</h2>
-  <p>
-    <strong>Dialogue Management</strong> (DM) gestiona el flujo de la conversación. 
-    Decide qué acción debe tomar el bot en cada momento, dependiendo del estado actual del diálogo.
-  </p>
-</div>
-
-<div class="slide">
-  <h2>NLG: Natural Language Generation</h2>
-  <p>
-    <strong>NLG</strong> es la parte encargada de generar las respuestas que verá el usuario. 
-    En Rasa se define en el archivo <code>domain.yml</code> bajo la sección de respuestas.
-  </p>
-  <pre><code>
-responses:
-  utter_saldo:
-  - text: "Tu saldo actual es de 500 euros."
-  </code></pre>
-</div>
-              <div class="slide">
-                <h3>1. Implementación del Chatbot</h3>
-                <p><strong>Objetivo:</strong> Desarrollar e implementar un chatbot básico que responda preguntas frecuentes.</p>
-                <h4>1.1 Desarrollo del Modelo de NLP:</h4>
-                <p>Entrenamiento del modelo utilizando ejemplos de diálogo.</p>
-                <pre><code>
-                from rasa.nlu.training_data import load_data
-                from rasa.nlu.model import Trainer
-                from rasa.nlu import config
-                training_data = load_data("data/nlu.md")
-                trainer = Trainer(config.load("config.yml"))
-                interpreter = trainer.train(training_data)
-                </code></pre>
+                <h2>Importación de librerías</h2>
+                <pre><code>import requests</code></pre>
+                <p>Se importa el módulo <code>requests</code>, que permite hacer solicitudes HTTP fácilmente.</p>
               </div>
               
               <div class="slide">
-                <h4>1.2 Configuración de Respuestas del Chatbot:</h4>
-                <p>Definición de respuestas automáticas a las intenciones del usuario.</p>
-                <pre><code>
-                # domain.yml
-                responses:
-                utter_greet:
-                - text: "Hello! How can I assist you today?"
-                utter_ask_weather:
-                - text: "It's sunny outside."
-                </code></pre>
+                <h2>Definición de la función obtener_clima</h2>
+                <pre><code>def obtener_clima(ciudad, api_key):</code></pre>
+                <p>Se define una función que recibe dos parámetros: el nombre de la ciudad y la clave de API para autenticarse.</p>
               </div>
               
               <div class="slide">
-                <h4>1.3 Prueba del Chatbot:</h4>
-                <p>Evaluación de la precisión del chatbot mediante pruebas interactivas.</p>
+                <h2>Construcción de la URL</h2>
                 <pre><code>
-                rasa shell
+              url = f"http://api.openweathermap.org/data/2.5/weather?q={ciudad}&appid={api_key}&units=metric&lang=es"
                 </code></pre>
+                <p>Se construye la URL con formato <code>f-string</code> para incluir la ciudad, la API Key, unidades métricas y lenguaje en español.</p>
               </div>
               
               <div class="slide">
-                <h3>2. Mejora y Ajuste del Chatbot</h3>
-                <p><strong>Objetivo:</strong> Mejorar el chatbot mediante el ajuste de parámetros y la adición de nuevas funcionalidades.</p>
-                <h4>2.1 Ajuste de Parámetros del Modelo:</h4>
-                <p>Optimización del modelo de NLP para mejorar la precisión de las respuestas.</p>
-                <pre><code>
-                # config.yml
-                pipeline:
-                - name: WhitespaceTokenizer
-                - name: CountVectorsFeaturizer
-                - name: DIETClassifier
-                epochs: 100
-                </code></pre>
+                <h2>Solicitud HTTP</h2>
+                <pre><code>respuesta = requests.get(url)</code></pre>
+                <p>Se hace la solicitud HTTP GET a la API de OpenWeatherMap.</p>
               </div>
               
               <div class="slide">
-                <h4>2.2 Adición de Nuevas Funcionalidades:</h4>
-                <p>Implementación de nuevas intenciones y respuestas.</p>
-                <pre><code>
-                # domain.yml
-                intents:
-                - greet
-                - ask_weather
-                - ask_time
-                responses:
-                utter_ask_time:
-                - text: "The current time is 3 PM."
-                </code></pre>
+                <h2>Verificación de respuesta exitosa</h2>
+                <pre><code>if respuesta.status_code == 200:</code></pre>
+                <p>Se comprueba si la respuesta fue exitosa (código 200).</p>
               </div>
               
               <div class="slide">
-                <h4>2.3 Evaluación y Validación del Chatbot:</h4>
-                <p>Pruebas finales para asegurar la funcionalidad y precisión del chatbot.</p>
+                <h2>Procesamiento de los datos</h2>
                 <pre><code>
-                rasa test
+              datos = respuesta.json()
+              clima = {
+                  "ciudad": datos["name"],
+                  "temperatura": datos["main"]["temp"],
+                  "descripcion": datos["weather"][0]["description"],
+                  "humedad": datos["main"]["humidity"],
+                  "viento": datos["wind"]["speed"]
+              }
+              return clima
                 </code></pre>
+                <p>Se convierte la respuesta a JSON y se extraen los datos principales del clima en un diccionario.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Manejo de error en la solicitud</h2>
+                <pre><code>
+              else:
+                  return {"error": "No se pudo obtener el clima."}
+                </code></pre>
+                <p>Si el código de estado no es 200, se retorna un mensaje de error.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Bloque principal del script</h2>
+                <pre><code>
+              if __name__ == "__main__":
+                  ciudad = input("Ingrese el nombre de la ciudad: ")
+                  api_key = "TU_API_KEY_AQUI"
+                  clima = obtener_clima(ciudad, api_key)
+                </code></pre>
+                <p>Se ejecuta este bloque solo si el archivo se ejecuta directamente. Se pide al usuario la ciudad y se llama a la función.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Verificación de error y salida</h2>
+                <pre><code>
+              if "error" in clima:
+                  print(clima["error"])
+              else:
+                  print(f"Clima en {clima['ciudad']}:")
+                  print(f"Temperatura: {clima['temperatura']}°C")
+                  print(f"Descripción: {clima['descripcion']}")
+                  print(f"Humedad: {clima['humedad']}%")
+                  print(f"Viento: {clima['viento']} m/s")
+                </code></pre>
+                <p>Se verifica si hubo error. Si no, se imprime la información detallada del clima.</p>
               </div>
               
         <div class="nav">

@@ -3,136 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inteligencia Artificial Basico</title>
+    <title>JavaScript</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../css/estilos.css">
 </head>
     <body>
         <div class="container">
-            <div class="slide">
-                <h2>Simulación (Lección 5) - Implementación del Chatbot</h2>
-              </div>
-              
-              <div class="slide">
-                <h3>1. Creación del Proyecto de Chatbot</h3>
-                <p><strong>Objetivo:</strong> Configurar el proyecto de Rasa y definir las intenciones y entidades.</p>
-              </div>
-              
-              <div class="slide">
-                <h4>1.1 Estructura del Proyecto:</h4>
-                <p>Creación de la estructura básica del proyecto de Rasa.</p>
-                <pre><code>rasa init --no-prompt</code></pre>
-              </div>
-              
-              <div class="slide">
-                <h4>1.2 Definición de Intenciones y Entidades:</h4>
-                <p>Añadir nuevas intenciones y entidades en el archivo de datos de entrenamiento (`nlu.yml`).</p>
-                <pre><code>
-                # nlu.yml
-                nlu:
-                - intent: greet
-                  examples: |
-                    - hello
-                    - hi
-                    - hey
-                    - good morning
-                    - good evening
-                - intent: ask_weather
-                  examples: |
-                    - what's the weather like today?
-                    - tell me the weather
-                    - will it rain today?
-                </code></pre>
-              </div>
-              
-              <div class="slide">
-                <h4>1.3 Configuración del Dominio:</h4>
-                <p>Definir las respuestas del chatbot en el archivo de dominio (`domain.yml`).</p>
-                <pre><code>
-                # domain.yml
-                intents:
-                - greet
-                - ask_weather
-                responses:
-                  utter_greet:
-                  - text: "Hello! How can I assist you today?"
-                  utter_ask_weather:
-                  - text: "The weather is sunny."
-                </code></pre>
-              </div>
-              
-              <div class="slide">
-                <h3>2. Entrenamiento del Modelo de NLP</h3>
-                <p><strong>Objetivo:</strong> Entrenar el modelo de Rasa para entender las intenciones del usuario.</p>
-              </div>
-              
-              <div class="slide">
-                <h4>2.1 Entrenamiento del Modelo:</h4>
-                <p>Ejecutar el comando de entrenamiento de Rasa.</p>
-                <pre><code>rasa train</code></pre>
-              </div>
-              
-              <div class="slide">
-                <h4>2.2 Evaluación del Modelo:</h4>
-                <p>Verificación de la precisión del modelo utilizando datos de prueba.</p>
-                <pre><code>rasa test nlu</code></pre>
-              </div>
-              
-              <div class="slide">
-                <h3>3. Desarrollo de Acciones Personalizadas</h3>
-                <p><strong>Objetivo:</strong> Implementar acciones personalizadas para mejorar la funcionalidad del chatbot.</p>
-              </div>
-              
-              <div class="slide">
-                <h4>3.1 Definición de Acciones Personalizadas:</h4>
-                <p>Crear un archivo de acciones (`actions.py`) y definir acciones personalizadas.</p>
-                <pre><code>
-                from rasa_sdk import Action, Tracker
-                from rasa_sdk.executor import CollectingDispatcher
-                class ActionTellWeather(Action):
-                    def name(self) -> str:
-                        return "action_tell_weather"
-                    def run(self, dispatcher: CollectingDispatcher,
-                            tracker: Tracker,
-                            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-                        dispatcher.utter_message(text="The weather is sunny.")
-                        return []
-                </code></pre>
-              </div>
-              
-              <div class="slide">
-                <h4>3.2 Configuración de Acciones Personalizadas:</h4>
-                <p>Añadir las acciones personalizadas en el archivo de dominio (`domain.yml`).</p>
-                <pre><code>
-                actions:
-                - action_tell_weather
-                </code></pre>
-              </div>
-              
-              <div class="slide">
-                <h4>3.3 Ejecutar el Servidor de Acciones:</h4>
-                <p>Iniciar el servidor de acciones para que el chatbot pueda utilizar las acciones personalizadas.</p>
-                <pre><code>rasa run actions</code></pre>
-              </div>
-              
-              <div class="slide">
-                <h3>4. Prueba y Depuración del Chatbot</h3>
-                <p><strong>Objetivo:</strong> Probar el chatbot en un entorno interactivo y depurar cualquier problema.</p>
-              </div>
-              
-              <div class="slide">
-                <h4>4.1 Prueba del Chatbot:</h4>
-                <p>Ejecutar el chatbot en modo interactivo para realizar pruebas.</p>
-                <pre><code>rasa shell</code></pre>
-              </div>
-              
-              <div class="slide">
-                <h4>4.2 Depuración de Problemas:</h4>
-                <p>Identificar y solucionar problemas encontrados durante la prueba.</p>
-                <p>Ajustar el modelo y las respuestas según sea necesario.</p>
-              </div>
-              
+    <div class="slide">
+  <h2>1. Importar librerías necesarias</h2>
+  <pre><code class="language-python">
+import csv  # Para leer el archivo CSV
+from telegram import Update  # Para manejar los mensajes de Telegram
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>2. Leer respuestas desde el archivo CSV</h2>
+  <pre><code class="language-python">
+respuestas = {}
+with open("respuestas.csv", "r", encoding="utf-8") as archivo:
+    lector = csv.DictReader(archivo)
+    for fila in lector:
+        respuestas[fila["preguntas"].lower()] = fila["respuestas"]
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>3. Función para obtener una respuesta</h2>
+  <pre><code class="language-python">
+def obtener_respuesta(mensaje):
+    mensaje = mensaje.lower()
+    return respuestas.get(mensaje, "Lo siento, no entiendo esa pregunta.")
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>4. Función para responder mensajes en Telegram</h2>
+  <pre><code class="language-python">
+async def responder(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    mensaje = update.message.text
+    respuesta = obtener_respuesta(mensaje)
+    await update.message.reply_text(respuesta)
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>5. Función para /start</h2>
+  <pre><code class="language-python">
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("¡Hola! Soy un chatbot. Escribe tu pregunta.")
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>6. Iniciar el bot con ApplicationBuilder</h2>
+  <pre><code class="language-python">
+if __name__ == "__main__":
+    TOKEN = "AQUI_TU_TOKEN"  # 🔒 Pega tu token de @BotFather aquí
+
+    app = ApplicationBuilder().token(TOKEN).build()
+
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder))
+
+    print("Bot de Telegram corriendo...")
+    app.run_polling()
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>7. Ejemplo del archivo respuestas.csv</h2>
+  <pre><code class="language-csv">
+preguntas,respuestas
+hola,¡Hola! ¿Cómo estás?
+¿quién eres?,Soy un chatbot simpático.
+adiós,¡Hasta luego!
+  </code></pre>
+</div>
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

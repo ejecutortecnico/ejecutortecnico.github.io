@@ -89,25 +89,7 @@ y_pred_lr = lin_reg.predict(X_test)
                 </code></pre>
               </div>
               
-              <div class="slide">
-                <h2>5. Red neuronal con TensorFlow</h2>
-                <p>Modelo de red neuronal usando Keras con dos capas ocultas:</p>
-                <pre><code class="language-python">
-import tensorflow as tf
-from tensorflow.keras import layers, models
-
-model = models.Sequential([
-    layers.Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
-    layers.Dense(32, activation='relu'),
-    layers.Dense(1)
-])
-
-model.compile(optimizer='adam', loss='mse')
-model.fit(X_train, y_train, epochs=100, validation_split=0.2, verbose=0)
-
-y_pred_nn = model.predict(X_test).flatten()
-                </code></pre>
-              </div>
+             
               
               <div class="slide">
                 <h2>5. Red neuronal con TensorFlow</h2>
@@ -122,6 +104,26 @@ y_pred_nn = model.predict(X_test).flatten()
                   <li><strong>Segunda capa oculta:</strong> 32 neuronas con activación <code>ReLU</code>. Reduce la dimensionalidad interna y sigue capturando patrones.</li>
                   <li><strong>Capa de salida:</strong> 1 neurona sin activación, ya que se trata de un problema de regresión (predicción de un número continuo: el precio).</li>
                 </ul>
+            </div>
+
+            <div class="slide">
+              <h2>5. Red neuronal con TensorFlow</h2>
+              <p>Modelo de red neuronal usando Keras con dos capas ocultas:</p>
+              <pre><code class="language-python">
+import tensorflow as tf
+from tensorflow.keras import layers, models
+
+model = models.Sequential([
+  layers.Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
+  layers.Dense(32, activation='relu'),
+  layers.Dense(1)
+])
+
+model.compile(optimizer='adam', loss='mse')
+model.fit(X_train, y_train, epochs=100, validation_split=0.2, verbose=0)
+
+y_pred_nn = model.predict(X_test).flatten()
+              </code></pre>
             </div>
               
             <div class="slide">

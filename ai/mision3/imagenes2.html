@@ -33,20 +33,20 @@
                 <h2>Redimensionamiento de Imágenes</h2>
                 <p>Las imágenes de entrada deben tener un tamaño consistente para ser procesadas por los modelos de Machine Learning. El redimensionamiento es un paso común antes de alimentar las imágenes al modelo. En TensorFlow, por ejemplo, se puede redimensionar imágenes con la función `tf.image.resize()`:</p>
                 <pre><code>
-            import tensorflow as tf
-            
-            # Cargar la imagen
-            image = tf.io.read_file('imagen.jpg')
-            image = tf.image.decode_jpeg(image, channels=3)
-            
-            # Redimensionar la imagen
-            resized_image = tf.image.resize(image, [224, 224])
-            
-            # Mostrar la imagen redimensionada
-            import matplotlib.pyplot as plt
-            plt.imshow(resized_image.numpy())
-            plt.axis('off')
-            plt.show()
+import tensorflow as tf
+
+# Cargar la imagen
+image = tf.io.read_file('imagen.jpg')
+image = tf.image.decode_jpeg(image, channels=3)
+
+# Redimensionar la imagen
+resized_image = tf.image.resize(image, [224, 224])
+
+# Mostrar la imagen redimensionada
+import matplotlib.pyplot as plt
+plt.imshow(resized_image.numpy())
+plt.axis('off')
+plt.show()
                 </code></pre>
                 <p>Este ejemplo redimensiona la imagen a 224x224 píxeles, un tamaño comúnmente utilizado en modelos preentrenados como VGG16 o ResNet.</p>
             </div>
@@ -56,22 +56,22 @@
                 <p>TensorFlow también proporciona varias utilidades para cargar y preprocesar imágenes. Usamos `tf.image` para aplicar transformaciones directamente sobre las imágenes, y se puede aprovechar su rendimiento optimizado para manejar grandes cantidades de datos de imágenes.</p>
                 <p>A continuación se muestra cómo cargar y preprocesar imágenes con TensorFlow:</p>
                 <pre><code>
-            import tensorflow as tf
-            
-            # Cargar y decodificar la imagen
-            image_path = 'imagen.jpg'
-            image = tf.io.read_file(image_path)
-            image = tf.image.decode_jpeg(image, channels=3)
-            
-            # Preprocesar la imagen
-            image = tf.image.convert_image_dtype(image, tf.float32)  # Normalización
-            image = tf.image.resize(image, [224, 224])  # Redimensionar
-            
-            # Mostrar la imagen
-            import matplotlib.pyplot as plt
-            plt.imshow(image.numpy())
-            plt.axis('off')
-            plt.show()
+import tensorflow as tf
+
+# Cargar y decodificar la imagen
+image_path = 'imagen.jpg'
+image = tf.io.read_file(image_path)
+image = tf.image.decode_jpeg(image, channels=3)
+
+# Preprocesar la imagen
+image = tf.image.convert_image_dtype(image, tf.float32)  # Normalización
+image = tf.image.resize(image, [224, 224])  # Redimensionar
+
+# Mostrar la imagen
+import matplotlib.pyplot as plt
+plt.imshow(image.numpy())
+plt.axis('off')
+plt.show()
                 </code></pre>
                 <p>Este código realiza el procesamiento necesario para convertir una imagen a un formato adecuado para alimentar un modelo, que incluye la normalización (dividiendo por 255) y la redimensión a un tamaño fijo.</p>
             </div>
@@ -81,21 +81,21 @@
                 <p>La normalización es el proceso de escalar los valores de los píxeles de las imágenes a un rango específico, normalmente [0, 1] o [-1, 1]. Esto mejora la eficiencia y estabilidad del entrenamiento de modelos.</p>
                 <p>En TensorFlow, podemos hacer esto fácilmente con la función `convert_image_dtype()`:</p>
                 <pre><code>
-            import tensorflow as tf
-            
-            # Cargar y decodificar la imagen
-            image_path = 'imagen.jpg'
-            image = tf.io.read_file(image_path)
-            image = tf.image.decode_jpeg(image, channels=3)
-            
-            # Normalizar la imagen
-            normalized_image = tf.image.convert_image_dtype(image, tf.float32)
-            
-            # Mostrar la imagen normalizada
-            import matplotlib.pyplot as plt
-            plt.imshow(normalized_image.numpy())
-            plt.axis('off')
-            plt.show()
+import tensorflow as tf
+
+# Cargar y decodificar la imagen
+image_path = 'imagen.jpg'
+image = tf.io.read_file(image_path)
+image = tf.image.decode_jpeg(image, channels=3)
+
+# Normalizar la imagen
+normalized_image = tf.image.convert_image_dtype(image, tf.float32)
+
+# Mostrar la imagen normalizada
+import matplotlib.pyplot as plt
+plt.imshow(normalized_image.numpy())
+plt.axis('off')
+plt.show()
                 </code></pre>
                 <p>Este código convierte los valores de los píxeles a un rango entre 0 y 1, lo cual es útil para alimentar redes neuronales.</p>
             </div>
@@ -151,27 +151,27 @@ for i in decoded_predictions:
                 <p>Una vez que un modelo de Machine Learning ha sido entrenado, puedes usarlo para hacer predicciones sobre nuevas imágenes. Para ver cómo el modelo está prediciendo, puedes visualizar las imágenes junto con sus etiquetas predichas.</p>
                 <p>Este es un ejemplo de cómo visualizar las predicciones:</p>
                 <pre><code>
-            import tensorflow as tf
-            import matplotlib.pyplot as plt
-            import numpy as np
-            
-            # Cargar la imagen
-            image = tf.io.read_file('imagen.jpg')
-            image = tf.image.decode_jpeg(image, channels=3)
-            image = tf.image.resize(image, [224, 224])
-            
-            # Preprocesar la imagen para el modelo
-            image = tf.image.convert_image_dtype(image, tf.float32)
-            image = np.expand_dims(image, axis=0)
-            
-            # Hacer la predicción
-            predictions = model.predict(image)
-            
-            # Mostrar la imagen y la predicción
-            plt.imshow(image[0])
-            plt.title(f"Predicción: {predictions[0]}")
-            plt.axis('off')
-            plt.show()
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Cargar la imagen
+image = tf.io.read_file('imagen.jpg')
+image = tf.image.decode_jpeg(image, channels=3)
+image = tf.image.resize(image, [224, 224])
+
+# Preprocesar la imagen para el modelo
+image = tf.image.convert_image_dtype(image, tf.float32)
+image = np.expand_dims(image, axis=0)
+
+# Hacer la predicción
+predictions = model.predict(image)
+
+# Mostrar la imagen y la predicción
+plt.imshow(image[0])
+plt.title(f"Predicción: {predictions[0]}")
+plt.axis('off')
+plt.show()
                 </code></pre>
                 <p>Este ejemplo muestra cómo tomar una imagen de entrada, pasarla por el modelo y visualizar la imagen junto con la predicción realizada por el modelo.</p>
             </div>

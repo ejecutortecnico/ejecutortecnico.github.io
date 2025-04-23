@@ -15,40 +15,40 @@
                 <p>En este ejemplo, vamos a usar un modelo preentrenado como VGG16 para hacer predicciones sobre una imagen. El modelo ha sido entrenado en el conjunto de datos ImageNet, lo que significa que puede clasificar imágenes en una amplia variedad de categorías.</p>
                 <p>A continuación, se muestra cómo cargar una imagen, preprocesarla, y usar un modelo preentrenado para predecir la clase de la imagen:</p>
                 <pre><code>
-            import tensorflow as tf
-            import matplotlib.pyplot as plt
-            import numpy as np
-            from tensorflow.keras.applications import VGG16
-            from tensorflow.keras.preprocessing import image
-            from tensorflow.keras.applications.vgg16 import preprocess_input, decode_predictions
-            
-            # Cargar el modelo preentrenado VGG16
-            model = VGG16(weights='imagenet')
-            
-            # Cargar una imagen de ejemplo
-            img_path = 'imagen.jpg'  # Ruta de la imagen
-            img = image.load_img(img_path, target_size=(224, 224))
-            
-            # Convertir la imagen a un arreglo numpy
-            img_array = image.img_to_array(img)
-            
-            # Añadir una dimensión extra para el batch size
-            img_array = np.expand_dims(img_array, axis=0)
-            
-            # Preprocesar la imagen para el modelo
-            img_array = preprocess_input(img_array)
-            
-            # Hacer la predicción
-            predictions = model.predict(img_array)
-            
-            # Decodificar la predicción
-            decoded_predictions = decode_predictions(predictions, top=3)[0]
-            
-            # Mostrar la imagen y la predicción
-            plt.imshow(img)
-            plt.title(f"Predicción: {decoded_predictions[0][1]} con {decoded_predictions[0][2]*100:.2f}% de probabilidad")
-            plt.axis('off')
-            plt.show()
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+from tensorflow.keras.applications import VGG16
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.vgg16 import preprocess_input, decode_predictions
+
+# Cargar el modelo preentrenado VGG16
+model = VGG16(weights='imagenet')
+
+# Cargar una imagen de ejemplo
+img_path = 'imagen.jpg'  # Ruta de la imagen
+img = image.load_img(img_path, target_size=(224, 224))
+
+# Convertir la imagen a un arreglo numpy
+img_array = image.img_to_array(img)
+
+# Añadir una dimensión extra para el batch size
+img_array = np.expand_dims(img_array, axis=0)
+
+# Preprocesar la imagen para el modelo
+img_array = preprocess_input(img_array)
+
+# Hacer la predicción
+predictions = model.predict(img_array)
+
+# Decodificar la predicción
+decoded_predictions = decode_predictions(predictions, top=3)[0]
+
+# Mostrar la imagen y la predicción
+plt.imshow(img)
+plt.title(f"Predicción: {decoded_predictions[0][1]} con {decoded_predictions[0][2]*100:.2f}% de probabilidad")
+plt.axis('off')
+plt.show()
                 </code></pre>
                 <p>Este código utiliza el modelo VGG16 preentrenado para predecir la clase de una imagen. Luego, se muestra la imagen junto con la clase predicha y su probabilidad.</p>
             </div>
@@ -57,36 +57,36 @@
                 <h2>Clasificación de una Imagen con un Modelo Personalizado</h2>
                 <p>Supongamos que has entrenado un modelo personalizado para clasificar imágenes. A continuación te mostramos cómo cargar una imagen, preprocesarla y realizar una predicción con tu modelo entrenado.</p>
                 <pre><code>
-            import tensorflow as tf
-            import matplotlib.pyplot as plt
-            import numpy as np
-            
-            # Cargar el modelo entrenado
-            model = tf.keras.models.load_model('path_to_your_model')
-            
-            # Cargar la imagen
-            img_path = 'imagen.jpg'
-            image = tf.io.read_file(img_path)
-            image = tf.image.decode_jpeg(image, channels=3)
-            image = tf.image.resize(image, [224, 224])
-            
-            # Normalizar la imagen
-            image = tf.image.convert_image_dtype(image, tf.float32)
-            
-            # Expande las dimensiones de la imagen para que sea compatible con la entrada del modelo
-            image = np.expand_dims(image, axis=0)
-            
-            # Hacer la predicción
-            predictions = model.predict(image)
-            
-            # Suponiendo que el modelo sea de clasificación binaria (0 o 1)
-            predicted_class = np.argmax(predictions, axis=-1)
-            
-            # Mostrar la imagen y la predicción
-            plt.imshow(image[0])
-            plt.title(f"Predicción: {predicted_class[0]}")
-            plt.axis('off')
-            plt.show()
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Cargar el modelo entrenado
+model = tf.keras.models.load_model('path_to_your_model')
+
+# Cargar la imagen
+img_path = 'imagen.jpg'
+image = tf.io.read_file(img_path)
+image = tf.image.decode_jpeg(image, channels=3)
+image = tf.image.resize(image, [224, 224])
+
+# Normalizar la imagen
+image = tf.image.convert_image_dtype(image, tf.float32)
+
+# Expande las dimensiones de la imagen para que sea compatible con la entrada del modelo
+image = np.expand_dims(image, axis=0)
+
+# Hacer la predicción
+predictions = model.predict(image)
+
+# Suponiendo que el modelo sea de clasificación binaria (0 o 1)
+predicted_class = np.argmax(predictions, axis=-1)
+
+# Mostrar la imagen y la predicción
+plt.imshow(image[0])
+plt.title(f"Predicción: {predicted_class[0]}")
+plt.axis('off')
+plt.show()
                 </code></pre>
                 <p>Este ejemplo muestra cómo cargar y preprocesar una imagen para hacer predicciones utilizando un modelo entrenado por ti. La predicción se muestra en la imagen.</p>
             </div>
@@ -96,36 +96,36 @@
                 <p>Cuando trabajas con modelos de clasificación multiclase, el modelo devolverá un vector de probabilidades para cada clase. Para obtener la clase predicha, tomamos el índice con la probabilidad más alta.</p>
                 <p>A continuación te mostramos cómo hacerlo:</p>
                 <pre><code>
-            import tensorflow as tf
-            import matplotlib.pyplot as plt
-            import numpy as np
-            
-            # Cargar el modelo
-            model = tf.keras.models.load_model('path_to_multiclass_model')
-            
-            # Cargar la imagen
-            img_path = 'imagen.jpg'
-            img = tf.io.read_file(img_path)
-            img = tf.image.decode_jpeg(img, channels=3)
-            img = tf.image.resize(img, [224, 224])
-            
-            # Normalizar la imagen
-            img = tf.image.convert_image_dtype(img, tf.float32)
-            
-            # Expande la dimensión para hacerla compatible con el modelo
-            img = np.expand_dims(img, axis=0)
-            
-            # Hacer la predicción
-            predictions = model.predict(img)
-            
-            # Obtener la clase predicha
-            predicted_class = np.argmax(predictions, axis=-1)
-            
-            # Mostrar la imagen y la predicción
-            plt.imshow(img[0])
-            plt.title(f"Predicción: Clase {predicted_class[0]}")
-            plt.axis('off')
-            plt.show()
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Cargar el modelo
+model = tf.keras.models.load_model('path_to_multiclass_model')
+
+# Cargar la imagen
+img_path = 'imagen.jpg'
+img = tf.io.read_file(img_path)
+img = tf.image.decode_jpeg(img, channels=3)
+img = tf.image.resize(img, [224, 224])
+
+# Normalizar la imagen
+img = tf.image.convert_image_dtype(img, tf.float32)
+
+# Expande la dimensión para hacerla compatible con el modelo
+img = np.expand_dims(img, axis=0)
+
+# Hacer la predicción
+predictions = model.predict(img)
+
+# Obtener la clase predicha
+predicted_class = np.argmax(predictions, axis=-1)
+
+# Mostrar la imagen y la predicción
+plt.imshow(img[0])
+plt.title(f"Predicción: Clase {predicted_class[0]}")
+plt.axis('off')
+plt.show()
                 </code></pre>
                 <p>En este caso, el modelo predice una de varias clases posibles. Utilizamos `np.argmax()` para obtener el índice de la clase con la mayor probabilidad.</p>
             </div>
@@ -134,36 +134,36 @@
                 <h2>Visualización de Resultados de Predicción con una Imagen de Prueba</h2>
                 <p>Para entender cómo un modelo realiza predicciones sobre una imagen, es útil mostrar la imagen junto con su predicción. En este ejemplo, visualizamos el resultado de la predicción junto con la imagen original.</p>
                 <pre><code>
-            import tensorflow as tf
-            import matplotlib.pyplot as plt
-            import numpy as np
-            
-            # Cargar el modelo
-            model = tf.keras.models.load_model('path_to_your_model')
-            
-            # Cargar la imagen
-            img_path = 'imagen.jpg'
-            image = tf.io.read_file(img_path)
-            image = tf.image.decode_jpeg(image, channels=3)
-            image = tf.image.resize(image, [224, 224])
-            
-            # Normalizar la imagen
-            image = tf.image.convert_image_dtype(image, tf.float32)
-            
-            # Expande las dimensiones de la imagen para que sea compatible con el modelo
-            image = np.expand_dims(image, axis=0)
-            
-            # Hacer la predicción
-            predictions = model.predict(image)
-            
-            # Decodificar la predicción
-            predicted_class = np.argmax(predictions, axis=-1)
-            
-            # Mostrar la imagen y la predicción
-            plt.imshow(image[0])
-            plt.title(f"Predicción: Clase {predicted_class[0]}")
-            plt.axis('off')
-            plt.show()
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Cargar el modelo
+model = tf.keras.models.load_model('path_to_your_model')
+
+# Cargar la imagen
+img_path = 'imagen.jpg'
+image = tf.io.read_file(img_path)
+image = tf.image.decode_jpeg(image, channels=3)
+image = tf.image.resize(image, [224, 224])
+
+# Normalizar la imagen
+image = tf.image.convert_image_dtype(image, tf.float32)
+
+# Expande las dimensiones de la imagen para que sea compatible con el modelo
+image = np.expand_dims(image, axis=0)
+
+# Hacer la predicción
+predictions = model.predict(image)
+
+# Decodificar la predicción
+predicted_class = np.argmax(predictions, axis=-1)
+
+# Mostrar la imagen y la predicción
+plt.imshow(image[0])
+plt.title(f"Predicción: Clase {predicted_class[0]}")
+plt.axis('off')
+plt.show()
                 </code></pre>
                 <p>Este ejemplo es útil para ver cómo el modelo predice una imagen y cómo visualizamos el resultado de manera clara y directa.</p>
             </div>
@@ -172,39 +172,39 @@
                 <h2>Predicción con Modelos de Segmentación de Imágenes</h2>
                 <p>Los modelos de segmentación de imágenes, como U-Net, están diseñados para predecir máscaras de segmentación, es decir, identificar áreas relevantes dentro de una imagen. Aquí se muestra cómo hacer predicciones con un modelo de segmentación.</p>
                 <pre><code>
-            import tensorflow as tf
-            import matplotlib.pyplot as plt
-            import numpy as np
-            
-            # Cargar el modelo de segmentación
-            model = tf.keras.models.load_model('path_to_segmentation_model')
-            
-            # Cargar la imagen
-            img_path = 'imagen.jpg'
-            img = tf.io.read_file(img_path)
-            img = tf.image.decode_jpeg(img, channels=3)
-            img = tf.image.resize(img, [224, 224])
-            
-            # Normalizar la imagen
-            img = tf.image.convert_image_dtype(img, tf.float32)
-            
-            # Expande las dimensiones de la imagen para que sea compatible con el modelo
-            img = np.expand_dims(img, axis=0)
-            
-            # Hacer la predicción (máscara de segmentación)
-            predictions = model.predict(img)
-            
-            # Mostrar la imagen original y la máscara de segmentación
-            fig, ax = plt.subplots(1, 2, figsize=(12, 6))
-            ax[0].imshow(img[0])
-            ax[0].set_title('Imagen Original')
-            ax[0].axis('off')
-            
-            ax[1].imshow(predictions[0, :, :, 0], cmap='gray')  # Suponiendo que la salida es una máscara
-            ax[1].set_title('Máscara de Segmentación')
-            ax[1].axis('off')
-            
-            plt.show()
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Cargar el modelo de segmentación
+model = tf.keras.models.load_model('path_to_segmentation_model')
+
+# Cargar la imagen
+img_path = 'imagen.jpg'
+img = tf.io.read_file(img_path)
+img = tf.image.decode_jpeg(img, channels=3)
+img = tf.image.resize(img, [224, 224])
+
+# Normalizar la imagen
+img = tf.image.convert_image_dtype(img, tf.float32)
+
+# Expande las dimensiones de la imagen para que sea compatible con el modelo
+img = np.expand_dims(img, axis=0)
+
+# Hacer la predicción (máscara de segmentación)
+predictions = model.predict(img)
+
+# Mostrar la imagen original y la máscara de segmentación
+fig, ax = plt.subplots(1, 2, figsize=(12, 6))
+ax[0].imshow(img[0])
+ax[0].set_title('Imagen Original')
+ax[0].axis('off')
+
+ax[1].imshow(predictions[0, :, :, 0], cmap='gray')  # Suponiendo que la salida es una máscara
+ax[1].set_title('Máscara de Segmentación')
+ax[1].axis('off')
+
+plt.show()
                 </code></pre>
                 <p>En este caso, el modelo genera una máscara de segmentación que muestra las áreas relevantes dentro de la imagen. Se visualizan tanto la imagen original como la máscara predicha.</p>
             </div>   

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h1>¿Qué es Flask?</h1>
+                <p>Flask es un microframework de Python para construir aplicaciones web ligeras, ideal para desplegar modelos de Inteligencia Artificial.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>¿Por qué usar Flask en IA?</h2>
+                <ul>
+                  <li>✅ Ligero y rápido de configurar.</li>
+                  <li>✅ Permite exponer modelos como APIs REST.</li>
+                  <li>✅ Se integra fácilmente con bibliotecas como scikit-learn, TensorFlow o PyTorch.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h2>Instalación básica</h2>
+                <pre><code>pip install flask</code></pre>
+                <p>Y para iniciar un servidor web:</p>
+                <pre><code>python app.py</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>Ejemplo 1: API de predicción de números</h2>
+                <pre><code>from flask import Flask, request, jsonify
+              
+              app = Flask(__name__)
+              
+              @app.route("/predict", methods=["POST"])
+              def predict():
+                  data = request.get_json()
+                  x = data.get("x", 0)
+                  y = 2 * x + 1
+                  return jsonify({"predicción": y})
+              
+              if __name__ == "__main__":
+                  app.run(debug=True)</code></pre>
+                <p>✔ Exponer una función matemática como API para usarla desde cualquier cliente.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Ejemplo 2: Clasificador con scikit-learn</h2>
+                <pre><code>from flask import Flask, request, jsonify
+              import joblib
+              
+              app = Flask(__name__)
+              modelo = joblib.load("modelo.pkl")  # modelo entrenado previamente
+              
+              @app.route("/predict", methods=["POST"])
+              def predict():
+                  datos = request.get_json()
+                  pred = modelo.predict([datos["features"]])
+                  return jsonify({"resultado": pred[0]})
+              
+              if __name__ == "__main__":
+                  app.run(debug=True)</code></pre>
+                <p>✔ API para hacer predicciones con un modelo preentrenado.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Ejemplo 3: Web con formulario para entrada de texto</h2>
+                <pre><code>from flask import Flask, request, render_template
+              
+              app = Flask(__name__)
+              
+              @app.route("/", methods=["GET", "POST"])
+              def index():
+                  mensaje = ""
+                  if request.method == "POST":
+                      texto = request.form["texto"]
+                      if "feliz" in texto:
+                          mensaje = "Positivo"
+                      else:
+                          mensaje = "Neutral"
+                  return render_template("formulario.html", mensaje=mensaje)
+              
+              if __name__ == "__main__":
+                  app.run(debug=True)</code></pre>
+                <p>✔ Interfaz básica en HTML para analizar texto con IA.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Ejemplo HTML: formulario.html</h2>
+                <pre><code>&lt;form method="post"&gt;
+                &lt;input name="texto" placeholder="Escribe algo..." /&gt;
+                &lt;button type="submit"&gt;Analizar&lt;/button&gt;
+              &lt;/form&gt;
+              &lt;p&gt;Resultado: {{ mensaje }}&lt;/p&gt;</code></pre>
+                <p>✔ Se renderiza con Flask y muestra el resultado del modelo.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Ventajas de Flask en IA</h2>
+                <ul>
+                  <li>✅ Puedes desplegar modelos como servicios web.</li>
+                  <li>✅ Control total sobre rutas y lógica.</li>
+                  <li>✅ Ampliable con autentificación, frontend, base de datos y más.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h2>¿Y después qué?</h2>
+                <p>🎯 Integra tu modelo con un frontend real.<br>🚀 Usa servicios como Heroku o Render para desplegar.<br>🔒 Agrega seguridad y autenticación si es necesario.</p>
+              </div>
+ 
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

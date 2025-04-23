@@ -15,78 +15,111 @@
                 <p>Una imagen digital es una matriz de píxeles que representan información visual.</p>
                 <p>Ejemplo: crear una imagen negra de 100x100 píxeles en NumPy.</p>
                 <pre><code>import numpy as np
-img = np.zeros((100, 100, 3), dtype=np.uint8)</code></pre>
+import matplotlib.pyplot as plt
+img = np.zeros((100, 100, 3), dtype=np.uint8)
+# Mostrar la imagen
+plt.imshow(img)
+plt.show()
+</code></pre>
               </div>
               
               <div class="slide">
                 <h2>Espacios de color: RGB</h2>
                 <p>El espacio RGB representa los colores mediante combinaciones de rojo, verde y azul.</p>
                 <pre><code>from PIL import Image
+import matplotlib.pyplot as plt
 img = Image.open("foto.jpg")
-r, g, b = img.split()</code></pre>
+r, g, b = img.split()
+plt.imshow(r)
+plt.show()</code></pre>
               </div>
               
               <div class="slide">
                 <h2>Espacios de color: Grayscale</h2>
                 <p>Escala de grises elimina la información de color, dejando solo la intensidad.</p>
                 <pre><code>from PIL import Image
-              gray = Image.open("foto.jpg").convert("L")</code></pre>
+gray = Image.open("foto.jpg").convert("L")
+import matplotlib.pyplot as plt
+plt.imshow(gray)
+plt.show()
+            </code></pre>
               </div>
               
               <div class="slide">
                 <h2>Espacios de color: HSV</h2>
                 <p>HSV separa la tonalidad (H), saturación (S) y valor (V).</p>
                 <pre><code>import cv2
-              img = cv2.imread("foto.jpg")
-              hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)</code></pre>
+img = cv2.imread("foto.jpg")
+hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+import matplotlib.pyplot as plt
+plt.imshow(img)
+plt.show()</code></pre>
               </div>
               
               <div class="slide">
                 <h2>Operaciones básicas: Redimensionar</h2>
                 <p>Redimensionar cambia el tamaño de la imagen.</p>
                 <pre><code>from PIL import Image
-              img = Image.open("foto.jpg")
-              resized = img.resize((200, 200))</code></pre>
+img = Image.open("foto.jpg")
+resized = img.resize((200, 200))
+import matplotlib.pyplot as plt
+plt.imshow(resized)
+plt.show()</code></pre>
               </div>
               
               <div class="slide">
                 <h2>Operaciones básicas: Recortar</h2>
                 <p>Recortar selecciona una región de interés.</p>
                 <pre><code>box = (50, 50, 150, 150)
-              cropped = img.crop(box)</code></pre>
+cropped = img.crop(box)
+import matplotlib.pyplot as plt
+plt.imshow(cropped)
+plt.show()</code></pre>
               </div>
               
               <div class="slide">
                 <h2>Operaciones básicas: Normalizar</h2>
                 <p>Normalizar escala los valores de píxel, útil para modelos de IA.</p>
                 <pre><code>import numpy as np
-              img_array = np.array(img) / 255.0</code></pre>
+img_array = np.array(img) / 255.0
+import matplotlib.pyplot as plt
+plt.imshow(img_array)
+plt.show()</code></pre>
               </div>
               
               <div class="slide">
                 <h2>Librerías: PIL (Pillow)</h2>
                 <p>Pillow facilita tareas básicas de procesamiento de imágenes.</p>
                 <pre><code>from PIL import Image, ImageFilter
-              img = Image.open("foto.jpg")
-              blurred = img.filter(ImageFilter.BLUR)</code></pre>
+img = Image.open("foto.jpg")
+blurred = img.filter(ImageFilter.BLUR)
+import matplotlib.pyplot as plt
+plt.imshow(blurred)
+plt.show()</code></pre>
               </div>
               
               <div class="slide">
                 <h2>Librerías: OpenCV</h2>
                 <p>OpenCV es potente para visión por computador en tiempo real.</p>
                 <pre><code>import cv2
-              img = cv2.imread("foto.jpg")
-              edges = cv2.Canny(img, 100, 200)</code></pre>
+img = cv2.imread("foto.jpg")
+edges = cv2.Canny(img, 100, 200)
+import matplotlib.pyplot as plt
+plt.imshow(edges)
+plt.show()</code></pre>
               </div>
               
               <div class="slide">
                 <h2>Librerías: TensorFlow Image</h2>
                 <p>TensorFlow tiene herramientas para preprocesamiento eficiente.</p>
                 <pre><code>import tensorflow as tf
-              img = tf.io.read_file("foto.jpg")
-              img = tf.image.decode_jpeg(img, channels=3)
-              img = tf.image.resize(img, [224, 224])
-              img = img / 255.0</code></pre>
+img = tf.io.read_file("foto.jpg")
+img = tf.image.decode_jpeg(img, channels=3)
+img = tf.image.resize(img, [224, 224])
+img = img / 255.0
+import matplotlib.pyplot as plt
+plt.imshow(img)
+plt.show()</code></pre>
               </div>
               
 

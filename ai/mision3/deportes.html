@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h1>Clasificación de Deportes con Redes Neuronales</h1>
+                <p>Proyecto utilizando TensorFlow y un dataset de Kaggle</p>
+              </div>
+              
+              <div class="slide">
+                <h2>1. Descripción del Dataset</h2> 
+                <ul>
+                  <li>Fuente: Kaggle - <a href="https://www.kaggle.com/datasets/gpiosenka/sports-classification" target="_blank"> Sports Classification</a></li>
+                  <li>Imágenes etiquetadas por deporte (ej: fútbol, tenis, etc.)</li>
+                  <li>Formato: Imágenes organizadas en carpetas por clase</li>
+                  <li>Tamaño aproximado: ~ 10,000 imágenes</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h2>2. Preparación de los Datos</h2>
+                <ul>
+                  <li>Carga de datos desde directorios</li>
+                </ul>
+                <pre><code class="language-python">
+import tensorflow as tf
+
+train_ds = tf.keras.utils.image_dataset_from_directory(
+    "ruta/dataset",
+    validation_split=0.2,
+    subset="training",
+    seed=123,
+    image_size=(180, 180),
+    batch_size=32
+)
+
+val_ds = tf.keras.utils.image_dataset_from_directory(
+    "ruta/dataset",
+    validation_split=0.2,
+    subset="validation",
+    seed=123,
+    image_size=(180, 180),
+    batch_size=32
+)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>3. Arquitectura del Modelo</h2>
+                <ul>
+                  <li>Modelo secuencial simple</li>
+                </ul>
+                <pre><code class="language-python">
+model = tf.keras.Sequential([
+    tf.keras.layers.Rescaling(1./255, input_shape=(180, 180, 3)),
+    tf.keras.layers.Conv2D(16, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Conv2D(32, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Conv2D(64, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dense(num_clases)  # num_clases = número total de deportes
+])
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>4. Compilación y Entrenamiento</h2>
+                <pre><code class="language-python">
+model.compile(
+    optimizer='adam',
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    metrics=['accuracy']
+)
+
+history = model.fit(
+    train_ds,
+    validation_data=val_ds,
+    epochs=10
+)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>5. Evaluación del Modelo</h2>
+                <pre><code class="language-python">
+test_loss, test_acc = model.evaluate(test_ds)
+print("Precisión en test:", test_acc)
+  </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>6. Visualización de Resultados</h2>
+                <pre><code class="language-python">
+import matplotlib.pyplot as plt
+
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
+
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+plt.figure(figsize=(8, 4))
+plt.subplot(1, 2, 1)
+plt.plot(acc, label='Entrenamiento')
+plt.plot(val_acc, label='Validación')
+plt.title('Precisión')
+plt.legend()
+
+plt.subplot(1, 2, 2)
+plt.plot(loss, label='Entrenamiento')
+plt.plot(val_loss, label='Validación')
+plt.title('Pérdida')
+plt.legend()
+plt.show()
+                </code></pre>
+              </div>
+              <div class="slide">
+                <h2>7. Demostración con Gradio</h2>
+                <p>Interfaz interactiva para probar el modelo con imágenes nuevas.</p>
+                <pre><code class="language-python">
+import gradio as gr
+import tensorflow as tf
+import numpy as np
+
+# Cargar el modelo entrenado
+model = tf.keras.models.load_model("modelo_entrenado.h5")
+class_names = train_ds.class_names  # Lista de clases según el dataset
+
+# Función para predecir
+def predict_image(image):
+    img = tf.image.resize(image, (180, 180))
+    img = tf.expand_dims(img, 0)  # Batch de 1
+    prediction = model(img, training=False)
+    score = tf.nn.softmax(prediction[0])
+    return {class_names[i]: float(score[i]) for i in range(len(class_names))}
+
+# Crear interfaz
+interface = gr.Interface(
+    fn=predict_image,
+    inputs=gr.Image(type="numpy"),
+    outputs=gr.Label(num_top_classes=3),
+    title="Clasificador de Deportes",
+    description="Carga una imagen deportiva y obtén la predicción del modelo"
+)
+
+interface.launch()
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>8. Conclusiones</h2>
+                <ul>
+                  <li>Modelo capaz de clasificar múltiples deportes con buena precisión</li>
+                  <li>Mejoras posibles: Aumento de datos, más capas, fine-tuning</li>
+                  <li>Aplicación en análisis de video, seguridad, deportes</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h2>Gracias 🙌</h2>
+                <p>¿Preguntas?</p>
+              </div>
+              
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

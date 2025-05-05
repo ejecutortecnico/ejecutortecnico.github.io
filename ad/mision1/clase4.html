@@ -10,6 +10,268 @@
 </head>
 <body>
     <div class="container">
+        <div class="slide">
+<h1>Lección 04: Preprocesamiento, Limpieza de Datos e Introducción a la Simulación y Objetivos</h1>
+        </div>
+<div class="slide">
+    <h2>1. Técnicas de Limpieza: Introducción</h2>
+    <p>El preprocesamiento y la limpieza de datos son pasos cruciales en cualquier análisis, garantizando la calidad y precisión de los resultados[cite: 666]. Los datos crudos suelen contener errores, valores faltantes, duplicados e inconsistencias.</p>
+</div>
+
+<div class="slide">
+    <h2>2. Manejo de Valores Faltantes: Identificación</h2>
+    <p>Los valores faltantes (nulos) pueden ocurrir por errores de recolección, problemas técnicos o falta de información[cite: 667]. Es esencial identificarlos para evitar sesgos[cite: 668].</p>
+    <p><strong>Identificación en Python (pandas):</strong></p>
+    <pre><code>
+# Contar valores faltantes por columna
+missing_values_count = df.isnull().sum()
+print(missing_values_count)
+
+# Porcentaje de valores faltantes
+missing_percentage = df.isnull().mean() * 100
+print(missing_percentage)
+
+# Filas con al menos un valor faltante
+rows_with_missing = df[df.isnull().any(axis=1)]
+print(rows_with_missing.head())
+    </code></pre>
+     <p><strong>Identificación en R:</strong></p>
+     <pre><code>
+# Contar valores faltantes por columna
+missing_values_count <- colSums(is.na(df))
+print(missing_values_count)
+
+# Porcentaje de valores faltantes
+missing_percentage <- colMeans(is.na(df)) * 100
+print(missing_percentage)
+
+# Filas con al menos un valor faltante
+rows_with_missing <- df[apply(df, 1, function(x) any(is.na(x))), ]
+print(head(rows_with_missing))
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>3. Manejo de Valores Faltantes: Técnicas</h2>
+    <p>Existen varias técnicas para tratar los valores faltantes:</p>
+    <ul>
+        <li><strong>Eliminación:</strong> Borrar filas o columnas con valores nulos. Simple, pero puede perder información valiosa[cite: 670]. Adecuado si el porcentaje de faltantes es bajo (<5%) y son MCAR (Missing Completely at Random)[cite: 669, 693].</li>
+        <li><strong>Imputación:</strong> Reemplazar valores faltantes con valores estimados[cite: 672].</li>
+    </ul>
+    <p><strong>Eliminación en Python:</strong></p>
+    <pre><code>
+# Eliminar filas con cualquier valor nulo
+df_cleaned_rows = df.dropna()
+
+# Eliminar columnas con cualquier valor nulo
+df_cleaned_cols = df.dropna(axis=1)
+    </code></pre>
+     <p><strong>Eliminación en R:</strong></p>
+     <pre><code>
+# Eliminar filas con cualquier valor nulo
+df_cleaned_rows <- na.omit(df)
+
+# Eliminar columnas con valores nulos (ejemplo)
+df_cleaned_cols <- df[, colSums(is.na(df)) == 0]
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>4. Imputación Simple (Media, Mediana, Moda)</h2>
+    <p>Reemplazar faltantes con estadísticas centrales de la columna.</p>
+    <ul>
+        <li><strong>Media:</strong> Adecuada para distribuciones simétricas sin muchos outliers[cite: 673, 674].</li>
+        <li><strong>Mediana:</strong> Más robusta a outliers y distribuciones sesgadas[cite: 673, 675].</li>
+        <li><strong>Moda:</strong> Usada para variables categóricas[cite: 673].</li>
+    </ul>
+     <p><strong>Imputación con Media en Python:</strong></p>
+    <pre><code>
+# Imputar con la media
+df['columna'].fillna(df['columna'].mean(), inplace=True)
+    </code></pre>
+    <p><strong>Imputación con Mediana en R:</strong></p>
+    <pre><code>
+# Imputar con la mediana
+df$columna[is.na(df$columna)] <- median(df$columna, na.rm = TRUE)
+    </code></pre>
+    <p><strong>Desventajas:</strong> Introduce sesgos en varianza y relaciones, no considera correlaciones[cite: 674, 675].</p>
+</div>
+
+<div class="slide">
+    <h2>5. Eliminación de Duplicados</h2>
+    <p>Los registros duplicados pueden surgir por errores de recolección o integración y sesgan los resultados[cite: 678, 679].</p>
+    <p><strong>Identificación en Python (pandas):</strong></p>
+    <pre><code>
+# Identificar filas duplicadas exactas
+duplicates_bool = df.duplicated()
+print(f"Número de duplicados: {duplicates_bool.sum()}")
+
+# Ver las filas duplicadas
+print(df[duplicates_bool])
+    </code></pre>
+     <p><strong>Identificación en R:</strong></p>
+     <pre><code>
+# Identificar filas duplicadas exactas
+duplicates_bool <- duplicated(df)
+print(paste("Número de duplicados:", sum(duplicates_bool)))
+
+# Ver las filas duplicadas
+print(df[duplicates_bool, ])
+    </code></pre>
+      <p><strong>Eliminación en Python:</strong></p>
+    <pre><code>
+# Eliminar duplicados, manteniendo la primera ocurrencia
+df_cleaned = df.drop_duplicates()
+    </code></pre>
+     <p><strong>Eliminación en R (dplyr):</strong></p>
+     <pre><code>
+# Eliminar duplicados, manteniendo la primera ocurrencia
+df_cleaned <- df %>% distinct()
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>6. Tratamiento de Datos Atípicos (Outliers): Identificación</h2>
+    <p>Los outliers son valores que se desvían significativamente del resto[cite: 683]. Pueden ser errores o casos excepcionales. Influyen en análisis y modelos[cite: 684].</p>
+    <p><strong>Identificación Visual:</strong></p>
+    <ul>
+        <li><strong>Boxplots:</strong> Muestran outliers como puntos fuera de los "bigotes" (1.5 * IQR)[cite: 685, 687].</li>
+        <li><strong>Gráficos de Dispersión:</strong> Revelan puntos alejados del patrón general[cite: 685].</li>
+        <li><strong>Histogramas:</strong> Outliers como barras aisladas[cite: 685].</li>
+    </ul>
+     <p><strong>Identificación Estadística:</strong></p>
+     <ul>
+        <li><strong>Regla de 3-Sigma:</strong> Para datos normales, valores a > 3 desviaciones estándar de la media[cite: 687].</li>
+        <li><strong>Rango Intercuartil (IQR):</strong> Valores fuera de [Q1 - 1.5*IQR, Q3 + 1.5*IQR][cite: 687, 689].</li>
+    </ul>
+    <p><strong>Boxplot en Python (seaborn):</strong></p>
+    <pre><code>
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.boxplot(x=df['nombre_columna'])
+plt.show()
+    </code></pre>
+     <p><strong>Identificación IQR en R:</strong></p>
+     <pre><code>
+Q1 <- quantile(df$columna, 0.25, na.rm = TRUE)
+Q3 <- quantile(df$columna, 0.75, na.rm = TRUE)
+IQR <- Q3 - Q1
+lower_bound <- Q1 - 1.5 * IQR
+upper_bound <- Q3 + 1.5 * IQR
+outliers <- df[df$columna < lower_bound | df$columna > upper_bound, ]
+print(outliers)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>7. Tratamiento de Datos Atípicos (Outliers): Manejo</h2>
+    <p>Decidir cómo manejar outliers depende del contexto.</p>
+    <ul>
+        <li><strong>Eliminación:</strong> Si son errores claros o irrelevantes y hay datos suficientes[cite: 691].</li>
+        <li><strong>Transformación:</strong> Usar funciones (ej. logaritmo) para reducir su impacto sin eliminarlos. Útil si son valores válidos pero extremos[cite: 691, 700, 701].</li>
+        <li><strong>Imputación:</strong> Reemplazar outliers con valores más razonables (ej. mediana, media winsorizada) si eliminarlos no es viable[cite: 692].</li>
+    </ul>
+     <p><strong>Eliminación IQR en Python:</strong></p>
+    <pre><code>
+Q1 = df['columna'].quantile(0.25)
+Q3 = df['columna'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+df_cleaned = df[(df['columna'] >= lower_bound) & (df['columna'] <= upper_bound)]
+    </code></pre>
+      <p><strong>Transformación Log en R:</strong></p>
+     <pre><code>
+# Sumar 1 si hay ceros o negativos
+df$columna_log <- log(df$columna + 1)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>8. Preprocesamiento: Normalización y Estandarización</h2>
+    <p>Ajustan variables a escalas comparables, importante para muchos algoritmos[cite: 694].</p>
+    <ul>
+        <li><strong>Normalización (Min-Max Scaling):</strong> Escala valores a un rango específico [0, 1]. Útil para algoritmos basados en distancia (KNN, Redes Neuronales). Sensible a outliers[cite: 695, 696].</li>
+        <li><strong>Estandarización (Z-score Scaling):</strong> Transforma datos para tener media 0 y desviación estándar 1. Útil si los datos siguen una distribución normal y para modelos lineales[cite: 695, 698].</li>
+    </ul>
+     <p><strong>Normalización en Python (sklearn):</strong></p>
+     <pre><code>
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+df['col_norm'] = scaler.fit_transform(df[['columna_numerica']])
+    </code></pre>
+     <p><strong>Estandarización en R:</strong></p>
+     <pre><code>
+df$col_stand <- scale(df$columna_numerica)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>9. Preprocesamiento: Transformación de Variables</h2>
+    <p>Aplicar funciones matemáticas para modificar datos, mejorar interpretabilidad o ajustar distribución[cite: 699].</p>
+    <ul>
+        <li><strong>Transformación Logarítmica:</strong> Reduce asimetría derecha y efecto de outliers. No aplicable a ceros/negativos directamente[cite: 700, 701].</li>
+        <li><strong>Transformación de Raíz Cuadrada:</strong> Similar al logaritmo, reduce asimetría derecha[cite: 703].</li>
+        <li><strong>Transformación de Box-Cox:</strong> Busca la mejor transformación (potencia) para normalizar datos (requiere datos positivos)[cite: 704, 705].</li>
+    </ul>
+    <p><strong>Logaritmo en Python (numpy):</strong></p>
+    <pre><code>
+import numpy as np
+# Se suma 1 para evitar log(0)
+df['col_log'] = np.log1p(df['columna_positiva'])
+    </code></pre>
+     <p><strong>Box-Cox en R (MASS):</strong></p>
+     <pre><code>
+library(MASS)
+# Requiere que la columna sea positiva
+boxcox_result <- boxcox(df$columna_positiva ~ 1, plotit = FALSE)
+lambda <- boxcox_result$x[which.max(boxcox_result$y)]
+df$col_boxcox <- (df$columna_positiva^lambda - 1) / lambda
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>10. Preprocesamiento: Codificación de Datos Categóricos</h2>
+    <p>Convertir variables categóricas a numéricas para usarlas en modelos[cite: 706].</p>
+    <ul>
+        <li><strong>Codificación Ordinal:</strong> Asigna enteros únicos basados en un orden implícito (ej. 'baja': 1, 'media': 2, 'alta': 3). Adecuada para variables ordinales[cite: 707, 708].</li>
+        <li><strong>One-Hot Encoding:</strong> Crea columnas binarias separadas para cada categoría. Ideal para variables nominales (sin orden). Evita sesgos ordinales, pero aumenta dimensionalidad[cite: 709, 710].</li>
+        <li><strong>Codificación de Frecuencia:</strong> Reemplaza categorías con su frecuencia de ocurrencia. Útil si la frecuencia es importante[cite: 713].</li>
+    </ul>
+    <p><strong>One-Hot Encoding en Python (pandas):</strong></p>
+    <pre><code>
+df_one_hot = pd.get_dummies(df['columna_categorica'], prefix='cat')
+df = pd.concat([df, df_one_hot], axis=1)
+# Opcionalmente, eliminar la columna original
+# df.drop('columna_categorica', axis=1, inplace=True)
+    </code></pre>
+     <p><strong>Label Encoding en R (base):</strong></p>
+     <pre><code>
+# Adecuado para ordinales o si el modelo maneja enteros categóricos
+df$cat_encoded <- as.numeric(factor(df$columna_categorica))
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>11. Introducción a la Simulación y Objetivos</h2>
+     <p>Esta parte de la lección introduce la fase de simulación del bootcamp.</p>
+    <ul>
+        <li><strong>Objetivos generales:</strong> Aplicar los conocimientos adquiridos en escenarios prácticos[cite: 740].</li>
+        <li><strong>Metodología:</strong> Enfoque práctico, resolviendo casos de uso[cite: 741].</li>
+        <li><strong>Casos de Uso:</strong> Se abordarán análisis descriptivos de datos de ventas y encuestas de satisfacción[cite: 742, 743].</li>
+    </ul>
+    <p>La preparación incluye asegurar que los entornos Python (Jupyter) y R (RStudio) estén listos[cite: 745].</p>
+</div>
+
+<div class="slide">
+    <h2>12. Análisis Descriptivo (Revisión)</h2>
+    <p>Se revisan los conceptos de análisis descriptivo para aplicarlos en la simulación.</p>
+    <ul>
+        <li><strong>Cálculo de Estadísticas Descriptivas:</strong> Resumen de datos con medidas de tendencia central (media, mediana, moda) y dispersión (rango, varianza, desviación estándar)[cite: 715, 716, 717, 724].</li>
+        <li><strong>Visualización de Datos:</strong> Uso de histogramas, gráficos de caja, gráficos de dispersión y barras para representar y comunicar información[cite: 729, 730, 733, 736, 738].</li>
+    </ul>
+     <p>Estos métodos se aplicarán en las siguientes lecciones de simulación (Lección 5 y 6) usando Python y R respectivamente[cite: 746, 754].</p>
+</div>
         <!-- Slide 1 -->
         <div class="slide active">
             <h1>Preprocesamiento y Simulación</h1>

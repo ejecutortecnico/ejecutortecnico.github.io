@@ -11,7 +11,126 @@
 <body>
     <div class="container">
         <!-- Slide 1 -->
-        <div class="slide active">
+
+        <div class="slide">
+<h1>Lección 01: Introducción al Análisis de Datos y Conceptos Básicos</h1>
+        </div>
+<div class="slide">
+    <h2>1. Definición y Objetivos del Análisis de Datos</h2>
+    <p>El análisis de datos es el proceso de inspeccionar, limpiar, transformar y modelar datos con el objetivo de descubrir información útil, llegar a conclusiones y respaldar la toma de decisiones[cite: 71].</p>
+    <p><strong>Objetivos Principales[cite: 73, 74, 75]:</strong></p>
+    <ul>
+        <li>Identificar patrones y tendencias dentro de los datos[cite: 73].</li>
+        <li>Facilitar la toma de decisiones basada en hechos y cifras[cite: 74].</li>
+        <li>Optimizar procesos en distintos sectores industriales[cite: 74].</li>
+        <li>Predecir escenarios y mitigar riesgos mediante modelos de datos[cite: 75].</li>
+    </ul>
+    <p><strong>Ejemplo Práctico:</strong> En una tienda en línea, el análisis de datos permite identificar qué productos tienen más demanda y ajustar las estrategias de ventas para maximizar ganancias[cite: 76].</p>
+</div>
+
+<div class="slide">
+    <h2>2. Tipos de Datos</h2>
+    <p>Los datos se pueden clasificar en tres tipos principales según su estructura y formato[cite: 77]:</p>
+    <ul>
+        <li><strong>Datos Estructurados:</strong> Organizados en filas y columnas (bases de datos, hojas de cálculo). Fáciles de procesar[cite: 78, 79]. Ejemplo: Lista de empleados con nombres y cargos[cite: 79].</li>
+        <li><strong>Datos No Estructurados:</strong> Sin formato predefinido (imágenes, audios, videos, texto libre)[cite: 80]. Ejemplo: Comentarios de clientes en un foro[cite: 81].</li>
+        <li><strong>Datos Semi-Estructurados:</strong> No completamente organizados, pero con etiquetas que los estructuran parcialmente (JSON, XML)[cite: 82]. Ejemplo: Archivo JSON con información de productos[cite: 83].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>3. Ejemplo Práctico de Tipos de Datos</h2>
+    <p>Imaginemos una plataforma de streaming como Netflix[cite: 84]. Los datos de los usuarios incluirían:</p>
+    <ul>
+        <li><strong>Estructurados:</strong> Nombre, edad, tipo de suscripción, historial de visualización[cite: 85].</li>
+        <li><strong>No estructurados:</strong> Comentarios en redes sociales sobre una película específica[cite: 86].</li>
+        <li><strong>Semi-estructurados:</strong> Metadatos de cada película en formato JSON (título, director, actores, género)[cite: 87].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>4. Conceptos de Análisis Descriptivo</h2>
+    <p>El análisis descriptivo es el primer paso en el proceso de análisis y busca resumir la información de manera sencilla[cite: 88].</p>
+    <p><strong>Principales Técnicas[cite: 89, 90]:</strong></p>
+    <ul>
+        <li>Medidas de tendencia central: Media, mediana y moda[cite: 89].</li>
+        <li>Medidas de dispersión: Rango, varianza y desviación estándar[cite: 89].</li>
+        <li>Visualización de datos: Uso de gráficos de barras, histogramas y diagramas de dispersión[cite: 90].</li>
+    </ul>
+    <p><strong>Ejemplo Práctico:</strong> Una empresa de ventas online analiza la cantidad de productos vendidos. Con esto, puede determinar cuáles son más populares y ajustar su inventario[cite: 91, 92].</p>
+</div>
+
+<div class="slide">
+    <h2>5. Medidas de Tendencia Central</h2>
+    <p>Describen el centro de un conjunto de datos.</p>
+    <ul>
+        <li><strong>Media:</strong> Promedio aritmético. Sensible a valores extremos[cite: 227, 228, 229].</li>
+        <li><strong>Mediana:</strong> Valor central en un conjunto ordenado. No afectada por valores extremos[cite: 230, 231]. Si el número de datos es par, es el promedio de los dos centrales[cite: 233].</li>
+        <li><strong>Moda:</strong> Valor que aparece con mayor frecuencia. Puede haber una (unimodal), dos (bimodal) o más (multimodal)[cite: 234, 235]. Útil para datos categóricos[cite: 236].</li>
+    </ul>
+    <pre><code>
+# Ejemplo de cálculo de media en Python
+numeros = [10, 20, 30, 40, 50]
+media = sum(numeros) / len(numeros)
+print(f"La media es: {media}") # Salida: La media es: 30.0
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>6. Medidas de Dispersión</h2>
+    <p>Indican qué tan extendidos están los datos alrededor de la medida central[cite: 236].</p>
+    <ul>
+        <li><strong>Rango:</strong> Diferencia entre el valor máximo y mínimo[cite: 237, 238].</li>
+        <li><strong>Varianza:</strong> Promedio de los cuadrados de las diferencias entre cada valor y la media. Mide la dispersión[cite: 239, 240]. Varianza alta = mayor dispersión[cite: 241].</li>
+        <li><strong>Desviación Estándar:</strong> Raíz cuadrada de la varianza. Mide la dispersión en las unidades originales[cite: 242]. Útil para entender la variabilidad[cite: 243].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>7. Distribuciones de Datos</h2>
+    <p>Describen cómo se distribuyen los valores[cite: 244].</p>
+    <ul>
+        <li><strong>Distribución Normal:</strong> Simétrica alrededor de la media, forma de campana[cite: 245]. La mayoría de los datos cerca de la media[cite: 246]. Importante por el teorema del límite central[cite: 247].</li>
+        <li><strong>Distribución Sesgada:</strong> No simétrica[cite: 248]. Sesgada a la derecha (positiva, cola derecha larga) o izquierda (negativa, cola izquierda larga)[cite: 249, 250].</li>
+        <li><strong>Distribución Uniforme:</strong> Todos los valores tienen la misma probabilidad[cite: 251]. Continua (distribución equitativa en un intervalo) [cite: 252] o discreta (todos los resultados posibles con igual probabilidad)[cite: 253].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>8. Aplicaciones del Análisis Descriptivo</h2>
+    <p>El análisis descriptivo tiene aplicaciones en diversos sectores[cite: 93]:</p>
+    <ul>
+        <li><strong>Salud:</strong> Predicción de brotes de enfermedades[cite: 93].</li>
+        <li><strong>Marketing:</strong> Segmentación de clientes basada en historial de compras[cite: 94].</li>
+        <li><strong>Finanzas:</strong> Evaluación del riesgo crediticio[cite: 94].</li>
+        <li><strong>Educación:</strong> Identificación de factores que afectan el rendimiento estudiantil[cite: 95].</li>
+    </ul>
+    <p><strong>Ejemplo:</strong> Una telco analiza quejas y descubre que la mayoría provienen de una región específica, permitiéndole investigar y mejorar el servicio allí[cite: 96, 97].</p>
+</div>
+
+<div class="slide">
+    <h2>9. Historia y Evolución del Análisis de Datos</h2>
+    <p>El análisis de datos ha evolucionado significativamente[cite: 98]:</p>
+    <ul>
+        <li><strong>Época antigua:</strong> Registros en tablillas de arcilla y papiros[cite: 98].</li>
+        <li><strong>Siglo XIX:</strong> Métodos estadísticos básicos para censos[cite: 99].</li>
+        <li><strong>Mediados del Siglo XX:</strong> Primeras computadoras para procesar grandes volúmenes[cite: 100].</li>
+        <li><strong>Década de 1990:</strong> Popularización de hojas de cálculo y software de análisis[cite: 101].</li>
+        <li><strong>Siglo XXI:</strong> Revolución del Big Data y la Inteligencia Artificial[cite: 102].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>10. Breve Descripción de Bases de Datos</h2>
+    <p>Las bases de datos son sistemas organizados para almacenar y gestionar grandes volúmenes de datos de manera estructurada[cite: 104]. Facilitan la consulta, actualización y eliminación eficiente de información[cite: 105].</p>
+    <p><strong>Tipos Principales[cite: 106, 107]:</strong></p>
+    <ul>
+        <li><strong>Relacionales:</strong> Organizan datos en tablas conectadas mediante claves[cite: 106]. Ejemplo: MySQL, PostgreSQL.</li>
+        <li><strong>No Relacionales (NoSQL):</strong> Usan estructuras flexibles como documentos (MongoDB), grafos o clave-valor[cite: 107].</li>
+    </ul>
+    <p>Son fundamentales para la gestión eficiente, integridad, seguridad y escalabilidad de la información[cite: 198, 200, 201, 202, 203].</p>
+</div>
+        <div class="slide">
             <h1>Análisis de Datos Básico</h1>
             <h2>Introducción a los Fundamentos</h2>
             <p>Aprende cómo analizar, interpretar y utilizar datos para tomar decisiones informadas.</p>

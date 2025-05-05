@@ -10,8 +10,228 @@
 </head>
 <body>
     <div class="container">
+        <div class="slide">
+        <h1>Lección 05: Simulación - Análisis Descriptivo Utilizando Python</h1>
+        </div>
+        <div class="slide">
+            <h2>1. Introducción a la Simulación con Python</h2>
+            <p>Esta lección se enfoca en aplicar los conceptos de análisis descriptivo utilizando Python en un entorno de simulación. Trabajaremos con un conjunto de datos (por ejemplo, de ventas) para realizar carga, limpieza, análisis y visualización.</p>
+            <p><strong>Objetivo:</strong> Realizar un análisis descriptivo completo de un conjunto de datos de ejemplo utilizando Python y sus bibliotecas (pandas, numpy, matplotlib, seaborn).</p>
+        </div>
+        
+        <div class="slide">
+            <h2>2. Carga de Datos con Pandas</h2>
+            <p>El primer paso es cargar el conjunto de datos en un DataFrame de pandas. Asumiremos que los datos están en un archivo CSV llamado `datos_ventas_simulacion.csv`.</p>
+            <pre><code>
+        import pandas as pd
+        import numpy as np
+        
+        # Cargar los datos
+        try:
+            df = pd.read_csv('datos_ventas_simulacion.csv')
+            print("Datos cargados exitosamente.")
+            print(df.head())
+        except FileNotFoundError:
+            print("Error: Archivo 'datos_ventas_simulacion.csv' no encontrado.")
+            # Crear un DataFrame de ejemplo si el archivo no existe
+            data = {'Producto': ['A', 'B', 'A', 'C', 'B', 'A', None, 'C'],
+                    'Ventas': [100, 150, 120, 200, 150, 130, 90, 210],
+                    'Region': ['Norte', 'Sur', 'Norte', 'Este', 'Sur', 'Oeste', 'Norte', 'Este'],
+                    'Fecha': pd.to_datetime(['2024-01-10', '2024-01-11', '2024-01-10', '2024-01-12', '2024-01-11', '2024-01-13', '2024-01-14', '2024-01-12'])}
+            df = pd.DataFrame(data)
+            print("Creado DataFrame de ejemplo.")
+            print(df.head())
+            </code></pre>
+        </div>
+        
+        <div class="slide">
+            <h2>3. Exploración Inicial de Datos</h2>
+            <p>Antes de limpiar, es vital entender la estructura y contenido inicial de los datos.</p>
+            <pre><code>
+        # Ver información general del DataFrame
+        print("\nInformación del DataFrame:")
+        df.info()
+        
+        # Ver estadísticas descriptivas básicas para columnas numéricas
+        print("\nEstadísticas Descriptivas:")
+        print(df.describe())
+        
+        # Contar valores únicos por columna categórica (ej: Region)
+        if 'Region' in df.columns:
+            print("\nValores únicos en Región:")
+            print(df['Region'].value_counts())
+        else:
+            print("\nColumna 'Region' no encontrada.")
+            </code></pre>
+        </div>
+        
+        <div class="slide">
+            <h2>4. Limpieza de Datos: Valores Faltantes</h2>
+            <p>Identificar y tratar los valores faltantes es crucial para la calidad del análisis.</p>
+            <pre><code>
+        # Identificar columnas con valores faltantes y contarlos
+        print("\nValores Faltantes por Columna:")
+        print(df.isnull().sum())
+        
+        # Estrategia de imputación:
+        # - Para 'Producto' (categórico): Imputar con la moda (el más frecuente)
+        if 'Producto' in df.columns and df['Producto'].isnull().any():
+            moda_producto = df['Producto'].mode()[0]
+            df['Producto'].fillna(moda_producto, inplace=True)
+            print(f"\nValores faltantes en 'Producto' imputados con '{moda_producto}'.")
+        
+        # - Para 'Ventas' (numérico): Imputar con la mediana (más robusto a outliers)
+        if 'Ventas' in df.columns and df['Ventas'].isnull().any():
+            mediana_ventas = df['Ventas'].median()
+            df['Ventas'].fillna(mediana_ventas, inplace=True)
+            print(f"\nValores faltantes en 'Ventas' imputados con {mediana_ventas}.")
+        
+        # Verificar que no queden nulos
+        print("\nValores Faltantes después de Imputación:")
+        print(df.isnull().sum())
+            </code></pre>
+        </div>
+        
+        <div class="slide">
+            <h2>5. Limpieza de Datos: Duplicados</h2>
+            <p>Identificar y eliminar registros duplicados para evitar sesgos.</p>
+            <pre><code>
+        # Identificar filas duplicadas
+        duplicados = df.duplicated()
+        print(f"\nNúmero de filas duplicadas encontradas: {duplicados.sum()}")
+        
+        # Eliminar filas duplicadas (si existen)
+        if duplicados.sum() > 0:
+            df_sin_duplicados = df.drop_duplicates()
+            print(f"Tamaño original: {df.shape}")
+            print(f"Tamaño después de eliminar duplicados: {df_sin_duplicados.shape}")
+            df = df_sin_duplicados # Actualizar df
+        else:
+            print("No se encontraron filas duplicadas.")
+            </code></pre>
+        </div>
+        
+        <div class="slide">
+            <h2>6. Análisis Descriptivo: Medidas de Tendencia Central</h2>
+            <p>Calcular métricas como la media, mediana y moda para entender el centro de la distribución de las variables numéricas (ej. Ventas).</p>
+            <pre><code>
+        # Calcular medidas de tendencia central para 'Ventas'
+        if 'Ventas' in df.columns:
+            media_ventas = df['Ventas'].mean()
+            mediana_ventas = df['Ventas'].median()
+            # La moda puede tener múltiples valores, tomamos el primero
+            moda_ventas = df['Ventas'].mode()[0]
+        
+            print("\nMedidas de Tendencia Central para 'Ventas':")
+            print(f"Media: {media_ventas:.2f}")
+            print(f"Mediana: {mediana_ventas:.2f}")
+            print(f"Moda: {moda_ventas:.2f}")
+        else:
+            print("\nColumna 'Ventas' no encontrada para calcular tendencia central.")
+        
+        # Moda para una variable categórica como 'Producto'
+        if 'Producto' in df.columns:
+             moda_producto = df['Producto'].mode()[0]
+             print(f"\nModa para 'Producto': {moda_producto}")
+        else:
+            print("\nColumna 'Producto' no encontrada para calcular moda.")
+            </code></pre>
+        </div>
+        
+        <div class="slide">
+            <h2>7. Análisis Descriptivo: Medidas de Dispersión</h2>
+            <p>Calcular métricas como el rango, varianza y desviación estándar para entender la variabilidad de los datos numéricos.</p>
+            <pre><code>
+        # Calcular medidas de dispersión para 'Ventas'
+        if 'Ventas' in df.columns:
+            rango_ventas = df['Ventas'].max() - df['Ventas'].min()
+            varianza_ventas = df['Ventas'].var()
+            desviacion_std_ventas = df['Ventas'].std()
+        
+            print("\nMedidas de Dispersión para 'Ventas':")
+            print(f"Rango: {rango_ventas:.2f}")
+            print(f"Varianza: {varianza_ventas:.2f}")
+            print(f"Desviación Estándar: {desviacion_std_ventas:.2f}")
+        else:
+            print("\nColumna 'Ventas' no encontrada para calcular dispersión.")
+            </code></pre>
+        </div>
+        
+        <div class="slide">
+            <h2>8. Visualización de Datos: Histogramas</h2>
+            <p>Los histogramas permiten visualizar la distribución de una variable numérica.</p>
+            <pre><code>
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+        
+        # Configurar estilo de seaborn
+        sns.set_style("whitegrid")
+        
+        # Crear histograma para 'Ventas'
+        if 'Ventas' in df.columns:
+            plt.figure(figsize=(8, 5))
+            sns.histplot(df['Ventas'], kde=True, bins=5) # kde=True añade curva de densidad
+            plt.title('Distribución de Ventas')
+            plt.xlabel('Ventas')
+            plt.ylabel('Frecuencia')
+            plt.show()
+        else:
+            print("\nColumna 'Ventas' no encontrada para crear histograma.")
+            </code></pre>
+        </div>
+        
+        <div class="slide">
+            <h2>9. Visualización de Datos: Gráficos de Caja (Boxplots)</h2>
+            <p>Los boxplots son útiles para ver la distribución, la mediana, los cuartiles y detectar posibles outliers.</p>
+            <pre><code>
+        # Crear gráfico de caja para 'Ventas' por 'Region'
+        if 'Ventas' in df.columns and 'Region' in df.columns:
+            plt.figure(figsize=(10, 6))
+            sns.boxplot(x='Region', y='Ventas', data=df)
+            plt.title('Distribución de Ventas por Región')
+            plt.xlabel('Región')
+            plt.ylabel('Ventas')
+            plt.show()
+        elif 'Ventas' in df.columns:
+            # Boxplot solo para Ventas si no hay Region
+            plt.figure(figsize=(6, 4))
+            sns.boxplot(y=df['Ventas'])
+            plt.title('Distribución de Ventas')
+            plt.ylabel('Ventas')
+            plt.show()
+        else:
+            print("\nColumnas 'Ventas' o 'Region' no encontradas para crear boxplot.")
+        
+            </code></pre>
+        </div>
+        
+        <div class="slide">
+            <h2>10. Visualización de Datos: Gráficos de Dispersión</h2>
+            <p>Los gráficos de dispersión ayudan a identificar relaciones entre dos variables numéricas. (Nota: Nuestro dataset de ejemplo solo tiene 'Ventas' como numérica principal).</p>
+            <pre><code>
+        # Crear una columna numérica de ejemplo 'Dia_Semana' (0=Lunes, ...) si existe 'Fecha'
+        if 'Fecha' in df.columns:
+            df['Dia_Semana'] = df['Fecha'].dt.dayofweek # Lunes=0, Domingo=6
+        
+            # Crear gráfico de dispersión Ventas vs Dia_Semana
+            if 'Ventas' in df.columns:
+                plt.figure(figsize=(8, 5))
+                sns.scatterplot(x='Dia_Semana', y='Ventas', data=df)
+                plt.title('Ventas vs Día de la Semana')
+                plt.xlabel('Día de la Semana (0=Lunes)')
+                plt.ylabel('Ventas')
+                plt.xticks(ticks=range(7), labels=['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'])
+                plt.show()
+            else:
+                 print("\nColumna 'Ventas' no encontrada para gráfico de dispersión.")
+        else:
+            print("\nColumna 'Fecha' no encontrada para crear 'Dia_Semana'.")
+        
+            </code></pre>
+            <p><strong>Discusión:</strong> En esta lección, hemos aplicado carga, limpieza, análisis descriptivo y visualización básica a un conjunto de datos simulado usando Python. Los resultados (estadísticas y gráficos) nos dan una primera impresión sobre el comportamiento de las ventas.</p>
+        </div>
         <!-- Slide 1 -->
-        <div class="slide active">
+        <div class="slide">
             <h1>Simulación: Análisis Descriptivo</h1>
             <h2>Lección 5</h2>
             <p>Implementa un análisis descriptivo utilizando Python para interpretar patrones en los datos.</p>

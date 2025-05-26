@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h2>¿Qué es CIFAR-10?</h2>
+                <p>CIFAR-10 es un conjunto de datos de imágenes pequeñas (32x32 píxeles, 3 canales) organizadas en 10 clases: avión, automóvil, pájaro, gato, ciervo, perro, rana, caballo, barco y camión.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Preparación de los datos</h2>
+<pre><code class="language-python">
+# Cargar el dataset CIFAR-10 desde Keras
+from tensorflow.keras.datasets import cifar10
+(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+
+# Normalizar los valores de píxeles (0 a 255) a un rango entre 0 y 1
+x_train = x_train / 255.0
+x_test = x_test / 255.0
+</code></pre>
+                <p>Se cargan los datos y se escalan para que la red neuronal los procese más eficientemente.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Arquitectura del modelo</h2>
+<pre><code class="language-python">
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+
+# Crear un modelo secuencial con varias capas convolucionales y densas
+model = Sequential([
+# Capa convolucional con 32 filtros, tamaño 3x3 y función de activación ReLU
+Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),
+MaxPooling2D(2, 2),  # Submuestreo para reducir la dimensión
+
+# Segunda capa convolucional
+Conv2D(64, (3, 3), activation='relu'),
+MaxPooling2D(2, 2),
+
+# Aplanar la salida para pasarla a capas densas
+Flatten(),
+Dense(64, activation='relu'),     # Capa oculta
+Dense(10, activation='softmax')   # Capa de salida para clasificación multiclase
+])
+</code></pre>
+                <p>Modelo CNN típico para clasificación de imágenes, ideal para reconocer patrones espaciales.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Entrenamiento del modelo</h2>
+<pre><code class="language-python">
+# Compilar el modelo: función de pérdida y optimizador
+model.compile(optimizer='adam',
+            loss='sparse_categorical_crossentropy',
+            metrics=['accuracy'])
+
+# Entrenar el modelo con 10 épocas y 20% de validación
+history = model.fit(x_train, y_train, epochs=10, validation_split=0.2)
+</code></pre>
+                <p>Se utiliza el optimizador Adam y una función de pérdida adecuada para clasificación multiclase con etiquetas enteras.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Evaluación del modelo</h2>
+<pre><code class="language-python">
+import matplotlib.pyplot as plt
+
+# Graficar precisión durante el entrenamiento
+plt.plot(history.history['accuracy'], label='Entrenamiento')
+plt.plot(history.history['val_accuracy'], label='Validación')
+plt.xlabel('Época')
+plt.ylabel('Precisión')
+plt.legend()
+plt.title('Precisión del modelo')
+plt.show()
+</code></pre>
+                <p>Visualizamos cómo evoluciona la precisión en el entrenamiento y validación para detectar overfitting.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Predicciones</h2>
+                <pre><code class="language-python">
+import numpy as np
+
+# Obtener las predicciones del modelo para el set de prueba
+predictions = model.predict(x_test)
+
+# Tomar la clase con mayor probabilidad
+predicted_labels = np.argmax(predictions, axis=1)
+                </code></pre>
+                <p>Se obtiene la clase más probable para cada imagen del conjunto de prueba.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Ejemplo de predicción</h2>
+                <pre><code class="language-python">
+import matplotlib.pyplot as plt
+
+# Mostrar la primera imagen de prueba con su etiqueta real y predicción
+plt.imshow(x_test[0])
+plt.title(f"Etiqueta real: {y_test[0][0]} - Predicción: {predicted_labels[0]}")
+plt.axis('off')
+plt.show()
+</code></pre>
+                <p>Visualizamos una predicción del modelo para comprobar su funcionamiento en la práctica.</p>
+              </div>
+              
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

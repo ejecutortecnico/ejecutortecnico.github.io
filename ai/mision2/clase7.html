@@ -10,165 +10,300 @@
 </head>
     <body>
         <div class="container">
-            <div class="slide">
-                <h1>Simulación y Prosumidores - Lección 7</h1>
-            </div>
-            
-            <div class="slide">
-                <h2>1. Evaluación del Desempeño Final</h2>
-                <h3>Objetivo:</h3>
-                <p>Evaluar el chatbot utilizando métricas de precisión y retroalimentación de los usuarios.</p>
-               
-            </div>
-            
-            <div class="slide">
-                 <h3>Métricas de Evaluación:</h3>
-                <ul>
-                    <li>Precisión, recall, F1-score.</li>
-                </ul>
-                <pre><code>from sklearn.metrics import classification_report
-            y_true = ["greet", "ask_weather"]
-            y_pred = ["greet", "ask_weather"]
-            print(classification_report(y_true, y_pred))</code></pre>
-              
-        </div>
-            
-        <div class="slide">
-            <h3>Recopilación de Retroalimentación:</h3>
-                <ul>
-                    <li>Obtener comentarios de los usuarios para identificar áreas de mejora.</li>
-                </ul>
-            </div>
-            
-            <div class="slide">
-                <h2>2. Documentación y Presentación</h2>
-                <h3>Objetivo:</h3>
-                <p>Documentar el desarrollo y los resultados del chatbot, y preparar una presentación final.</p>
-            </div>
-            
-            <div class="slide">
-                <h3>Documentación del Proceso:</h3>
-                <pre><code># Desarrollo de un Chatbot Básico
-            ## Introducción
-            Descripción del proyecto y objetivos.
-            ## Implementación
-            Detalles sobre la configuración del entorno, el modelo de NLP y las respuestas.
-            ## Evaluación
-            Métricas de evaluación y retroalimentación del usuario.
-            ## Mejoras
-            Ajustes y optimizaciones realizadas para mejorar el rendimiento del chatbot.</code></pre>
-             
-        </div>
-            
-        <div class="slide">
-            <h3>Preparación de la Presentación:</h3>
-                <ul>
-                    <li>Creación de diapositivas para presentar el desarrollo y los resultados del chatbot.</li>
-                    <li>Incluir gráficos y tablas para ilustrar los resultados obtenidos.</li>
-                </ul>
-            </div>
-            
-            <div class="slide">
-                <h2>3. Implementación de un Proyecto Práctico de IA</h2>
-                <h3>Objetivos:</h3>
-                <ul>
-                    <li>Identificar un problema específico que pueda ser resuelto utilizando técnicas de inteligencia artificial.</li>
-                    <li>Desarrollar un modelo de IA para abordar el problema seleccionado.</li>
-                    <li>Evaluar y presentar los resultados del proyecto.</li>
-                </ul>
-            </div>
-            
-            <div class="slide">
-                <h2>4. Selección y Definición del Proyecto</h2>
-                <h3>Brainstorming de Ideas:</h3>
-                <ul>
-                    <li>Clasificación de correos electrónicos (spam vs. no spam).</li>
-                    <li>Predicción de precios de viviendas.</li>
-                    <li>Análisis de sentimientos en comentarios de redes sociales.</li>
-                    <li>Sistema de recomendación simple (por ejemplo, recomendación de películas).</li>
-                </ul>
-                
-            </div>
-            
-            <div class="slide">
-                <h3>Definición del Proyecto:</h3>
-                <p><strong>Título del Proyecto:</strong> Clasificación de correos electrónicos como spam o no spam.</p>
-                <p><strong>Descripción del Problema:</strong> Desarrollar un modelo de IA que clasifique correos electrónicos en dos categorías: spam y no spam.</p>
-            </div>
-            
-            <div class="slide">
-                <h2>5. Desarrollo del Proyecto</h2>
-                <h3>Recolección y Preparación de Datos:</h3>
-                <pre><code>import pandas as pd
-            data = pd.read_csv('emails.csv')
-            print(data.head())</code></pre>
-               
-        </div>
-            
-        <div class="slide">
-            <h3>Preprocesamiento de Datos:</h3>
-                <pre><code>import re
-            from nltk.corpus import stopwords
-            def preprocess_text(text):
-                text = re.sub(r'\W', ' ', text).lower()
-                text = re.sub(r'\s+', ' ', text)
-                return text
-            data['text'] = data['text'].apply(preprocess_text)</code></pre>
-            </div>
-            
-            <div class="slide">
-                <h2>6. Implementación del Modelo</h2>
-                <h3>Vectorización de Texto:</h3>
-                <pre><code>from sklearn.feature_extraction.text import TfidfVectorizer
-            vectorizer = TfidfVectorizer()
-            X = vectorizer.fit_transform(data['text'])
-            y = data['spam']</code></pre>
-        </div>
-            
-        <div class="slide">
-              <h3>Entrenamiento del Modelo:</h3>
-                <pre><code>from sklearn.model_selection import train_test_split
-            from sklearn.naive_bayes import MultinomialNB
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-            model = MultinomialNB()
-            model.fit(X_train, y_train)</code></pre>
-            </div>
-            
-            <div class="slide">
-                <h2>7. Evaluación y Ajuste del Modelo</h2>
-                <h3>Evaluación:</h3>
-                <pre><code>y_pred = model.predict(X_test)
-            from sklearn.metrics import classification_report, accuracy_score
-            print(classification_report(y_test, y_pred))
-            print(f'Accuracy: {accuracy_score(y_test, y_pred)}')</code></pre>
-        </div>
-            
-        <div class="slide">
-             <h3>Ajuste de Parámetros:</h3>
-                <pre><code>from sklearn.model_selection import GridSearchCV
-            param_grid = {'alpha': [0.1, 0.5, 1.0]}
-            grid_search = GridSearchCV(MultinomialNB(), param_grid, cv=5)
-            grid_search.fit(X_train, y_train)
-            print(f'Best parameters: {grid_search.best_params_}')</code></pre>
-            </div>
-            
-            <div class="slide">
-                <h2>8. Presentación de Resultados</h2>
-                <h3>Objetivo:</h3>
-                <p>Presentar el proyecto final, los resultados obtenidos y las conclusiones.</p>
-                
-            </div>
-            
-            <div class="slide">
-                <h3>Preparación de la Presentación:</h3>
-                <ul>
-                    <li>Introducción al proyecto y definición del problema.</li>
-                    <li>Descripción del conjunto de datos y el preprocesamiento realizado.</li>
-                    <li>Implementación del modelo y resultados obtenidos.</li>
-                    <li>Conclusiones y mejoras futuras.</li>
-                </ul>
-            </div>
-            
+    <div class="slide">
+    <h2>Preparación (Lección 2): Introducción a los Chatbots y Asistentes Virtuales</h2>
+    <h3>Objetivos:</h3>
+    <ul>
+        <li>Comprender los fundamentos del desarrollo de chatbots y asistentes virtuales.</li>
+        <li>Aprender a diseñar la arquitectura de un chatbot.</li>
+        <li>Implementar un chatbot básico utilizando bibliotecas de IA.</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>1. Fundamentos de los Chatbots</h2>
+    <h3>Objetivo:</h3>
+    <p>Proporcionar una comprensión básica de los chatbots, su arquitectura y casos de uso.</p>
+   
+</div>
+
+<div class="slide">
+     <h3>¿Qué es un Chatbot?</h3>
+    <ul>
+        <li>Definición y características.</li>
+        <li>Tipos de chatbots:
+            <ul>
+                <li>Basados en reglas.</li>
+                <li>Basados en IA.</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h3>Arquitectura de un Chatbot:</h3>
+    <ul>
+        <li>Componentes principales:
+            <ul>
+                <li>Entrada del usuario.</li>
+                <li>Procesamiento del lenguaje natural (NLP).</li>
+                <li>Generación de respuestas.</li>
+            </ul>
+        </li>
+        <li>Flujo de trabajo de un chatbot.</li>
+    </ul>
+</div>
+
+
+<div class="slide">
+    <h2>2. Introducción al Procesamiento del Lenguaje Natural (NLP)</h2>
+    <h3>Objetivo:</h3>
+    <p>Entender los conceptos básicos del NLP y cómo se aplican en el desarrollo de chatbots.</p>
+    <h3>Fundamentos del NLP:</h3>
+    <ul>
+        <li>Tokenización.</li>
+        <li>Lemmatización y stemming.</li>
+        <li>Análisis sintáctico y semántico.</li>
+    </ul>
+</div>
+<div class="slide" id="slide1">
+    <h2>Introducción al NLP</h2>
+    <p>El Procesamiento del Lenguaje Natural (NLP) es una rama de la inteligencia artificial que permite a las máquinas entender, interpretar y generar lenguaje humano.</p>
+</div>
+
+    <div class="slide" id="slide1">
+        <h2>Tokenización</h2>
+        <p>La tokenización es el proceso de dividir un texto en palabras, frases o elementos más pequeños llamados tokens.</p>
+    </div>
+
+    <div class="slide" id="slide2">
+        <h2>Ejemplo de Tokenización en Python</h2>
+        <p>Podemos usar la biblioteca <code>nltk</code> para tokenizar un texto en palabras:</p>
+        <pre><code>import nltk
+from nltk.tokenize import word_tokenize
+
+nltk.download('punkt')
+nltk.download('punkt_tab')
+texto = "Hola, ¿cómo estás? Espero que estés bien."
+tokens = word_tokenize(texto)
+print(tokens)</code></pre>
+    </div>
+
+    <div class="slide" id="slide3">
+        <h2>Tokenización en frases</h2>
+        <p>También podemos dividir el texto en frases:</p>
+        <pre><code>from nltk.tokenize import sent_tokenize
+
+texto = "Hola, ¿cómo estás? Espero que estés bien. Nos vemos luego."
+frases = sent_tokenize(texto)
+print(frases)</code></pre>
+    </div>
+
+    <div class="slide" id="slide1">
+        <h2>Lematización y Stemming</h2>
+        <p>Estos procesos permiten reducir las palabras a su forma base o raíz.</p>
+    </div>
+
+    <div class="slide" id="slide2">
+        <h2>Ejemplo de Stemming en Python</h2>
+        <p>El stemming reduce una palabra a su raíz eliminando sufijos. Usaremos <code>nltk</code>:</p>
+        <pre><code>import nltk
+from nltk.stem import PorterStemmer
+
+stemmer = PorterStemmer()
+palabras = ["running", "played", "playing", "happily"]
+stems = [stemmer.stem(palabra) for palabra in palabras]
+print(stems)</code></pre>
+    </div>
+
+    <div class="slide" id="slide3">
+        <h2>Ejemplo de Lematización en Python</h2>
+        <p>La lematización reduce una palabra a su forma base teniendo en cuenta su significado. Usaremos <code>WordNetLemmatizer</code>:</p>
+        <pre><code>import nltk
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
+
+nltk.download('wordnet')
+lemmatizer = WordNetLemmatizer()
+palabras = ["running", "played", "better", "dogs"]
+lemmas = [lemmatizer.lemmatize(palabra, pos=wordnet.VERB) for palabra in palabras]
+print(lemmas)</code></pre>
+    </div>
+
+    <div class="slide" id="slide1">
+        <h2>Análisis Sintáctico</h2>
+        <p>El análisis sintáctico (parsing) estructura una oración según la gramática de un idioma. En Python, usamos <code>spaCy</code> para identificar la estructura gramatical.</p>
+    </div>
+
+    <div class="slide" id="slide2">
+        <h2>Ejemplo de Análisis Sintáctico en Python</h2>
+        <p>Utilizaremos <code>spaCy</code> para analizar la estructura de una oración en español.</p>
+        <pre><code>import spacy
+
+# Cargar modelo en español
+spacy.cli.download("es_core_news_sm")
+nlp = spacy.load("es_core_news_sm")
+texto = "El gato negro corre rápidamente por el jardín."
+doc = nlp(texto)
+
+# Mostrar análisis sintáctico
+for token in doc:
+    print(f"Palabra: {token.text}, Etiqueta gramatical: {token.pos_}, Dependencia: {token.dep_}")</code></pre>
+    </div>
+
+    <div class="slide" id="slide3">
+        <h2>Análisis Semántico</h2>
+        <p>El análisis semántico interpreta el significado de las palabras y sus relaciones en un texto.</p>
+    </div>
+
+    <div class="slide" id="slide4">
+        <h2>Ejemplo de Análisis Semántico en Python</h2>
+        <p>Podemos usar <code>spaCy</code> para calcular la similitud semántica entre palabras.</p>
+        <pre><code>import spacy
+spacy.cli.download("es_core_news_md")
+nlp = spacy.load("es_core_news_md")
+palabra1 = nlp("perro")
+palabra2 = nlp("lobo")
+print(f"Similitud entre 'perro' y 'lobo': {palabra1.similarity(palabra2)}")</code></pre>
+    </div>
+    <div class="slide">
+        <h3>Bibliotecas de NLP en Python:</h3>
+        <ul>
+            <li>NLTK.</li>
+            <li>SpaCy.</li>
+        </ul>
+        <pre>
+        <code>
+    import spacy
+    spacy.cli.download("es_core_news_sm")
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp("Chatbots are revolutionizing customer service.")
+    for token in doc:
+        print(token.text, token.lemma_, token.pos_)
+        </code>
+        </pre>
+    </div>
+    <div class="slide" id="slide2">
+        <h2>Aplicaciones de NLP</h2>
+        <ul>
+            <li>Traducción automática (Google Translate)</li>
+            <li>Análisis de sentimientos</li>
+            <li>Chatbots y asistentes virtuales</li>
+            <li>Reconocimiento de voz</li>
+            <li>Resumen de textos</li>
+        </ul>
+    </div>
+    
+    <div class="slide" id="slide3">
+        <h2>Etapas del NLP</h2>
+        <p>El NLP consta de varias etapas clave:</p>
+        <ul>
+            <li>Tokenización: dividir el texto en palabras o frases.</li>
+            <li>Lematización y stemming: reducir palabras a su forma base.</li>
+            <li>Etiquetado gramatical (POS tagging): identificar la categoría gramatical de cada palabra.</li>
+            <li>Análisis sintáctico y semántico.</li>
+        </ul>
+    </div>
+    
+    <div class="slide" id="slide4">
+        <h2>Modelos de NLP</h2>
+        <p>Algunos modelos populares en NLP incluyen:</p>
+        <ul>
+            <li>Bag of Words (BoW)</li>
+            <li>TF-IDF (Term Frequency - Inverse Document Frequency)</li>
+            <li>Word Embeddings (Word2Vec, GloVe, FastText)</li>
+            <li>Modelos neuronales (BERT, GPT, T5)</li>
+        </ul>
+    </div>
+    <div class="slide">
+    <h3>Bibliotecas de NLP en Python:</h3>
+    <ul>
+        <li>NLTK.</li>
+        <li>SpaCy.</li>
+    </ul>
+    <pre>
+    <code>
+import spacy
+nlp = spacy.load("en_core_web_sm")
+doc = nlp("Chatbots are revolutionizing customer service.")
+for token in doc:
+    print(token.text, token.lemma_, token.pos_)
+    </code>
+    </pre>
+</div>
+    
+    <div class="slide" id="slide5">
+        <h2>Herramientas y Bibliotecas de NLP</h2>
+        <p>Existen diversas herramientas para NLP, como:</p>
+        <ul>
+            <li>NLTK</li>
+            <li>SpaCy</li>
+            <li>Transformers de Hugging Face</li>
+            <li>Gensim</li>
+            <li>CoreNLP</li>
+        </ul>
+    </div>
+    <div class="slide">
+        <h3>Casos de Uso de los Chatbots:</h3>
+        <ul>
+            <li>Atención al cliente.</li>
+            <li>Asistencia en compras en línea.</li>
+            <li>Automatización de tareas administrativas.</li>
+        </ul>
+    </div>
+
+<div class="slide">
+    <h2>3. Diseño y Desarrollo de un Chatbot Básico</h2>
+    <h3>Objetivo:</h3>
+    <p>Implementar un chatbot básico utilizando bibliotecas de Python.</p>
+    <h3>Configuración del Entorno de Desarrollo:</h3>
+    <p>Instalación de bibliotecas necesarias.</p>
+    <pre>
+    <code>
+pip install rasa
+    </code>
+    </pre>
+</div>
+
+<div class="slide">
+    <h3>Desarrollo de un Chatbot con Rasa:</h3>
+    <ul>
+        <li>Creación de un chatbot básico para responder preguntas frecuentes.</li>
+        <li>Configuración del dominio y las historias del chatbot.</li>
+    </ul>
+    <pre>
+    <code>
+# domain.yml
+intents:
+- greet
+- ask_weather
+responses:
+  utter_greet:
+  - text: "Hello! How can I help you today?"
+  utter_ask_weather:
+  - text: "The weather is sunny."
+stories:
+- story: greet user
+  steps:
+  - intent: greet
+  - action: utter_greet
+    </code>
+    </pre>
+</div>
+
+<div class="slide">
+    <h2>3. Entrenamiento y Prueba del Chatbot</h2>
+    <ul>
+        <li>Entrenamiento del modelo de NLP.</li>
+        <li>Prueba del chatbot en un entorno simulado.</li>
+    </ul>
+    <pre>
+    <code>
+rasa train
+rasa shell
+    </code>
+    </pre>
+</div>
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

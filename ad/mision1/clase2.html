@@ -10,6 +10,251 @@
 </head>
 <body>
     <div class="container">
+
+        <div class="slide">
+<h1>Lección 02: Herramientas Básicas para el Análisis de Datos</h1>
+        </div>
+<div class="slide">
+    <h2>1. Introducción a Python: Visión General</h2>
+    <p>Python es un lenguaje de programación de alto nivel, interpretado y de propósito general, conocido por su sintaxis simple y legible[cite: 358]. Creado por Guido van Rossum en 1991, es muy popular en ciencia de datos, desarrollo web e inteligencia artificial[cite: 359].</p>
+    <p><strong>Características Clave:</strong></p>
+    <ul>
+        <li>Simplicidad y Legibilidad[cite: 360].</li>
+        <li>Versatilidad (no solo análisis de datos)[cite: 362, 363].</li>
+        <li>Extensa biblioteca de herramientas y paquetes (pandas, numpy, matplotlib, scikit-learn, etc.)[cite: 365, 366, 367, 368, 369, 370].</li>
+        <li>Interactividad (Jupyter Notebooks)[cite: 372].</li>
+        <li>Comunidad activa y soporte[cite: 374].</li>
+        <li>Portabilidad y Flexibilidad (multiplataforma)[cite: 376].</li>
+        <li>Integración con otras tecnologías (C, C++, SQL)[cite: 378, 379].</li>
+        <li>Automatización de tareas repetitivas[cite: 381].</li>
+        <li>Líder en Aprendizaje Automático e IA[cite: 383].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>2. Python: Ejemplo Práctico de Código</h2>
+    <p>Ejemplo de cómo calcular la media de una lista en Python:</p>
+    <pre><code>
+# Calcular la media de una lista de números en Python
+numeros = [10, 20, 30, 40, 50]
+media = sum(numeros) / len(numeros)
+print(f"La media es: {media}")
+# Salida: La media es: 30.0
+    </code></pre>
+    <p>Este código demuestra la simplicidad de Python para realizar cálculos básicos[cite: 362].</p>
+</div>
+
+<div class="slide">
+    <h2>3. Introducción a R: Visión General</h2>
+    <p>R es un lenguaje y entorno de software libre diseñado específicamente para análisis estadístico y visualización de datos[cite: 389]. Desarrollado por Ross Ihaka y Robert Gentleman, es muy popular entre estadísticos y científicos de datos[cite: 390].</p>
+    <p><strong>Características Clave:</strong></p>
+    <ul>
+        <li>Especialización en Análisis Estadístico (pruebas, modelado lineal/no lineal, series temporales, etc.)[cite: 391].</li>
+        <li>Extensa colección de paquetes estadísticos (CRAN)[cite: 392].</li>
+        <li>Visualización de Datos Avanzada (gráficos de alta calidad, paquete ggplot2)[cite: 394, 395].</li>
+        <li>Amplia colección de paquetes para diversas disciplinas (+18,000 en CRAN)[cite: 396].</li>
+        <li>Capacidades de Manipulación de Datos (dplyr, tidyr)[cite: 398].</li>
+        <li>Interactividad y Creación de Aplicaciones Web (Shiny)[cite: 399].</li>
+        <li>Entorno de Desarrollo Integrado (RStudio)[cite: 402].</li>
+        <li>Soporte para Grandes Conjuntos de Datos (data.table, sparklyr)[cite: 407, 408].</li>
+        <li>Comunidad Activa y Recursos Abundantes[cite: 409].</li>
+        <li>Portabilidad y Compatibilidad (multiplataforma, integración con otros lenguajes)[cite: 412, 413].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>4. R: Ejemplo Práctico de Código</h2>
+    <p>Ejemplo de visualización básica con ggplot2 en R:</p>
+    <pre><code>
+# Ejemplo de visualización con ggplot2 en R
+library(ggplot2)
+
+# Utiliza el dataset 'mpg' que viene con ggplot2
+ggplot(mpg, aes(x=displ, y=hwy, color=class)) +
+  geom_point() +
+  labs(title="Consumo de Combustible en Automóviles",
+       x="Desplazamiento del Motor (L)",
+       y="Millas por Galón en Carretera") +
+  theme_minimal()
+    </code></pre>
+    <p>Este código genera un gráfico de dispersión mostrando la relación entre el desplazamiento del motor y el consumo de combustible, coloreado por clase de vehículo[cite: 396].</p>
+</div>
+
+<div class="slide">
+    <h2>5. Configuración de Entornos: Jupyter Notebook</h2>
+    <p>Jupyter Notebook es un entorno interactivo popular para Python, ideal para análisis y visualización de datos[cite: 421]. Permite combinar código, texto (Markdown), visualizaciones y ecuaciones (LaTeX) en un solo documento[cite: 423, 428].</p>
+    <p><strong>Características Clave:</strong></p>
+    <ul>
+        <li>Ejecución interactiva en celdas[cite: 424].</li>
+        <li>Soporte para Markdown y LaTeX para documentación[cite: 428, 429].</li>
+        <li>Visualización de gráficos en línea (matplotlib, seaborn)[cite: 430, 431].</li>
+        <li>Creación de documentos reproducibles (.ipynb)[cite: 432].</li>
+        <li>Compatibilidad multilenguaje (Python, R, Julia, etc.)[cite: 436].</li>
+        <li>Extensibilidad con widgets interactivos[cite: 437].</li>
+        <li>Fácil integración con bibliotecas de Python[cite: 439].</li>
+        <li>Portabilidad y compartibilidad (exportar a HTML, PDF, etc.)[cite: 441].</li>
+        <li>Instalación sencilla (via Anaconda o pip)[cite: 443].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>6. Configuración de Entornos: RStudio</h2>
+    <p>RStudio es el Entorno de Desarrollo Integrado (IDE) más popular para R[cite: 452]. Facilita la escritura de código, visualización y generación de informes[cite: 453].</p>
+    <p><strong>Características Clave:</strong></p>
+    <ul>
+        <li>Interfaz organizada en paneles (Editor, Consola, Ambiente/Historial, Archivos/Gráficos/Paquetes)[cite: 455, 456, 457, 458].</li>
+        <li>Edición de código avanzada (autocompletado, resaltado, depuración)[cite: 459, 461].</li>
+        <li>Integración con herramientas de visualización (ggplot2, plotly)[cite: 463, 466].</li>
+        <li>Gestión de proyectos para organizar trabajo[cite: 467, 468].</li>
+        <li>Integración con RMarkdown para reportes reproducibles[cite: 472].</li>
+        <li>Soporte integrado para control de versiones (Git, SVN)[cite: 477].</li>
+        <li>Fácil gestión de paquetes R[cite: 478].</li>
+        <li>Opciones de servidor (RStudio Server) y nube (RStudio Cloud)[cite: 483, 485].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>7. Instalación de Python y Entornos Virtuales</h2>
+    <p><strong>Instalación de Python:</strong></p>
+    <ul>
+        <li>Descargar desde python.org[cite: 497].</li>
+        <li>En Windows, marcar "Add Python to PATH"[cite: 500].</li>
+        <li>Verificar con `python --version` o `python3 --version`[cite: 501, 502, 504].</li>
+    </ul>
+    <p><strong>Entornos Virtuales (con `virtualenv` o `venv`):</strong></p>
+    <ul>
+        <li>Crean instalaciones aisladas de Python para proyectos[cite: 505].</li>
+        <li>Evitan conflictos de dependencias[cite: 506].</li>
+        <li>Instalar: `pip install virtualenv` (si se usa virtualenv)[cite: 508].</li>
+        <li>Crear: `python -m venv nombre_entorno`[cite: 1177].</li>
+        <li>Activar: `source nombre_entorno/bin/activate` (Linux/macOS) o `.\nombre_entorno\Scripts\activate` (Windows)[cite: 1177].</li>
+        <li>Instalar paquetes dentro del entorno activado: `pip install nombre_paquete`[cite: 510].</li>
+        <li>Gestionar dependencias con `requirements.txt` (`pip freeze > requirements.txt`, `pip install -r requirements.txt`)[cite: 510].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>8. Instalación de R y RStudio</h2>
+    <p><strong>Instalación de R:</strong></p>
+    <ul>
+        <li>Descargar desde cran.r-project.org[cite: 512].</li>
+        <li>Seguir instrucciones del instalador para el SO específico (Windows .exe, macOS .pkg, Linux gestor de paquetes)[cite: 513, 514, 516, 518].</li>
+        <li>Verificar abriendo la consola R o ejecutando `R` en la terminal[cite: 515, 517, 519].</li>
+    </ul>
+    <p><strong>Instalación de RStudio:</strong></p>
+    <ul>
+        <li>Descargar desde rstudio.com/products/rstudio/download/[cite: 521].</li>
+        <li>Seleccionar la versión gratuita "RStudio Desktop"[cite: 521].</li>
+        <li>Seguir instrucciones del instalador (Windows .exe, macOS .dmg, Linux .deb/.rpm)[cite: 522, 523, 524, 525].</li>
+        <li>Verificar abriendo RStudio[cite: 525]. RStudio detectará la instalación de R[cite: 526].</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>9. Instalación de Bibliotecas Clave (Python y R)</h2>
+    <p><strong>Python (usando `pip` dentro del entorno virtual):</strong></p>
+    <ul>
+        <li><strong>pandas:</strong> Para manipulación y análisis de datos estructurados[cite: 529].
+            <pre><code>pip install pandas</code></pre>
+        </li>
+        <li><strong>numpy:</strong> Para cálculos numéricos y arrays multidimensionales[cite: 530].
+            <pre><code>pip install numpy</code></pre>
+        </li>
+        <li><strong>matplotlib:</strong> Para crear gráficos estáticos, animados e interactivos[cite: 532].
+            <pre><code>pip install matplotlib</code></pre>
+        </li>
+         <li><strong>seaborn:</strong> Basada en matplotlib, simplifica gráficos estadísticos (se instala junto con otras)[cite: 1173].
+            <pre><code>pip install seaborn</code></pre>
+        </li>
+    </ul>
+    <p><strong>R (usando `install.packages()` en la consola de R/RStudio):</strong></p>
+    <ul>
+        <li><strong>tidyverse:</strong> Colección de paquetes para ciencia de datos (incluye dplyr, ggplot2, tidyr, readr, etc.)[cite: 534, 535].
+            <pre><code>install.packages("tidyverse")</code></pre>
+             Cargar con: `library(tidyverse)`[cite: 537].
+        </li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>10. Uso de Bibliotecas: pandas y numpy (Python)</h2>
+    <p><strong>pandas:</strong></p>
+    <ul>
+        <li>Estructuras: DataFrame (tabla 2D) y Series (columna 1D)[cite: 542, 545].</li>
+        <li>Carga datos: `pd.read_csv()`, `pd.read_excel()`, etc[cite: 549].</li>
+        <li>Exploración: `df.head()`, `df.info()`, `df.describe()`[cite: 1185].</li>
+        <li>Manipulación: Filtrado (`df[condicion]`), selección (`df[['col']]`), nuevas columnas (`df['nueva'] = ...`), agrupar (`df.groupby()`)[cite: 550, 551, 553].</li>
+        <li>Manejo de nulos: `df.isnull().sum()`, `df.dropna()`, `df.fillna()`[cite: 555].</li>
+    </ul>
+    <p><strong>numpy:</strong></p>
+    <ul>
+        <li>Estructura: `ndarray` (array N-dimensional)[cite: 562].</li>
+        <li>Operaciones vectorizadas rápidas (elemento a elemento)[cite: 1190].</li>
+        <li>Funciones matemáticas: `np.mean()`, `np.std()`, `np.sqrt()`, etc[cite: 1192, 568].</li>
+        <li>Álgebra lineal: `np.dot()` (producto de matrices), `np.linalg.inv()` (inversa)[cite: 569, 577].</li>
+        <li>Manipulación: Indexación, slicing, `reshape()`, `transpose()`[cite: 570, 572].</li>
+    </ul>
+     <pre><code>
+# Ejemplo pandas y numpy
+import pandas as pd
+import numpy as np
+
+data = {'col1': [1, 2, 3, 4], 'col2': [10, 20, 30, 40]}
+df = pd.DataFrame(data)
+
+# Calcular la media de col1 usando numpy
+media_np = np.mean(df['col1'].values)
+print(f"Media calculada con NumPy: {media_np}")
+
+# Añadir columna usando pandas
+df['col3'] = df['col1'] * df['col2']
+print("DataFrame con nueva columna:")
+print(df)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>11. Uso de Bibliotecas: matplotlib y tidyverse (R)</h2>
+    <p><strong>matplotlib (Python, base para seaborn):</strong></p>
+    <ul>
+        <li>Gráficos básicos: `plt.plot()` (líneas), `plt.bar()` (barras), `plt.scatter()` (dispersión), `plt.hist()` (histograma)[cite: 581, 582, 583, 585].</li>
+        <li>Personalización: `plt.title()`, `plt.xlabel()`, `plt.ylabel()`, `plt.legend()`, `plt.style.use()`[cite: 587, 589].</li>
+        <li>Subplots: `plt.subplot()` para múltiples gráficos[cite: 590].</li>
+        <li>Guardar: `plt.savefig()`[cite: 591].</li>
+    </ul>
+     <p><strong>tidyverse (R, incluye ggplot2 y dplyr):</strong></p>
+    <ul>
+        <li><strong>dplyr:</strong> Manipulación de datos. Verbos clave: `filter()`, `select()`, `mutate()`, `group_by()`, `summarise()`, `arrange()`[cite: 1301, 1302, 1303, 1304, 1305, 1306]. Usa el operador `%>%` (pipe) para encadenar operaciones[cite: 598].</li>
+        <li><strong>ggplot2:</strong> Visualización basada en "gramática de gráficos". Estructura: `ggplot(data, aes(x=..., y=...)) + geom_...()`[cite: 1309]. `geom_bar()`, `geom_histogram()`, `geom_point()`, `geom_line()`, etc[cite: 1310, 1311, 1313, 1314]. Personalización con `labs()`, `ggtitle()`, `theme_...()`[cite: 1315, 1404].</li>
+    </ul>
+     <pre><code>
+# Ejemplo tidyverse en R
+library(dplyr)
+library(ggplot2)
+
+# Crear un dataframe de ejemplo
+data <- data.frame(
+  categoria = sample(c("A", "B", "C"), 100, replace = TRUE),
+  valor = rnorm(100, 50, 10)
+)
+
+# Filtrar y resumir datos con dplyr
+resumen <- data %>%
+  filter(valor > 40) %>%
+  group_by(categoria) %>%
+  summarise(media_valor = mean(valor, na.rm = TRUE))
+
+print(resumen)
+
+# Crear un gráfico de barras con ggplot2
+ggplot(data, aes(x = categoria, y = valor, fill = categoria)) +
+  geom_boxplot() + # O geom_violin(), geom_bar(stat="identity") si ya resumido
+  labs(title = "Distribución de Valor por Categoría",
+       x = "Categoría",
+       y = "Valor") +
+  theme_minimal()
+    </code></pre>
+</div>
         <!-- Slide 1 -->
         <div class="slide active">
             <h1>Preparación y Herramientas</h1>

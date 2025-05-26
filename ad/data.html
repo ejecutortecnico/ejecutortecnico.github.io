@@ -6,24 +6,40 @@
     <title>Data Analysis Presentation</title>
     <link rel="stylesheet" href="../../css/estilos.css"> </head>
 <body>
-    <div class="slide active">
+    <div class="container">
+    <div class="slide"> 
+        <h2>¿Qué es el análisis de datos?</h2> 
+        <p>El análisis de datos es el proceso de recopilar, organizar, 
+            analizar y interpretar datos para obtener información valiosa 
+            y útil. El objetivo del análisis de datos es identificar patrones,
+          tendencias y relaciones en los datos para tomar decisiones 
+          informadas.</p> 
+        </div>
+         <div class="slide"> 
+            <h2>¿Por qué es importante el análisis de datos?</h2> 
+            <p>El análisis de datos es importante porque nos permite 
+                tomar decisiones informadas basadas en datos precisos 
+                y confiables. El análisis de datos nos permite 
+                identificar tendencias y patrones en los datos, lo que nos ayuda a tomar decisiones informadas en áreas como marketing, finanzas, ciencia, tecnología y muchos otros.</p> </div> <div class="slide"> <h2>¿Cómo se realiza el análisis de datos?</h2> <p>El análisis de datos se realiza en varias etapas, que incluyen la recopilación de datos, la limpieza y organización de los datos, el análisis de los datos y la interpretación de los resultados. El análisis de datos también puede incluir la creación de gráficos y visualizaciones para ayudar a comunicar los resultados.</p> </div> <div class="slide"> <h2>Tipos de análisis de datos</h2> <p>Existen varios tipos de análisis de datos, como el análisis descriptivo, el análisis inferencial, el análisis de regresión y el análisis de clustering. Cada tipo de análisis tiene sus propias técnicas y herramientas para recopilar y analizar los datos.</p> </div> <div class="slide"> <h2>Beneficios del análisis de datos</h2> <p>El análisis de datos tiene varios beneficios, como la mejora de la toma de decisiones, la identificación de oportunidades de mejora, la optimización de procesos y la mejora de la experiencia del usuario. El análisis de datos también puede ayudar a identificar posibles problemas y tomar medidas preventivas.</p> </div> <div class="slide"> <h2>Conclusión</h2> <p>En conclusión, el análisis de datos es una herramienta valiosa para tomar decisiones informadas basadas en datos precisos y confiables. El análisis de datos puede ayudar a identificar patrones, tendencias y relaciones en los datos, lo que nos permite tomar decisiones informadas en áreas como marketing, finanzas, ciencia, tecnología y muchos otros.
+        </p>
+     </div>
+
+    <div class="slide">
         <h1>Welcome to the Data Analysis Presentation</h1>
         <p>This presentation will explore insights from our dataset.</p>
         <button class="nav-button" onclick="showSlide(1)">Next</button>
     </div>
 
-    <div class="slide hidden" id="slide1">
+    <div class="slide" id="slide1">
         <h2>Data Overview</h2>
         <p>Our dataset contains information about [describe your data].</p>
         <ul>
             <li>Key variables: [list key variables]</li>
             <li>Data size: [number of rows and columns]</li>
         </ul>
-        <button class="nav-button" onclick="showSlide(0)">Previous</button>
-        <button class="nav-button" onclick="showSlide(2)">Next</button>
-    </div>
+           </div>
 
-    <div class="slide hidden" id="slide2">
+    <div class="slide" id="slide2">
         <h2>Exploratory Data Analysis (EDA)</h2>
         <p>EDA reveals interesting patterns and trends.</p>
         <img src="images/eda_plot.png" alt="EDA Plot">
@@ -32,11 +48,9 @@
             <li>[Finding 1]</li>
             <li>[Finding 2]</li>
         </ul>
-        <button class="nav-button" onclick="showSlide(1)">Previous</button>
-        <button class="nav-button" onclick="showSlide(3)">Next</button>
-    </div>
+     </div>
 
-    <div class="slide hidden" id="slide3">
+    <div class="slide" id="slide3">
         <h2>Model Building and Evaluation</h2>
         <p>We built a [model type] model to predict [target variable].</p>
         <pre>
@@ -51,11 +65,9 @@
             <li>Precision: [value]</li>
             <li>Recall: [value]</li>
         </ul>
-        <button class="nav-button" onclick="showSlide(2)">Previous</button>
-        <button class="nav-button" onclick="showSlide(4)">Next</button>
-    </div>
+      </div>
 
-    <div class="slide hidden" id="slide4">
+    <div class="slide" id="slide4">
         <h2>Conclusion and Future Work</h2>
         <p>Our analysis provides valuable insights into [key insights].</p>
         <p>Future work may involve:</p>
@@ -63,17 +75,14 @@
             <li>[Future direction 1]</li>
             <li>[Future direction 2]</li>
         </ul>
-        <button class="nav-button" onclick="showSlide(3)">Previous</button>
-    </div>
+      </div>
 
-    <script>
-        function showSlide(slideIndex) {
-            const slides = document.querySelectorAll('.slide');
-            slides.forEach(slide => {
-                slide.classList.add('hidden');
-            });
-            slides[slideIndex].classList.remove('hidden');
-        }
-    </script>
+      <div class="nav">
+        <button onclick="prevSlide()">Anterior</button>
+        <button onclick="nextSlide()">Siguiente</button>
+    </div>
+</div>
+
+<script src="../../js/slide.js"></script>
 </body>
 </html>

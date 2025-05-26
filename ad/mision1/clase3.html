@@ -10,6 +10,259 @@
 </head>
 <body>
     <div class="container">
+        <div class="slide">
+
+<h1>Lección 03: Carga y Administración de Datos</h1>
+        </div>
+<div class="slide">
+    <h2>1. Métodos para Cargar Datos: Archivos CSV</h2>
+    <p>Los archivos CSV (Comma-Separated Values) son un formato común para datos estructurados[cite: 616].</p>
+    <p><strong>Python (pandas):</strong></p>
+    <ul>
+        <li>Función: `pd.read_csv('archivo.csv')`[cite: 620].</li>
+        <li>Parámetros comunes: `sep` (delimitador), `header` (fila de encabezados), `na_values` (valores a tratar como NaN), `usecols` (columnas a cargar)[cite: 620, 621, 622, 623].</li>
+    </ul>
+    <pre><code>
+# Cargar CSV en Python
+import pandas as pd
+df_python = pd.read_csv('ventas.csv', sep=';', na_values=['N/A'])
+print(df_python.head())
+    </code></pre>
+     <p><strong>R (tidyverse - readr):</strong></p>
+    <ul>
+        <li>Función: `read_csv('archivo.csv')`[cite: 625].</li>
+        <li>Parámetros comunes: `col_types` (especificar tipos), `skip` (saltar líneas), `na` (valores a tratar como NA)[cite: 625, 626, 627].</li>
+    </ul>
+     <pre><code>
+# Cargar CSV en R
+library(readr)
+df_r <- read_csv('ventas.csv', delim = ';', na = c("N/A", "NA"))
+print(head(df_r))
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>2. Métodos para Cargar Datos: Bases de Datos SQL</h2>
+    <p>SQL (Structured Query Language) es el estándar para interactuar con bases de datos relacionales[cite: 628]. Python y R permiten conectar y ejecutar consultas.</p>
+     <p><strong>Python (sqlite3 y pandas):</strong></p>
+    <ul>
+        <li>Conectar: `sqlite3.connect('base_datos.db')`[cite: 631].</li>
+        <li>Consultar y cargar a DataFrame: `pd.read_sql_query(query, conn)`[cite: 632].</li>
+        <li>Cerrar conexión: `conn.close()`[cite: 632].</li>
+    </ul>
+        <pre><code>
+# Conectar y consultar SQL en Python (ejemplo SQLite)
+import sqlite3
+import pandas as pd
+
+conn = sqlite3.connect('mi_base.db')
+query = "SELECT Producto, SUM(Ventas) as Total_Ventas FROM ventas GROUP BY Producto"
+df_sql_python = pd.read_sql_query(query, conn)
+conn.close()
+print(df_sql_python)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>3. Bases de Datos SQL (Continuación)</h2>
+     <p><strong>R (DBI y dplyr):</strong></p>
+    <ul>
+        <li>Conectar (ejemplo SQLite): `dbConnect(RSQLite::SQLite(), dbname = 'base_datos.db')`[cite: 634].</li>
+        <li>Consultar: `dbGetQuery(conn, query)`[cite: 635].</li>
+        <li>También se puede usar `dplyr` con `tbl(conn, "tabla")` para manipulación tipo dplyr.</li>
+        <li>Cerrar conexión: `dbDisconnect(conn)`[cite: 635].</li>
+    </ul>
+     <pre><code>
+# Conectar y consultar SQL en R (ejemplo SQLite)
+library(DBI)
+library(RSQLite)
+library(dplyr) # Opcional para sintaxis dplyr
+
+conn <- dbConnect(RSQLite::SQLite(), dbname = "mi_base.db")
+query <- "SELECT Producto, SUM(Ventas) as Total_Ventas FROM ventas GROUP BY Producto"
+df_sql_r <- dbGetQuery(conn, query)
+dbDisconnect(conn)
+print(df_sql_r)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>4. Métodos para Cargar Datos: APIs</h2>
+    <p>Las APIs (Application Programming Interfaces) permiten obtener datos, a menudo en tiempo real, desde servicios web[cite: 636]. Los datos suelen venir en formato JSON.</p>
+     <p><strong>Python (requests y pandas):</strong></p>
+    <ul>
+        <li>Realizar solicitud: `requests.get(url)`[cite: 639].</li>
+        <li>Obtener JSON: `response.json()`[cite: 639].</li>
+        <li>Convertir a DataFrame: `pd.DataFrame(datos_json)`[cite: 639].</li>
+    </ul>
+     <pre><code>
+# Obtener datos de API en Python
+import requests
+import pandas as pd
+
+url = "https://api.exchangerate-api.com/v4/latest/USD" # API de ejemplo
+response = requests.get(url)
+if response.status_code == 200:
+    datos_json = response.json()
+    # Ejemplo: convertir tasas a DataFrame
+    df_api_python = pd.DataFrame(list(datos_json['rates'].items()), columns=['Moneda', 'Tasa'])
+    print(df_api_python.head())
+else:
+    print(f"Error al obtener datos: {response.status_code}")
+
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>5. APIs (Continuación)</h2>
+     <p><strong>R (httr y jsonlite):</strong></p>
+    <ul>
+        <li>Realizar solicitud: `GET(url)` (del paquete httr)[cite: 640].</li>
+        <li>Obtener contenido: `content(response, "text")`[cite: 641].</li>
+        <li>Convertir JSON a DataFrame/lista: `fromJSON(datos_json)` (del paquete jsonlite)[cite: 641].</li>
+    </ul>
+    <pre><code>
+# Obtener datos de API en R
+library(httr)
+library(jsonlite)
+
+url <- "https://api.exchangerate-api.com/v4/latest/USD" # API de ejemplo
+response <- GET(url)
+
+if (http_status(response)$category == "Success") {
+  datos_json_texto <- content(response, "text", encoding = "UTF-8")
+  datos_lista <- fromJSON(datos_json_texto)
+  # Ejemplo: convertir tasas a DataFrame
+  df_api_r <- data.frame(Moneda = names(datos_lista$rates), Tasa = unlist(datos_lista$rates), row.names = NULL)
+  print(head(df_api_r))
+} else {
+  print(paste("Error al obtener datos:", http_status(response)$message))
+}
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>6. Administración de Datos: Organización</h2>
+    <p>La organización adecuada es esencial para un análisis eficiente[cite: 645].</p>
+    <ul>
+        <li><strong>Índices:</strong> Identificadores únicos para filas. Facilitan acceso y combinación[cite: 646, 648]. En pandas, se puede establecer con `index_col` al cargar o `set_index()` después[cite: 649]. En R, los DataFrames usan números de fila o se pueden usar `rownames`[cite: 649, 650].</li>
+        <li><strong>Columnas:</strong> Representan variables. Nombres claros y consistentes son cruciales[cite: 651]. Se pueden acceder, renombrar y manipular[cite: 652].</li>
+        <li><strong>Filas:</strong> Representan observaciones. Gestionar nulos y duplicados es importante[cite: 654]. Se pueden seleccionar, eliminar o filtrar[cite: 655].</li>
+    </ul>
+     <pre><code>
+# Ejemplo de organización en Pandas
+import pandas as pd
+df = pd.read_csv('ventas.csv', sep=';')
+# Establecer índice
+# df.set_index('ID_Venta', inplace=True)
+# Acceder a columna
+print(df['Producto'].head())
+# Eliminar filas (ej: las primeras 2)
+# df.drop([0, 1], axis=0, inplace=True)
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>7. Administración de Datos: Transformación</h2>
+    <p>Modificar datos para mejorar análisis.</p>
+    <ul>
+        <li><strong>Renombrar columnas:</strong> Hacer nombres más descriptivos o consistentes[cite: 657].
+            <ul>
+                <li>Python (pandas): `df.rename(columns={'antiguo': 'nuevo'}, inplace=True)`[cite: 658].</li>
+                <li>R (dplyr): `df <- df %>% rename(nuevo = antiguo)`[cite: 658].</li>
+            </ul>
+        </li>
+        <li><strong>Reorganizar columnas:</strong> Cambiar el orden para facilitar visualización o análisis[cite: 659].
+             <ul>
+                <li>Python (pandas): `df = df[['col3', 'col1', 'col2']]`[cite: 660].</li>
+                <li>R: `df <- df[, c('col3', 'col1', 'col2')]`[cite: 660].</li>
+            </ul>
+        </li>
+         <li><strong>Crear nuevas columnas:</strong> Generar variables derivadas a partir de existentes[cite: 661].
+             <ul>
+                <li>Python (pandas): `df['nueva'] = df['col1'] * df['col2']`[cite: 662].</li>
+                <li>R (dplyr): `df <- df %>% mutate(nueva = col1 * col2)`[cite: 662].</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h2>8. Administración de Datos: Filtrado y Selección</h2>
+    <p>Trabajar con subconjuntos específicos de datos[cite: 663].</p>
+    <ul>
+        <li>Extraer partes basadas en condiciones o criterios[cite: 663].</li>
+        <li>Seleccionar filas con ciertos valores, rangos o características[cite: 664].</li>
+        <li>Extraer columnas específicas para análisis focalizado[cite: 664].</li>
+    </ul>
+     <pre><code>
+# Ejemplo de filtrado en Python (pandas)
+import pandas as pd
+df = pd.read_csv('ventas.csv', sep=';')
+# Filtrar ventas mayores a 100 y de la region 'Norte'
+subset_df = df[(df['Ventas'] > 100) & (df['Region'] == 'Norte')]
+print(subset_df.head())
+    </code></pre>
+     <pre><code>
+# Ejemplo de filtrado en R (dplyr)
+library(dplyr)
+# Asumiendo que df_r ya está cargado
+subset_df_r <- df_r %>% filter(Ventas > 100, Region == 'Norte')
+print(head(subset_df_r))
+    </code></pre>
+</div>
+
+<div class="slide">
+    <h2>9. Importancia de las Bases de Datos para Gestionar Información</h2>
+    <p>Las bases de datos son cruciales para organizar y administrar información eficientemente en el mundo actual[cite: 198, 199].</p>
+    <p><strong>Beneficios:</strong></p>
+    <ul>
+        <li>Eficiencia en gestión y recuperación rápida[cite: 200].</li>
+        <li>Integridad y consistencia, evitando redundancias y errores[cite: 201].</li>
+        <li>Seguridad y acceso controlado (permisos, autenticación)[cite: 202].</li>
+        <li>Escalabilidad para manejar grandes volúmenes y crecimiento organizacional[cite: 203].</li>
+        <li>Automatización y análisis (generación de reportes, predicciones)[cite: 204].</li>
+    </ul>
+    <p><strong>Ejemplo:</strong> Un hospital usa una BD relacional para organizar pacientes, doctores y citas, permitiendo consultas rápidas y eficientes[cite: 205, 206, 207, 208, 209].</p>
+</div>
+
+<div class="slide">
+    <h2>10. Desarrollo de una Base de Datos Relacional</h2>
+    <p>Las BD relacionales organizan datos en tablas interconectadas mediante claves, manteniendo integridad y facilitando consultas complejas[cite: 210, 211].</p>
+    <p><strong>Conceptos Clave:</strong></p>
+    <ul>
+        <li><strong>Tablas:</strong> Representan entidades (clientes, productos)[cite: 212].</li>
+        <li><strong>Campos:</strong> Columnas de una tabla, atributos específicos[cite: 213].</li>
+        <li><strong>Registros:</strong> Filas de una tabla, instancias únicas[cite: 214].</li>
+        <li><strong>Clave Primaria (PK):</strong> Identificador único de cada registro en una tabla[cite: 215].</li>
+        <li><strong>Clave Foránea (FK):</strong> Campo que establece relaciones entre tablas[cite: 216].</li>
+    </ul>
+     <p><strong>Ejemplo Tienda Online:</strong> Tablas Clientes (PK: ID_Cliente), Productos (PK: ID_Producto), Pedidos (PK: ID_Pedido, FK: ID_Cliente, FK: ID_Producto)[cite: 217, 218].</p>
+</div>
+
+<div class="slide">
+    <h2>11. Normalización (1ª Forma Normal - 1NF)</h2>
+    <p>La normalización estructura una BD para minimizar redundancia y mejorar eficiencia[cite: 219].</p>
+    <p><strong>Primera Forma Normal (1NF):</strong></p>
+    <ul>
+        <li>Cada celda debe contener un solo valor (atómico). No grupos repetitivos[cite: 220].</li>
+        <li>Cada registro debe tener una clave primaria única[cite: 221].</li>
+    </ul>
+    <p><strong>Ejemplo:</strong> Una tabla de pedidos no normalizada podría tener una celda "Productos Comprados" con múltiples valores[cite: 222]. En 1NF, cada producto comprado estaría en una fila separada del pedido[cite: 223].</p>
+</div>
+
+<div class="slide">
+    <h2>12. Consultas SQL Básicas (CRUD)</h2>
+    <p>SQL (Structured Query Language) se usa para interactuar con BD relacionales[cite: 224].</p>
+    <p><strong>Operaciones CRUD Básicas:</strong></p>
+    <ul>
+        <li><strong>SELECT (Leer/Consultar):</strong> Obtiene datos. `SELECT * FROM Clientes;`[cite: 225].</li>
+        <li><strong>INSERT (Crear):</strong> Agrega nuevos registros. `INSERT INTO Clientes (Nombre, Correo) VALUES ('Juan Perez', 'juan@example.com');`[cite: 226].</li>
+        <li><strong>UPDATE (Actualizar):</strong> Modifica registros existentes. `UPDATE Clientes SET Correo = 'nuevo@example.com' WHERE ID_Cliente = 1;`[cite: 226].</li>
+        <li><strong>DELETE (Borrar):</strong> Elimina registros. `DELETE FROM Clientes WHERE ID_Cliente = 2;` (No mostrado en el PDF pero es parte de CRUD)[cite: 68].</li>
+    </ul>
+     <p>El PDF muestra ejemplos de SELECT, INSERT y UPDATE[cite: 225, 226].</p>
+</div>
         <!-- Slide 1 -->
         <div class="slide active">
             <h1>Carga y Administración de Datos</h1>

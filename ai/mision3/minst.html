@@ -37,14 +37,14 @@
                 <h2>Cargar el Dataset MNIST en Python</h2>
                 <p>Usamos la librería `Keras` para cargar el dataset MNIST en Python.</p>
                 <pre><code>
-        # Cargar el dataset MNIST
-        from tensorflow.keras.datasets import mnist
-        
-        # Cargar los datos de entrenamiento y prueba
-        (x_train, y_train), (x_test, y_test) = mnist.load_data()
-        
-        # Normalizar las imágenes a valores entre 0 y 1
-        x_train, x_test = x_train / 255.0, x_test / 255.0
+# Cargar el dataset MNIST
+from tensorflow.keras.datasets import mnist
+
+# Cargar los datos de entrenamiento y prueba
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+# Normalizar las imágenes a valores entre 0 y 1
+x_train, x_test = x_train / 255.0, x_test / 255.0
                 </code></pre>
             </div>
         
@@ -53,25 +53,25 @@
                 <h2>Entrenando un Modelo de Red Neuronal</h2>
                 <p>Ahora, vamos a crear y entrenar un modelo de red neuronal utilizando Keras.</p>
                 <pre><code>
-        # Importar las librerías necesarias
-        from tensorflow.keras.models import Sequential
-        from tensorflow.keras.layers import Dense, Flatten
-        from tensorflow.keras.optimizers import Adam
-        
-        # Crear el modelo secuencial
-        model = Sequential([
-            Flatten(input_shape=(28, 28)),  # Convertir las imágenes 28x28 a un vector
-            Dense(128, activation='relu'),  # Capa densa con 128 neuronas
-            Dense(10, activation='softmax')  # Capa de salida con 10 clases
-        ])
-        
-        # Compilar el modelo
-        model.compile(optimizer=Adam(),
-                      loss='sparse_categorical_crossentropy',
-                      metrics=['accuracy'])
-        
-        # Entrenar el modelo
-        model.fit(x_train, y_train, epochs=5)
+# Importar las librerías necesarias
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Flatten
+from tensorflow.keras.optimizers import Adam
+
+# Crear el modelo secuencial
+model = Sequential([
+    Flatten(input_shape=(28, 28)),  # Convertir las imágenes 28x28 a un vector
+    Dense(128, activation='relu'),  # Capa densa con 128 neuronas
+    Dense(10, activation='softmax')  # Capa de salida con 10 clases
+])
+
+# Compilar el modelo
+model.compile(optimizer=Adam(),
+                loss='sparse_categorical_crossentropy',
+                metrics=['accuracy'])
+
+# Entrenar el modelo
+model.fit(x_train, y_train, epochs=5)
                 </code></pre>
             </div>
         
@@ -80,10 +80,10 @@
                 <h2>Evaluando el Modelo</h2>
                 <p>Después de entrenar el modelo, podemos evaluarlo utilizando el conjunto de prueba.</p>
                 <pre><code>
-        # Evaluar el modelo
-        test_loss, test_acc = model.evaluate(x_test, y_test)
-        
-        print(f"Precisión en el conjunto de prueba: {test_acc}")
+# Evaluar el modelo
+test_loss, test_acc = model.evaluate(x_test, y_test)
+
+print(f"Precisión en el conjunto de prueba: {test_acc}")
                 </code></pre>
             </div>
         
@@ -92,21 +92,21 @@
                 <h2>Predicción de una Imagen</h2>
                 <p>Finalmente, podemos usar el modelo para hacer predicciones sobre nuevas imágenes.</p>
                 <pre><code>
-        # Hacer una predicción sobre una imagen
-        import numpy as np
-        import matplotlib.pyplot as plt
-        
-        # Seleccionar una imagen aleatoria del conjunto de prueba
-        image = x_test[0]
-        
-        # Predecir el dígito
-        prediction = model.predict(np.expand_dims(image, axis=0))
-        predicted_digit = np.argmax(prediction)
-        
-        # Mostrar la imagen y la predicción
-        plt.imshow(image, cmap='gray')
-        plt.title(f"Predicción: {predicted_digit}")
-        plt.show()
+# Hacer una predicción sobre una imagen
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Seleccionar una imagen aleatoria del conjunto de prueba
+image = x_test[0]
+
+# Predecir el dígito
+prediction = model.predict(np.expand_dims(image, axis=0))
+predicted_digit = np.argmax(prediction)
+
+# Mostrar la imagen y la predicción
+plt.imshow(image, cmap='gray')
+plt.title(f"Predicción: {predicted_digit}")
+plt.show()
                 </code></pre>
             </div>
         

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h2>¿Qué es el desarrollo Frontend?</h2>
+                <p>El <strong>frontend</strong> se refiere a la parte del desarrollo de software que los usuarios ven e interactúan directamente en sus navegadores. Incluye el diseño, la estructura, el comportamiento y el contenido visible de una aplicación web.</p>
+                <p>Lenguajes comunes: <code>HTML</code>, <code>CSS</code> y <code>JavaScript</code>.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>¿Qué hace un desarrollador Frontend?</h2>
+                <ul>
+                  <li>Diseña interfaces de usuario.</li>
+                  <li>Implementa la navegación del sitio web.</li>
+                  <li>Hace que la aplicación sea responsive y accesible.</li>
+                  <li>Utiliza frameworks como <code>React</code>, <code>Vue</code> o <code>Angular</code>.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h2>¿Qué es el desarrollo Backend?</h2>
+                <p>El <strong>backend</strong> es la parte del software que se ejecuta en el servidor y no es visible para el usuario final. Se encarga de la lógica de negocio, el acceso a bases de datos, autenticación, y más.</p>
+                <p>Lenguajes comunes: <code>Python</code>, <code>Java</code>, <code>Node.js</code>, <code>PHP</code>.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>¿Qué hace un desarrollador Backend?</h2>
+                <ul>
+                  <li>Desarrolla APIs para que el frontend se comunique con el servidor.</li>
+                  <li>Gestiona bases de datos y lógica del negocio.</li>
+                  <li>Se encarga de la seguridad y autenticación.</li>
+                  <li>Trabaja con frameworks como <pre> <code>Django</code></pre>, <pre><code>Express</code></pre>, <pre><code>Spring</code></pre>.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h2>Frontend vs Backend</h2>
+                <table border="1">
+                  <thead>
+                    <tr>
+                      <th>Aspecto</th>
+                      <th>Frontend</th>
+                      <th>Backend</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Visibilidad</td>
+                      <td>Visible para el usuario</td>
+                      <td>Oculto al usuario</td>
+                    </tr>
+                    <tr>
+                      <td>Lenguajes</td>
+                      <td>HTML, CSS, JavaScript</td>
+                      <td>Python, Java, PHP, Node.js</td>
+                    </tr>
+                    <tr>
+                      <td>Responsabilidades</td>
+                      <td>Diseño, interactividad, UX</td>
+                      <td>Lógica, datos, autenticación</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <div class="slide">
+                <h2>¿Cómo se comunican el frontend y el backend?</h2>
+                <p>Se comunican a través de <strong>APIs</strong> (interfaces de programación de aplicaciones), normalmente usando protocolos como <code>HTTP</code> y formatos como <code>JSON</code>.</p>
+                <pre><code>// Ejemplo de llamada desde el frontend a un backend
+              fetch("https://api.miapp.com/productos")
+                .then(response => response.json())
+                .then(data => console.log(data));
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>¿Qué es el desarrollo Full Stack?</h2>
+                <p>Un desarrollador <strong>Full Stack</strong> trabaja tanto en el frontend como en el backend. Tiene conocimientos integrales que le permiten desarrollar una aplicación completa de extremo a extremo.</p>
+              </div>
+              
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

@@ -130,7 +130,7 @@ results = {}
 # Evaluar cada modelo
 for name, model in models.items():
     y_pred = model.predict(X_test)  # Hacer predicciones
-    rmse = mean_squared_error(y_test, y_pred, squared=False)  # Error cuadrático medio
+    rmse = mean_squared_error(y_test, y_pred)  # Error cuadrático medio
     r2 = r2_score(y_test, y_pred)  # Coeficiente de determinación
     results[name] = (rmse, r2)
     print(f"{name}: RMSE = {rmse:.2f}, R² = {r2:.2f}")

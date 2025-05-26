@@ -26,19 +26,21 @@
                 <h2>Cargar y Mostrar una Imagen con OpenCV</h2>
                 <p>OpenCV es una de las bibliotecas más utilizadas para la visión por computadora. A continuación se muestra cómo cargar y mostrar una imagen:</p>
                 <pre><code>
-            import cv2
+import cv2
+from google.colab.patches import cv2_imshow # Import cv2_imshow
+
             
-            # Cargar la imagen
-            image = cv2.imread('imagen.jpg')
-            
-            # Mostrar la imagen
-            cv2.imshow('Imagen', image)
-            
-            # Esperar a que el usuario presione una tecla
-            cv2.waitKey(0)
-            
-            # Cerrar todas las ventanas
-            cv2.destroyAllWindows()
+# Cargar la imagen
+image = cv2.imread('foto.jpg')
+
+# Mostrar la imagen
+cv2_imshow(image)
+
+# Esperar a que el usuario presione una tecla
+cv2.waitKey(0)
+
+# Cerrar todas las ventanas
+cv2.destroyAllWindows()
                 </code></pre>
                 <p>Este código carga una imagen desde un archivo y la muestra en una ventana. Recuerda que OpenCV usa el formato BGR (no RGB) por defecto para las imágenes.</p>
             </div>
@@ -47,13 +49,14 @@
                 <h2>Cargar y Mostrar una Imagen con Pillow</h2>
                 <p>Pillow es una biblioteca de procesamiento de imágenes muy fácil de usar. A continuación se muestra cómo cargar y mostrar una imagen con Pillow:</p>
                 <pre><code>
-            from PIL import Image
-            
-            # Cargar la imagen
-            image = Image.open('imagen.jpg')
-            
-            # Mostrar la imagen
-            image.show()
+from PIL import Image
+import matplotlib.pyplot as plt
+# Cargar la imagen
+image = Image.open('imagen.jpg')
+
+# Mostrar la imagen
+plt.imshow(image)
+plt.show()
                 </code></pre>
                 <p>La función `Image.open()` carga la imagen y `image.show()` abre la imagen en el visor predeterminado de imágenes del sistema operativo.</p>
             </div>
@@ -61,20 +64,20 @@
             <div class="slide">
                 <h2>Convertir una Imagen a Escala de Grises con OpenCV</h2>
                 <p>Una de las operaciones comunes al trabajar con imágenes es convertirlas a escala de grises. Aquí tienes un ejemplo usando OpenCV:</p>
-                <pre><code>
-            import cv2
-            
-            # Cargar la imagen
-            image = cv2.imread('imagen.jpg')
-            
-            # Convertir a escala de grises
-            gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            
-            # Mostrar la imagen en escala de grises
-            cv2.imshow('Imagen en Escala de Grises', gray_image)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
-                </code></pre>
+    <pre><code>
+import cv2
+
+# Cargar la imagen
+image = cv2.imread('imagen.jpg')
+
+# Convertir a escala de grises
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# Mostrar la imagen en escala de grises
+cv2.imshow('Imagen en Escala de Grises', gray_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+    </code></pre>
                 <p>El código anterior convierte una imagen a escala de grises utilizando `cv2.cvtColor()` y luego muestra la imagen resultante.</p>
             </div>
             
@@ -82,16 +85,16 @@
                 <h2>Leer y Visualizar Imágenes con Matplotlib</h2>
                 <p>Matplotlib es útil para visualizar imágenes en un formato que se puede integrar en notebooks de Jupyter. A continuación, se muestra cómo cargar y mostrar una imagen:</p>
                 <pre><code>
-            import matplotlib.pyplot as plt
-            import matplotlib.image as mpimg
-            
-            # Cargar la imagen
-            image = mpimg.imread('imagen.jpg')
-            
-            # Mostrar la imagen
-            plt.imshow(image)
-            plt.axis('off')  # Desactivar los ejes
-            plt.show()
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+# Cargar la imagen
+image = mpimg.imread('imagen.jpg')
+
+# Mostrar la imagen
+plt.imshow(image)
+plt.axis('off')  # Desactivar los ejes
+plt.show()
                 </code></pre>
                 <p>En este ejemplo, `mpimg.imread()` se utiliza para cargar la imagen y luego `plt.imshow()` la muestra. También se desactivan los ejes con `plt.axis('off')` para mejorar la visualización.</p>
             </div>
@@ -100,18 +103,18 @@
                 <h2>Preprocesamiento de Imágenes para Machine Learning</h2>
                 <p>En Machine Learning, a menudo necesitamos redimensionar las imágenes o normalizarlas antes de alimentarlas a un modelo. A continuación se muestra un ejemplo de cómo redimensionar una imagen usando OpenCV:</p>
                 <pre><code>
-            import cv2
-            
-            # Cargar la imagen
-            image = cv2.imread('imagen.jpg')
-            
-            # Redimensionar la imagen a 224x224 píxeles
-            resized_image = cv2.resize(image, (224, 224))
-            
-            # Mostrar la imagen redimensionada
-            cv2.imshow('Imagen Redimensionada', resized_image)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+import cv2
+
+# Cargar la imagen
+image = cv2.imread('imagen.jpg')
+
+# Redimensionar la imagen a 224x224 píxeles
+resized_image = cv2.resize(image, (224, 224))
+
+# Mostrar la imagen redimensionada
+cv2.imshow('Imagen Redimensionada', resized_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
                 </code></pre>
                 <p>El código redimensiona la imagen a un tamaño de 224x224 píxeles, que es un tamaño comúnmente utilizado en modelos preentrenados como VGG16 y ResNet.</p>
             </div>
@@ -120,19 +123,19 @@
                 <h2>Normalización de Imágenes</h2>
                 <p>Antes de entrenar un modelo de Machine Learning, es útil normalizar las imágenes. Esto implica cambiar los valores de píxeles para que estén en el rango [0, 1]. Aquí te mostramos cómo hacerlo:</p>
                 <pre><code>
-            import cv2
-            import numpy as np
-            
-            # Cargar la imagen
-            image = cv2.imread('imagen.jpg')
-            
-            # Normalizar la imagen
-            normalized_image = image / 255.0
-            
-            # Mostrar la imagen normalizada
-            cv2.imshow('Imagen Normalizada', normalized_image)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+import cv2
+import numpy as np
+
+# Cargar la imagen
+image = cv2.imread('imagen.jpg')
+
+# Normalizar la imagen
+normalized_image = image / 255.0
+
+# Mostrar la imagen normalizada
+cv2.imshow('Imagen Normalizada', normalized_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
                 </code></pre>
                 <p>Este código divide los valores de píxeles entre 255 para obtener valores de píxeles entre 0 y 1, lo que es útil cuando se alimentan imágenes a un modelo de red neuronal.</p>
             </div>
@@ -142,38 +145,38 @@
                 <p>Además de redimensionar y normalizar, a veces es necesario realizar otras transformaciones a las imágenes, como la rotación, el recorte o el aumento de datos (data augmentation). Estos pasos son esenciales para mejorar la capacidad de generalización del modelo.</p>
                 <p>Una librería popular para este propósito es Keras, que tiene una clase llamada `ImageDataGenerator` para aplicar aumentos de datos de manera eficiente:</p>
                 <pre><code>
-                    import numpy as np
-                    import cv2
-                    import matplotlib.pyplot as plt
-                    from tensorflow.keras.preprocessing.image import ImageDataGenerator
-                    
-                    # Cargar la imagen con OpenCV
-                    image = cv2.imread('imagen.jpg')
-                    
-                    # Convertir la imagen de BGR a RGB
-                    image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-                    
-                    # Crear un generador de imágenes con aumentos de datos
-                    datagen = ImageDataGenerator(
-                        rotation_range=30,
-                        width_shift_range=0.2,
-                        height_shift_range=0.2,
-                        shear_range=0.2,
-                        zoom_range=0.2,
-                        horizontal_flip=True,
-                        fill_mode='nearest'
-                    )
-                    
-                    # Expande las dimensiones de la imagen para que sea compatible con el generador
-                    image_expanded = np.expand_dims(image_rgb, axis=0)
-                    
-                    # Aplicar el aumento de datos a la imagen
-                    augmented_image = datagen.random_transform(image_expanded[0])
-                    
-                    # Mostrar la imagen aumentada
-                    plt.imshow(augmented_image)
-                    plt.axis('off')  # Desactivar los ejes
-                    plt.show()
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+# Cargar la imagen con OpenCV
+image = cv2.imread('imagen.jpg')
+
+# Convertir la imagen de BGR a RGB
+image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+# Crear un generador de imágenes con aumentos de datos
+datagen = ImageDataGenerator(
+    rotation_range=30,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True,
+    fill_mode='nearest'
+)
+
+# Expande las dimensiones de la imagen para que sea compatible con el generador
+image_expanded = np.expand_dims(image_rgb, axis=0)
+
+# Aplicar el aumento de datos a la imagen
+augmented_image = datagen.random_transform(image_expanded[0])
+
+# Mostrar la imagen aumentada
+plt.imshow(augmented_image)
+plt.axis('off')  # Desactivar los ejes
+plt.show()
                     
                 </code></pre>
                 <p>Este código aplica varios tipos de aumentos de datos a la imagen, lo cual es muy útil para mejorar el rendimiento de los modelos de Machine Learning en tareas de visión por computadora.</p>

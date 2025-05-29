@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+                <h2>¿Qué es un modelo de Inteligencia Artificial?</h2>
+                <p>Un modelo de IA es un sistema que aprende a realizar tareas específicas a partir de datos. Utiliza algoritmos para identificar patrones y tomar decisiones sin estar programado explícitamente para cada tarea.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Modelos de IA: Tipos Generales</h2>
+                <ul>
+                  <li>Modelos supervisados (clasificación, regresión)</li>
+                  <li>Modelos no supervisados (agrupamiento, reducción de dimensionalidad)</li>
+                  <li>Aprendizaje por refuerzo</li>
+                </ul>
+              </div>
+
+              <div class="slide">
+                <h2>¿Qué son las tareas en Machine Learning?</h2>
+                <p>Las tareas principales del aprendizaje automático se agrupan en:</p>
+                <ul>
+                  <li><strong>Clasificación</strong></li>
+                  <li><strong>Regresión</strong></li>
+                  <li><strong>Clustering (agrupamiento)</strong></li>
+                  <li><strong>Reducción de dimensionalidad</strong></li>
+                </ul>
+              </div>
+              
+              <!-- Clasificación -->
+              <div class="slide">
+                <h2>Clasificación</h2>
+                <p>Predice una categoría o clase a la que pertenece una observación.</p>
+                <p><strong>Ejemplo:</strong> Clasificar emails como <em>spam</em> o <em>no spam</em>.</p>
+                <pre><code>from sklearn.linear_model import LogisticRegression
+              modelo = LogisticRegression().fit(X_train, y_train)
+              y_pred = modelo.predict(X_test)</code></pre>
+              </div>
+              
+              <!-- Regresión -->
+              <div class="slide">
+                <h2>Regresión</h2>
+                <p>Predice un valor numérico continuo a partir de las variables de entrada.</p>
+                <p><strong>Ejemplo:</strong> Estimar el precio de una casa según su tamaño, ubicación, etc.</p>
+                <pre><code>from sklearn.linear_model import LinearRegression
+              modelo = LinearRegression().fit(X_train, y_train)
+              precio = modelo.predict([[100, 3, 2]])</code></pre>
+              </div>
+              
+              <!-- Comparación: Clasificación vs Regresión -->
+              <div class="slide">
+                <h2>Clasificación vs Regresión</h2>
+                <table border="1">
+                  <tr><th>Aspecto</th><th>Clasificación</th><th>Regresión</th></tr>
+                  <tr><td>Salida</td><td>Etiqueta o clase</td><td>Valor numérico</td></tr>
+                  <tr><td>Ejemplo</td><td>¿Es spam?</td><td>¿Cuánto cuesta?</td></tr>
+                  <tr><td>Métrica común</td><td>Precisión, F1</td><td>Error cuadrático medio</td></tr>
+                </table>
+              </div>
+              
+              <!-- Clustering -->
+              <div class="slide">
+                <h2>Clustering (Agrupamiento)</h2>
+                <p>Encuentra grupos naturales en los datos sin usar etiquetas.</p>
+                <p><strong>Ejemplo:</strong> Agrupar clientes con hábitos similares de compra.</p>
+                <pre><code>from sklearn.cluster import KMeans
+              modelo = KMeans(n_clusters=3).fit(X)
+              grupo = modelo.predict([[20, 500]])</code></pre>
+              </div>
+              
+              <!-- Reducción de dimensionalidad -->
+              <div class="slide">
+                <h2>Reducción de Dimensionalidad</h2>
+                <p>Reduce la cantidad de variables conservando la mayor información posible.</p>
+                <p><strong>Ejemplo:</strong> Visualizar datos de alta dimensión en 2D con PCA.</p>
+                <pre><code>from sklearn.decomposition import PCA
+              pca = PCA(n_components=2).fit_transform(X)</code></pre>
+              </div>
+              
+              <!-- Comparación general -->
+              <div class="slide">
+                <h2>Comparación de Tareas</h2>
+                <table border="1">
+                  <tr>
+                    <th>Tarea</th><th>Tipo</th><th>Etiquetas</th><th>Objetivo</th><th>Ejemplo</th>
+                  </tr>
+                  <tr>
+                    <td>Clasificación</td><td>Supervisado</td><td>Sí</td><td>Predecir clases</td><td>¿Es spam?</td>
+                  </tr>
+                  <tr>
+                    <td>Regresión</td><td>Supervisado</td><td>Sí</td><td>Predecir valores</td><td>Precio de casa</td>
+                  </tr>
+                  <tr>
+                    <td>Clustering</td><td>No supervisado</td><td>No</td><td>Agrupar datos</td><td>Segmentar clientes</td>
+                  </tr>
+                  <tr>
+                    <td>Reducción de Dimensionalidad</td><td>No supervisado</td><td>No</td><td>Simplificar datos</td><td>Visualización 2D</td>
+                  </tr>
+                </table>
+              </div>
+              
+              <div class="slide">
+                <h2>Modelos de IA en Scikit-Learn</h2>
+                <p><strong>Scikit-learn</strong> es una biblioteca de Python para aprendizaje automático que ofrece una amplia variedad de modelos para clasificación, regresión, clustering y reducción de dimensionalidad.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Clasificación vs Regresión</h2>
+                <ul>
+                  <li><strong>Clasificación:</strong> predice categorías. Ej: spam/no spam</li>
+                  <li><strong>Regresión:</strong> predice valores numéricos. Ej: precio de una casa</li>
+                </ul>
+              </div>
+              
+              <!-- Clasificadores básicos -->
+              <div class="slide">
+                <h2>Árbol de Decisión (DecisionTreeClassifier)</h2>
+                <p>Modelo interpretable basado en reglas. Ideal para tareas con decisiones jerárquicas.</p>
+                <pre><code>from sklearn.tree import DecisionTreeClassifier</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>Random Forest (RandomForestClassifier)</h2>
+                <p>Ensamble de muchos árboles de decisión. Mejora la precisión y reduce el sobreajuste.</p>
+                <pre><code>from sklearn.ensemble import RandomForestClassifier</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>k-Nearest Neighbors (KNeighborsClassifier)</h2>
+                <p>Clasifica según las clases de los vecinos más cercanos. Simple y efectivo.</p>
+                <pre><code>from sklearn.neighbors import KNeighborsClassifier</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>Support Vector Machine (SVC)</h2>
+                <p>Encuentra el hiperplano que mejor separa las clases. Eficiente en espacios de alta dimensión.</p>
+                <pre><code>from sklearn.svm import SVC</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>Regresión Logística (LogisticRegression)</h2>
+                <p>Modelo lineal para clasificación binaria. Muy usado por su simplicidad y rendimiento.</p>
+                <pre><code>from sklearn.linear_model import LogisticRegression</code></pre>
+              </div>
+              
+              <!-- Modelos de regresión -->
+              <div class="slide">
+                <h2>Regresión Lineal (LinearRegression)</h2>
+                <p>Predice valores numéricos como combinación lineal de las variables de entrada.</p>
+                <pre><code>from sklearn.linear_model import LinearRegression</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>Árbol de Decisión para Regresión (DecisionTreeRegressor)</h2>
+                <p>Como el clasificador, pero para predecir valores continuos.</p>
+                <pre><code>from sklearn.tree import DecisionTreeRegressor</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>Random Forest Regressor</h2>
+                <p>Conjunto de árboles de decisión para tareas de regresión.</p>
+                <pre><code>from sklearn.ensemble import RandomForestRegressor</code></pre>
+              </div>
+              
+              <!-- Modelos no supervisados -->
+              <div class="slide">
+                <h2>Clustering con K-Means</h2>
+                <p>Modelo no supervisado para agrupar datos similares en K grupos.</p>
+                <pre><code>from sklearn.cluster import KMeans</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>Reducción de Dimensionalidad: PCA</h2>
+                <p>PCA (Análisis de Componentes Principales) reduce dimensiones manteniendo la varianza.</p>
+                <pre><code>from sklearn.decomposition import PCA</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>Comparación de Modelos en Scikit-Learn</h2>
+                <p>Scikit-learn ofrece una interfaz común para entrenar y evaluar todos estos modelos:</p>
+                <pre><code>
+              modelo.fit(X_train, y_train)
+              predicciones = modelo.predict(X_test)
+              accuracy_score(y_test, predicciones)
+                </code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>Redes Neuronales Artificiales</h2>
+                <p>Inspiradas en el cerebro humano, las redes neuronales están compuestas por capas de nodos (neuronas) que transforman datos de entrada en salida a través de funciones matemáticas.</p>
+                <pre><code>input → capa_oculta → output</code></pre>
+              </div>
+              
+              <div class="slide">
+                <h2>Estructura de una Red Neuronal</h2>
+                <ul>
+                  <li>Capa de entrada: recibe los datos</li>
+                  <li>Capas ocultas: procesan la información</li>
+                  <li>Capa de salida: produce el resultado</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h2>¿Por qué usar redes neuronales?</h2>
+                <ul>
+                  <li>Pueden modelar relaciones no lineales complejas</li>
+                  <li>Son la base de muchas tecnologías modernas como reconocimiento de voz, visión por computadora y chatbots</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h2>Comparación de modelos</h2>
+                <table border="1">
+                  <tr><th>Modelo</th><th>Facilidad</th><th>Precisión</th><th>Interpretabilidad</th></tr>
+                  <tr><td>Árbol de decisión</td><td>Alta</td><td>Media</td><td>Alta</td></tr>
+                  <tr><td>Random Forest</td><td>Media</td><td>Alta</td><td>Baja</td></tr>
+                  <tr><td>Red Neuronal</td><td>Baja</td><td>Muy alta</td><td>Muy baja</td></tr>
+                </table>
+              </div>
+              
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

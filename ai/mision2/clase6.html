@@ -10,113 +10,70 @@
 </head>
     <body>
         <div class="container">
-          <div class="slide">
-            <h2>Instalacion de Librerías</h2>
-            <pre><code>
-pip install google-generativeai
-pip install python-telegram-bot
-            </code></pre>
-
-          </div>  
-   <div class="slide">
-  <h2>1. Importación de Librerías</h2>
-  <pre><code>
-import google.generativeai as genai
-from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
-  </code></pre>
-  <p>
-    Aquí importamos las librerías necesarias. Usamos:
-    <ul>
-      <li><code>google.generativeai</code>: para acceder al modelo de Gemini.</li>
-      <li><code>telegram</code>: para construir el bot de Telegram.</li>
-    </ul>
-  </p>
+    <div class="slide">
+  <h2>Importación de librerías</h2>
+  <pre><code>import csv
+import google.generativeai as genai</code></pre>
+  <p>Importamos <strong>csv</strong> para manejar archivos con preguntas/respuestas y <strong>google.generativeai</strong> para acceder a la API de Gemini.</p>
 </div>
 
 <div class="slide">
-  <h2>2. Configuración de la API de Gemini</h2>
-  <pre><code>
-# Configura tu API key de Gemini
-GEMINI_API_KEY = "AQUI_TU_API_KEY_DE_GEMINI"
-genai.configure(api_key=GEMINI_API_KEY)
-  </code></pre>
-  <p>
-    Reemplaza <code>"AQUI_TU_API_KEY_DE_GEMINI"</code> por tu clave de API de Gemini.
-    Es necesaria para autenticarte con el servicio de Google y poder usar su modelo de IA.
-  </p>
+  <h2>Configuración de Gemini</h2>
+  <pre><code>genai.configure(api_key="TU_API_KEY")</code></pre>
+  <p>Debes ingresar tu clave personal de la API para acceder al modelo Gemini.</p>
 </div>
 
 <div class="slide">
-  <h2>3. Crear el modelo generativo</h2>
-  <pre><code>
-# Crea el modelo de Gemini
-modelo = genai.GenerativeModel("gemini-2.0-flash")
-  </code></pre>
-  <p>
-    Instanciamos el modelo <code>gemini-2.0-flash</code>, que es el más reciente para texto.
-    Con esto, ya podemos enviarle mensajes y recibir respuestas generadas por IA.
-  </p>
+  <h2>Cargar preguntas locales</h2>
+  <pre><code>with open("preguntas.csv", "r") as archivo:
+    lector = csv.DictReader(archivo)
+    for fila in lector:
+        respuestas[fila["pregunta"].lower()] = fila["respuesta"]</code></pre>
+  <p>Se leen las preguntas/respuestas previamente conocidas para respuestas rápidas sin necesidad de usar Gemini.</p>
 </div>
 
 <div class="slide">
-  <h2>4. Función para obtener la respuesta de Gemini</h2>
-  <pre><code>
-def obtener_respuesta(mensaje):
-    try:
-        respuesta = modelo.generate_content(mensaje)
-        return respuesta.text.strip()
-    except Exception as e:
-        print("Error al generar respuesta:", e)
-        return "Lo siento, hubo un problema al procesar tu pregunta."
-  </code></pre>
-  <p>
-    Esta función toma el mensaje del usuario y se lo pasa a Gemini.
-    Si todo va bien, devuelve el texto generado. Si hay un error, devuelve un mensaje de error amigable.
-  </p>
+  <h2>Creación del modelo Gemini</h2>
+  <pre><code>modelo = genai.GenerativeModel('gemini-2.0-flash')</code></pre>
+  <p>Se crea una instancia del modelo <code>gemini-pro</code>, que permite generar texto a partir de una pregunta.</p>
 </div>
 
 <div class="slide">
-  <h2>5. Función para manejar los mensajes del usuario</h2>
-  <pre><code>
-async def responder(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    mensaje = update.message.text
-    respuesta = obtener_respuesta(mensaje)
-    await update.message.reply_text(respuesta)
-  </code></pre>
-  <p>
-    Esta función responde cada vez que el usuario envía un mensaje.
-    Toma el texto, obtiene una respuesta usando Gemini y luego la envía de vuelta al usuario.
-  </p>
+  <h2>Función para guardar nuevas preguntas</h2>
+  <pre><code>def agregar_pregunta(mensaje):
+    with open("salida.csv", "a", newline="") as archivo:
+        escritor = csv.writer(archivo)
+        escritor.writerow([mensaje, ""])</code></pre>
+  <p>Cuando una pregunta no está en el sistema, se guarda para revisión futura.</p>
 </div>
 
 <div class="slide">
-  <h2>6. Función para el comando <code>/start</code></h2>
-  <pre><code>
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("¡Hola! Soy un chatbot con inteligencia artificial. Pregúntame lo que quieras.")
-  </code></pre>
-  <p>
-    Esta función maneja el comando <code>/start</code> que se ejecuta cuando el usuario inicia el bot por primera vez.
-  </p>
+  <h2>Función de respuesta</h2>
+  <pre><code>def obtener_respuesta(mensaje):
+    mensaje = mensaje.lower()
+    if mensaje in respuestas:
+        return respuestas[mensaje]
+    else:
+        agregar_pregunta(mensaje)
+        respuesta_gemini = modelo.generate_content(mensaje)
+        return respuesta_gemini.text.strip()</code></pre>
+  <p>Primero se verifica si la pregunta ya tiene respuesta. Si no, se usa Gemini para generarla.</p>
 </div>
 
 <div class="slide">
-  <h2>7. Configuración e Inicio del Bot</h2>
-  <pre><code>
-if __name__ == "__main__":
-    TOKEN = "AQUI_TU_TOKEN_DE_TELEGRAM"
-    app = ApplicationBuilder().token(TOKEN).build()
+  <h2>Bucle de conversación</h2>
+  <pre><code>while True:
+    usuario = input("Tú: ")
+    if usuario.lower() == "salir":
+        break
+    respuesta = obtener_respuesta(usuario)
+    print("Chatbot:", respuesta)</code></pre>
+  <p>Este bucle permite mantener una conversación interactiva con el usuario.</p>
+</div>
 
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder))
-
-    print("Bot corriendo con Gemini...")
-    app.run_polling()
-  </code></pre>
-  <p>
-    En esta parte final se configura el bot con el token de Telegram, se registran los "handlers" para comandos y mensajes, y se pone en marcha.
-  </p>
+<div class="slide">
+  <h2>Mejora de la experiencia</h2>
+  <p>Puedes adaptar este chatbot para usar en web o WhatsApp, y guardar respuestas generadas para entrenar una IA más personalizada.</p>
 </div>
 
 

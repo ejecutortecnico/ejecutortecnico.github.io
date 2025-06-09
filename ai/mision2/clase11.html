@@ -10,149 +10,160 @@
 </head>
     <body>
         <div class="container">
-    <div class="slide">
-    <h2>Preparación (Lección 1): Aplicaciones de IA en la Industria y la Vida Cotidiana</h2>
-    <h3>Objetivos:</h3>
-    <ul>
-        <li>Entender cómo se aplican las técnicas de IA en diversos dominios industriales y cotidianos.</li>
-        <li>Explorar ejemplos prácticos de la utilización de IA para resolver problemas reales.</li>
-    </ul>
-</div>
-
-<div class="slide">
-    <h2>1. Introducción a las Aplicaciones de IA</h2>
-    <h3>Objetivo:</h3>
-    <p>Proporcionar una visión general de las aplicaciones de la inteligencia artificial en diferentes sectores.</p>
-</div>
-
-<div class="slide"> <h3>Dominios de Aplicación de la IA:</h3>
-    <ul>
-        <li>Salud</li>
-        <li>Finanzas</li>
-        <li>Transporte</li>
-        <li>Marketing</li>
-        <li>Educación</li>
-        <li>Agricultura</li>
-    </ul>
-</div>
-
-<div class="slide">
-    <h3>Impacto de la IA en la Vida Cotidiana:</h3>
-    <ul>
-        <li>Asistentes virtuales (Siri, Alexa)</li>
-        <li>Sistemas de recomendación (Netflix, Amazon)</li>
-        <li>Vehículos autónomos</li>
-        <li>Detección de fraudes</li>
-    </ul>
-</div>
-
-<div class="slide">
-    <h2>2. Aplicaciones de IA en el Sector Salud</h2>
-    <h3>Objetivo:</h3>
-    <p>Explorar cómo se utiliza la IA en el sector salud para mejorar diagnósticos, tratamientos y gestión de datos.</p>
-</div>
-
-<div class="slide">
-    <h3>Diagnóstico Asistido por IA:</h3>
-    <ul>
-        <li>Análisis de imágenes médicas (rayos X, resonancias magnéticas)</li>
-        <li>Detección temprana de enfermedades (cáncer, enfermedades cardíacas)</li>
-    </ul>
-</div>
-
-<div class="slide">
-    <h3>Predicción de Resultados de Tratamientos:</h3>
-    <ul>
-        <li>Modelos predictivos para la personalización de tratamientos</li>
-        <li>Optimización de recursos hospitalarios</li>
-    </ul>
-</div>
-
-<div class="slide">
-    <h3>Gestión de Datos en Salud:</h3>
-    <ul>
-        <li>Análisis de grandes volúmenes de datos de pacientes</li>
-        <li>Sistemas de gestión de registros médicos electrónicos</li>
-    </ul>
-</div>
-
-<div class="slide">
-    <h2>3. Aplicaciones de IA en el Sector Financiero</h2>
-    <h3>Objetivo:</h3>
-    <p>Entender cómo se aplica la IA en el sector financiero para mejorar la seguridad, eficiencia y toma de decisiones.</p>
-</div>
-
-<div class="slide">
-    <h3>Detección de Fraudes:</h3>
-    <ul>
-        <li>Análisis de transacciones para identificar patrones sospechosos</li>
-        <li>Implementación de sistemas de alerta temprana</li>
-    </ul>
-</div>
-
-<div class="slide">
-    <h3>Modelos de Crédito y Riesgo:</h3>
-    <ul>
-        <li>Evaluación del riesgo crediticio utilizando machine learning</li>
-        <li>Predicción de incumplimiento de pagos</li>
-    </ul>
-</div>
-
-<div class="slide">
-    <h3>Trading Algorítmico:</h3>
-    <ul>
-        <li>Uso de algoritmos para optimizar operaciones bursátiles</li>
-        <li>Predicción de tendencias del mercado financiero</li>
-    </ul>
-</div>
-
-<div class="slide">
-    <h2>4. Aplicaciones de IA en el Marketing y las Ventas</h2>
-    <h3>Objetivo:</h3>
-    <p>Explorar cómo la IA se utiliza en marketing y ventas para mejorar la segmentación, personalización y análisis del comportamiento del consumidor.</p>
-   
-</div>
-
-<div class="slide">
-     <h3>Sistemas de Recomendación:</h3>
-    <p>Personalización de recomendaciones de productos y servicios.</p>
-    <pre>
-    <code>
-from sklearn.neighbors import NearestNeighbors
-import numpy as np
-user_ratings = np.array([[5, 4, 0, 1], [3, 2, 0, 5], [0, 0, 5, 4]])
-model = NearestNeighbors(n_neighbors=2, algorithm='auto').fit(user_ratings)
-distances, indices = model.kneighbors(user_ratings)
-print(indices)
-    </code>
-    </pre>
-</div>
-
-<div class="slide">
-    <h3>Análisis de Sentimientos:</h3>
-    <p>Análisis de comentarios y opiniones en redes sociales.</p>
-    <pre>
-    <code>
-from textblob import TextBlob
-comments = ["I love this product!", "This is the worst service ever."]
-sentiments = [TextBlob(comment).sentiment.polarity for comment in comments]
-print(sentiments)
-    </code>
-    </pre>
-</div>
-
-<div class="slide">
-    <h3>Segmentación de Clientes:</h3>
-    <p>Agrupamiento de clientes basado en su comportamiento de compra.</p>
-    <pre>
-    <code>
-from sklearn.cluster import KMeans
-customer_data = np.array([[23, 50000], [35, 60000], [45, 80000], [50, 100000]])
-kmeans = KMeans(n_clusters=2, random_state=0).fit(customer_data)
-print(kmeans.labels_)
-    </code>
-    </pre>
-</div>
+            <div class="slide">
+                <h2>Co-creación y Satélites (Lección 10) - Presentación, Retroalimentación y Networking del Proyecto</h2>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Preparación de la Presentación</h3>
+                <p><strong>Objetivo:</strong> Preparar una presentación detallada para compartir los resultados del proyecto colaborativo.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Estructura de la Presentación</h4>
+                <ul>
+                  <li>Introducción al problema y objetivos del proyecto.</li>
+                  <li>Descripción del conjunto de datos y el preprocesamiento realizado.</li>
+                  <li>Implementación del modelo y resultados obtenidos.</li>
+                  <li>Conclusiones y recomendaciones para futuros trabajos.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Materiales de Apoyo</h4>
+                <ul>
+                  <li>Diapositivas con gráficos y tablas.</li>
+                  <li>Código fuente documentado y resultados visualizados.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Presentación del Proyecto</h3>
+                <p><strong>Objetivo:</strong> Presentar el proyecto final y los resultados obtenidos a compañeros y facilitadores.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Exposición del Proyecto</h4>
+                <ul>
+                  <li>Presentación del problema, metodología y resultados.</li>
+                  <li>Discusión de los desafíos enfrentados y cómo se resolvieron.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Sesión de Preguntas y Respuestas</h4>
+                <p>Abrir espacio para preguntas y retroalimentación de los compañeros y facilitadores.</p>
+              </div>
+              
+              <div class="slide">
+                <h3>3. Discusión y Retroalimentación</h3>
+                <p><strong>Objetivo:</strong> Recibir retroalimentación constructiva y discutir posibles mejoras y futuros desarrollos del proyecto.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Evaluación de Resultados</h4>
+                <p>Análisis crítico de los resultados obtenidos y su significado.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Retroalimentación</h4>
+                <p>Recepción de sugerencias y comentarios para mejorar el proyecto.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Planificación de Mejoras Futuras</h4>
+                <p>Identificación de áreas de mejora y planificación de pasos futuros para el proyecto.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Talleres de Presentación de Proyectos y Networking</h2>
+              </div>
+              
+              <div class="slide">
+                <h3>1. Preparación para la Presentación</h3>
+                <p><strong>Objetivo:</strong> Asegurar que los participantes estén listos para presentar sus proyectos de manera clara y efectiva.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Revisión de la Presentación</h4>
+                <ul>
+                  <li><strong>Introducción:</strong> Breve resumen del proyecto y los objetivos.</li>
+                  <li><strong>Metodología:</strong> Descripción del enfoque y las técnicas utilizadas.</li>
+                  <li><strong>Resultados:</strong> Presentación de los hallazgos y resultados del proyecto.</li>
+                  <li><strong>Conclusiones:</strong> Reflexiones finales y posibles mejoras futuras.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Materiales de Apoyo</h4>
+                <ul>
+                  <li>Diapositivas con gráficos, tablas y puntos clave.</li>
+                  <li>Código fuente documentado y resultados visualizados.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Práctica de la Presentación</h4>
+                <ul>
+                  <li>Ensayo de la presentación para asegurar fluidez y claridad.</li>
+                  <li>Preparación para responder posibles preguntas del público.</li>
+                  <li>Asegurar que todo el equipo esté coordinado y listo para presentar.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>2. Presentación del Proyecto Final</h3>
+                <p><strong>Objetivo:</strong> Permitir que cada equipo presente su proyecto, demostrando sus logros y el impacto de su trabajo.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Configuración del Taller</h4>
+                <ul>
+                  <li><strong>Moderador:</strong> Designar a un moderador para introducir a cada equipo y gestionar el tiempo y las preguntas.</li>
+                  <li><strong>Agenda:</strong> Establecer un cronograma con tiempos asignados para cada presentación.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Realización de Presentaciones</h4>
+                <ul>
+                  <li><strong>Introducción por el Moderador:</strong> Breve introducción sobre el propósito del taller y la agenda del día.</li>
+                  <li><strong>Presentaciones de Equipos:</strong> Cada equipo presenta su proyecto siguiendo la estructura preparada.</li>
+                  <li><strong>Sesión de Preguntas y Retroalimentación:</strong> Espacio para preguntas del público y feedback constructivo.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Evaluación y Retroalimentación</h4>
+                <ul>
+                  <li><strong>Criterios de Evaluación:</strong> Claridad, metodología, resultados y habilidades de presentación.</li>
+                  <li><strong>Comentarios Constructivos:</strong> Sugerencias específicas para mejorar.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h3>3. Actividades de Networking</h3>
+                <p><strong>Objetivo:</strong> Facilitar el networking entre estudiantes, profesionales de la industria y potenciales empleadores.</p>
+              </div>
+              
+              <div class="slide">
+                <h4>Actividades de Networking</h4>
+                <ul>
+                  <li><strong>Speed Networking:</strong> Interacciones rápidas con diferentes profesionales.</li>
+                  <li><strong>Mesas Redondas Temáticas:</strong> Discusión en pequeños grupos con expertos de la industria.</li>
+                  <li><strong>Intercambio de Contactos:</strong> Espacio para compartir información profesional.</li>
+                </ul>
+              </div>
+              
+              <div class="slide">
+                <h4>Consejos para el Networking</h4>
+                <ul>
+                  <li><strong>Presentación Personal:</strong> Cómo presentarse de manera efectiva.</li>
+                  <li><strong>Elevator Pitch:</strong> Preparar un discurso corto sobre quién eres y qué buscas.</li>
+                  <li><strong>Seguimiento:</strong> Importancia de hacer contacto después del evento.</li>
+                </ul>
+              </div>
+              
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

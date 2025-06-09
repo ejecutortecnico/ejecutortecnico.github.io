@@ -11,81 +11,88 @@
     <body>
         <div class="container">
             <div class="slide">
-                <h2>Objetivo del Código</h2>
-                <p>Vamos a crear un chatbot simple en Python que responde a ciertas frases usando un diccionario predefinido.</p>
+                <h2>Importación de librerías</h2>
+                <pre><code>import requests</code></pre>
+                <p>Se importa el módulo <code>requests</code>, que permite hacer solicitudes HTTP fácilmente.</p>
               </div>
               
               <div class="slide">
-                <h2>Diccionario de respuestas</h2>
+                <h2>Definición de la función obtener_clima</h2>
+                <pre><code>def obtener_clima(ciudad, api_key):</code></pre>
+                <p>Se define una función que recibe dos parámetros: el nombre de la ciudad y la clave de API para autenticarse.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Construcción de la URL</h2>
                 <pre><code>
-respuestas = {
-    "hola": "¡Hola! ¿En qué puedo ayudarte?",
-    "buenos días": "¡Buenos días! Espero que tengas un excelente día.",
-    "adiós": "Adiós, ¡espero verte pronto!",
-    "bye": "Adiós, ¡cuídate mucho!",
-    "tu nombre": "Soy un chatbot creado en Python. Aún no tengo nombre",
-    "clima": "No tengo acceso a información en tiempo real, pero podrías consultar el pronóstico en línea."
-}
+              url = f"http://api.openweathermap.org/data/2.5/weather?q={ciudad}&appid={api_key}&units=metric&lang=es"
                 </code></pre>
-                <p>Este diccionario asocia palabras clave con respuestas. El chatbot buscará coincidencias exactas en este conjunto.</p>
+                <p>Se construye la URL con formato <code>f-string</code> para incluir la ciudad, la API Key, unidades métricas y lenguaje en español.</p>
               </div>
               
               <div class="slide">
-                <h2>Función obtener_respuesta</h2>
+                <h2>Solicitud HTTP</h2>
+                <pre><code>respuesta = requests.get(url)</code></pre>
+                <p>Se hace la solicitud HTTP GET a la API de OpenWeatherMap.</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Verificación de respuesta exitosa</h2>
+                <pre><code>if respuesta.status_code == 200:</code></pre>
+                <p>Se comprueba si la respuesta fue exitosa (código 200).</p>
+              </div>
+              
+              <div class="slide">
+                <h2>Procesamiento de los datos</h2>
                 <pre><code>
-def obtener_respuesta(mensaje):
-    mensaje = mensaje.lower()
-    if mensaje in respuestas:
-        return respuestas[mensaje]
-    else:
-        return "Lo siento, no entiendo esa pregunta."
+              datos = respuesta.json()
+              clima = {
+                  "ciudad": datos["name"],
+                  "temperatura": datos["main"]["temp"],
+                  "descripcion": datos["weather"][0]["description"],
+                  "humedad": datos["main"]["humidity"],
+                  "viento": datos["wind"]["speed"]
+              }
+              return clima
                 </code></pre>
-                <p>La función convierte el mensaje a minúsculas y verifica si está en el diccionario. Si no, da una respuesta por defecto.</p>
+                <p>Se convierte la respuesta a JSON y se extraen los datos principales del clima en un diccionario.</p>
               </div>
               
               <div class="slide">
-                <h2>Inicio de la conversación</h2>
+                <h2>Manejo de error en la solicitud</h2>
                 <pre><code>
-print("¡Hola! Soy un chatbot. Escribe 'salir' para terminar la conversación.")
+              else:
+                  return {"error": "No se pudo obtener el clima."}
                 </code></pre>
-                <p>Se muestra un mensaje de bienvenida e instrucción para salir del programa escribiendo "salir".</p>
+                <p>Si el código de estado no es 200, se retorna un mensaje de error.</p>
               </div>
               
               <div class="slide">
-                <h2>Bucle de conversación</h2>
+                <h2>Bloque principal del script</h2>
                 <pre><code>
-while True:
-    usuario = input("Tú: ")
-    if usuario.lower() == "salir":
-        print("Chatbot: ¡Adiós!")
-        break
-    respuesta = obtener_respuesta(usuario)
-    print("Chatbot:", respuesta)
+              if __name__ == "__main__":
+                  ciudad = input("Ingrese el nombre de la ciudad: ")
+                  api_key = "TU_API_KEY_AQUI"
+                  clima = obtener_clima(ciudad, api_key)
                 </code></pre>
-                <p>Este bucle permite que el usuario interactúe continuamente con el chatbot hasta escribir "salir".</p>
+                <p>Se ejecuta este bloque solo si el archivo se ejecuta directamente. Se pide al usuario la ciudad y se llama a la función.</p>
               </div>
               
               <div class="slide">
-                <h2>Ejemplo de interacción</h2>
+                <h2>Verificación de error y salida</h2>
                 <pre><code>
-Tú: hola
-Chatbot: ¡Hola! ¿En qué puedo ayudarte?
-
-Tú: clima
-Chatbot: No tengo acceso a información en tiempo real, pero podrías consultar el pronóstico en línea.
-
-Tú: salir
-Chatbot: ¡Adiós!
+              if "error" in clima:
+                  print(clima["error"])
+              else:
+                  print(f"Clima en {clima['ciudad']}:")
+                  print(f"Temperatura: {clima['temperatura']}°C")
+                  print(f"Descripción: {clima['descripcion']}")
+                  print(f"Humedad: {clima['humedad']}%")
+                  print(f"Viento: {clima['viento']} m/s")
                 </code></pre>
-                <p>El chatbot responde únicamente a las entradas que están en su diccionario. Para todo lo demás, dice que no entiende.</p>
+                <p>Se verifica si hubo error. Si no, se imprime la información detallada del clima.</p>
               </div>
               
-              <div class="slide">
-                <h2>Conclusión</h2>
-                <p>Este chatbot es ideal para entender los fundamentos de procesamiento de texto, condicionales y uso de diccionarios en Python.</p>
-              </div>
-              
-
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>
             <button onclick="nextSlide()">Siguiente</button>

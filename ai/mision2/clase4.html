@@ -25,35 +25,35 @@
               <div class="slide">
                 <h2>Construcción de la URL</h2>
                 <pre><code>
-              url = f"http://api.openweathermap.org/data/2.5/weather?q={ciudad}&appid={api_key}&units=metric&lang=es"
+url = f"http://api.openweathermap.org/data/2.5/weather?q={ciudad}&appid={api_key}&units=metric&lang=es"
                 </code></pre>
                 <p>Se construye la URL con formato <code>f-string</code> para incluir la ciudad, la API Key, unidades métricas y lenguaje en español.</p>
               </div>
               
               <div class="slide">
                 <h2>Solicitud HTTP</h2>
-                <pre><code>respuesta = requests.get(url)</code></pre>
+<pre><code>respuesta = requests.get(url)</code></pre>
                 <p>Se hace la solicitud HTTP GET a la API de OpenWeatherMap.</p>
               </div>
               
               <div class="slide">
                 <h2>Verificación de respuesta exitosa</h2>
-                <pre><code>if respuesta.status_code == 200:</code></pre>
+<pre><code>if respuesta.status_code == 200:</code></pre>
                 <p>Se comprueba si la respuesta fue exitosa (código 200).</p>
               </div>
               
               <div class="slide">
                 <h2>Procesamiento de los datos</h2>
                 <pre><code>
-              datos = respuesta.json()
-              clima = {
-                  "ciudad": datos["name"],
-                  "temperatura": datos["main"]["temp"],
-                  "descripcion": datos["weather"][0]["description"],
-                  "humedad": datos["main"]["humidity"],
-                  "viento": datos["wind"]["speed"]
-              }
-              return clima
+datos = respuesta.json()
+clima = {
+    "ciudad": datos["name"],
+    "temperatura": datos["main"]["temp"],
+    "descripcion": datos["weather"][0]["description"],
+    "humedad": datos["main"]["humidity"],
+    "viento": datos["wind"]["speed"]
+}
+return clima
                 </code></pre>
                 <p>Se convierte la respuesta a JSON y se extraen los datos principales del clima en un diccionario.</p>
               </div>
@@ -61,8 +61,8 @@
               <div class="slide">
                 <h2>Manejo de error en la solicitud</h2>
                 <pre><code>
-              else:
-                  return {"error": "No se pudo obtener el clima."}
+else:
+    return {"error": "No se pudo obtener el clima."}
                 </code></pre>
                 <p>Si el código de estado no es 200, se retorna un mensaje de error.</p>
               </div>
@@ -70,10 +70,10 @@
               <div class="slide">
                 <h2>Bloque principal del script</h2>
                 <pre><code>
-              if __name__ == "__main__":
-                  ciudad = input("Ingrese el nombre de la ciudad: ")
-                  api_key = "TU_API_KEY_AQUI"
-                  clima = obtener_clima(ciudad, api_key)
+if __name__ == "__main__":
+    ciudad = input("Ingrese el nombre de la ciudad: ")
+    api_key = "TU_API_KEY_AQUI"
+    clima = obtener_clima(ciudad, api_key)
                 </code></pre>
                 <p>Se ejecuta este bloque solo si el archivo se ejecuta directamente. Se pide al usuario la ciudad y se llama a la función.</p>
               </div>
@@ -81,14 +81,14 @@
               <div class="slide">
                 <h2>Verificación de error y salida</h2>
                 <pre><code>
-              if "error" in clima:
-                  print(clima["error"])
-              else:
-                  print(f"Clima en {clima['ciudad']}:")
-                  print(f"Temperatura: {clima['temperatura']}°C")
-                  print(f"Descripción: {clima['descripcion']}")
-                  print(f"Humedad: {clima['humedad']}%")
-                  print(f"Viento: {clima['viento']} m/s")
+if "error" in clima:
+    print(clima["error"])
+else:
+    print(f"Clima en {clima['ciudad']}:")
+    print(f"Temperatura: {clima['temperatura']}°C")
+    print(f"Descripción: {clima['descripcion']}")
+    print(f"Humedad: {clima['humedad']}%")
+    print(f"Viento: {clima['viento']} m/s")
                 </code></pre>
                 <p>Se verifica si hubo error. Si no, se imprime la información detallada del clima.</p>
               </div>

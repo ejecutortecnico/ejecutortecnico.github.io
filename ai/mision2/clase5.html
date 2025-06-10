@@ -10,6 +10,13 @@
 </head>
     <body>
         <div class="container">
+          <div class="slide">
+            <h2>Instalacion de Librerías</h2>
+            <pre><code>
+pip install google-generativeai
+            </code></pre>
+
+          </div>  
     <div class="slide">
   <h2>Importación de librerías</h2>
   <pre><code>import csv
@@ -26,7 +33,7 @@ import google.generativeai as genai</code></pre>
 <div class="slide">
   <h2>Cargar preguntas locales</h2>
   <pre><code>respuestas = {}
-    
+
 with open("preguntas.csv", "r") as archivo:
     lector = csv.DictReader(archivo)
     for fila in lector:

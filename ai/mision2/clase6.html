@@ -11,71 +11,77 @@
     <body>
         <div class="container">
     <div class="slide">
-  <h2>Importación de librerías</h2>
-  <pre><code>import csv
-import google.generativeai as genai</code></pre>
-  <p>Importamos <strong>csv</strong> para manejar archivos con preguntas/respuestas y <strong>google.generativeai</strong> para acceder a la API de Gemini.</p>
+  <h2>1. Importar librerías necesarias</h2>
+  <pre><code class="language-python">
+import csv  # Para leer el archivo CSV
+from telegram import Update  # Para manejar los mensajes de Telegram
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
+  </code></pre>
 </div>
 
 <div class="slide">
-  <h2>Configuración de Gemini</h2>
-  <pre><code>genai.configure(api_key="TU_API_KEY")</code></pre>
-  <p>Debes ingresar tu clave personal de la API para acceder al modelo Gemini.</p>
-</div>
-
-<div class="slide">
-  <h2>Cargar preguntas locales</h2>
-  <pre><code>with open("preguntas.csv", "r") as archivo:
+  <h2>2. Leer respuestas desde el archivo CSV</h2>
+  <pre><code class="language-python">
+respuestas = {}
+with open("respuestas.csv", "r", encoding="utf-8") as archivo:
     lector = csv.DictReader(archivo)
     for fila in lector:
-        respuestas[fila["pregunta"].lower()] = fila["respuesta"]</code></pre>
-  <p>Se leen las preguntas/respuestas previamente conocidas para respuestas rápidas sin necesidad de usar Gemini.</p>
+        respuestas[fila["preguntas"].lower()] = fila["respuestas"]
+  </code></pre>
 </div>
 
 <div class="slide">
-  <h2>Creación del modelo Gemini</h2>
-  <pre><code>modelo = genai.GenerativeModel('gemini-2.0-flash')</code></pre>
-  <p>Se crea una instancia del modelo <code>gemini-pro</code>, que permite generar texto a partir de una pregunta.</p>
-</div>
-
-<div class="slide">
-  <h2>Función para guardar nuevas preguntas</h2>
-  <pre><code>def agregar_pregunta(mensaje):
-    with open("salida.csv", "a", newline="") as archivo:
-        escritor = csv.writer(archivo)
-        escritor.writerow([mensaje, ""])</code></pre>
-  <p>Cuando una pregunta no está en el sistema, se guarda para revisión futura.</p>
-</div>
-
-<div class="slide">
-  <h2>Función de respuesta</h2>
-  <pre><code>def obtener_respuesta(mensaje):
+  <h2>3. Función para obtener una respuesta</h2>
+  <pre><code class="language-python">
+def obtener_respuesta(mensaje):
     mensaje = mensaje.lower()
-    if mensaje in respuestas:
-        return respuestas[mensaje]
-    else:
-        agregar_pregunta(mensaje)
-        respuesta_gemini = modelo.generate_content(mensaje)
-        return respuesta_gemini.text.strip()</code></pre>
-  <p>Primero se verifica si la pregunta ya tiene respuesta. Si no, se usa Gemini para generarla.</p>
+    return respuestas.get(mensaje, "Lo siento, no entiendo esa pregunta.")
+  </code></pre>
 </div>
 
 <div class="slide">
-  <h2>Bucle de conversación</h2>
-  <pre><code>while True:
-    usuario = input("Tú: ")
-    if usuario.lower() == "salir":
-        break
-    respuesta = obtener_respuesta(usuario)
-    print("Chatbot:", respuesta)</code></pre>
-  <p>Este bucle permite mantener una conversación interactiva con el usuario.</p>
+  <h2>4. Función para responder mensajes en Telegram</h2>
+  <pre><code class="language-python">
+async def responder(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    mensaje = update.message.text
+    respuesta = obtener_respuesta(mensaje)
+    await update.message.reply_text(respuesta)
+  </code></pre>
 </div>
 
 <div class="slide">
-  <h2>Mejora de la experiencia</h2>
-  <p>Puedes adaptar este chatbot para usar en web o WhatsApp, y guardar respuestas generadas para entrenar una IA más personalizada.</p>
+  <h2>5. Función para /start</h2>
+  <pre><code class="language-python">
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("¡Hola! Soy un chatbot. Escribe tu pregunta.")
+  </code></pre>
 </div>
 
+<div class="slide">
+  <h2>6. Iniciar el bot con ApplicationBuilder</h2>
+  <pre><code class="language-python">
+if __name__ == "__main__":
+    TOKEN = "AQUI_TU_TOKEN"  # 🔒 Pega tu token de @BotFather aquí
+
+    app = ApplicationBuilder().token(TOKEN).build()
+
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder))
+
+    print("Bot de Telegram corriendo...")
+    app.run_polling()
+  </code></pre>
+</div>
+
+<div class="slide">
+  <h2>7. Ejemplo del archivo respuestas.csv</h2>
+  <pre><code class="language-csv">
+preguntas,respuestas
+hola,¡Hola! ¿Cómo estás?
+¿quién eres?,Soy un chatbot simpático.
+adiós,¡Hasta luego!
+  </code></pre>
+</div>
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

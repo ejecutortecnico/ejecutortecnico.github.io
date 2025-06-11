@@ -30,7 +30,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
   <h2>2. Leer respuestas desde el archivo CSV</h2>
   <pre><code class="language-python">
 respuestas = {}
-with open("respuestas.csv", "r", encoding="utf-8") as archivo:
+with open("preguntas.csv", "r", encoding="utf-8") as archivo:
     lector = csv.DictReader(archivo)
     for fila in lector:
         respuestas[fila["preguntas"].lower()] = fila["respuestas"]

@@ -57,6 +57,19 @@ stems = [stemmer.stem(palabra) for palabra in palabras]
 print(stems)</code></pre>
     </div>
 
+     <div class="slide" id="slide2">
+        <h2>Ejemplo de Stemming en Python</h2>
+        <p>El stemming reduce una palabra a su raíz eliminando sufijos. Usaremos <code>nltk</code>:</p>
+        <pre><code>import nltk
+from nltk.stem import PorterStemmer
+from nltk.stem import SnowballStemmer
+
+stemmer = SnowballStemmer("spanish")
+palabras = ["corriendo", "corri", "correremos", "correr", "corre", "correspondencia","correa"]
+stems = [stemmer.stem(palabra) for palabra in palabras]
+print(stems)</code></pre>
+    </div>
+
     <div class="slide" id="slide3">
         <h2>Ejemplo de Lematización en Python</h2>
         <p>La lematización reduce una palabra a su forma base teniendo en cuenta su significado. Usaremos <code>WordNetLemmatizer</code>:</p>

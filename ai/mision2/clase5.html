@@ -34,7 +34,7 @@ import google.generativeai as genai</code></pre>
   <h2>Cargar preguntas locales</h2>
   <pre><code>respuestas = {}
 
-with open("preguntas.csv", "r") as archivo:
+with open("preguntas.csv", "r",  encoding="utf-8") as archivo:
     lector = csv.DictReader(archivo)
     for fila in lector:
         respuestas[fila["pregunta"].lower()] = fila["respuesta"]</code></pre>
@@ -50,7 +50,7 @@ with open("preguntas.csv", "r") as archivo:
 <div class="slide">
   <h2>Función para guardar nuevas preguntas</h2>
   <pre><code>def agregar_pregunta(mensaje):
-    with open("salida.csv", "a", newline="") as archivo:
+    with open("salida.csv", "a", newline="", encoding="utf-8") as archivo:
         escritor = csv.writer(archivo)
         escritor.writerow([mensaje, ""])</code></pre>
   <p>Cuando una pregunta no está en el sistema, se guarda para revisión futura.</p>

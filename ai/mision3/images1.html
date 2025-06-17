@@ -40,7 +40,7 @@ plt.show()</code></pre>
                 <pre><code>from PIL import Image
 gray = Image.open("foto.jpg").convert("L")
 import matplotlib.pyplot as plt
-plt.imshow(gray)
+plt.imshow(gray, cmap='gray')
 plt.show()
             </code></pre>
               </div>

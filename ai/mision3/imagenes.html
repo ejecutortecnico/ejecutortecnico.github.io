@@ -66,6 +66,7 @@ plt.show()
                 <p>Una de las operaciones comunes al trabajar con imágenes es convertirlas a escala de grises. Aquí tienes un ejemplo usando OpenCV:</p>
     <pre><code>
 import cv2
+from google.colab.patches import cv2_imshow
 
 # Cargar la imagen
 image = cv2.imread('imagen.jpg')
@@ -74,7 +75,7 @@ image = cv2.imread('imagen.jpg')
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 # Mostrar la imagen en escala de grises
-cv2.imshow('Imagen en Escala de Grises', gray_image)
+cv2_imshow(gray_image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
     </code></pre>

@@ -89,12 +89,18 @@ plt.show()
                 <h2>Predicciones</h2>
                 <pre><code class="language-python">
 import numpy as np
+import matplotlib.pyplot as plt
+import random
 
 # Obtener las predicciones del modelo para el set de prueba
 predictions = model.predict(x_test)
-
-# Tomar la clase con mayor probabilidad
 predicted_labels = np.argmax(predictions, axis=1)
+
+# Las clases del dataset CIFAR-10
+cifar10_classes = [
+    'airplane', 'automobile', 'bird', 'cat', 'deer',
+    'dog', 'frog', 'horse', 'ship', 'truck'
+]
                 </code></pre>
                 <p>Se obtiene la clase más probable para cada imagen del conjunto de prueba.</p>
               </div>
@@ -102,13 +108,14 @@ predicted_labels = np.argmax(predictions, axis=1)
               <div class="slide">
                 <h2>Ejemplo de predicción</h2>
                 <pre><code class="language-python">
-import matplotlib.pyplot as plt
-
-# Mostrar la primera imagen de prueba con su etiqueta real y predicción
-plt.imshow(x_test[0])
-plt.title(f"Etiqueta real: {y_test[0][0]} - Predicción: {predicted_labels[0]}")
-plt.axis('off')
-plt.show()
+# Mostrar 5 imágenes aleatorias del set de prueba con sus predicciones
+for i in range(5):
+    random_index = random.randint(0, len(x_test) - 1)
+    plt.figure()  # Crea una nueva figura para cada imagen
+    plt.imshow(x_test[random_index])
+    plt.title(f"Etiqueta real: {cifar10_classes[y_test[random_index][0]]} - Predicción: {cifar10_classes[predicted_labels[random_index]]}")
+    plt.axis('off')
+    plt.show()
 </code></pre>
                 <p>Visualizamos una predicción del modelo para comprobar su funcionamiento en la práctica.</p>
               </div>

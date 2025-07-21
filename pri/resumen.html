@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    
+            <div class="slide active">
+                <h1>Bootcamp de Programación Nivel Intermedio</h1>
+                <h2>Resumen de Temas de Programación</h2>
+                <p>Esta presentación cubre los temas técnicos de las tres misiones del bootcamp, excluyendo las lecciones de inglés y habilidades de poder.</p>
+                <p>Usa los botones de navegación para moverte entre las diapositivas.</p>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 1: Desarrollo de Frontend con React</h2>
+                <h3>Lección 1: Componentes Funcionales y de Clase</h3>
+                <ul>
+                    <li><strong>Componentización:</strong> Dividir la UI en piezas reutilizables e independientes.</li>
+                    <li><strong>Componentes Funcionales:</strong> Funciones de JavaScript que devuelven JSX. Son el estándar moderno con el uso de Hooks.</li>
+                    <li><strong>Componentes de Clase:</strong> Clases de ES6 que extienden <code>React.Component</code>. Manejan estado y ciclo de vida con métodos como <code>render()</code> y <code>componentDidMount()</code>.</li>
+                    <li><strong>Estado (State) y Propiedades (Props):</strong> El estado gestiona datos internos que cambian, mientras que las props pasan datos de componentes padres a hijos.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 1: Desarrollo de Frontend con React</h2>
+                <h3>Lección 2: Uso de Hooks en Componentes Funcionales</h3>
+                <ul>
+                    <li><strong><code>useState</code>:</strong> Permite a los componentes funcionales manejar su propio estado local. Devuelve el estado actual y una función para actualizarlo.</li>
+                    <li><strong><code>useEffect</code>:</strong> Ejecuta efectos secundarios después del renderizado del componente, como llamadas a APIs o suscripciones.</li>
+                    <li><strong>Otros Hooks:</strong> Se introducen <code>useContext</code> (para estado global sin pasar props), <code>useReducer</code> (para lógica de estado compleja), y <code>useRef</code> (para referencias a elementos del DOM).</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 1: Desarrollo de Frontend con React</h2>
+                <h3>Lección 3: Manejo de Eventos</h3>
+                <ul>
+                    <li><strong>Eventos Sintéticos:</strong> React envuelve los eventos nativos del navegador en un objeto de evento sintético para garantizar la compatibilidad entre navegadores.</li>
+                    <li><strong>Manejadores de Eventos:</strong> Se usan atributos en camelCase como <code>onClick</code> y <code>onChange</code> para vincular funciones a eventos del DOM.</li>
+                    <li><strong>Paso de Parámetros:</strong> Se utilizan funciones de flecha para pasar argumentos adicionales a los manejadores de eventos.</li>
+                    <li><strong><code>event.preventDefault()</code>:</strong> Evita el comportamiento predeterminado de un evento, como el envío de un formulario.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 1: Desarrollo de Frontend con React</h2>
+                <h3>Lección 4: Integración de Conceptos y Aplicación Web Dinámica</h3>
+                <ul>
+                    <li><strong>Planificación de la Aplicación:</strong> Diseño de la estructura de componentes, planificación del flujo de datos (unidireccional) y decisión sobre el manejo del estado (local vs. global).</li>
+                    <li><strong>Integración de conceptos:</strong> Combinar componentes, estado, eventos y hooks en un proyecto funcional.</li>
+                    <li><strong>Enrutamiento:</strong> Uso de librerías como <code>React Router</code> para crear aplicaciones de una sola página (SPA) con múltiples vistas.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 1: Desarrollo de Frontend con React</h2>
+                <h3>Lección 5: Configuración de Proyecto y Componente Principal</h3>
+                <ul>
+                    <li><strong>Creación del Proyecto:</strong> Uso de <code>create-react-app</code> para generar la estructura inicial de un proyecto React.</li>
+                    <li><strong>Instalación de Dependencias:</strong> Manejo de paquetes con npm o yarn (e.g., <code>axios</code>, <code>react-router-dom</code>).</li>
+                    <li><strong>Componente <code>App</code>:</strong> Estructuración del componente principal que contendrá el resto de la aplicación, incluyendo el estado global y la configuración del enrutador.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 1: Desarrollo de Frontend con React</h2>
+                <h3>Lección 6: Desarrollo de Componentes TaskForm y TaskList</h3>
+                <ul>
+                    <li><strong>Componente Controlado:</strong> Creación de formularios donde el valor del input está controlado por el estado de React.</li>
+                    <li><strong>Comunicación entre Componentes:</strong> El componente padre (<code>App</code>) pasa funciones a los componentes hijos (<code>TaskForm</code>, <code>TaskList</code>) a través de props para que estos puedan modificar el estado global.</li>
+                    <li><strong>Renderizado de Listas:</strong> Uso del método <code>.map()</code> para iterar sobre un array de datos y renderizar un componente por cada elemento. Se requiere una prop <code>key</code> única para cada elemento de la lista.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 1: Desarrollo de Frontend con React</h2>
+                <h3>Lección 7: Integración y Pruebas del Proyecto</h3>
+                <ul>
+                    <li><strong>Pruebas Funcionales:</strong> Verificación manual o automatizada de que las funcionalidades clave (agregar, editar, eliminar tareas) operan como se espera.</li>
+                    <li><strong>Pruebas Automatizadas:</strong> Introducción a herramientas como Jest y React Testing Library para escribir pruebas unitarias y de integración.</li>
+                    <li><strong>Refactorización:</strong> Proceso de mejorar la estructura y legibilidad del código sin cambiar su funcionalidad externa.</li>
+                    <li><strong>Preparación para Despliegue:</strong> Optimización de la aplicación para producción, creando una build con <code>npm run build</code>.</li>
+                </ul>
+            </div>
+            
+            <div class="slide">
+                <h2>Misión 1: Desarrollo de Frontend con React</h2>
+                <h3>Lección 9-11: Proyecto Colaborativo (Co-creación)</h3>
+                <ul>
+                    <li><strong>Planificación:</strong> Selección de un sector (Educación, Salud, etc.) y definición de los requisitos del proyecto, roles y estructura.</li>
+                    <li><strong>Desarrollo Colaborativo:</strong> Uso de Git y GitHub para la colaboración, trabajando en ramas separadas y usando Pull Requests para fusionar cambios.</li>
+                    <li><strong>Pruebas y Validación:</strong> Realización de pruebas funcionales y recolección de feedback para ajustar y mejorar la aplicación.</li>
+                    <li><strong>Presentación:</strong> Documentación del proyecto (README.md) y preparación de una demostración en vivo.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 2: Manejo de Bases de Datos con SQL</h2>
+                <h3>Lección 1: Introducción a Bases de Datos Relacionales</h3>
+                <ul>
+                    <li><strong>Conceptos Clave:</strong> Tabla, Relación, Clave Primaria (Primary Key), Clave Foránea (Foreign Key).</li>
+                    <li><strong>DBMS:</strong> Un Sistema de Gestión de Bases de Datos (como MySQL, PostgreSQL) es el software para crear, administrar y manipular bases de datos.</li>
+                    <li><strong>Creación de BD y Tablas:</strong> Uso de los comandos <code>CREATE DATABASE</code> y <code>CREATE TABLE</code> para definir la estructura de la base de datos y sus tablas, especificando columnas y tipos de datos.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 2: Manejo de Bases de Datos con SQL</h2>
+                <h3>Lección 2: Manipulación de Bases de Datos</h3>
+                <ul>
+                    <li><strong>Inserción de Datos:</strong> <code>INSERT INTO</code> para agregar nuevos registros a una tabla.</li>
+                    <li><strong>Actualización de Datos:</strong> <code>UPDATE</code> para modificar registros existentes, usando <code>WHERE</code> para especificar qué filas actualizar.</li>
+                    <li><strong>Eliminación de Datos:</strong> <code>DELETE FROM</code> para eliminar registros. Es crucial usar <code>WHERE</code> para no borrar toda la tabla.</li>
+                    <li><strong>Consultas Básicas:</strong> <code>SELECT</code> para recuperar datos, <code>FROM</code> para especificar la tabla, y <code>WHERE</code> para filtrar resultados. Uso de <code>ORDER BY</code> para ordenar y <code>LIMIT</code> para restringir el número de resultados.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 2: Manejo de Bases de Datos con SQL</h2>
+                <h3>Lección 3: Manejo de Índices y Optimización</h3>
+                <ul>
+                    <li><strong>Índices:</strong> Estructuras de datos que mejoran la velocidad de las consultas (<code>SELECT</code>). Se crean en columnas usadas frecuentemente en cláusulas <code>WHERE</code>, <code>JOIN</code> y <code>ORDER BY</code>.</li>
+                    <li><strong>Creación de Índices:</strong> <code>CREATE INDEX nombre_indice ON nombre_tabla (columna);</code></li>
+                    <li><strong>Ventajas:</strong> Aceleran las lecturas.</li>
+                    <li><strong>Desventajas:</strong> Ralentizan las escrituras (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) y ocupan espacio adicional.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 2: Manejo de Bases de Datos con SQL</h2>
+                <h3>Lección 4: Consultas Avanzadas</h3>
+                <ul>
+                    <li><strong>Uniones de Tablas (JOIN):</strong> Combinan filas de dos o más tablas. Tipos principales: <code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>.</li>
+                    <li><strong>Agregación de Datos:</strong> Funciones como <code>COUNT()</code>, <code>SUM()</code>, <code>AVG()</code>, <code>MAX()</code>, <code>MIN()</code>. Se usan con <code>GROUP BY</code> para agrupar resultados y <code>HAVING</code> para filtrar grupos.</li>
+                    <li><strong>Subconsultas:</strong> Consultas anidadas dentro de otra consulta, a menudo en la cláusula <code>WHERE</code> con <code>IN</code>.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 2: Manejo de Bases de Datos con SQL</h2>
+                <h3>Lección 5-7: Simulación - Implementación y Optimización</h3>
+                <ul>
+                    <li><strong>Implementación de Esquema:</strong> Crear las tablas para un caso práctico (ej. una tienda online con Clientes, Productos, Pedidos) y establecer relaciones con claves foráneas.</li>
+                    <li><strong>Ejecución de Consultas Complejas:</strong> Realizar consultas que combinan <code>JOIN</code>, filtrado con <code>WHERE</code> y agregación con <code>GROUP BY</code> para obtener información útil del negocio.</li>
+                    <li><strong>Optimización de Consultas:</strong> Usar <code>EXPLAIN</code> para analizar el plan de ejecución de una consulta e identificar cuellos de botella. Crear índices estratégicos para acelerar las consultas lentas.</li>
+                </ul>
+            </div>
+            
+            <div class="slide">
+                <h2>Misión 2: Manejo de Bases de Datos con SQL</h2>
+                <h3>Lección 9-11: Proyecto Colaborativo (Co-creación)</h3>
+                <ul>
+                    <li><strong>Planificación:</strong> Selección de un sector y diseño del esquema de la base de datos (tablas, columnas, relaciones).</li>
+                    <li><strong>Implementación:</strong> Creación de la base de datos y las tablas con SQL. Inserción de datos de ejemplo.</li>
+                    <li><strong>Desarrollo de Funcionalidades:</strong> Escribir scripts SQL para realizar las operaciones principales del sistema (ej. gestión de pacientes, citas, historial médico).</li>
+                    <li><strong>Consultas y Reportes:</strong> Crear consultas complejas para extraer datos y generar reportes útiles para el análisis.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 3: Desarrollo de Backend con Python y Flask</h2>
+                <h3>Lección 1: Introducción a Flask</h3>
+                <ul>
+                    <li><strong>Microframework:</strong> Flask es ligero y flexible, sin imponer una estructura estricta.</li>
+                    <li><strong>Instalación:</strong> Se recomienda usar un entorno virtual (<code>venv</code>) y luego instalar con <code>pip install Flask</code>.</li>
+                    <li><strong>Aplicación Básica:</strong> Se crea una instancia de <code>Flask(__name__)</code> y se definen rutas con el decorador <code>@app.route('/')</code>.</li>
+                    <li><strong>Rutas y Vistas:</strong> Las rutas son URLs y las vistas son las funciones de Python que se ejecutan para devolver una respuesta (ej. texto, JSON, o HTML).</li>
+                    <li><strong>Rutas Dinámicas:</strong> Capturan parámetros de la URL, ej. <code>@app.route('/usuario/&lt;nombre&gt;')</code>.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 3: Desarrollo de Backend con Python y Flask</h2>
+                <h3>Lección 1 (cont.): Vistas y Plantillas</h3>
+                <ul>
+                    <li><strong>Plantillas Jinja2:</strong> Flask usa Jinja2 para renderizar HTML dinámico. Permite insertar variables <code>{{ variable }}</code> y usar estructuras de control <code>{% for item in items %}</code>.</li>
+                    <li><strong><code>render_template()</code>:</strong> Función de Flask para renderizar un archivo HTML desde la carpeta <code>templates</code> y pasarle variables.</li>
+                    <li><strong>Estructura de Proyecto:</strong> Se organiza el código en carpetas como <code>/templates</code> para HTML y <code>/static</code> para CSS y JS.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 3: Desarrollo de Backend con Python y Flask</h2>
+                <h3>Lección 2: Formularios y Validaciones</h3>
+                <ul>
+                    <li><strong>Manejo de Formularios:</strong> Se accede a los datos de un formulario enviado vía POST a través del objeto <code>request.form</code>.</li>
+                    <li><strong>Flask-WTF:</strong> Extensión que simplifica la creación, validación y renderizado de formularios.</li>
+                    <li><strong>Definición de Formularios:</strong> Se crean clases que heredan de <code>FlaskForm</code> y se definen los campos (<code>StringField</code>, <code>PasswordField</code>).</li>
+                    <li><strong>Validadores:</strong> Se usan validadores como <code>DataRequired()</code>, <code>Email()</code>, <code>Length()</code> para asegurar la integridad de los datos.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2>Misión 3: Desarrollo de Backend con Python y Flask</h2>
+                <h3>Lección 2 (cont.): Integración con Bases de Datos</h3>
+                <ul>
+                    <li><strong>SQLAlchemy:</strong> Es un ORM (Object-Relational Mapper) que permite interactuar con bases de datos usando objetos de Python en lugar de SQL puro.</li>
+                    <li><strong>Flask-SQLAlchemy:</strong> Extensión para integrar SQLAlchemy con Flask.</li>
+                    <li><strong>Modelos:</strong> Se definen clases que heredan de <code>db.Model</code> para representar las tablas de la base de datos. Cada atributo es una columna (<code>db.Column</code>).</li>
+                    <li><strong>Operaciones (CRUD):</strong> <code>db.session.add(objeto)</code> para crear, <code>Modelo.query.all()</code> para leer, modificar el objeto para actualizar, y <code>db.session.delete(objeto)</code> para borrar. Se confirman los cambios con <code>db.session.commit()</code>.</li>
+                </ul>
+            </div>
+            
+            <div class="slide">
+                <h2>Misión 3: Desarrollo de Backend con Python y Flask</h2>
+                <h3>Lección 3: Autenticación y Autorización</h3>
+                <ul>
+                    <li><strong>Autenticación:</strong> Proceso de verificar la identidad de un usuario (quién eres).</li>
+                    <li><strong>Flask-Login:</strong> Extensión para manejar sesiones de usuario (login, logout).</li>
+                    <li><strong>Modelo de Usuario:</strong> El modelo <code>Usuario</code> debe heredar de <code>UserMixin</code> para ser compatible con Flask-Login.</li>
+                    <li><strong>Protección de Rutas:</strong> Se usa el decorador <code>@login_required</code> para restringir el acceso a vistas solo para usuarios autenticados.</li>
+                    <li><strong>Gestión de Sesión:</strong> Las funciones <code>login_user(usuario)</code> y <code>logout_user()</code> manejan el estado de la sesión.</li>
+                </ul>
+            </div>
+            
+            <div class="slide">
+                <h2>Misión 3: Desarrollo de Backend con Python y Flask</h2>
+                <h3>Lección 4-7: Proyecto Integrador y API RESTful</h3>
+                <ul>
+                    <li><strong>Proyecto Aplicación de Blog:</strong> Un proyecto completo que integra autenticación de usuarios, gestión de publicaciones (CRUD) y uso de una base de datos.</li>
+                    <li><strong>API RESTful:</strong> Una interfaz para que diferentes sistemas se comuniquen usando HTTP. Se basa en recursos (ej. `/api/usuarios`) y métodos HTTP (GET, POST, PUT, DELETE).</li>
+                    <li><strong>Flask-RESTful:</strong> Extensión para crear APIs de manera rápida, definiendo Recursos (clases) que manejan las solicitudes HTTP.</li>
+                    <li><strong>Consumo de API:</strong> La aplicación web (frontend) consume los datos de la API RESTful (backend) para mostrar y manipular la información.</li>
+                </ul>
+            </div>
+            
+            <div class="slide">
+                <h2>Misión 3: Desarrollo de Backend con Python y Flask</h2>
+                <h3>Lección 9-11: Proyecto Colaborativo (Co-creación)</h3>
+                <ul>
+                    <li><strong>Definición del Proyecto:</strong> Selección de un proyecto (ej. Sistema de Gestión de Reservas) y definición de su alcance, requisitos y arquitectura (frontend, backend, BD).</li>
+                    <li><strong>Desarrollo Backend (API):</strong> Crear los modelos, recursos de la API y rutas necesarias para manejar los datos del proyecto (ej. usuarios, mesas, reservas).</li>
+                    <li><strong>Desarrollo Frontend:</strong> Crear la interfaz de usuario (con React, Vue, o HTML/CSS/JS simple) que consume la API del backend para mostrar datos e interactuar con el sistema.</li>
+                    <li><strong>Integración y Pruebas:</strong> Conectar el frontend con el backend y realizar pruebas unitarias, de integración y de aceptación para asegurar el correcto funcionamiento.</li>
+                </ul>
+            </div>
+            
+            <div class="slide">
+                <h1>Fin de la Presentación</h1>
+                <p>Has revisado todos los temas técnicos del bootcamp de programación de nivel intermedio.</p>
+                <p>Estos temas cubren el desarrollo frontend con React, la gestión de bases de datos con SQL y el desarrollo backend con Python y Flask, preparándote para construir aplicaciones web completas.</p>
+            </div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

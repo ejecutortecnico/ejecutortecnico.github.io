@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Juego de Kahoot</title>
+    <link rel="stylesheet" href="juego.css">
+</head>
+<body>
+    <div id="inicio">
+        <h1>Bienvenido al Juego de Preguntas</h1>
+        <button id="empezar">¡Comenzar Juego!</button>
+    </div>
+
+    <div id="juego" class="oculto">
+        <div id="pregunta">
+            <p id="textoPregunta"></p>
+        </div>
+        <div id="respuestas">
+            <button class="respuesta" id="res1"></button>
+            <button class="respuesta" id="res2"></button>
+            <button class="respuesta" id="res3"></button>
+            <button class="respuesta" id="res4"></button>
+        </div>
+    </div>
+
+    <div id="resultado" class="oculto">
+        <h2 id="resultadoTexto"></h2>
+        <button id="finalizar">Finalizar</button>
+    </div>
+
+    <script src="juego.js"></script>
+</body>
+</html>

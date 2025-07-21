@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+#inicio, #juego, #resultado {
+    display: none;
+}
+
+.oculto {
+    display: none;
+}
+
+#inicio {
+    margin-top: 20%;
+}
+
+h1 {
+    color: #007BFF;
+}
+
+button {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 18px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#respuestas {
+    margin-top: 30px;
+}
+
+#pregunta {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#resultado {
+    margin-top: 20%;
+}

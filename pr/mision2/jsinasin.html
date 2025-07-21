@@ -70,7 +70,7 @@ promesa.then(resultado => console.log(resultado));</code></pre>
         <p><code>async</code> y <code>await</code> permiten escribir código asincrónico de manera más clara y estructurada, como si fuera sincrónico.</p>
         <pre><code>// Ejemplo de async/await
 async function fetchData() {
-    let respuesta = await fetch('https://api.example.com/data');
+    let respuesta = await fetch('https://jsonplaceholder.typicode.com/posts');
     let data = await respuesta.json();
     console.log(data);
 }

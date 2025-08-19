@@ -10,7 +10,134 @@
 </head>
     <body>
         <div class="container">
-    
+    <div class="slide" data-title="Título">
+    <h1>Misión 2 · Lección 3</h1>
+    <h2>Consultas Avanzadas en SQL</h2>
+    <h3>Objetivos</h3>
+    <ul>
+      <li>Dominar subconsultas y consultas anidadas.</li>
+      <li>Aprender sobre uniones, intersecciones y diferencias.</li>
+      <li>Utilizar funciones de ventana para análisis avanzado.</li>
+    </ul>
+  </div>
+
+  <div class="slide" data-title="Subconsultas">
+    <h2>Subconsultas</h2>
+<pre><code>-- Productos con precio mayor al promedio
+SELECT nombre, precio
+FROM productos
+WHERE precio &gt; (SELECT AVG(precio) FROM productos);
+
+-- Clientes con al menos un pedido
+SELECT nombre FROM clientes
+WHERE id IN (SELECT cliente_id FROM pedidos);</code></pre>
+  </div>
+
+  <div class="slide" data-title="EXISTS">
+    <h2>Uso de EXISTS</h2>
+<pre><code>-- Clientes que tienen pedidos
+SELECT nombre FROM clientes c
+WHERE EXISTS (
+  SELECT 1 FROM pedidos p
+  WHERE p.cliente_id = c.id
+);</code></pre>
+    <p><code>EXISTS</code> devuelve verdadero si la subconsulta tiene resultados.</p>
+  </div>
+
+  <div class="slide" data-title="UNION">
+    <h2>UNION, INTERSECT, EXCEPT</h2>
+<pre><code>-- UNION: combina resultados
+SELECT nombre FROM clientes
+UNION
+SELECT nombre FROM proveedores;
+
+-- INTERSECT: coincidencias
+SELECT nombre FROM clientes
+INTERSECT
+SELECT nombre FROM empleados;
+
+-- EXCEPT: diferencia
+SELECT nombre FROM clientes
+EXCEPT
+SELECT nombre FROM clientes_inactivos;</code></pre>
+  </div>
+
+  <div class="slide" data-title="Funciones ventana">
+    <h2>Funciones de Ventana</h2>
+<pre><code>-- Ranking de productos más caros
+SELECT nombre, precio,
+       RANK() OVER (ORDER BY precio DESC) AS ranking
+FROM productos;
+
+-- Suma acumulada de pedidos por cliente
+SELECT cliente_id, total,
+       SUM(total) OVER (PARTITION BY cliente_id ORDER BY id) AS acumulado
+FROM pedidos;</code></pre>
+  </div>
+
+  <div class="slide" data-title="CTE">
+    <h2>CTE — Common Table Expressions</h2>
+<pre><code>-- Total de ventas por cliente usando CTE
+WITH ventas AS (
+  SELECT cliente_id, SUM(total) AS total
+  FROM pedidos
+  GROUP BY cliente_id
+)
+SELECT c.nombre, v.total
+FROM clientes c
+JOIN ventas v ON v.cliente_id = c.id;</code></pre>
+  </div>
+
+  <div class="slide" data-title="CTE recursivas">
+    <h2>CTE Recursivas</h2>
+<pre><code>-- Ejemplo: jerarquía de empleados
+WITH RECURSIVE subordinates AS (
+  SELECT id, nombre, jefe_id FROM empleados WHERE id = 1
+  UNION ALL
+  SELECT e.id, e.nombre, e.jefe_id
+  FROM empleados e
+  INNER JOIN subordinates s ON s.id = e.jefe_id
+)
+SELECT * FROM subordinates;</code></pre>
+  </div>
+
+  <div class="slide" data-title="Views">
+    <h2>Vistas</h2>
+<pre><code>-- Crear vista
+CREATE VIEW v_clientes_activos AS
+SELECT * FROM clientes WHERE activo = true;
+
+-- Consultar vista
+SELECT * FROM v_clientes_activos;</code></pre>
+  </div>
+
+  <div class="slide" data-title="Materialized Views">
+    <h2>Vistas Materializadas (PostgreSQL)</h2>
+<pre><code>-- Crear vista materializada
+CREATE MATERIALIZED VIEW v_resumen_ventas AS
+SELECT cliente_id, SUM(total) AS total
+FROM pedidos
+GROUP BY cliente_id;
+
+-- Actualizar datos
+REFRESH MATERIALIZED VIEW v_resumen_ventas;</code></pre>
+  </div>
+
+  <div class="slide" data-title="Ejercicio">
+    <h2>Ejercicio Guiado</h2>
+    <ol>
+      <li>Consulta productos más caros que el promedio.</li>
+      <li>Obtén clientes que han comprado más de 3 veces.</li>
+      <li>Usa una función de ventana para calcular ranking de ventas.</li>
+    </ol>
+<pre><code>-- Pista: ranking de clientes por total gastado
+SELECT c.nombre,
+       SUM(p.total) AS total_gastado,
+       RANK() OVER (ORDER BY SUM(p.total) DESC) AS ranking
+FROM clientes c
+JOIN pedidos p ON p.cliente_id = c.id
+GROUP BY c.nombre;</code></pre>
+  </div>
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

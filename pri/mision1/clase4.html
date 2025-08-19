@@ -10,7 +10,102 @@
 </head>
     <body>
         <div class="container">
-    
+    <div class="slide" data-title="Título">
+  <h1>Misión 2 · Lección 4</h1>
+  <h2>Joins en SQL</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender la importancia de las uniones entre tablas.</li>
+    <li>Diferenciar INNER, LEFT, RIGHT y FULL JOIN.</li>
+    <li>Aplicar joins para responder preguntas de negocio.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="INNER JOIN">
+  <h2>INNER JOIN</h2>
+<pre><code>-- Clientes y sus pedidos
+SELECT c.nombre, p.total
+FROM clientes c
+INNER JOIN pedidos p
+ON c.id = p.cliente_id;</code></pre>
+  <p>Muestra solo las filas con coincidencias en ambas tablas.</p>
+</div>
+
+<div class="slide" data-title="LEFT JOIN">
+  <h2>LEFT JOIN</h2>
+<pre><code>-- Todos los clientes y sus pedidos (si tienen)
+SELECT c.nombre, p.total
+FROM clientes c
+LEFT JOIN pedidos p
+ON c.id = p.cliente_id;</code></pre>
+  <p>Incluye todos los clientes, aunque no tengan pedidos.</p>
+</div>
+
+<div class="slide" data-title="RIGHT JOIN">
+  <h2>RIGHT JOIN</h2>
+<pre><code>-- Todos los pedidos y sus clientes
+SELECT c.nombre, p.total
+FROM clientes c
+RIGHT JOIN pedidos p
+ON c.id = p.cliente_id;</code></pre>
+  <p>Incluye todos los pedidos, incluso si no hay cliente asociado (raro pero posible).</p>
+</div>
+
+<div class="slide" data-title="FULL JOIN">
+  <h2>FULL OUTER JOIN</h2>
+<pre><code>-- Todos los clientes y pedidos, coincidan o no
+SELECT c.nombre, p.total
+FROM clientes c
+FULL JOIN pedidos p
+ON c.id = p.cliente_id;</code></pre>
+  <p>Combina LEFT y RIGHT JOIN: trae todo, aunque no coincida.</p>
+</div>
+
+<div class="slide" data-title="CROSS JOIN">
+  <h2>CROSS JOIN</h2>
+<pre><code>-- Combinación cartesiana
+SELECT c.nombre, pr.nombre
+FROM clientes c
+CROSS JOIN productos pr;</code></pre>
+  <p>Devuelve todas las combinaciones posibles (cuidado con tablas grandes).</p>
+</div>
+
+<div class="slide" data-title="JOIN con múltiples tablas">
+  <h2>JOIN en varias tablas</h2>
+<pre><code>-- Clientes, pedidos y productos
+SELECT c.nombre, pr.nombre, p.total
+FROM clientes c
+JOIN pedidos p ON c.id = p.cliente_id
+JOIN productos pr ON pr.id = p.producto_id;</code></pre>
+</div>
+
+<div class="slide" data-title="Usando alias">
+  <h2>Alias en Joins</h2>
+<pre><code>SELECT c.nombre AS cliente, pr.nombre AS producto
+FROM clientes c
+JOIN pedidos p ON c.id = p.cliente_id
+JOIN productos pr ON pr.id = p.producto_id;</code></pre>
+  <p>Los alias hacen más legible la consulta.</p>
+</div>
+
+<div class="slide" data-title="Ejemplo práctico">
+  <h2>Ejemplo: Clientes sin pedidos</h2>
+<pre><code>SELECT c.nombre
+FROM clientes c
+LEFT JOIN pedidos p ON c.id = p.cliente_id
+WHERE p.id IS NULL;</code></pre>
+  <p>Útil para detectar clientes inactivos.</p>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Haz un INNER JOIN para ver clientes y sus pedidos.</li>
+    <li>Usa LEFT JOIN para mostrar todos los clientes aunque no compren.</li>
+    <li>Encuentra productos que nunca se han vendido.</li>
+  </ol>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

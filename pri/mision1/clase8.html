@@ -10,7 +10,119 @@
 </head>
     <body>
         <div class="container">
-    
+    <div class="slide" data-title="Título">
+  <h1>Misión 2 · Lección 8</h1>
+  <h2>Procedimientos Almacenados y Funciones</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender la diferencia entre procedimientos y funciones.</li>
+    <li>Aprender a crear y ejecutar procedimientos almacenados.</li>
+    <li>Implementar funciones para reutilizar lógica en SQL.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Definición">
+  <h2>¿Qué son?</h2>
+  <ul>
+    <li><b>Procedimiento almacenado:</b> bloque de código SQL que se ejecuta bajo demanda.</li>
+    <li><b>Función:</b> devuelve siempre un valor y puede usarse en consultas.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Procedimiento ejemplo">
+  <h2>Ejemplo de Procedimiento</h2>
+<pre><code>DELIMITER //
+CREATE PROCEDURE obtenerPedidosCliente(IN clienteId INT)
+BEGIN
+  SELECT * FROM pedidos WHERE cliente_id = clienteId;
+END //
+DELIMITER ;
+
+-- Ejecución
+CALL obtenerPedidosCliente(3);</code></pre>
+</div>
+
+<div class="slide" data-title="Función ejemplo">
+  <h2>Ejemplo de Función</h2>
+<pre><code>DELIMITER //
+CREATE FUNCTION totalPedidos(clienteId INT)
+RETURNS DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+  DECLARE total DECIMAL(10,2);
+  SELECT SUM(total) INTO total
+  FROM pedidos
+  WHERE cliente_id = clienteId;
+  RETURN total;
+END //
+DELIMITER ;
+
+-- Uso
+SELECT nombre, totalPedidos(id) AS gasto
+FROM clientes;</code></pre>
+</div>
+
+<div class="slide" data-title="Ventajas">
+  <h2>Ventajas</h2>
+  <ul>
+    <li>Reutilización de lógica compleja.</li>
+    <li>Mayor seguridad: control de accesos a datos.</li>
+    <li>Menor tráfico entre aplicación y base de datos.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Parámetros">
+  <h2>Parámetros</h2>
+  <ul>
+    <li><b>IN:</b> entrada.</li>
+    <li><b>OUT:</b> salida.</li>
+    <li><b>INOUT:</b> entrada y salida.</li>
+  </ul>
+<pre><code>CREATE PROCEDURE actualizarSaldo(IN clienteId INT, IN monto DECIMAL)
+BEGIN
+  UPDATE clientes SET saldo = saldo + monto WHERE id = clienteId;
+END;</code></pre>
+</div>
+
+<div class="slide" data-title="Funciones escalares">
+  <h2>Funciones Escalares</h2>
+  <p>Devuelven un único valor.</p>
+  <ul>
+    <li>totalPedidos(clienteId)</li>
+    <li>edadPromedio()</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Funciones con tablas">
+  <h2>Funciones con Tablas</h2>
+  <p>Devuelven un conjunto de registros (dependiendo del SGBD).</p>
+<pre><code>-- PostgreSQL ejemplo
+CREATE FUNCTION pedidos_cliente(cid INT)
+RETURNS TABLE(id INT, fecha DATE, total DECIMAL) AS $$
+  SELECT id, fecha, total FROM pedidos WHERE cliente_id = cid;
+$$ LANGUAGE SQL;
+
+SELECT * FROM pedidos_cliente(3);</code></pre>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas Prácticas</h2>
+  <ul>
+    <li>Nombrar procedimientos y funciones claramente.</li>
+    <li>Evitar lógica de negocio excesiva en SQL.</li>
+    <li>Documentar parámetros y retornos.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Crea un procedimiento para registrar un nuevo pedido.</li>
+    <li>Define una función que devuelva el total gastado por un cliente.</li>
+    <li>Prueba ambas con datos de ejemplo.</li>
+  </ol>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

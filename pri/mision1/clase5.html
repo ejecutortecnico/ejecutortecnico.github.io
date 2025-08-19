@@ -10,7 +10,121 @@
 </head>
     <body>
         <div class="container">
-    
+    <div class="slide" data-title="Título">
+  <h1>Misión 2 · Lección 5</h1>
+  <h2>Normalización de Bases de Datos</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender qué es la normalización y por qué es importante.</li>
+    <li>Conocer las formas normales (1FN, 2FN, 3FN, BCNF).</li>
+    <li>Aplicar reglas de normalización a un diseño de base de datos.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Definición">
+  <h2>¿Qué es la Normalización?</h2>
+  <p>Proceso de organizar los datos en una base de datos para:</p>
+  <ul>
+    <li>Reducir la redundancia de datos.</li>
+    <li>Mejorar la integridad de los datos.</li>
+    <li>Facilitar el mantenimiento.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Primera Forma Normal">
+  <h2>1ª Forma Normal (1FN)</h2>
+  <ul>
+    <li>Todos los campos deben ser atómicos (no repetitivos ni multivalorados).</li>
+    <li>Cada registro debe ser único.</li>
+  </ul>
+<pre><code>-- Incorrecto (teléfonos múltiples en una sola columna)
+Cliente: Ana, Teléfonos: 123-456, 789-111
+
+-- Correcto (tabla separada)
+Cliente | Teléfono
+Ana     | 123-456
+Ana     | 789-111</code></pre>
+</div>
+
+<div class="slide" data-title="Segunda Forma Normal">
+  <h2>2ª Forma Normal (2FN)</h2>
+  <ul>
+    <li>Debe cumplir con 1FN.</li>
+    <li>No debe haber dependencias parciales de una clave compuesta.</li>
+  </ul>
+<pre><code>-- Incorrecto
+(id_pedido, id_producto, nombre_producto, cantidad)
+
+-- Correcto
+Pedidos(id_pedido, fecha)
+DetallePedido(id_pedido, id_producto, cantidad)
+Productos(id_producto, nombre_producto)</code></pre>
+</div>
+
+<div class="slide" data-title="Tercera Forma Normal">
+  <h2>3ª Forma Normal (3FN)</h2>
+  <ul>
+    <li>Cumple 2FN.</li>
+    <li>No debe haber dependencias transitivas (atributo depende de otro que no es clave primaria).</li>
+  </ul>
+<pre><code>-- Incorrecto
+(id_cliente, nombre, id_ciudad, nombre_ciudad)
+
+-- Correcto
+Clientes(id_cliente, nombre, id_ciudad)
+Ciudades(id_ciudad, nombre_ciudad)</code></pre>
+</div>
+
+<div class="slide" data-title="Forma Normal de Boyce-Codd">
+  <h2>BCNF (Forma Normal de Boyce-Codd)</h2>
+  <p>Es una versión más estricta de 3FN.</p>
+  <ul>
+    <li>Todas las dependencias funcionales deben estar en claves candidatas.</li>
+    <li>Se aplica en casos especiales donde 3FN no es suficiente.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejemplo completo">
+  <h2>Ejemplo de Normalización</h2>
+  <p>Tabla inicial:</p>
+<pre><code>Pedido | Cliente | Dirección | Producto | Precio</code></pre>
+  <p>Normalizada:</p>
+  <ul>
+    <li>Clientes(id, nombre, dirección)</li>
+    <li>Productos(id, nombre, precio)</li>
+    <li>Pedidos(id, cliente_id)</li>
+    <li>DetallePedido(pedido_id, producto_id, cantidad)</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ventajas">
+  <h2>Ventajas de la Normalización</h2>
+  <ul>
+    <li>Reduce redundancia.</li>
+    <li>Mejora consistencia.</li>
+    <li>Facilita actualizaciones y eliminaciones.</li>
+    <li>Aumenta integridad referencial.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Desventajas">
+  <h2>Posibles Desventajas</h2>
+  <ul>
+    <li>Más tablas → consultas más complejas.</li>
+    <li>Posibles impactos en el rendimiento en bases muy grandes.</li>
+    <li>Puede requerir desnormalización en sistemas analíticos.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Analiza una tabla con redundancia.</li>
+    <li>Identifica dependencias parciales y transitivas.</li>
+    <li>Aplica 1FN, 2FN y 3FN paso a paso.</li>
+  </ol>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

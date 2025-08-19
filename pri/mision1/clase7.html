@@ -10,7 +10,102 @@
 </head>
     <body>
         <div class="container">
-    
+    <div class="slide" data-title="Título">
+  <h1>Misión 2 · Lección 7</h1>
+  <h2>Transacciones y Control de Concurrencia</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender qué es una transacción en bases de datos.</li>
+    <li>Estudiar las propiedades ACID.</li>
+    <li>Aprender técnicas de control de concurrencia.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Definición de transacción">
+  <h2>¿Qué es una Transacción?</h2>
+  <p>Una unidad de trabajo que agrupa una o más operaciones SQL que se ejecutan como un bloque.</p>
+  <ul>
+    <li>Ejemplo: realizar un pago y registrar el movimiento contable.</li>
+    <li>Si falla una operación → se deshace todo.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Propiedades ACID">
+  <h2>Propiedades ACID</h2>
+  <ul>
+    <li><b>Atomicidad:</b> todo o nada.</li>
+    <li><b>Consistencia:</b> la base de datos pasa de un estado válido a otro.</li>
+    <li><b>Aislamiento:</b> transacciones no interfieren entre sí.</li>
+    <li><b>Durabilidad:</b> los cambios persisten aun si el sistema falla.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="BEGIN COMMIT ROLLBACK">
+  <h2>Manejo de Transacciones</h2>
+<pre><code>BEGIN;
+
+UPDATE cuentas SET saldo = saldo - 100 WHERE id = 1;
+UPDATE cuentas SET saldo = saldo + 100 WHERE id = 2;
+
+COMMIT; -- confirma los cambios
+-- ROLLBACK; -- deshace los cambios si hay error</code></pre>
+</div>
+
+<div class="slide" data-title="Problemas de concurrencia">
+  <h2>Problemas de Concurrencia</h2>
+  <ul>
+    <li><b>Lectura sucia:</b> leer cambios no confirmados.</li>
+    <li><b>Lectura no repetible:</b> el valor cambia entre lecturas.</li>
+    <li><b>Lectura fantasma:</b> aparecen nuevas filas durante la transacción.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Niveles de aislamiento">
+  <h2>Niveles de Aislamiento SQL</h2>
+  <ul>
+    <li><b>READ UNCOMMITTED:</b> permite lecturas sucias.</li>
+    <li><b>READ COMMITTED:</b> evita lecturas sucias (por defecto en muchos SGBD).</li>
+    <li><b>REPEATABLE READ:</b> evita lecturas no repetibles.</li>
+    <li><b>SERIALIZABLE:</b> máximo aislamiento, evita todas las anomalías.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Bloqueos">
+  <h2>Bloqueos (Locks)</h2>
+  <ul>
+    <li><b>Shared Lock:</b> permite lectura concurrente.</li>
+    <li><b>Exclusive Lock:</b> bloquea escritura y lectura.</li>
+    <li>Los gestores de bases de datos aplican locks automáticamente.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Control de concurrencia">
+  <h2>Técnicas de Control de Concurrencia</h2>
+  <ul>
+    <li>Control de bloqueos.</li>
+    <li>Control multiversión (MVCC).</li>
+    <li>Detección y prevención de interbloqueos (deadlocks).</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="MVCC">
+  <h2>MVCC — Multiversion Concurrency Control</h2>
+  <p>Permite que múltiples transacciones lean datos sin bloquearse:</p>
+  <ul>
+    <li>Cada transacción ve una "foto" consistente de los datos.</li>
+    <li>Ejemplo: PostgreSQL y Oracle usan MVCC.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Simula una transferencia bancaria con BEGIN, COMMIT y ROLLBACK.</li>
+    <li>Configura un nivel de aislamiento y observa el comportamiento.</li>
+    <li>Prueba dos sesiones simultáneas actualizando la misma fila.</li>
+  </ol>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

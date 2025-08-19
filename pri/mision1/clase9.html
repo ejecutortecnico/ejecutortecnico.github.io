@@ -11,6 +11,108 @@
     <body>
         <div class="container">
     
+<div class="slide" data-title="Título">
+  <h1>Misión 2 · Lección 9</h1>
+  <h2>Triggers en SQL</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender qué es un trigger.</li>
+    <li>Aprender a crear y gestionar triggers.</li>
+    <li>Aplicar triggers para garantizar integridad y automatizar tareas.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Definición">
+  <h2>¿Qué es un Trigger?</h2>
+  <p>Un <b>trigger</b> es un bloque de código SQL que se ejecuta automáticamente cuando ocurre un evento en una tabla.</p>
+  <ul>
+    <li>Eventos: <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>.</li>
+    <li>Momentos: <code>BEFORE</code> o <code>AFTER</code>.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejemplo BEFORE INSERT">
+  <h2>Ejemplo: BEFORE INSERT</h2>
+<pre><code>CREATE TRIGGER validar_precio
+BEFORE INSERT ON productos
+FOR EACH ROW
+BEGIN
+  IF NEW.precio &lt;= 0 THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'El precio debe ser positivo';
+  END IF;
+END;</code></pre>
+</div>
+
+<div class="slide" data-title="Ejemplo AFTER INSERT">
+  <h2>Ejemplo: AFTER INSERT</h2>
+<pre><code>CREATE TRIGGER log_pedido
+AFTER INSERT ON pedidos
+FOR EACH ROW
+BEGIN
+  INSERT INTO auditoria_pedidos(pedido_id, fecha, accion)
+  VALUES (NEW.id, NOW(), 'Pedido creado');
+END;</code></pre>
+</div>
+
+<div class="slide" data-title="Ejemplo AFTER UPDATE">
+  <h2>Ejemplo: AFTER UPDATE</h2>
+<pre><code>CREATE TRIGGER historial_saldo
+AFTER UPDATE ON clientes
+FOR EACH ROW
+BEGIN
+  INSERT INTO historial(id_cliente, saldo_anterior, saldo_nuevo, fecha)
+  VALUES (OLD.id, OLD.saldo, NEW.saldo, NOW());
+END;</code></pre>
+</div>
+
+<div class="slide" data-title="Ejemplo AFTER DELETE">
+  <h2>Ejemplo: AFTER DELETE</h2>
+<pre><code>CREATE TRIGGER log_eliminacion
+AFTER DELETE ON productos
+FOR EACH ROW
+BEGIN
+  INSERT INTO auditoria_productos(id_producto, fecha, accion)
+  VALUES (OLD.id, NOW(), 'Producto eliminado');
+END;</code></pre>
+</div>
+
+<div class="slide" data-title="Usos comunes">
+  <h2>Usos Comunes de Triggers</h2>
+  <ul>
+    <li>Validación de datos.</li>
+    <li>Auditoría de cambios.</li>
+    <li>Mantenimiento de historial.</li>
+    <li>Sincronización entre tablas.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Limitaciones">
+  <h2>Limitaciones</h2>
+  <ul>
+    <li>Pueden impactar el rendimiento si se abusa de ellos.</li>
+    <li>Complican la depuración de errores.</li>
+    <li>No deben reemplazar la lógica de negocio principal.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas Prácticas</h2>
+  <ul>
+    <li>Usar nombres descriptivos para triggers.</li>
+    <li>Evitar lógica compleja dentro del trigger.</li>
+    <li>Registrar cambios en tablas de auditoría.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Crea un trigger que registre en una tabla de auditoría cada eliminación en la tabla <code>clientes</code>.</li>
+    <li>Implementa un trigger que no permita insertar pedidos con total menor o igual a 0.</li>
+    <li>Prueba los triggers insertando, actualizando y eliminando datos.</li>
+  </ol>
+</div>
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

@@ -10,7 +10,105 @@
 </head>
     <body>
         <div class="container">
-    
+    <div class="slide" data-title="Título">
+  <h1>Misión 2 · Lección 10</h1>
+  <h2>Seguridad en Bases de Datos</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender los principales riesgos de seguridad en bases de datos.</li>
+    <li>Aprender a gestionar usuarios y permisos.</li>
+    <li>Aplicar buenas prácticas para proteger la información.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Importancia">
+  <h2>¿Por qué es importante la seguridad?</h2>
+  <ul>
+    <li>Proteger datos sensibles de accesos no autorizados.</li>
+    <li>Prevenir pérdida de datos.</li>
+    <li>Cumplir con normativas legales (GDPR, HIPAA, etc.).</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Usuarios y roles">
+  <h2>Gestión de Usuarios y Roles</h2>
+<pre><code>-- Crear usuario
+CREATE USER 'juan'@'localhost' IDENTIFIED BY 'clave123';
+
+-- Asignar permisos
+GRANT SELECT, INSERT ON tienda.* TO 'juan'@'localhost';
+
+-- Revocar permisos
+REVOKE INSERT ON tienda.* FROM 'juan'@'localhost';</code></pre>
+</div>
+
+<div class="slide" data-title="Principio de privilegios mínimos">
+  <h2>Principio de Privilegios Mínimos</h2>
+  <ul>
+    <li>Cada usuario debe tener solo los permisos estrictamente necesarios.</li>
+    <li>Evitar dar acceso de administrador sin necesidad.</li>
+    <li>Revisar permisos periódicamente.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Autenticación">
+  <h2>Mecanismos de Autenticación</h2>
+  <ul>
+    <li>Contraseñas seguras.</li>
+    <li>Autenticación multifactor (MFA).</li>
+    <li>Conexiones encriptadas (SSL/TLS).</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Encriptación">
+  <h2>Encriptación de Datos</h2>
+  <ul>
+    <li><b>En reposo:</b> cifrado de discos y backups.</li>
+    <li><b>En tránsito:</b> usar SSL/TLS para conexiones.</li>
+    <li><b>Columnas sensibles:</b> encriptar contraseñas y tarjetas.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="SQL Injection">
+  <h2>Prevención de SQL Injection</h2>
+  <ul>
+    <li>Usar consultas preparadas con parámetros.</li>
+    <li>No concatenar cadenas directamente en SQL.</li>
+    <li>Validar y sanear la entrada del usuario.</li>
+  </ul>
+<pre><code>-- Ejemplo en MySQL con parámetros
+PREPARE stmt FROM 'SELECT * FROM usuarios WHERE email = ?';
+SET @correo = 'test@dominio.com';
+EXECUTE stmt USING @correo;</code></pre>
+</div>
+
+<div class="slide" data-title="Backups">
+  <h2>Respaldos y Recuperación</h2>
+  <ul>
+    <li>Hacer backups periódicos.</li>
+    <li>Probar los planes de recuperación.</li>
+    <li>Guardar copias en ubicaciones seguras.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Monitoreo">
+  <h2>Monitoreo y Auditoría</h2>
+  <ul>
+    <li>Registrar accesos y cambios importantes.</li>
+    <li>Detectar intentos de acceso no autorizados.</li>
+    <li>Generar alertas ante anomalías.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Crea un usuario con permisos solo de lectura en una base de datos de prueba.</li>
+    <li>Configura una conexión segura con SSL.</li>
+    <li>Implementa una consulta preparada para evitar SQL Injection.</li>
+  </ol>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

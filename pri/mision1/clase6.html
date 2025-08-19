@@ -11,6 +11,109 @@
     <body>
         <div class="container">
     
+<div class="slide" data-title="Título">
+  <h1>Misión 2 · Lección 6</h1>
+  <h2>Modelado Entidad–Relación (E-R)</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender el modelo entidad–relación.</li>
+    <li>Diferenciar entidades, atributos y relaciones.</li>
+    <li>Representar gráficamente un sistema en un diagrama E-R.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Definición">
+  <h2>¿Qué es un Modelo E-R?</h2>
+  <p>Un diagrama que describe la estructura lógica de una base de datos:</p>
+  <ul>
+    <li><b>Entidades:</b> objetos o conceptos (Cliente, Producto).</li>
+    <li><b>Atributos:</b> propiedades de las entidades (nombre, precio).</li>
+    <li><b>Relaciones:</b> cómo interactúan las entidades (Cliente hace Pedido).</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Entidades y Atributos">
+  <h2>Entidades y Atributos</h2>
+  <ul>
+    <li><b>Entidad fuerte:</b> tiene clave primaria propia.</li>
+    <li><b>Entidad débil:</b> depende de otra entidad.</li>
+    <li><b>Atributos:</b> simples, compuestos, multivaluados o derivados.</li>
+  </ul>
+  <p><i>Ejemplo:</i> Cliente (id_cliente, nombre, correo, dirección).</p>
+</div>
+
+<div class="slide" data-title="Relaciones">
+  <h2>Relaciones</h2>
+  <ul>
+    <li><b>1 a 1:</b> Una persona → un pasaporte.</li>
+    <li><b>1 a N:</b> Un cliente → muchos pedidos.</li>
+    <li><b>N a M:</b> Muchos estudiantes ↔ muchos cursos.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Cardinalidad">
+  <h2>Cardinalidad</h2>
+  <p>Define cuántas instancias de una entidad pueden asociarse con otra:</p>
+  <ul>
+    <li>0..1</li>
+    <li>1..1</li>
+    <li>0..N</li>
+    <li>1..N</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Diagrama E-R ejemplo">
+  <h2>Ejemplo de Diagrama E-R</h2>
+  <p>Sistema de ventas:</p>
+  <ul>
+    <li><b>Cliente</b> (id, nombre, correo)</li>
+    <li><b>Pedido</b> (id, fecha, total)</li>
+    <li><b>Producto</b> (id, nombre, precio)</li>
+  </ul>
+  <p>Relaciones:</p>
+  <ul>
+    <li>Cliente — hace → Pedido</li>
+    <li>Pedido — contiene → Producto</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Entidad débil ejemplo">
+  <h2>Entidad Débil</h2>
+  <p>Ejemplo: DetallePedido depende de Pedido y Producto.</p>
+<pre><code>Pedido(id, fecha, cliente_id)
+Producto(id, nombre, precio)
+DetallePedido(pedido_id, producto_id, cantidad)</code></pre>
+</div>
+
+<div class="slide" data-title="De E-R a tablas">
+  <h2>De E-R a Tablas</h2>
+  <p>Transformación:</p>
+  <ul>
+    <li>Entidad → Tabla.</li>
+    <li>Atributo → Columna.</li>
+    <li>Relación → Clave foránea o tabla intermedia.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Herramientas">
+  <h2>Herramientas para Diagramas E-R</h2>
+  <ul>
+    <li>MySQL Workbench</li>
+    <li>draw.io</li>
+    <li>Lucidchart</li>
+    <li>DbDiagram.io</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Identifica entidades en un sistema de biblioteca.</li>
+    <li>Define atributos para cada entidad.</li>
+    <li>Establece relaciones y cardinalidades.</li>
+    <li>Dibuja un diagrama E-R básico.</li>
+  </ol>
+</div>
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

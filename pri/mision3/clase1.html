@@ -10,7 +10,127 @@
 </head>
     <body>
         <div class="container">
-    
+
+            <div class="slide" data-title="Título">
+  <h1>Misión 1 · Lección 1</h1>
+  <h2>Introducción a React</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Entender qué es React y para qué se usa.</li>
+    <li>Crear el primer proyecto con Vite.</li>
+    <li>Conocer la estructura básica de un proyecto React.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="¿Qué es React?">
+  <h2>¿Qué es React?</h2>
+  <ul>
+    <li>Librería de JavaScript para construir interfaces de usuario.</li>
+    <li>Basada en componentes y un flujo de datos unidireccional.</li>
+    <li>Declarativa: describes el <i>qué</i>, React gestiona el <i>cómo</i>.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Requisitos">
+  <h2>Requisitos</h2>
+  <ul>
+    <li>Node.js 18+ y npm o pnpm.</li>
+    <li>Editor de código (VS Code recomendado).</li>
+    <li>Navegador moderno (Chrome/Firefox/Edge).</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Crear proyecto con Vite">
+  <h2>Crear proyecto con Vite</h2>
+<pre><code>npm create vite@latest mi-app -- --template react
+cd mi-app
+npm install
+npm run dev</code></pre>
+  <p>Abre la URL que te muestra la terminal para ver la app.</p>
+</div>
+
+<div class="slide" data-title="Estructura del proyecto">
+  <h2>Estructura del Proyecto</h2>
+  <ul>
+    <li><code>index.html</code> — punto de entrada del DOM.</li>
+    <li><code>src/main.jsx</code> — arranca React y monta el árbol.</li>
+    <li><code>src/App.jsx</code> — componente raíz de la app.</li>
+    <li><code>src/assets/</code> — recursos estáticos.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Primer componente">
+  <h2>Primer Componente</h2>
+<pre><code>// src/App.jsx
+export default function App() {
+  return &lt;h1&gt;¡Hola, React!&lt;/h1&gt;;
+}</code></pre>
+<pre><code>// src/main.jsx
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
+
+createRoot(document.getElementById("root")).render(
+  &lt;React.StrictMode&gt;&lt;App /&gt;&lt;/React.StrictMode&gt;
+);</code></pre>
+</div>
+
+<div class="slide" data-title="JSX básico">
+  <h2>JSX Básico</h2>
+  <ul>
+    <li>JSX permite escribir HTML dentro de JavaScript.</li>
+    <li>Usa <code>className</code> en lugar de <code>class</code>.</li>
+    <li>Expresiones entre <code>{ }</code>.</li>
+  </ul>
+<pre><code>const nombre = "Ana";
+return &lt;h2&gt;Hola, {nombre}&lt;/h2&gt;;</code></pre>
+</div>
+
+<div class="slide" data-title="Props">
+  <h2>Props (Propiedades)</h2>
+<pre><code>function Saludo({ nombre }) {
+  return &lt;p&gt;Hola, {nombre}!&lt;/p&gt;;
+}
+export default function App() {
+  return &lt;Saludo nombre="Mundo" /&gt;;
+}</code></pre>
+  <p>Las props son de solo lectura: el componente padre pasa datos al hijo.</p>
+</div>
+
+<div class="slide" data-title="Estado con useState">
+  <h2>Estado con useState</h2>
+<pre><code>import { useState } from "react";
+
+export default function Contador() {
+  const [count, setCount] = useState(0);
+  return (
+    &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+      Clics: {count}
+    &lt;/button&gt;
+  );
+}</code></pre>
+  <p>El estado permite que la UI reaccione a cambios de datos.</p>
+</div>
+
+<div class="slide" data-title="Listas y condicionales">
+  <h2>Listas y Condicionales</h2>
+<pre><code>const items = ["🍎", "🍌", "🍊"];
+return (
+  &lt;ul&gt;{items.map((it, i) =&gt; &lt;li key={i}&gt;{it}&lt;/li&gt;)}&lt;/ul&gt;
+);</code></pre>
+<pre><code>{items.length === 0 ? &lt;p&gt;Sin datos&lt;/p&gt; : &lt;p&gt;Hay {items.length} ítems&lt;/p&gt;}</code></pre>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Crea el proyecto con Vite y arráncalo.</li>
+    <li>Edita <code>App.jsx</code> para mostrar un saludo con tu nombre (usando JSX).</li>
+    <li>Crea un componente <code>&lt;Contador /&gt;</code> con <code>useState</code>.</li>
+    <li>Renderiza una lista de 3 tareas y muéstralas en pantalla.</li>
+  </ol>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

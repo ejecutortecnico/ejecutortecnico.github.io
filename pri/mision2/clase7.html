@@ -10,7 +10,101 @@
 </head>
     <body>
         <div class="container">
-    
+                    <div class="slide" data-title="Título">
+  <h1>Misión 3 · Lección 7</h1>
+  <h2>Autenticación y Manejo de Sesiones en Flask</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender el sistema de sesiones en Flask.</li>
+    <li>Implementar inicio y cierre de sesión.</li>
+    <li>Proteger rutas mediante autenticación.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Sesiones">
+  <h2>¿Qué son las Sesiones?</h2>
+  <p>Las sesiones permiten guardar datos del usuario entre peticiones.</p>
+  <ul>
+    <li>Se almacenan en cookies cifradas en el cliente.</li>
+    <li>Permiten mantener un usuario autenticado.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Configurar secret key">
+  <h2>Configurar clave secreta</h2>
+<pre><code>app.secret_key = "mi_clave_super_secreta"</code></pre>
+  <p>La clave es necesaria para firmar y proteger las cookies de sesión.</p>
+</div>
+
+<div class="slide" data-title="Login básico">
+  <h2>Ejemplo de Login Básico</h2>
+<pre><code>from flask import request, session, redirect, url_for
+
+@app.route("/login", methods=["POST"])
+def login():
+    usuario = request.form["usuario"]
+    clave = request.form["clave"]
+    if usuario == "admin" and clave == "1234":
+        session["usuario"] = usuario
+        return redirect(url_for("dashboard"))
+    return "Credenciales inválidas"</code></pre>
+</div>
+
+<div class="slide" data-title="Acceder a la sesión">
+  <h2>Acceder a la Sesión</h2>
+<pre><code>@app.route("/dashboard")
+def dashboard():
+    if "usuario" in session:
+        return f"Bienvenido {session['usuario']}"
+    return redirect(url_for("login"))</code></pre>
+</div>
+
+<div class="slide" data-title="Cerrar sesión">
+  <h2>Cerrar Sesión</h2>
+<pre><code>@app.route("/logout")
+def logout():
+    session.pop("usuario", None)
+    return redirect(url_for("login"))</code></pre>
+</div>
+
+<div class="slide" data-title="Protección de rutas">
+  <h2>Proteger Rutas</h2>
+<pre><code>def login_required(f):
+    def wrap(*args, **kwargs):
+        if "usuario" not in session:
+            return redirect(url_for("login"))
+        return f(*args, **kwargs)
+    return wrap</code></pre>
+</div>
+
+<div class="slide" data-title="Contraseñas seguras">
+  <h2>Almacenamiento de Contraseñas</h2>
+<pre><code>pip install werkzeug</code></pre>
+<pre><code>from werkzeug.security import generate_password_hash, check_password_hash
+
+hashed = generate_password_hash("1234")
+check_password_hash(hashed, "1234")  # True</code></pre>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas Prácticas</h2>
+  <ul>
+    <li>Usar <b>hashing</b> en contraseñas (nunca texto plano).</li>
+    <li>Configurar tiempo de expiración de sesiones.</li>
+    <li>Usar HTTPS en producción.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Implementa un formulario de login con usuario y contraseña.</li>
+    <li>Guarda el usuario en la sesión al iniciar sesión correctamente.</li>
+    <li>Protege una ruta <code>/dashboard</code> para que solo sea accesible si hay un usuario autenticado.</li>
+    <li>Agrega un botón de “Cerrar sesión”.</li>
+  </ol>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

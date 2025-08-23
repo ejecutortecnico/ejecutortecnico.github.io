@@ -10,7 +10,105 @@
 </head>
     <body>
         <div class="container">
-    
+                <div class="slide" data-title="Título">
+  <h1>Misión 3 · Lección 9</h1>
+  <h2>Consumo de APIs Externas en Flask</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender cómo realizar peticiones HTTP desde Flask.</li>
+    <li>Consumir datos de APIs externas.</li>
+    <li>Integrar la información obtenida en vistas y templates.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Librerías">
+  <h2>Librerías para consumo de APIs</h2>
+  <ul>
+    <li><b>requests</b> — la más usada para HTTP en Python.</li>
+    <li><b>httpx</b> — alternativa moderna y asíncrona.</li>
+  </ul>
+<pre><code>pip install requests</code></pre>
+</div>
+
+<div class="slide" data-title="Petición GET">
+  <h2>Petición GET</h2>
+<pre><code>import requests
+
+@app.route("/clima")
+def clima():
+    r = requests.get("https://api.weatherapi.com/v1/current.json",
+                     params={"key": "API_KEY", "q": "Bogotá"})
+    data = r.json()
+    return f"Temperatura: {data['current']['temp_c']}°C"</code></pre>
+</div>
+
+<div class="slide" data-title="Petición POST">
+  <h2>Petición POST</h2>
+<pre><code>r = requests.post("https://jsonplaceholder.typicode.com/posts",
+                  json={"title": "nuevo", "body": "contenido"})
+print(r.json())</code></pre>
+</div>
+
+<div class="slide" data-title="Mostrar datos en template">
+  <h2>Mostrar datos en un template</h2>
+<pre><code>@app.route("/usuarios")
+def usuarios():
+    r = requests.get("https://jsonplaceholder.typicode.com/users")
+    data = r.json()
+    return render_template("usuarios.html", usuarios=data)</code></pre>
+<pre><code>&lt;ul&gt;
+{% for u in usuarios %}
+  &lt;li&gt;{{ u["name"] }} - {{ u["email"] }}&lt;/li&gt;
+{% endfor %}
+&lt;/ul&gt;</code></pre>
+</div>
+
+<div class="slide" data-title="Manejo de errores">
+  <h2>Manejo de Errores</h2>
+<pre><code>try:
+    r = requests.get("https://api.invalida.com/data", timeout=5)
+    r.raise_for_status()
+except requests.exceptions.RequestException as e:
+    print("Error:", e)</code></pre>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas Prácticas</h2>
+  <ul>
+    <li>Usar <b>timeout</b> en las peticiones.</li>
+    <li>Manejar errores con <code>try/except</code>.</li>
+    <li>Guardar claves API en variables de entorno.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejemplo completo">
+  <h2>Ejemplo completo</h2>
+<pre><code>@app.route("/pokemon/&lt;nombre&gt;")
+def pokemon(nombre):
+    url = f"https://pokeapi.co/api/v2/pokemon/{nombre}"
+    r = requests.get(url)
+    data = r.json()
+    return render_template("pokemon.html", poke=data)</code></pre>
+</div>
+
+<div class="slide" data-title="Extensiones útiles">
+  <h2>Extensiones útiles</h2>
+  <ul>
+    <li><b>Flask-RESTful</b>: simplifica creación y consumo de APIs.</li>
+    <li><b>Flask-Caching</b>: cachea resultados para no llamar repetidamente a la API.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Instala la librería <code>requests</code>.</li>
+    <li>Crea una ruta que consulte usuarios de <code>jsonplaceholder.typicode.com</code>.</li>
+    <li>Muestra los datos en un template HTML.</li>
+    <li>Agrega manejo de errores si la API no responde.</li>
+  </ol>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

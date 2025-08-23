@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <div class="slide" data-title="Título">
+  <h1>Misión 2 · Lección 12</h1>
+  <h2>Triggers en Bases de Datos</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender qué son los triggers y para qué se utilizan.</li>
+    <li>Aprender a crearlos y ejecutarlos.</li>
+    <li>Usar triggers para automatizar tareas dentro de la base de datos.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Qué es un trigger">
+  <h2>¿Qué es un Trigger?</h2>
+  <p>Un trigger es un procedimiento que se ejecuta automáticamente cuando ocurre un evento específico en una tabla.</p>
+  <ul>
+    <li>Eventos: <b>INSERT</b>, <b>UPDATE</b>, <b>DELETE</b>.</li>
+    <li>Permiten mantener integridad y reglas de negocio.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Sintaxis básica">
+  <h2>Sintaxis Básica</h2>
+<pre><code>CREATE TRIGGER nombre_trigger
+BEFORE INSERT ON usuarios
+FOR EACH ROW
+BEGIN
+  -- acciones
+END;</code></pre>
+</div>
+
+<div class="slide" data-title="Ejemplo Insert">
+  <h2>Ejemplo: Trigger en INSERT</h2>
+<pre><code>CREATE TRIGGER antes_insert_usuario
+BEFORE INSERT ON usuarios
+FOR EACH ROW
+BEGIN
+  SET NEW.fecha_creacion = NOW();
+END;</code></pre>
+</div>
+
+<div class="slide" data-title="Ejemplo Update">
+  <h2>Ejemplo: Trigger en UPDATE</h2>
+<pre><code>CREATE TRIGGER antes_update_usuario
+BEFORE UPDATE ON usuarios
+FOR EACH ROW
+BEGIN
+  SET NEW.fecha_modificacion = NOW();
+END;</code></pre>
+</div>
+
+<div class="slide" data-title="Ejemplo Delete">
+  <h2>Ejemplo: Trigger en DELETE</h2>
+<pre><code>CREATE TRIGGER log_borrado_usuario
+AFTER DELETE ON usuarios
+FOR EACH ROW
+BEGIN
+  INSERT INTO usuarios_eliminados (id, nombre, eliminado_en)
+  VALUES (OLD.id, OLD.nombre, NOW());
+END;</code></pre>
+</div>
+
+<div class="slide" data-title="Ventajas">
+  <h2>Ventajas de los Triggers</h2>
+  <ul>
+    <li>Automatizan tareas repetitivas.</li>
+    <li>Garantizan integridad de datos.</li>
+    <li>Permiten crear auditorías automáticas.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Desventajas">
+  <h2>Desventajas de los Triggers</h2>
+  <ul>
+    <li>Dificultan depuración y mantenimiento.</li>
+    <li>Pueden impactar el rendimiento si se abusa de ellos.</li>
+    <li>No siempre son portables entre motores de base de datos.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas Prácticas</h2>
+  <ul>
+    <li>Usar triggers solo cuando realmente sea necesario.</li>
+    <li>Documentar claramente su comportamiento.</li>
+    <li>Evitar lógica compleja dentro de triggers.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Crea un trigger que registre la fecha de creación de un nuevo pedido.</li>
+    <li>Crea un trigger que registre la fecha de modificación de un producto al actualizarse.</li>
+    <li>Crea un trigger que almacene en una tabla de auditoría los registros eliminados de clientes.</li>
+  </ol>
+</div>
+
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

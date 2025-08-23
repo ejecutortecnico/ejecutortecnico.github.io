@@ -10,7 +10,110 @@
 </head>
     <body>
         <div class="container">
-    
+    <div class="slide" data-title="Título">
+  <h1>Misión 3 · Lección 10</h1>
+  <h2>Creación de APIs con Flask (Flask-RESTful)</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender qué es una API REST y su estructura.</li>
+    <li>Aprender a construir endpoints en Flask.</li>
+    <li>Usar Flask-RESTful para simplificar la creación de APIs.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Qué es una API REST">
+  <h2>¿Qué es una API REST?</h2>
+  <ul>
+    <li>Una API REST expone recursos mediante URLs.</li>
+    <li>Opera sobre métodos HTTP: GET, POST, PUT, DELETE.</li>
+    <li>Intercambia datos usualmente en formato JSON.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Instalación">
+  <h2>Instalación</h2>
+<pre><code>pip install flask-restful</code></pre>
+</div>
+
+<div class="slide" data-title="Ejemplo básico">
+  <h2>Ejemplo básico con Flask-RESTful</h2>
+<pre><code>from flask import Flask
+from flask_restful import Api, Resource
+
+app = Flask(__name__)
+api = Api(app)
+
+class Hola(Resource):
+    def get(self):
+        return {"mensaje": "Hola Mundo"}
+
+api.add_resource(Hola, "/hola")</code></pre>
+</div>
+
+<div class="slide" data-title="GET y POST">
+  <h2>GET y POST en un recurso</h2>
+<pre><code>class Usuario(Resource):
+    def get(self):
+        return {"usuarios": ["Ana", "Luis"]}
+
+    def post(self):
+        return {"mensaje": "Usuario creado"}, 201
+
+api.add_resource(Usuario, "/usuarios")</code></pre>
+</div>
+
+<div class="slide" data-title="Parámetros en URL">
+  <h2>Parámetros en la URL</h2>
+<pre><code>class Usuario(Resource):
+    def get(self, id):
+        return {"id": id, "nombre": f"Usuario {id}"}
+
+api.add_resource(Usuario, "/usuarios/&lt;int:id&gt;")</code></pre>
+</div>
+
+<div class="slide" data-title="PUT y DELETE">
+  <h2>PUT y DELETE</h2>
+<pre><code>class Usuario(Resource):
+    def put(self, id):
+        return {"mensaje": f"Usuario {id} actualizado"}
+
+    def delete(self, id):
+        return {"mensaje": f"Usuario {id} eliminado"}
+
+api.add_resource(Usuario, "/usuarios/&lt;int:id&gt;")</code></pre>
+</div>
+
+<div class="slide" data-title="Manejo de JSON">
+  <h2>Manejo de datos JSON</h2>
+<pre><code>from flask import request
+
+class Producto(Resource):
+    def post(self):
+        data = request.get_json()
+        return {"producto": data}, 201
+
+api.add_resource(Producto, "/productos")</code></pre>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas Prácticas en APIs</h2>
+  <ul>
+    <li>Usar nombres en plural para recursos (<code>/usuarios</code>).</li>
+    <li>Devolver códigos de estado HTTP correctos.</li>
+    <li>Usar JSON como formato de respuesta estándar.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Instala <code>flask-restful</code> en tu proyecto.</li>
+    <li>Crea un recurso <code>/usuarios</code> con GET y POST.</li>
+    <li>Agrega rutas dinámicas para <code>/usuarios/&lt;id&gt;</code> con GET, PUT y DELETE.</li>
+    <li>Prueba los endpoints con Postman o curl.</li>
+  </ol>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

@@ -10,7 +10,104 @@
 </head>
     <body>
         <div class="container">
-    
+                <div class="slide" data-title="Título">
+  <h1>Misión 3 · Lección 6</h1>
+  <h2>ORM con SQLAlchemy en Flask</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender qué es un ORM y sus ventajas.</li>
+    <li>Configurar Flask con SQLAlchemy.</li>
+    <li>Definir modelos y realizar operaciones CRUD.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Qué es ORM">
+  <h2>¿Qué es un ORM?</h2>
+  <p>ORM (Object Relational Mapping) permite interactuar con la base de datos usando objetos en lugar de SQL.</p>
+  <ul>
+    <li>Traduce clases en tablas.</li>
+    <li>Traduce objetos en registros.</li>
+    <li>Simplifica el código y lo hace más legible.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Instalación">
+  <h2>Instalación</h2>
+<pre><code>pip install flask-sqlalchemy</code></pre>
+</div>
+
+<div class="slide" data-title="Configuración">
+  <h2>Configuración en Flask</h2>
+<pre><code>from flask_sqlalchemy import SQLAlchemy
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+db = SQLAlchemy(app)</code></pre>
+</div>
+
+<div class="slide" data-title="Definir modelo">
+  <h2>Definir un Modelo</h2>
+<pre><code>class Usuario(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+    def __repr__(self):
+        return f"&lt;Usuario {self.nombre}&gt;"</code></pre>
+</div>
+
+<div class="slide" data-title="Crear tablas">
+  <h2>Crear Tablas</h2>
+<pre><code>with app.app_context():
+    db.create_all()</code></pre>
+</div>
+
+<div class="slide" data-title="Operaciones CRUD">
+  <h2>Operaciones CRUD</h2>
+<pre><code># Crear
+nuevo = Usuario(nombre="Ana", email="ana@mail.com")
+db.session.add(nuevo)
+db.session.commit()
+
+# Leer
+usuarios = Usuario.query.all()
+
+# Actualizar
+u = Usuario.query.first()
+u.nombre = "Ana María"
+db.session.commit()
+
+# Eliminar
+db.session.delete(u)
+db.session.commit()</code></pre>
+</div>
+
+<div class="slide" data-title="Consultas avanzadas">
+  <h2>Consultas Avanzadas</h2>
+<pre><code># Filtrar
+Usuario.query.filter_by(nombre="Ana").first()
+
+# Filtros con condiciones
+Usuario.query.filter(Usuario.email.like("%@gmail.com")).all()</code></pre>
+</div>
+
+<div class="slide" data-title="Relaciones">
+  <h2>Relaciones entre Tablas</h2>
+<pre><code>class Pedido(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    cliente_id = db.Column(db.Integer, db.ForeignKey("usuario.id"))
+    cliente = db.relationship("Usuario", backref="pedidos")</code></pre>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado</h2>
+  <ol>
+    <li>Configura SQLAlchemy con SQLite.</li>
+    <li>Crea un modelo <code>Usuario</code> con nombre y correo.</li>
+    <li>Inserta 3 usuarios en la base de datos.</li>
+    <li>Realiza consultas para listar, actualizar y eliminar registros.</li>
+  </ol>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

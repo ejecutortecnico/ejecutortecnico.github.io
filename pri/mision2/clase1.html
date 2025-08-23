@@ -10,7 +10,108 @@
 </head>
     <body>
         <div class="container">
-    
+        <div class="slide" data-title="Título">
+        <h1>Misión 3 · Lección 1</h1>
+        <h2>Introducción al Desarrollo Backend con Python y Flask</h2>
+        <h3>Objetivos</h3>
+        <ul>
+            <li>Comprender qué es el desarrollo backend.</li>
+            <li>Conocer el rol de un framework web.</li>
+            <li>Instalar y configurar Flask.</li>
+        </ul>
+        </div>
+
+        <div class="slide" data-title="Definición Backend">
+        <h2>¿Qué es el Backend?</h2>
+        <p>Parte del sistema que gestiona la lógica, las bases de datos y la comunicación con el frontend.</p>
+        <ul>
+            <li>Procesa solicitudes del cliente.</li>
+            <li>Accede y manipula datos.</li>
+            <li>Devuelve respuestas en formato JSON o HTML.</li>
+        </ul>
+        </div>
+
+        <div class="slide" data-title="Frameworks">
+        <h2>Frameworks Web</h2>
+        <p>Un framework facilita el desarrollo al proveer herramientas y estructuras.</p>
+        <ul>
+            <li><b>Flask:</b> ligero y flexible.</li>
+            <li><b>Django:</b> más completo, incluye ORM y admin.</li>
+            <li>Otros: FastAPI, Pyramid.</li>
+        </ul>
+        </div>
+
+        <div class="slide" data-title="Instalación">
+        <h2>Instalación de Flask</h2>
+        <pre><code># Crear entorno virtual
+        python -m venv venv
+        source venv/bin/activate   # Linux/Mac
+        venv\Scripts\activate      # Windows
+
+        # Instalar Flask
+        pip install flask</code></pre>
+        </div>
+
+        <div class="slide" data-title="Hola mundo Flask">
+        <h2>Primer proyecto Flask</h2>
+        <pre><code>from flask import Flask
+
+        app = Flask(__name__)
+
+        @app.route("/")
+        def hello():
+            return "¡Hola, Flask!"
+
+        if __name__ == "__main__":
+            app.run(debug=True)</code></pre>
+        <p>Ejecuta: <code>python app.py</code> y abre <code>http://127.0.0.1:5000/</code></p>
+        </div>
+
+        <div class="slide" data-title="Estructura básica">
+        <h2>Estructura básica de un proyecto Flask</h2>
+        <ul>
+            <li><code>app.py</code> → archivo principal.</li>
+            <li><code>/templates</code> → vistas HTML.</li>
+            <li><code>/static</code> → CSS, JS, imágenes.</li>
+        </ul>
+        </div>
+
+        <div class="slide" data-title="Rutas">
+        <h2>Definición de rutas</h2>
+        <pre><code>@app.route("/about")
+        def about():
+            return "Acerca de nosotros"</code></pre>
+        <p>Cada ruta atiende a una URL específica.</p>
+        </div>
+
+        <div class="slide" data-title="Respuestas JSON">
+        <h2>Devolver JSON</h2>
+        <pre><code>from flask import jsonify
+
+        @app.route("/api/data")
+        def data():
+            return jsonify({"mensaje": "Hola desde la API"})</code></pre>
+        </div>
+
+        <div class="slide" data-title="Debug mode">
+        <h2>Modo Debug</h2>
+        <ul>
+            <li>Recarga automática al modificar código.</li>
+            <li>Muestra errores detallados en el navegador.</li>
+        </ul>
+        <pre><code>app.run(debug=True)</code></pre>
+        </div>
+
+        <div class="slide" data-title="Ejercicio">
+        <h2>Ejercicio Guiado</h2>
+        <ol>
+            <li>Instala Flask en un entorno virtual.</li>
+            <li>Crea un proyecto con <code>app.py</code>.</li>
+            <li>Agrega rutas <code>/</code>, <code>/about</code> y <code>/api/data</code>.</li>
+            <li>Ejecuta el servidor y prueba las rutas.</li>
+        </ol>
+        </div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

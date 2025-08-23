@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide" data-title="Título">
+            <h1>Misión 3 · Lección 3</h1>
+            <h2>Templates y Jinja2 en Flask</h2>
+            <h3>Objetivos</h3>
+            <ul>
+                <li>Comprender el motor de plantillas Jinja2.</li>
+                <li>Separar la lógica del backend de la presentación.</li>
+                <li>Aprender a usar variables, bucles y condicionales en templates.</li>
+            </ul>
+            </div>
+
+            <div class="slide" data-title="¿Qué es Jinja2?">
+            <h2>¿Qué es Jinja2?</h2>
+            <p>Es el motor de plantillas que usa Flask para renderizar HTML dinámico.</p>
+            <ul>
+                <li>Permite insertar variables de Python en HTML.</li>
+                <li>Soporta bucles, condicionales y herencia de plantillas.</li>
+            </ul>
+            </div>
+
+            <div class="slide" data-title="Renderizar template">
+            <h2>Renderizar un Template</h2>
+            <pre><code>from flask import render_template
+
+            @app.route("/about")
+            def about():
+                return render_template("about.html", titulo="Sobre nosotros")</code></pre>
+            <p>El archivo <code>about.html</code> se guarda en <code>/templates</code>.</p>
+            </div>
+
+            <div class="slide" data-title="Uso de variables">
+            <h2>Uso de Variables</h2>
+            <pre><code>&lt;h1&gt;Bienvenido {{ nombre }}&lt;/h1&gt;</code></pre>
+            <p>Las variables entre <code>{{ }}</code> se reemplazan con valores enviados desde Flask.</p>
+            </div>
+
+            <div class="slide" data-title="Condicionales">
+            <h2>Condicionales en Jinja2</h2>
+            <pre><code>{% if usuario %}
+            &lt;p&gt;Hola {{ usuario }}&lt;/p&gt;
+            {% else %}
+            &lt;p&gt;Invitado&lt;/p&gt;
+            {% endif %}</code></pre>
+            </div>
+
+            <div class="slide" data-title="Bucles">
+            <h2>Bucles en Jinja2</h2>
+            <pre><code>&lt;ul&gt;
+            {% for producto in productos %}
+            &lt;li&gt;{{ producto.nombre }} - {{ producto.precio }}&lt;/li&gt;
+            {% endfor %}
+            &lt;/ul&gt;</code></pre>
+            </div>
+
+            <div class="slide" data-title="Filtros">
+            <h2>Filtros en Jinja2</h2>
+            <pre><code>{{ nombre|upper }}
+            {{ precio|round(2) }}</code></pre>
+            <p>Algunos filtros: <code>upper</code>, <code>lower</code>, <code>title</code>, <code>round</code>.</p>
+            </div>
+
+            <div class="slide" data-title="Herencia de templates">
+            <h2>Herencia de Plantillas</h2>
+            <pre><code>&lt;!-- base.html --&gt;
+            &lt;html&gt;
+            &lt;body&gt;
+                {% block contenido %}{% endblock %}
+            &lt;/body&gt;
+            &lt;/html&gt;
+
+            &lt;!-- home.html --&gt;
+            {% extends "base.html" %}
+            {% block contenido %}
+            &lt;h1&gt;Página principal&lt;/h1&gt;
+            {% endblock %}</code></pre>
+            </div>
+
+            <div class="slide" data-title="Incluir templates">
+            <h2>Incluir Plantillas</h2>
+            <pre><code>{% include "header.html" %}
+            &lt;h1&gt;Contenido principal&lt;/h1&gt;
+            {% include "footer.html" %}</code></pre>
+            </div>
+
+            <div class="slide" data-title="Ejercicio">
+            <h2>Ejercicio Guiado</h2>
+            <ol>
+                <li>Crea un template <code>base.html</code> con un bloque de contenido.</li>
+                <li>Haz un template <code>home.html</code> que herede de <code>base.html</code>.</li>
+                <li>Pasa una lista de productos desde Flask y muéstralos en HTML.</li>
+                <li>Agrega condicionales para mostrar un mensaje si la lista está vacía.</li>
+            </ol>
+            </div>
+
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>
+v

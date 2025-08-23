@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide" data-title="Título">
+            <h1>Misión 3 · Lección 4</h1>
+            <h2>Formularios y Manejo de Datos en Flask</h2>
+            <h3>Objetivos</h3>
+            <ul>
+                <li>Comprender cómo enviar datos desde un formulario al servidor.</li>
+                <li>Aprender a manejar métodos GET y POST.</li>
+                <li>Validar datos básicos en formularios.</li>
+            </ul>
+            </div>
+
+            <div class="slide" data-title="Formulario HTML">
+            <h2>Ejemplo de Formulario HTML</h2>
+            <pre><code>&lt;form action="/login" method="POST"&gt;
+            &lt;input type="text" name="usuario" placeholder="Usuario"&gt;
+            &lt;input type="password" name="clave" placeholder="Contraseña"&gt;
+            &lt;button type="submit"&gt;Ingresar&lt;/button&gt;
+            &lt;/form&gt;</code></pre>
+            </div>
+
+            <div class="slide" data-title="Manejo en Flask">
+            <h2>Manejo de Formularios en Flask</h2>
+            <pre><code>from flask import request
+
+            @app.route("/login", methods=["GET", "POST"])
+            def login():
+                if request.method == "POST":
+                    usuario = request.form["usuario"]
+                    clave = request.form["clave"]
+                    return f"Usuario: {usuario}, Clave: {clave}"
+                return render_template("login.html")</code></pre>
+            </div>
+
+            <div class="slide" data-title="Método GET">
+            <h2>Método GET</h2>
+            <ul>
+                <li>Los datos viajan en la URL como parámetros.</li>
+                <li>Menos seguro (se pueden ver en la barra de direcciones).</li>
+                <li>Útil para búsquedas o filtros.</li>
+            </ul>
+            <pre><code>/search?q=flask</code></pre>
+            </div>
+
+            <div class="slide" data-title="Método POST">
+            <h2>Método POST</h2>
+            <ul>
+                <li>Los datos se envían en el cuerpo de la petición.</li>
+                <li>Más seguro que GET.</li>
+                <li>Usado para inicios de sesión y formularios sensibles.</li>
+            </ul>
+            </div>
+
+            <div class="slide" data-title="Validación básica">
+            <h2>Validación Básica</h2>
+            <pre><code>@app.route("/register", methods=["POST"])
+            def register():
+                usuario = request.form["usuario"]
+                if not usuario:
+                    return "El campo usuario es obligatorio"
+                return f"Registrado: {usuario}"</code></pre>
+            </div>
+
+            <div class="slide" data-title="Mostrar mensajes">
+            <h2>Mostrar Mensajes al Usuario</h2>
+            <pre><code>from flask import flash, redirect, url_for
+
+            app.secret_key = "clave_secreta"
+
+            @app.route("/login", methods=["POST"])
+            def login():
+                usuario = request.form["usuario"]
+                if usuario != "admin":
+                    flash("Usuario incorrecto")
+                    return redirect(url_for("form_login"))
+                flash("Bienvenido")
+                return redirect(url_for("home"))</code></pre>
+            </div>
+
+            <div class="slide" data-title="CSRF">
+            <h2>Protección contra CSRF</h2>
+            <p>Para mayor seguridad, se recomienda usar la extensión Flask-WTF:</p>
+            <pre><code>pip install flask-wtf</code></pre>
+            <p>Agrega un token de seguridad oculto en los formularios.</p>
+            </div>
+
+            <div class="slide" data-title="Buenas prácticas">
+            <h2>Buenas Prácticas</h2>
+            <ul>
+                <li>Usar <b>POST</b> para información sensible.</li>
+                <li>Validar datos tanto en el frontend como en el backend.</li>
+                <li>Evitar mostrar mensajes de error con demasiada información.</li>
+            </ul>
+            </div>
+
+            <div class="slide" data-title="Ejercicio">
+            <h2>Ejercicio Guiado</h2>
+            <ol>
+                <li>Crea un formulario de inicio de sesión con usuario y clave.</li>
+                <li>Procesa el formulario en una ruta Flask usando POST.</li>
+                <li>Agrega validación para evitar campos vacíos.</li>
+                <li>Usa <code>flash()</code> para mostrar mensajes de error o éxito.</li>
+            </ol>
+            </div>
+
+    
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>
+v

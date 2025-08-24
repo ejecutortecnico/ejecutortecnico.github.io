@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+            <div class="slide">
+  <h1>MISIÓN 1 · Lección 1</h1>
+  <h2>Introducción al Procesamiento de Lenguaje Natural (NLP)</h2>
+  <p>El Procesamiento de Lenguaje Natural (NLP) es una rama de la inteligencia artificial que permite a las máquinas comprender, interpretar y generar lenguaje humano. Su importancia radica en aplicaciones como asistentes virtuales, motores de búsqueda, chatbots, clasificación de documentos y análisis de sentimientos.</p>
+</div>
+
+<div class="slide">
+  <h2>Componentes básicos del NLP</h2>
+  <ul>
+    <li><strong>Tokenización:</strong> dividir el texto en palabras o subpalabras.</li>
+    <li><strong>Lematización/Stemming:</strong> reducir palabras a su raíz.</li>
+    <li><strong>POS Tagging:</strong> identificar la función gramatical de cada palabra.</li>
+    <li><strong>NER (Named Entity Recognition):</strong> detección de entidades como nombres, lugares y organizaciones.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Flujo de trabajo en NLP</h2>
+  <ol>
+    <li>Recolección de datos (corpus).</li>
+    <li>Limpieza y preprocesamiento.</li>
+    <li>Extracción de características.</li>
+    <li>Entrenamiento de modelos.</li>
+    <li>Evaluación y despliegue.</li>
+  </ol>
+</div>
+
+<div class="slide">
+  <h2>Herramientas clave en Python</h2>
+  <ul>
+    <li><strong>NLTK:</strong> librería clásica para tokenización, stopwords y stemming.</li>
+    <li><strong>spaCy:</strong> pipeline robusto para POS tagging, dependencias y NER.</li>
+    <li><strong>TextBlob:</strong> análisis sencillo de sentimientos y traducción.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo práctico con NLTK</h2>
+  <pre><code class="language-python">import nltk
+nltk.download('punkt')
+from nltk.tokenize import word_tokenize
+
+texto = "El Procesamiento de Lenguaje Natural con Python es fascinante."
+tokens = word_tokenize(texto)
+print(tokens)
+# ['El', 'Procesamiento', 'de', 'Lenguaje', 'Natural', 'con', 'Python', 'es', 'fascinante', '.']
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo práctico con spaCy</h2>
+  <pre><code class="language-python">import spacy
+nlp = spacy.load("es_core_news_sm")
+
+doc = nlp("El NLP moderno impulsa muchas aplicaciones inteligentes.")
+for token in doc:
+    print(token.text, token.pos_, token.dep_)
+</code></pre>
+  <p>Este ejemplo muestra cómo obtener la categoría gramatical y las dependencias de cada palabra.</p>
+</div>
+
+<div class="slide">
+  <h2>Buenas prácticas de preprocesamiento</h2>
+  <ul>
+    <li>Convertir a minúsculas y normalizar acentos.</li>
+    <li>Eliminar URLs, menciones y caracteres especiales.</li>
+    <li>Elegir tokenizadores adecuados según el idioma y dominio.</li>
+  </ul>
+  <pre><code class="language-python">import re
+texto = "Visita https://example.com para más información! #NLP @usuario"
+limpio = re.sub(r"https?://\\S+|[@#]\\w+", " ", texto.lower())
+print(limpio)
+# "visita   para más información!  "
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones reales del NLP</h2>
+  <ul>
+    <li>Asistentes virtuales (Siri, Alexa, ChatGPT).</li>
+    <li>Detección de spam en correos.</li>
+    <li>Análisis de opiniones en redes sociales.</li>
+    <li>Traducción automática y subtitulados.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>El NLP es la base de muchas aplicaciones modernas. Conocer sus fundamentos y herramientas en Python es el primer paso para proyectos más avanzados en análisis de texto y modelado de lenguaje.</p>
+</div>
+
+    
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

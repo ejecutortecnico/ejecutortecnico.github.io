@@ -11,6 +11,112 @@
     <body>
         <div class="container">
     
+            <div class="slide">
+  <h1>MISIÓN 2 · Lección 7</h1>
+  <h2>Integración Spark + NoSQL (MongoDB y Cassandra)</h2>
+  <p>En esta lección aprenderemos a integrar Apache Spark con bases de datos NoSQL como MongoDB y Cassandra, para aprovechar el almacenamiento flexible y el procesamiento distribuido.</p>
+</div>
+
+<div class="slide">
+  <h2>Integración con MongoDB</h2>
+  <pre><code class="language-python">from pyspark.sql import SparkSession
+
+spark = SparkSession.builder \
+    .appName("SparkMongo") \
+    .config("spark.mongodb.input.uri", "mongodb://localhost:27017/tienda.ventas") \
+    .config("spark.mongodb.output.uri", "mongodb://localhost:27017/tienda.resultados") \
+    .getOrCreate()
+
+# Leer desde MongoDB
+df = spark.read.format("mongo").load()
+df.show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Escritura en MongoDB</h2>
+  <pre><code class="language-python"># Procesamiento en Spark
+ventas_pais = df.groupBy("pais").count()
+
+# Guardar resultados en MongoDB
+ventas_pais.write.format("mongo").mode("overwrite").save()
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Integración con Cassandra</h2>
+  <pre><code class="language-python">spark = SparkSession.builder \
+    .appName("SparkCassandra") \
+    .config("spark.cassandra.connection.host", "127.0.0.1") \
+    .getOrCreate()
+
+# Leer desde Cassandra
+df = spark.read.format("org.apache.spark.sql.cassandra") \
+    .options(table="ventas", keyspace="tienda") \
+    .load()
+
+df.show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Escritura en Cassandra</h2>
+  <pre><code class="language-python"># Procesamiento de datos
+resumen = df.groupBy("producto").sum("precio")
+
+# Guardar resultados en Cassandra
+resumen.write.format("org.apache.spark.sql.cassandra") \
+    .options(table="ventas_resumen", keyspace="tienda") \
+    .mode("append") \
+    .save()
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Comparación: MongoDB vs Cassandra</h2>
+  <ul>
+    <li><strong>MongoDB:</strong> ideal para datos semiestructurados (JSON), flexible, consultas ad-hoc.</li>
+    <li><strong>Cassandra:</strong> optimizado para escritura masiva y consultas rápidas por clave.</li>
+    <li><strong>MongoDB:</strong> más amigable para prototipos.</li>
+    <li><strong>Cassandra:</strong> más robusto para escalabilidad global.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones prácticas</h2>
+  <ul>
+    <li>Análisis de ventas en tiempo real con Spark + MongoDB.</li>
+    <li>Procesamiento de logs masivos con Spark + Cassandra.</li>
+    <li>Dashboards de analítica en e-commerce.</li>
+    <li>Almacenamiento de resultados de modelos de Machine Learning.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Buenas prácticas</h2>
+  <ul>
+    <li>Definir particiones adecuadas en Cassandra para consultas rápidas.</li>
+    <li>Evitar documentos demasiado grandes en MongoDB.</li>
+    <li>Usar Parquet como capa intermedia entre Spark y NoSQL para eficiencia.</li>
+    <li>Implementar monitoreo de conexiones y rendimiento.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo de pipeline híbrido</h2>
+  <ol>
+    <li>Datos en crudo llegan a HDFS.</li>
+    <li>Spark procesa y limpia los datos.</li>
+    <li>Resultados agregados se guardan en Cassandra para dashboards.</li>
+    <li>Datos enriquecidos se almacenan en MongoDB para consultas flexibles.</li>
+  </ol>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>La integración de Spark con NoSQL combina lo mejor de dos mundos: procesamiento distribuido en memoria con almacenamiento flexible y escalable. Esto habilita soluciones robustas para analítica avanzada y aplicaciones en tiempo real.</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

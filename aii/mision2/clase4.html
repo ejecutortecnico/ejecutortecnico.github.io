@@ -11,6 +11,113 @@
     <body>
         <div class="container">
     
+            <div class="slide">
+  <h1>MISIÓN 2 · Lección 4</h1>
+  <h2>Integración y Configuración del Entorno Big Data</h2>
+  <p>En esta lección aprenderemos cómo integrar distintas tecnologías de Big Data (Hadoop, Spark y NoSQL) en un mismo ecosistema, configurando un entorno de trabajo eficiente y escalable.</p>
+</div>
+
+<div class="slide">
+  <h2>Arquitectura típica de Big Data</h2>
+  <ul>
+    <li><strong>HDFS:</strong> almacenamiento distribuido de datos.</li>
+    <li><strong>Spark:</strong> procesamiento en memoria para consultas y ML.</li>
+    <li><strong>NoSQL:</strong> persistencia y consultas rápidas.</li>
+    <li><strong>Orquestación:</strong> Airflow, Oozie o Luigi para programar flujos de trabajo.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Configuración básica de Spark con Hadoop</h2>
+  <pre><code class="language-python">from pyspark.sql import SparkSession
+
+spark = SparkSession.builder \
+    .appName("IntegracionHDFS") \
+    .config("spark.hadoop.fs.defaultFS", "hdfs://localhost:9000") \
+    .getOrCreate()
+
+# Leer archivo desde HDFS
+df = spark.read.csv("hdfs:///data/ventas.csv", header=True)
+df.show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Integración Spark con NoSQL (MongoDB)</h2>
+  <pre><code class="language-python"># Conector de Spark con MongoDB
+spark = SparkSession.builder \
+    .appName("SparkMongo") \
+    .config("spark.mongodb.input.uri", "mongodb://localhost:27017/tienda.ventas") \
+    .config("spark.mongodb.output.uri", "mongodb://localhost:27017/tienda.resultados") \
+    .getOrCreate()
+
+# Leer desde MongoDB
+df = spark.read.format("mongo").load()
+df.printSchema()
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Formatos de datos en Big Data</h2>
+  <ul>
+    <li><strong>CSV:</strong> simple pero poco eficiente para grandes volúmenes.</li>
+    <li><strong>JSON:</strong> flexible pero pesado.</li>
+    <li><strong>Parquet:</strong> formato columnar, altamente eficiente para análisis.</li>
+    <li><strong>Avro:</strong> ideal para transmisión de datos entre sistemas.</li>
+  </ul>
+  <pre><code class="language-python"># Lectura en formato Parquet
+df = spark.read.parquet("/datalake/ventas.parquet")
+df.createOrReplaceTempView("ventas")
+
+spark.sql("SELECT pais, SUM(monto) FROM ventas GROUP BY pais").show()
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Orquestación de flujos de datos</h2>
+  <p>Para coordinar tareas en un entorno Big Data se usan orquestadores:</p>
+  <ul>
+    <li><strong>Apache Airflow:</strong> define DAGs (Directed Acyclic Graphs) para flujos de trabajo.</li>
+    <li><strong>Oozie:</strong> especializado en Hadoop.</li>
+    <li><strong>Luigi:</strong> enfocado en ETL y pipelines.</li>
+  </ul>
+  <pre><code class="language-python"># Ejemplo de DAG en Airflow
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from datetime import datetime
+
+dag = DAG("ejemplo_bigdata", start_date=datetime(2025,1,1), schedule_interval="@daily")
+
+step1 = BashOperator(task_id="cargar_datos", bash_command="spark-submit job.py", dag=dag)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Buenas prácticas</h2>
+  <ul>
+    <li>Usar formatos columnar (Parquet/ORC) para análisis eficiente.</li>
+    <li>Particionar datos por fecha o categorías para consultas rápidas.</li>
+    <li>Implementar monitoreo con herramientas como Prometheus y Grafana.</li>
+    <li>Automatizar cargas y procesos con orquestadores.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo de integración completa</h2>
+  <p>Pipeline típico:</p>
+  <ol>
+    <li>Datos crudos llegan a HDFS en CSV.</li>
+    <li>Spark los procesa y convierte en Parquet.</li>
+    <li>Resultados se almacenan en MongoDB para consultas rápidas.</li>
+    <li>Airflow agenda el pipeline diariamente.</li>
+  </ol>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>La integración de Hadoop, Spark y NoSQL permite crear ecosistemas de Big Data robustos y escalables. Una correcta configuración y orquestación asegura eficiencia, resiliencia y valor en la explotación de datos.</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

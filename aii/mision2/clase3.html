@@ -10,7 +10,102 @@
 </head>
     <body>
         <div class="container">
-    
+            <div class="slide">
+  <h1>MISIÓN 2 · Lección 3</h1>
+  <h2>Bases de Datos NoSQL</h2>
+  <p>Las bases de datos NoSQL están diseñadas para manejar grandes volúmenes de datos, alta escalabilidad y estructuras flexibles que no se ajustan bien a los modelos relacionales tradicionales.</p>
+</div>
+
+<div class="slide">
+  <h2>¿Qué es NoSQL?</h2>
+  <ul>
+    <li><strong>Not Only SQL:</strong> no reemplaza a las bases de datos relacionales, sino que las complementa.</li>
+    <li>Permite manejar datos no estructurados y semiestructurados.</li>
+    <li>Soporta escalabilidad horizontal en clusters distribuidos.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Modelos de bases de datos NoSQL</h2>
+  <ul>
+    <li><strong>Clave-valor:</strong> Redis, DynamoDB. Datos como pares clave-valor.</li>
+    <li><strong>Documento:</strong> MongoDB, CouchDB. Datos almacenados en documentos JSON/BSON.</li>
+    <li><strong>Columna:</strong> Cassandra, HBase. Optimizado para consultas masivas por columnas.</li>
+    <li><strong>Grafo:</strong> Neo4j. Manejo de relaciones complejas en forma de nodos y aristas.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo con MongoDB</h2>
+  <pre><code class="language-javascript">// Insertar documento
+db.ventas.insertOne({
+  producto: "Laptop",
+  precio: 3500,
+  pais: "CO"
+})
+
+// Consultar documentos
+db.ventas.find({pais: "CO"})
+
+// Agregación
+ db.ventas.aggregate([
+   { $match: { pais: "CO" } },
+   { $group: { _id: "$producto", total: { $sum: "$precio" } } }
+ ])
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo con Cassandra</h2>
+  <pre><code class="language-sql">-- Crear tabla
+CREATE TABLE ventas (
+  id UUID PRIMARY KEY,
+  producto TEXT,
+  precio DECIMAL,
+  pais TEXT
+);
+
+-- Insertar datos
+INSERT INTO ventas (id, producto, precio, pais)
+VALUES (uuid(), 'Laptop', 3500, 'CO');
+
+-- Consultar
+SELECT * FROM ventas WHERE pais = 'CO';
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Comparación SQL vs NoSQL</h2>
+  <ul>
+    <li><strong>SQL:</strong> esquema rígido, consistencia fuerte, ideal para transacciones.</li>
+    <li><strong>NoSQL:</strong> esquema flexible, escalabilidad masiva, eventual consistency en algunos casos.</li>
+    <li>La elección depende del caso de uso: finanzas (SQL), big data en tiempo real (NoSQL).</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones reales de NoSQL</h2>
+  <ul>
+    <li>Almacenamiento de perfiles de usuario en redes sociales (MongoDB).</li>
+    <li>Recomendadores y motores de búsqueda (Neo4j, Elasticsearch).</li>
+    <li>Procesamiento de logs y métricas a gran escala (Cassandra).</li>
+    <li>Sistemas de caché de alta velocidad (Redis).</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ventajas y limitaciones</h2>
+  <ul>
+    <li><strong>Ventajas:</strong> flexibilidad de esquema, escalabilidad horizontal, alto rendimiento en lecturas/escrituras.</li>
+    <li><strong>Limitaciones:</strong> menor estandarización, dificultad en transacciones complejas, aprendizaje adicional.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>Las bases de datos NoSQL son esenciales en entornos de Big Data. Su flexibilidad y escalabilidad las hacen ideales para datos no estructurados y aplicaciones que requieren rapidez y disponibilidad global.</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

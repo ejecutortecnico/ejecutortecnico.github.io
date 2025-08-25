@@ -11,6 +11,111 @@
     <body>
         <div class="container">
     
+            <div class="slide">
+  <h1>MISIÓN 2 · Lección 8</h1>
+  <h2>Procesamiento de Datos en Tiempo Real con Spark Streaming</h2>
+  <p>En esta lección aprenderemos a usar Spark Streaming para procesar flujos de datos en tiempo real, como logs, redes sociales o sensores IoT.</p>
+</div>
+
+<div class="slide">
+  <h2>¿Qué es Spark Streaming?</h2>
+  <ul>
+    <li>Extensión de Spark para procesar datos en tiempo real.</li>
+    <li>Divide los flujos en <strong>micro-batches</strong> para procesarlos con el motor de Spark.</li>
+    <li>Compatible con fuentes como Kafka, sockets, HDFS y AWS Kinesis.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo básico: flujo desde un socket</h2>
+  <pre><code class="language-python">from pyspark.streaming import StreamingContext
+
+# Crear StreamingContext con batch de 5 segundos
+ssc = StreamingContext(spark.sparkContext, 5)
+
+# Leer flujo desde socket en el puerto 9999
+lines = ssc.socketTextStream("localhost", 9999)
+
+# Contar palabras
+words = lines.flatMap(lambda line: line.split(" "))
+pairs = words.map(lambda word: (word, 1))
+counts = pairs.reduceByKey(lambda a, b: a + b)
+
+counts.pprint()
+
+ssc.start()
+ssc.awaitTermination()
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo con Kafka</h2>
+  <pre><code class="language-python">from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
+
+spark = SparkSession.builder.appName("SparkKafka").getOrCreate()
+
+# Leer desde Kafka
+df = spark.readStream.format("kafka") \
+    .option("kafka.bootstrap.servers", "localhost:9092") \
+    .option("subscribe", "topic_test") \
+    .load()
+
+# Procesar mensajes
+mensajes = df.selectExpr("CAST(value AS STRING)")
+
+consulta = mensajes.writeStream \
+    .outputMode("append") \
+    .format("console") \
+    .start()
+
+consulta.awaitTermination()
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ventajas de Spark Streaming</h2>
+  <ul>
+    <li>Integración nativa con Spark SQL y MLlib.</li>
+    <li>Tolerancia a fallos y procesamiento distribuido.</li>
+    <li>Escalabilidad para manejar millones de eventos por segundo.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Comparación con otras tecnologías</h2>
+  <ul>
+    <li><strong>Kafka Streams:</strong> más ligero, específico para Kafka.</li>
+    <li><strong>Flink:</strong> mejor para latencia ultra baja.</li>
+    <li><strong>Spark Streaming:</strong> ideal para integración con pipelines Spark.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones reales</h2>
+  <ul>
+    <li>Monitoreo de redes sociales en tiempo real.</li>
+    <li>Detección de fraudes en transacciones bancarias.</li>
+    <li>Procesamiento de logs de servidores.</li>
+    <li>Análisis de datos de sensores en IoT.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Buenas prácticas</h2>
+  <ul>
+    <li>Usar Kafka como fuente confiable de mensajes.</li>
+    <li>Definir ventanas de tiempo según la necesidad del negocio.</li>
+    <li>Persistir resultados en HDFS, Cassandra o MongoDB.</li>
+    <li>Monitorear el streaming con herramientas como Prometheus + Grafana.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>Spark Streaming permite procesar datos en movimiento y reaccionar en tiempo real a eventos del mundo real. Es una herramienta poderosa para construir aplicaciones inteligentes y escalables en Big Data.</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

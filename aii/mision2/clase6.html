@@ -11,6 +11,110 @@
     <body>
         <div class="container">
     
+            <div class="slide">
+  <h1>MISIÓN 2 · Lección 6</h1>
+  <h2>Aplicación de Análisis con Apache Spark</h2>
+  <p>En esta lección construiremos una aplicación práctica de análisis de datos utilizando Spark. Aprovecharemos su capacidad de procesamiento en memoria y su librería MLlib para Machine Learning distribuido.</p>
+</div>
+
+<div class="slide">
+  <h2>Lectura de datos</h2>
+  <pre><code class="language-python">from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("AnalisisSpark").getOrCreate()
+
+# Cargar dataset de reseñas
+df = spark.read.csv("reviews.csv", header=True, inferSchema=True)
+df.show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Preprocesamiento de texto</h2>
+  <pre><code class="language-python">from pyspark.ml.feature import Tokenizer, StopWordsRemover, HashingTF, IDF
+
+# Tokenización
+tokenizer = Tokenizer(inputCol="texto", outputCol="tokens")
+tokens = tokenizer.transform(df)
+
+# Remover stopwords
+remover = StopWordsRemover(inputCol="tokens", outputCol="tokens_limpios")
+clean_tokens = remover.transform(tokens)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Transformación TF-IDF</h2>
+  <pre><code class="language-python"># Vectorización
+hashingTF = HashingTF(inputCol="tokens_limpios", outputCol="tf")
+tf = hashingTF.transform(clean_tokens)
+
+idf = IDF(inputCol="tf", outputCol="features")
+idf_model = idf.fit(tf)
+df_features = idf_model.transform(tf)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Entrenamiento de un modelo de clasificación</h2>
+  <pre><code class="language-python">from pyspark.ml.classification import LogisticRegression
+
+lr = LogisticRegression(featuresCol="features", labelCol="label")
+model = lr.fit(df_features)
+
+predicciones = model.transform(df_features)
+predicciones.select("texto", "label", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Evaluación del modelo</h2>
+  <pre><code class="language-python">from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+
+evaluator = MulticlassClassificationEvaluator(
+    labelCol="label", predictionCol="prediction", metricName="accuracy")
+
+accuracy = evaluator.evaluate(predicciones)
+print("Accuracy =", accuracy)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Pipeline en Spark</h2>
+  <pre><code class="language-python">from pyspark.ml import Pipeline
+
+pipeline = Pipeline(stages=[tokenizer, remover, hashingTF, idf, lr])
+modelo_pipeline = pipeline.fit(df)
+predicciones = modelo_pipeline.transform(df)
+predicciones.select("texto", "label", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ventajas de usar Spark MLlib</h2>
+  <ul>
+    <li>Procesamiento distribuido en clusters.</li>
+    <li>Escalabilidad para datasets muy grandes.</li>
+    <li>Integración sencilla con otros módulos de Spark.</li>
+    <li>API de alto nivel con Pipelines.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones prácticas</h2>
+  <ul>
+    <li>Análisis de reseñas de clientes en e-commerce.</li>
+    <li>Clasificación de noticias en categorías.</li>
+    <li>Detección de spam en correos electrónicos.</li>
+    <li>Modelado predictivo en datasets masivos.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>Apache Spark facilita el análisis de grandes volúmenes de datos y la creación de modelos de Machine Learning distribuidos. Su potencia y escalabilidad lo convierten en una herramienta esencial en proyectos de Big Data.</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

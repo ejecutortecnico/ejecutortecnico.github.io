@@ -11,6 +11,107 @@
     <body>
         <div class="container">
     
+            <div class="slide">
+  <h1>MISIÓN 2 · Lección 5</h1>
+  <h2>Aplicación Distribuida con Hadoop (MapReduce)</h2>
+  <p>En esta lección aprenderemos a desarrollar una aplicación distribuida con Hadoop utilizando el modelo de programación MapReduce. Implementaremos un caso clásico de conteo de palabras (WordCount).</p>
+</div>
+
+<div class="slide">
+  <h2>Recordatorio: ¿Qué es MapReduce?</h2>
+  <ul>
+    <li><strong>Map:</strong> divide la tarea en subprocesos que generan pares clave-valor.</li>
+    <li><strong>Shuffle:</strong> reorganiza y agrupa por clave.</li>
+    <li><strong>Reduce:</strong> combina los resultados para obtener la salida final.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: ejecución de WordCount</h2>
+  <pre><code class="language-bash">hadoop jar /path/hadoop-streaming.jar \
+  -input /data/textos \
+  -output /salida/wordcount \
+  -mapper "python mapper.py" \
+  -reducer "python reducer.py"
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Mapper en Python</h2>
+  <p>El mapper recibe líneas de texto y emite cada palabra con el valor 1.</p>
+  <pre><code class="language-python"># mapper.py
+import sys
+for line in sys.stdin:
+    for word in line.strip().split():
+        print(f"{word}\t1")
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Reducer en Python</h2>
+  <p>El reducer agrupa las palabras y suma sus ocurrencias.</p>
+  <pre><code class="language-python"># reducer.py
+import sys
+from collections import defaultdict
+
+counts = defaultdict(int)
+for line in sys.stdin:
+    word, value = line.strip().split("\t")
+    counts[word] += int(value)
+
+for word, count in counts.items():
+    print(f"{word}\t{count}")
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Optimización en MapReduce</h2>
+  <ul>
+    <li><strong>Combiners:</strong> reducen datos en el mapper antes de enviarlos al reducer.</li>
+    <li><strong>Particionadores:</strong> controlan cómo se distribuyen las claves entre reducers.</li>
+    <li><strong>Compresión:</strong> usar compresión en datos intermedios para mejorar rendimiento.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo con Combiner</h2>
+  <pre><code class="language-python"># combiner.py (igual que reducer pero aplicado en el mapper)
+import sys
+from collections import defaultdict
+
+counts = defaultdict(int)
+for line in sys.stdin:
+    word, value = line.strip().split("\t")
+    counts[word] += int(value)
+
+for word, count in counts.items():
+    print(f"{word}\t{count}")
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones comunes de MapReduce</h2>
+  <ul>
+    <li>Indexación de documentos para motores de búsqueda.</li>
+    <li>Procesamiento de logs de servidores.</li>
+    <li>Cálculo de estadísticas en datasets masivos.</li>
+    <li>Extracción de patrones en grandes volúmenes de texto.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ventajas y limitaciones</h2>
+  <ul>
+    <li><strong>Ventajas:</strong> escalabilidad masiva, tolerancia a fallos, simplicidad del modelo.</li>
+    <li><strong>Limitaciones:</strong> procesamiento en disco, menos eficiente que Spark, latencia alta.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>MapReduce fue una revolución en el procesamiento distribuido de datos. Aunque tecnologías como Spark lo han superado en velocidad y facilidad, sigue siendo fundamental para entender los principios del Big Data.</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

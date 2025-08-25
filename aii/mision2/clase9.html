@@ -10,7 +10,99 @@
 </head>
     <body>
         <div class="container">
-    
+            <div class="slide">
+  <h1>MISIÓN 2 · Lección 9</h1>
+  <h2>Proyecto Práctico en Equipos (Big Data + IA)</h2>
+  <p>En esta lección los equipos aplicarán lo aprendido en Big Data e Inteligencia Artificial para construir un proyecto colaborativo. El objetivo es integrar Hadoop, Spark, bases NoSQL y modelos de Machine Learning en un caso real.</p>
+</div>
+
+<div class="slide">
+  <h2>Objetivos del proyecto</h2>
+  <ul>
+    <li>Procesar un dataset masivo con Hadoop o Spark.</li>
+    <li>Aplicar técnicas de análisis o Machine Learning.</li>
+    <li>Almacenar resultados en una base de datos NoSQL.</li>
+    <li>Visualizar los hallazgos de manera clara e interactiva.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Etapas del proyecto</h2>
+  <ol>
+    <li><strong>Ingesta:</strong> cargar datos en HDFS o un data lake.</li>
+    <li><strong>Procesamiento:</strong> limpiar y transformar datos con Spark.</li>
+    <li><strong>Análisis:</strong> aplicar Spark SQL y MLlib.</li>
+    <li><strong>Almacenamiento:</strong> guardar resultados en MongoDB o Cassandra.</li>
+    <li><strong>Visualización:</strong> generar dashboards o reportes.</li>
+  </ol>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo de caso práctico</h2>
+  <p><strong>Tema:</strong> Análisis de reseñas de productos de e-commerce.</p>
+  <ul>
+    <li>Dataset con millones de reseñas en formato JSON.</li>
+    <li>Procesamiento de sentimientos con Spark MLlib.</li>
+    <li>Almacenamiento de resultados agregados en Cassandra.</li>
+    <li>Visualización de distribución de reseñas por país con Grafana.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Roles en el equipo</h2>
+  <ul>
+    <li><strong>Data Engineer:</strong> responsable de ingesta y pipelines de datos.</li>
+    <li><strong>Data Scientist:</strong> encargado del análisis y modelos de ML.</li>
+    <li><strong>DevOps:</strong> automatización y despliegue del proyecto.</li>
+    <li><strong>Data Analyst:</strong> creación de dashboards y reportes.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Checklist de entregables</h2>
+  <ul>
+    <li>Repositorio con código (Spark, Hadoop, NoSQL).</li>
+    <li>Dataset de prueba documentado.</li>
+    <li>Informe con metodología y resultados.</li>
+    <li>Dashboard o presentación final.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo de integración en Spark</h2>
+  <pre><code class="language-python"># Leer datos en Spark
+df = spark.read.json("hdfs:///data/reviews.json")
+
+# Análisis de sentimientos (ejemplo simplificado)
+from pyspark.ml.feature import Tokenizer, HashingTF, IDF
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml import Pipeline
+
+tokenizer = Tokenizer(inputCol="text", outputCol="words")
+hashingTF = HashingTF(inputCol="words", outputCol="features")
+lr = LogisticRegression(featuresCol="features", labelCol="label")
+
+pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
+model = pipeline.fit(df)
+predictions = model.transform(df)
+predictions.show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Criterios de evaluación</h2>
+  <ul>
+    <li>Funcionamiento técnico del pipeline.</li>
+    <li>Escalabilidad y eficiencia del procesamiento.</li>
+    <li>Calidad del modelo de análisis.</li>
+    <li>Claridad y creatividad en la presentación final.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>El proyecto integrador permite poner en práctica todo lo aprendido: procesamiento distribuido, almacenamiento NoSQL y Machine Learning. La colaboración en equipo refleja la realidad de proyectos de Big Data en la industria.</p>
+</div>   
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

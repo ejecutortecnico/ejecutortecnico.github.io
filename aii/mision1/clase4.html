@@ -11,6 +11,105 @@
     <body>
         <div class="container">
     
+            <div class="slide">
+  <h1>MISIÓN 1 · Lección 4</h1>
+  <h2>Evaluación y Mejora de Modelos NLP</h2>
+  <p>Evaluar y mejorar modelos es fundamental para garantizar resultados fiables y adaptarlos a escenarios reales. En esta lección exploramos métricas, técnicas de optimización y métodos de explicabilidad.</p>
+</div>
+
+<div class="slide">
+  <h2>Métricas de evaluación</h2>
+  <ul>
+    <li><strong>Accuracy:</strong> proporción de predicciones correctas.</li>
+    <li><strong>Precision:</strong> de todas las predicciones positivas, cuántas son correctas.</li>
+    <li><strong>Recall:</strong> de todos los casos positivos, cuántos detecta el modelo.</li>
+    <li><strong>F1-score:</strong> media armónica de precisión y recall.</li>
+    <li><strong>Matriz de confusión:</strong> muestra errores tipo I y II.</li>
+  </ul>
+  <pre><code class="language-python">from sklearn.metrics import classification_report, confusion_matrix
+
+print(classification_report(y_test, y_pred))
+print(confusion_matrix(y_test, y_pred))
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Problemas comunes</h2>
+  <ul>
+    <li><strong>Desbalance de clases:</strong> cuando una clase domina los datos.</li>
+    <li><strong>Overfitting:</strong> el modelo memoriza datos en lugar de generalizar.</li>
+    <li><strong>Datos ruidosos:</strong> presencia de errores, sarcasmo o ambigüedad.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Técnicas de mejora</h2>
+  <ul>
+    <li><strong>Balanceo de clases:</strong> oversampling, undersampling o uso de <code>SMOTE</code>.</li>
+    <li><strong>Regularización:</strong> parámetros como <code>C</code> en regresión logística o <code>alpha</code> en Naive Bayes.</li>
+    <li><strong>Ensemble:</strong> combinación de varios modelos (Bagging, Boosting).</li>
+    <li><strong>Optimización de hiperparámetros:</strong> GridSearch, RandomSearch, Bayesian Optimization.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: búsqueda de hiperparámetros</h2>
+  <pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+
+params = {"clf__C": [0.1, 1, 5, 10]}
+
+gs = GridSearchCV(pipe, params, cv=3, n_jobs=-1)
+gs.fit(X_train, y_train)
+
+print("Mejores parámetros:", gs.best_params_)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Validación cruzada</h2>
+  <p>Permite evaluar la estabilidad del modelo dividiendo los datos en varios subconjuntos (folds):</p>
+  <pre><code class="language-python">from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(pipe, X, y, cv=5)
+print("Exactitud promedio:", scores.mean())
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Explicabilidad de modelos</h2>
+  <ul>
+    <li><strong>LIME:</strong> explica predicciones locales analizando perturbaciones en el texto.</li>
+    <li><strong>SHAP:</strong> asigna importancia a cada característica para una predicción.</li>
+    <li><strong>Interpretabilidad:</strong> clave para sectores regulados como salud y finanzas.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo con LIME</h2>
+  <pre><code class="language-python">import lime.lime_text
+from lime.lime_text import LimeTextExplainer
+
+explainer = LimeTextExplainer(class_names=["negativo", "positivo"])
+exp = explainer.explain_instance("me gusta mucho este producto", pipe.predict_proba)
+exp.show_in_notebook(text=True)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Buenas prácticas</h2>
+  <ul>
+    <li>Dividir datos en entrenamiento, validación y prueba.</li>
+    <li>Monitorear métricas en producción, no solo en entrenamiento.</li>
+    <li>Reentrenar periódicamente con datos frescos.</li>
+    <li>Considerar sesgos éticos y fairness en modelos NLP.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>Evaluar correctamente y aplicar técnicas de mejora garantiza modelos más robustos y confiables. Esto prepara el terreno para aplicaciones en entornos productivos donde la precisión y la confianza son esenciales.</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

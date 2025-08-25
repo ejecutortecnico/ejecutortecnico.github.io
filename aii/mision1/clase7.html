@@ -11,6 +11,88 @@
     <body>
         <div class="container">
     
+            <div class="slide">
+  <h1>MISIÓN 1 · Lección 7</h1>
+  <h2>Presentación de Resultados y Mini-Proyecto</h2>
+  <p>En esta lección aprenderemos a comunicar los resultados de un proyecto de NLP. La presentación clara y estructurada es clave para transmitir el valor del modelo a usuarios, clientes o stakeholders.</p>
+</div>
+
+<div class="slide">
+  <h2>Estructura de la presentación</h2>
+  <ol>
+    <li><strong>Definición del problema:</strong> ¿qué se quiere resolver y por qué es importante?</li>
+    <li><strong>Datos:</strong> fuente, limpieza y preprocesamiento.</li>
+    <li><strong>Modelo:</strong> arquitectura elegida, parámetros y justificación.</li>
+    <li><strong>Métricas:</strong> resultados cuantitativos y comparación con baseline.</li>
+    <li><strong>Demo:</strong> funcionamiento en un caso real.</li>
+    <li><strong>Conclusiones:</strong> logros, limitaciones y próximos pasos.</li>
+  </ol>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo de visualización de métricas</h2>
+  <pre><code class="language-python">import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
+y_true = [1,0,1,0,1]
+y_pred = [1,0,1,1,0]
+
+cm = confusion_matrix(y_true, y_pred)
+ConfusionMatrixDisplay(cm).plot()
+plt.show()
+</code></pre>
+  <p>Las gráficas ayudan a mostrar fortalezas y debilidades del modelo.</p>
+</div>
+
+<div class="slide">
+  <h2>Mini-proyecto sugerido</h2>
+  <p><strong>Tema:</strong> Análisis de opiniones de restaurantes en reseñas de Google Maps.</p>
+  <ul>
+    <li>Recolectar reseñas con estrellas y comentarios.</li>
+    <li>Entrenar un modelo de análisis de sentimientos.</li>
+    <li>Construir un dashboard con métricas y ejemplos reales.</li>
+    <li>Presentar conclusiones sobre patrones de satisfacción del cliente.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Rúbrica de evaluación</h2>
+  <ul>
+    <li><strong>Datos:</strong> calidad, documentación y representatividad.</li>
+    <li><strong>Modelo:</strong> claridad en la elección y resultados alcanzados.</li>
+    <li><strong>Producto:</strong> utilidad, experiencia de usuario y estabilidad.</li>
+    <li><strong>Presentación:</strong> claridad, visualizaciones y narrativa.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Buenas prácticas en presentaciones</h2>
+  <ul>
+    <li>Usar ejemplos prácticos fáciles de entender.</li>
+    <li>Mostrar métricas con gráficos claros y legibles.</li>
+    <li>Explicar limitaciones de manera transparente.</li>
+    <li>Conectar los resultados con el objetivo inicial del proyecto.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo de storytelling</h2>
+  <p>“Analizamos 5.000 reseñas de restaurantes en Bogotá. Descubrimos que los principales factores de satisfacción son la calidad de la comida y la atención al cliente. El modelo alcanza un 85% de precisión en la clasificación de reseñas positivas y negativas, lo cual permite identificar áreas de mejora para los negocios locales.”</p>
+</div>
+
+<div class="slide">
+  <h2>Conclusiones del mini-proyecto</h2>
+  <ul>
+    <li>El NLP puede generar insights útiles para negocios locales.</li>
+    <li>La visualización de métricas facilita la toma de decisiones.</li>
+    <li>Un MVP funcional ayuda a mostrar rápidamente el valor del análisis.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>Presentar resultados de forma clara y con ejemplos prácticos es tan importante como construir un buen modelo. La combinación de narrativa, métricas y demostraciones en vivo asegura que el proyecto tenga impacto real.</p>
+</div>
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

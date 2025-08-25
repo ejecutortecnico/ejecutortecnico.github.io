@@ -11,6 +11,127 @@
     <body>
         <div class="container">
     
+            <div class="slide">
+  <h1>MISIÓN 1 · Lección 8</h1>
+  <h2>Cápsulas de Aprendizaje (NLP)</h2>
+  <p>Las cápsulas son recursos cortos y prácticos para reforzar conceptos clave de NLP. Incluyen ejemplos, mini-retos y material audiovisual para afianzar el aprendizaje.</p>
+</div>
+
+<div class="slide">
+  <h2>Cápsula 1: Tokenización</h2>
+  <p>Dividir un texto en palabras o subpalabras es el primer paso del NLP.</p>
+  <pre><code class="language-python">import nltk
+nltk.download('punkt')
+from nltk.tokenize import word_tokenize
+
+texto = "¡El NLP es increíble!"
+print(word_tokenize(texto))
+# ['¡', 'El', 'NLP', 'es', 'increíble', '!']
+</code></pre>
+  <p><strong>Mini-reto:</strong> Tokeniza 5 frases diferentes y cuenta cuántas palabras tiene cada una.</p>
+</div>
+
+<div class="slide">
+  <h2>Cápsula 2: Lematización</h2>
+  <p>La lematización reduce palabras a su forma base (ejemplo: "corriendo" → "correr").</p>
+  <pre><code class="language-python">import spacy
+nlp = spacy.load("es_core_news_sm")
+
+doc = nlp("Los estudiantes estaban corriendo rápidamente")
+print([token.lemma_ for token in doc])
+# ['el', 'estudiante', 'estar', 'correr', 'rápidamente']
+</code></pre>
+  <p><strong>Mini-reto:</strong> Aplica lematización a un párrafo de una noticia.</p>
+</div>
+
+<div class="slide">
+  <h2>Cápsula 3: Análisis de Sentimientos</h2>
+  <p>Identificar la polaridad de un texto.</p>
+  <pre><code class="language-python">from textblob import TextBlob
+
+print(TextBlob("I love NLP!").sentiment)
+# Sentiment(polarity=0.5, subjectivity=0.6)
+</code></pre>
+  <p><strong>Mini-reto:</strong> Evalúa 10 tuits y clasifícalos en positivos o negativos.</p>
+</div>
+
+<div class="slide">
+  <h2>Cápsula 4: Named Entity Recognition (NER)</h2>
+  <p>Extraer nombres de personas, organizaciones o lugares.</p>
+  <pre><code class="language-python">doc = nlp("Lionel Messi juega para el Inter de Miami en Estados Unidos.")
+for ent in doc.ents:
+    print(ent.text, ent.label_)
+# Lionel Messi PERSON
+# Inter de Miami ORG
+# Estados Unidos LOC
+</code></pre>
+  <p><strong>Mini-reto:</strong> Extrae todas las entidades de un artículo periodístico.</p>
+</div>
+
+<div class="slide">
+  <h2>Cápsula 5: Visualización con WordCloud</h2>
+  <p>Las nubes de palabras permiten visualizar la frecuencia de términos.</p>
+  <pre><code class="language-python">from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+texto = "El NLP es útil en análisis de texto y extracción de información"
+wc = WordCloud(background_color="white").generate(texto)
+plt.imshow(wc, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+</code></pre>
+  <p><strong>Mini-reto:</strong> Genera una nube de palabras de un corpus de reseñas.</p>
+</div>
+
+<div class="slide">
+  <h2>Cápsula 6: Clasificación de Texto</h2>
+  <p>Construcción de un clasificador sencillo con Scikit-learn.</p>
+  <pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+X = ["me gusta", "no me gusta", "excelente", "horrible"]
+y = [1, 0, 1, 0]
+
+vec = CountVectorizer()
+X_vec = vec.fit_transform(X)
+model = MultinomialNB().fit(X_vec, y)
+
+print(model.predict(vec.transform(["me encanta"])))
+# [1] → positivo
+</code></pre>
+  <p><strong>Mini-reto:</strong> Entrena un clasificador con 20 frases propias.</p>
+</div>
+
+<div class="slide">
+  <h2>Cápsula 7: Traducción automática</h2>
+  <p>Uso de modelos preentrenados para traducir texto.</p>
+  <pre><code class="language-python">from transformers import pipeline
+
+traductor = pipeline("translation_es_to_en", model="Helsinki-NLP/opus-mt-es-en")
+print(traductor("El procesamiento de lenguaje natural es poderoso"))
+</code></pre>
+  <p><strong>Mini-reto:</strong> Traduce 5 frases de español a inglés y verifica los resultados.</p>
+</div>
+
+<div class="slide">
+  <h2>Cápsula 8: Resumen automático</h2>
+  <p>Reducir un texto largo a una versión corta manteniendo el sentido.</p>
+  <pre><code class="language-python">resumidor = pipeline("summarization")
+texto = """
+El procesamiento de lenguaje natural permite a las máquinas comprender
+el lenguaje humano. Sus aplicaciones incluyen chatbots, asistentes virtuales y
+análisis de sentimientos en redes sociales.
+"""
+print(resumidor(texto, max_length=30, min_length=10))
+</code></pre>
+  <p><strong>Mini-reto:</strong> Resume un artículo de periódico en 3 frases.</p>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>Las cápsulas permiten reforzar conocimientos a través de ejemplos rápidos y retos prácticos. Son ideales para consolidar el aprendizaje entre clases más extensas.</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

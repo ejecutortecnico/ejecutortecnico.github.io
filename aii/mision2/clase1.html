@@ -10,6 +10,102 @@
 </head>
     <body>
         <div class="container">
+            <div class="slide">
+  <h1>MISIÓN 2 · Lección 1</h1>
+  <h2>Introducción a Hadoop y su Ecosistema</h2>
+  <p>En esta lección conoceremos Hadoop, una de las tecnologías más importantes en el mundo del Big Data. Hadoop permite almacenar y procesar grandes volúmenes de datos de manera distribuida y tolerante a fallos.</p>
+</div>
+
+<div class="slide">
+  <h2>¿Qué es Hadoop?</h2>
+  <p>Hadoop es un marco de software de código abierto que facilita el procesamiento distribuido de grandes conjuntos de datos a través de clusters de servidores.</p>
+  <ul>
+    <li><strong>Escalable:</strong> puede ejecutarse en cientos o miles de nodos.</li>
+    <li><strong>Tolerante a fallos:</strong> los datos se replican para evitar pérdidas.</li>
+    <li><strong>Económico:</strong> funciona sobre hardware común.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Componentes principales</h2>
+  <ul>
+    <li><strong>HDFS (Hadoop Distributed File System):</strong> sistema de archivos distribuido.</li>
+    <li><strong>MapReduce:</strong> modelo de programación para procesar datos en paralelo.</li>
+    <li><strong>YARN (Yet Another Resource Negotiator):</strong> gestor de recursos y planificación de tareas.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Arquitectura de Hadoop</h2>
+  <ul>
+    <li><strong>NameNode:</strong> nodo maestro que gestiona la metadata del sistema de archivos.</li>
+    <li><strong>DataNodes:</strong> nodos que almacenan físicamente los bloques de datos.</li>
+    <li><strong>ResourceManager:</strong> asigna recursos a las aplicaciones.</li>
+    <li><strong>NodeManagers:</strong> ejecutan las tareas en cada nodo.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo de flujo MapReduce</h2>
+  <ol>
+    <li><strong>Input:</strong> colección de documentos de texto.</li>
+    <li><strong>Map:</strong> cada nodo cuenta las palabras en sus documentos.</li>
+    <li><strong>Shuffle:</strong> reorganiza los resultados por palabra.</li>
+    <li><strong>Reduce:</strong> suma las ocurrencias de cada palabra.</li>
+    <li><strong>Output:</strong> listado de palabras con sus frecuencias.</li>
+  </ol>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo práctico: WordCount en Hadoop Streaming</h2>
+  <pre><code class="language-bash"># Ejecutar un conteo de palabras
+hadoop jar /path/hadoop-streaming.jar \
+  -input /data/textos \
+  -output /salida/wordcount \
+  -mapper "python mapper.py" \
+  -reducer "python reducer.py"
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Mapper en Python</h2>
+  <pre><code class="language-python"># mapper.py
+import sys
+for line in sys.stdin:
+    for word in line.strip().split():
+        print(f"{word}\t1")
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Reducer en Python</h2>
+  <pre><code class="language-python"># reducer.py
+import sys
+from collections import defaultdict
+
+counts = defaultdict(int)
+for line in sys.stdin:
+    word, value = line.strip().split("\t")
+    counts[word] += int(value)
+
+for word, count in counts.items():
+    print(f"{word}\t{count}")
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ventajas y limitaciones de Hadoop</h2>
+  <ul>
+    <li><strong>Ventajas:</strong> escalabilidad, costo reducido, ecosistema amplio.</li>
+    <li><strong>Limitaciones:</strong> latencia alta, complejo de configurar, menos eficiente para datos en tiempo real.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>Hadoop revolucionó la forma de manejar grandes volúmenes de datos. Aunque hoy convive con tecnologías más rápidas como Spark, sigue siendo la base para entender el Big Data distribuido.</p>
+</div>
+
     
 
         <div class="nav">

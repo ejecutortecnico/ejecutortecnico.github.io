@@ -10,6 +10,104 @@
 </head>
     <body>
         <div class="container">
+            <div class="slide">
+  <h1>MISIÓN 2 · Lección 2</h1>
+  <h2>Introducción a Apache Spark</h2>
+  <p>Apache Spark es un motor de procesamiento distribuido que permite trabajar con grandes volúmenes de datos de forma rápida y eficiente. Es ampliamente usado en Big Data y Machine Learning.</p>
+</div>
+
+<div class="slide">
+  <h2>¿Qué es Apache Spark?</h2>
+  <ul>
+    <li>Framework de procesamiento en memoria, más rápido que Hadoop MapReduce.</li>
+    <li>Compatible con múltiples lenguajes: Scala, Java, Python (PySpark) y R.</li>
+    <li>Incluye módulos para SQL, Machine Learning, procesamiento en streaming y gráficos.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Componentes principales de Spark</h2>
+  <ul>
+    <li><strong>Spark Core:</strong> funciones básicas de procesamiento distribuido.</li>
+    <li><strong>Spark SQL:</strong> consultas en lenguaje SQL sobre datos distribuidos.</li>
+    <li><strong>Spark Streaming:</strong> procesamiento de datos en tiempo real.</li>
+    <li><strong>MLlib:</strong> librería de Machine Learning.</li>
+    <li><strong>GraphX:</strong> procesamiento de grafos.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Arquitectura de Spark</h2>
+  <ul>
+    <li><strong>Driver:</strong> programa principal que coordina la ejecución.</li>
+    <li><strong>Cluster Manager:</strong> asigna recursos a las aplicaciones.</li>
+    <li><strong>Workers:</strong> ejecutan las tareas distribuidas.</li>
+    <li><strong>Executors:</strong> procesos en cada worker que corren las tareas.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: creación de sesión Spark</h2>
+  <pre><code class="language-python">from pyspark.sql import SparkSession
+
+# Crear sesión de Spark
+spark = SparkSession.builder \
+    .appName("EjemploSpark") \
+    .getOrCreate()
+
+print(spark.version)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: lectura y consulta de datos</h2>
+  <pre><code class="language-python"># Cargar un archivo JSON en un DataFrame
+df = spark.read.json("reviews.json")
+
+# Mostrar el esquema del DataFrame
+df.printSchema()
+
+# Consultar con SQL
+df.createOrReplaceTempView("reviews")
+result = spark.sql("SELECT stars, COUNT(*) as total FROM reviews GROUP BY stars")
+result.show()
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: procesamiento de datos</h2>
+  <pre><code class="language-python"># Filtrar reseñas positivas
+df.filter(df["stars"] > 3).select("text", "stars").show(5)
+
+# Calcular promedio de estrellas
+df.groupBy().avg("stars").show()
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Spark vs Hadoop</h2>
+  <ul>
+    <li><strong>Hadoop MapReduce:</strong> procesamiento en disco, más lento.</li>
+    <li><strong>Spark:</strong> procesamiento en memoria, hasta 100 veces más rápido.</li>
+    <li>Spark ofrece APIs más sencillas y mayor integración con Machine Learning.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones comunes de Spark</h2>
+  <ul>
+    <li>Análisis de logs de servidores web.</li>
+    <li>Procesamiento de streams en tiempo real (ej. Twitter, sensores IoT).</li>
+    <li>Entrenamiento de modelos de Machine Learning con grandes volúmenes de datos.</li>
+    <li>ETL (Extract, Transform, Load) a gran escala.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>Apache Spark es una herramienta clave en el Big Data moderno. Su velocidad, flexibilidad y ecosistema lo convierten en un estándar de la industria para análisis de datos masivos y Machine Learning distribuido.</p>
+</div>
+
     
 
         <div class="nav">

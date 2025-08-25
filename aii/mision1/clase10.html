@@ -11,6 +11,95 @@
     <body>
         <div class="container">
     
+            <div class="slide">
+  <h1>MISIÓN 1 · Lección 10</h1>
+  <h2>Desarrollo y Ajustes del Proyecto Colaborativo</h2>
+  <p>En esta lección los equipos trabajarán en la construcción de su proyecto de NLP, aplicando lo aprendido en el curso. El énfasis está en la implementación iterativa, pruebas y mejoras continuas.</p>
+</div>
+
+<div class="slide">
+  <h2>Metodología de trabajo</h2>
+  <ul>
+    <li><strong>Sprints cortos:</strong> dividir el trabajo en iteraciones de 1 semana.</li>
+    <li><strong>Objetivos claros:</strong> cada sprint debe entregar un avance tangible.</li>
+    <li><strong>Revisión por pares:</strong> validar el código y resultados en equipo.</li>
+    <li><strong>Documentación:</strong> registrar decisiones y cambios para facilitar la colaboración.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Checklist de desarrollo</h2>
+  <ol>
+    <li>Preprocesamiento de los datos listo y probado.</li>
+    <li>Modelo entrenado y evaluado con métricas.</li>
+    <li>API o interfaz básica funcionando.</li>
+    <li>Visualización inicial de resultados.</li>
+    <li>Repositorio con código organizado y README actualizado.</li>
+  </ol>
+</div>
+
+<div class="slide">
+  <h2>Pruebas y validación</h2>
+  <ul>
+    <li>Dividir datos en entrenamiento, validación y test.</li>
+    <li>Probar la aplicación con ejemplos reales.</li>
+    <li>Recolectar retroalimentación de usuarios potenciales.</li>
+    <li>Registrar bugs y errores para resolverlos en la siguiente iteración.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: pipeline de pruebas</h2>
+  <pre><code class="language-python"># test_pipeline.py
+from app import predict_sentiment
+
+def test_positive():
+    result = predict_sentiment("me encanta este curso")
+    assert result["label"] == "positivo"
+
+def test_negative():
+    result = predict_sentiment("odio este servicio")
+    assert result["label"] == "negativo"
+</code></pre>
+  <p>Los tests automatizados aseguran que el modelo y la aplicación funcionen correctamente.</p>
+</div>
+
+<div class="slide">
+  <h2>Ajustes del proyecto</h2>
+  <ul>
+    <li>Refinar hiperparámetros del modelo para mejorar precisión.</li>
+    <li>Agregar nuevas funcionalidades según retroalimentación (ej. clasificación neutra).</li>
+    <li>Optimizar el código para reducir latencia en producción.</li>
+    <li>Incorporar monitoreo para detectar degradación de rendimiento.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Entrega final</h2>
+  <p>El producto final debe incluir:</p>
+  <ul>
+    <li>Código en un repositorio (GitHub/GitLab).</li>
+    <li>Documentación clara de instalación y uso.</li>
+    <li>Un informe con resultados y conclusiones.</li>
+    <li>Presentación con demo funcional.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Buenas prácticas en equipo</h2>
+  <ul>
+    <li>Asignar responsables claros para cada tarea.</li>
+    <li>Hacer reuniones de sincronización cortas (daily stand-up).</li>
+    <li>Usar control de versiones con ramas para nuevas funcionalidades.</li>
+    <li>Respetar fechas de entrega intermedia y final.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>El éxito de un proyecto colaborativo no depende solo del modelo, sino también de la organización del equipo, la comunicación y la capacidad de adaptación. Iterar, validar y mejorar es el camino hacia un producto sólido y útil.</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

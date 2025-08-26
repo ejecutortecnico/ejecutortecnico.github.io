@@ -10,6 +10,111 @@
 </head>
     <body>
         <div class="container">
+            <div class="slide" data-title="Introducción">
+  <h1>Misión 1 · Lección 2</h1>
+  <h2>Hooks en Componentes Funcionales</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Entender qué son los Hooks y por qué se usan.</li>
+    <li>Usar <code>useState</code> para manejar estado.</li>
+    <li>Usar <code>useEffect</code> para efectos secundarios.</li>
+    <li>Explorar otros hooks básicos: <code>useRef</code>, <code>useContext</code>.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="¿Qué son los Hooks?">
+  <h2>¿Qué son los Hooks?</h2>
+  <ul>
+    <li>Funciones especiales de React que permiten “enganchar” lógica en componentes funcionales.</li>
+    <li>Antes, solo los componentes de clase podían manejar estado y ciclo de vida.</li>
+    <li>Ahora los Hooks hacen a los componentes funcionales igual de potentes.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Reglas de los Hooks">
+  <h2>Reglas de los Hooks</h2>
+  <ul>
+    <li>⚠️ Solo se llaman en la parte superior del componente (no dentro de bucles ni condicionales).</li>
+    <li>⚠️ Solo se usan dentro de componentes funcionales o de otros hooks.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="useState">
+  <h2>useState</h2>
+  <p>Maneja estado local en un componente.</p>
+<pre><code>import { useState } from "react";
+
+export default function Contador() {
+  const [count, setCount] = useState(0);
+  return (
+    &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+      Clics: {count}
+    &lt;/button&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="useState con objetos">
+  <h2>useState con objetos</h2>
+<pre><code>const [usuario, setUsuario] = useState({
+  nombre: "Ana",
+  edad: 25
+});
+
+function actualizarNombre() {
+  setUsuario({ ...usuario, nombre: "María" });
+}</code></pre>
+  <p>Usa el operador <code>...</code> (spread) para no perder propiedades previas.</p>
+</div>
+
+<div class="slide" data-title="useEffect">
+  <h2>useEffect</h2>
+  <p>Permite ejecutar código cuando el componente se renderiza o cambian dependencias.</p>
+<pre><code>import { useState, useEffect } from "react";
+
+export default function DatosUsuario({ id }) {
+  const [usuario, setUsuario] = useState(null);
+
+  useEffect(() =&gt; {
+    fetch(`/api/usuarios/${id}`)
+      .then(res =&gt; res.json())
+      .then(data =&gt; setUsuario(data));
+  }, [id]);
+
+  return usuario ? &lt;p&gt;{usuario.nombre}&lt;/p&gt; : &lt;p&gt;Cargando...&lt;/p&gt;;
+}</code></pre>
+</div>
+
+<div class="slide" data-title="useEffect - Limpieza">
+  <h2>Limpieza en useEffect</h2>
+  <p>Ideal para limpiar suscripciones, temporizadores o listeners.</p>
+<pre><code>useEffect(() =&gt; {
+  const timer = setInterval(() =&gt; {
+    console.log("tick");
+  }, 1000);
+
+  return () =&gt; clearInterval(timer); // limpieza
+}, []);</code></pre>
+</div>
+
+<div class="slide" data-title="Otros hooks básicos">
+  <h2>Otros Hooks básicos</h2>
+  <ul>
+    <li><code>useRef</code> → referencia mutable a un valor o elemento DOM.</li>
+    <li><code>useContext</code> → consume valores de un contexto global.</li>
+    <li><code>useReducer</code> → maneja estados complejos con un reducer.</li>
+    <li><code>useMemo</code> y <code>useCallback</code> → optimizan cálculos y funciones.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado 🛠️</h2>
+  <ol>
+    <li>Crea un componente <code>&lt;Reloj /&gt;</code> que muestre la hora actual usando <code>useState</code>.</li>
+    <li>Usa <code>useEffect</code> para actualizar la hora cada segundo con <code>setInterval</code>.</li>
+    <li>Asegúrate de limpiar el intervalo en el return del efecto.</li>
+  </ol>
+</div>
     
 
         <div class="nav">

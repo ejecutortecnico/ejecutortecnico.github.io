@@ -10,6 +10,95 @@
 </head>
     <body>
         <div class="container">
+            <div class="slide">
+  <h1>MISIÓN 3 · Lección 7</h1>
+  <h2>Inteligencia Artificial en Marketing y Experiencia del Cliente</h2>
+  <p>La IA permite a las empresas personalizar la experiencia del cliente, optimizar campañas publicitarias y predecir comportamientos de compra. En esta lección veremos cómo se aplica en marketing moderno.</p>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones principales</h2>
+  <ul>
+    <li><strong>Segmentación de clientes:</strong> agrupación de consumidores por comportamiento.</li>
+    <li><strong>Marketing predictivo:</strong> predicción de churn (abandono de clientes) y ventas futuras.</li>
+    <li><strong>Personalización de contenido:</strong> recomendaciones de productos y anuncios relevantes.</li>
+    <li><strong>Chatbots y asistentes virtuales:</strong> soporte automatizado 24/7.</li>
+    <li><strong>Análisis de sentimientos:</strong> procesamiento de opiniones en redes sociales.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: segmentación de clientes</h2>
+  <pre><code class="language-python">from pyspark.ml.clustering import KMeans
+from pyspark.ml.feature import VectorAssembler
+
+ensamblador = VectorAssembler(inputCols=["edad", "ingresos", "compras"], outputCol="features")
+datos = ensamblador.transform(df)
+
+modelo = KMeans(k=3, seed=1).fit(datos)
+segmentos = modelo.transform(datos)
+segmentos.select("cliente_id", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: predicción de churn</h2>
+  <pre><code class="language-python">from pyspark.ml.classification import LogisticRegression
+
+ensamblador = VectorAssembler(inputCols=["uso", "quejas", "antiguedad"], outputCol="features")
+datos = ensamblador.transform(df)
+
+modelo = LogisticRegression(labelCol="abandono", featuresCol="features").fit(datos)
+predicciones = modelo.transform(datos)
+predicciones.select("cliente_id", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Beneficios de la IA en marketing</h2>
+  <ul>
+    <li>Mayor precisión en la segmentación de clientes.</li>
+    <li>Campañas publicitarias más efectivas y personalizadas.</li>
+    <li>Incremento en la retención y fidelización de clientes.</li>
+    <li>Reducción de costos en marketing operativo.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Retos en marketing con IA</h2>
+  <ul>
+    <li>Privacidad y consentimiento en el uso de datos de clientes.</li>
+    <li>Evitar sesgos en algoritmos de recomendación.</li>
+    <li>Explicabilidad de modelos predictivos para decisiones críticas.</li>
+    <li>Integración con sistemas CRM y plataformas digitales.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Casos de éxito</h2>
+  <ul>
+    <li><strong>Netflix:</strong> motor de recomendaciones que personaliza el contenido.</li>
+    <li><strong>Coca-Cola:</strong> uso de IA para analizar campañas en redes sociales.</li>
+    <li><strong>Spotify:</strong> listas de reproducción personalizadas con IA.</li>
+    <li><strong>Starbucks:</strong> ofertas personalizadas basadas en datos de consumo.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Impacto en el futuro</h2>
+  <ul>
+    <li>Experiencias de cliente totalmente personalizadas en tiempo real.</li>
+    <li>Marketing conversacional con chatbots avanzados.</li>
+    <li>Uso de IA generativa para crear campañas publicitarias.</li>
+    <li>Mayor integración entre marketing digital y físico.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>La IA está cambiando la forma en que las empresas entienden y se relacionan con los clientes. Un marketing más personalizado y predictivo genera valor tanto para las compañías como para los consumidores.</p>
+</div>
+
     
 
         <div class="nav">

@@ -10,6 +10,94 @@
 </head>
     <body>
         <div class="container">
+            <div class="slide">
+  <h1>MISIÓN 3 · Lección 4</h1>
+  <h2>Inteligencia Artificial en el Sector Retail</h2>
+  <p>El sector retail ha adoptado la Inteligencia Artificial para mejorar la experiencia del cliente, optimizar inventarios y potenciar las ventas. En esta lección exploraremos sus aplicaciones más destacadas.</p>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones principales</h2>
+  <ul>
+    <li><strong>Sistemas de recomendación:</strong> sugerencias personalizadas de productos.</li>
+    <li><strong>Gestión de inventarios:</strong> predicción de demanda y reposición automática.</li>
+    <li><strong>Pricing dinámico:</strong> ajuste de precios en tiempo real según la demanda.</li>
+    <li><strong>Análisis de clientes:</strong> segmentación y predicción de comportamiento.</li>
+    <li><strong>Chatbots de atención:</strong> soporte 24/7 en tiendas online.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: sistema de recomendación</h2>
+  <pre><code class="language-python">from pyspark.ml.recommendation import ALS
+
+# Filtrado colaborativo
+als = ALS(userCol="usuario", itemCol="producto", ratingCol="rating", coldStartStrategy="drop")
+modelo = als.fit(df)
+
+# Recomendaciones personalizadas
+recomendaciones = modelo.recommendForAllUsers(3)
+recomendaciones.show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: predicción de demanda</h2>
+  <pre><code class="language-python">from pyspark.ml.regression import LinearRegression
+
+# Variables: día, promociones, temporada
+lr = LinearRegression(featuresCol="features", labelCol="ventas")
+modelo = lr.fit(df)
+
+predicciones = modelo.transform(df)
+predicciones.select("fecha", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Beneficios de la IA en retail</h2>
+  <ul>
+    <li>Incremento en ventas gracias a recomendaciones.</li>
+    <li>Reducción de pérdidas por sobrestock o quiebres de inventario.</li>
+    <li>Precios más competitivos con estrategias dinámicas.</li>
+    <li>Mejora en la experiencia y fidelización del cliente.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Retos en el retail con IA</h2>
+  <ul>
+    <li>Integración con sistemas heredados (legacy).</li>
+    <li>Calidad y granularidad de los datos de clientes.</li>
+    <li>Privacidad y consentimiento en el uso de datos.</li>
+    <li>Dependencia de modelos predictivos en decisiones críticas.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Casos de éxito</h2>
+  <ul>
+    <li><strong>Amazon:</strong> motor de recomendaciones que representa el 35% de sus ventas.</li>
+    <li><strong>Zara:</strong> predicción de demanda para optimizar inventario en tiendas.</li>
+    <li><strong>Walmart:</strong> análisis en tiempo real para reposición de productos.</li>
+    <li><strong>Sephora:</strong> asistentes virtuales para personalizar experiencias de compra.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Impacto en el futuro</h2>
+  <ul>
+    <li>Tiendas inteligentes con visión por computadora para detección de productos.</li>
+    <li>Compras hiperpersonalizadas basadas en comportamiento y emociones.</li>
+    <li>Automatización completa de la gestión de inventarios.</li>
+    <li>Fusión entre experiencias físicas y digitales (phygital retail).</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>La IA en retail redefine la forma en que las empresas entienden y atienden a sus clientes. Quienes logren integrar analítica avanzada con experiencia personalizada tendrán una ventaja competitiva significativa.</p>
+</div>
     
 
         <div class="nav">

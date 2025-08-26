@@ -10,7 +10,97 @@
 </head>
     <body>
         <div class="container">
-    
+    <div class="slide">
+  <h1>MISIÓN 3 · Lección 1</h1>
+  <h2>Introducción a la IA Aplicada en la Industria</h2>
+  <p>En esta misión exploraremos cómo la Inteligencia Artificial (IA) transforma los diferentes sectores industriales. Veremos aplicaciones reales, retos y oportunidades que la IA ofrece en la era del Big Data.</p>
+</div>
+
+<div class="slide">
+  <h2>¿Qué es la IA aplicada en la industria?</h2>
+  <ul>
+    <li>Uso de algoritmos de Machine Learning y Deep Learning para resolver problemas prácticos.</li>
+    <li>Integración de modelos predictivos en procesos empresariales.</li>
+    <li>Optimización de operaciones, reducción de costos y generación de valor.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Sectores donde se aplica la IA</h2>
+  <ul>
+    <li><strong>Salud:</strong> diagnóstico asistido por IA, descubrimiento de fármacos.</li>
+    <li><strong>Finanzas:</strong> detección de fraudes, algoritmos de trading.</li>
+    <li><strong>Retail:</strong> recomendadores de productos, análisis de clientes.</li>
+    <li><strong>Industria:</strong> mantenimiento predictivo, control de calidad.</li>
+    <li><strong>Transporte:</strong> vehículos autónomos, optimización de rutas.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: mantenimiento predictivo</h2>
+  <pre><code class="language-python"># Ejemplo simplificado con Random Forest
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.classification import RandomForestClassifier
+
+# Dataset de sensores de maquinaria
+ensamblador = VectorAssembler(inputCols=["temperatura", "vibracion", "presion"], outputCol="features")
+datos = ensamblador.transform(df)
+
+modelo = RandomForestClassifier(labelCol="falla", featuresCol="features").fit(datos)
+predicciones = modelo.transform(datos)
+predicciones.select("falla", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ventajas de la IA en la industria</h2>
+  <ul>
+    <li>Automatización de procesos repetitivos.</li>
+    <li>Mayor precisión en la toma de decisiones.</li>
+    <li>Predicciones más fiables basadas en grandes volúmenes de datos.</li>
+    <li>Reducción de costos operativos.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Retos de la implementación</h2>
+  <ul>
+    <li>Calidad y disponibilidad de los datos.</li>
+    <li>Explicabilidad y confianza en los modelos.</li>
+    <li>Requerimientos de infraestructura tecnológica.</li>
+    <li>Resistencia al cambio en las organizaciones.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: recomendador en retail</h2>
+  <pre><code class="language-python"># Filtrado colaborativo con ALS (Spark MLlib)
+from pyspark.ml.recommendation import ALS
+
+als = ALS(userCol="usuario", itemCol="producto", ratingCol="rating", coldStartStrategy="drop")
+modelo = als.fit(df)
+
+# Generar recomendaciones
+recomendaciones = modelo.recommendForAllUsers(3)
+recomendaciones.show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Casos de éxito</h2>
+  <ul>
+    <li>Amazon: motor de recomendaciones que aumenta ventas en un 30%.</li>
+    <li>Siemens: mantenimiento predictivo en fábricas.</li>
+    <li>JP Morgan: detección de fraudes financieros en tiempo real.</li>
+    <li>Google: optimización de consumo energético en data centers.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>La IA aplicada en la industria no es solo una tendencia, sino una necesidad para mantener la competitividad. Su impacto en eficiencia, innovación y valor para el cliente la convierte en un pilar de la transformación digital.</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

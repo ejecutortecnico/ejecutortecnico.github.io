@@ -11,6 +11,105 @@
     <body>
         <div class="container">
     
+            <div class="slide">
+  <h1>MISIÓN 3 · Lección 2</h1>
+  <h2>Inteligencia Artificial en el Sector Salud</h2>
+  <p>La IA está revolucionando la medicina moderna al mejorar diagnósticos, personalizar tratamientos y optimizar la gestión hospitalaria. En esta lección exploraremos sus principales aplicaciones.</p>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones de la IA en salud</h2>
+  <ul>
+    <li><strong>Diagnóstico asistido:</strong> modelos de visión por computadora para detectar tumores y enfermedades.</li>
+    <li><strong>Medicina personalizada:</strong> análisis de datos genómicos para terapias adaptadas al paciente.</li>
+    <li><strong>Gestión hospitalaria:</strong> optimización de recursos y predicción de ingresos hospitalarios.</li>
+    <li><strong>Descubrimiento de fármacos:</strong> aceleración de investigaciones con modelos predictivos.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: diagnóstico por imágenes médicas</h2>
+  <pre><code class="language-python"># Ejemplo simplificado con red neuronal convolucional
+import tensorflow as tf
+from tensorflow.keras import layers, models
+
+model = models.Sequential([
+    layers.Conv2D(32, (3,3), activation='relu', input_shape=(128,128,3)),
+    layers.MaxPooling2D((2,2)),
+    layers.Conv2D(64, (3,3), activation='relu'),
+    layers.MaxPooling2D((2,2)),
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
+])
+
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: predicción de riesgo de enfermedad</h2>
+  <pre><code class="language-python"># Dataset con variables clínicas
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.classification import LogisticRegression
+
+ensamblador = VectorAssembler(
+    inputCols=["edad", "colesterol", "presion", "glucosa"], 
+    outputCol="features")
+datos = ensamblador.transform(df)
+
+modelo = LogisticRegression(featuresCol="features", labelCol="enfermedad")
+modelo = modelo.fit(datos)
+
+predicciones = modelo.transform(datos)
+predicciones.select("edad", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Beneficios de la IA en salud</h2>
+  <ul>
+    <li>Diagnósticos más rápidos y precisos.</li>
+    <li>Tratamientos personalizados según el perfil del paciente.</li>
+    <li>Optimización de recursos hospitalarios.</li>
+    <li>Avances acelerados en investigación médica.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Retos de la IA en salud</h2>
+  <ul>
+    <li>Privacidad y seguridad de datos sensibles.</li>
+    <li>Necesidad de interpretabilidad de los modelos.</li>
+    <li>Regulación y aprobación ética.</li>
+    <li>Resistencia del personal médico al cambio.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Casos de éxito</h2>
+  <ul>
+    <li><strong>Google DeepMind:</strong> detección de enfermedades oculares con precisión de expertos.</li>
+    <li><strong>IBM Watson Health:</strong> apoyo en diagnósticos oncológicos.</li>
+    <li><strong>PathAI:</strong> algoritmos para análisis de biopsias.</li>
+    <li><strong>Babylon Health:</strong> asistentes virtuales de salud.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Impacto en el futuro</h2>
+  <ul>
+    <li>Mayor accesibilidad a diagnósticos en regiones con pocos especialistas.</li>
+    <li>Reducción de costos en tratamientos.</li>
+    <li>Avances en medicina preventiva.</li>
+    <li>Posible integración de IA con robótica quirúrgica.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>La IA en salud no busca reemplazar a los médicos, sino potenciar sus capacidades. El reto es combinar innovación tecnológica con ética, seguridad y confianza en los modelos.</p>
+</div>
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

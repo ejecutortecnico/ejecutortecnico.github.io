@@ -10,6 +10,96 @@
 </head>
     <body>
         <div class="container">
+            <div class="slide">
+  <h1>MISIÓN 3 · Lección 8</h1>
+  <h2>Inteligencia Artificial en Energía y Sostenibilidad</h2>
+  <p>La IA desempeña un papel fundamental en la transición hacia un futuro sostenible. Permite optimizar el consumo energético, integrar energías renovables y reducir el impacto ambiental.</p>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones principales</h2>
+  <ul>
+    <li><strong>Optimización energética:</strong> reducción del consumo en edificios e industrias.</li>
+    <li><strong>Gestión de redes eléctricas inteligentes (smart grids):</strong> predicción de demanda y control dinámico.</li>
+    <li><strong>Energías renovables:</strong> predicción de generación solar y eólica.</li>
+    <li><strong>Monitoreo ambiental:</strong> análisis de datos climáticos y de contaminación.</li>
+    <li><strong>Movilidad sostenible:</strong> optimización de transporte eléctrico y compartido.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: predicción de consumo energético</h2>
+  <pre><code class="language-python">from pyspark.ml.regression import LinearRegression
+
+# Variables: hora, temperatura, día de la semana
+lr = LinearRegression(featuresCol="features", labelCol="consumo")
+modelo = lr.fit(df)
+
+predicciones = modelo.transform(df)
+predicciones.select("hora", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: predicción de generación solar</h2>
+  <pre><code class="language-python">import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# Red neuronal para series temporales
+model = models.Sequential([
+    layers.LSTM(50, activation='relu', input_shape=(24,1)),
+    layers.Dense(1)
+])
+
+model.compile(optimizer='adam', loss='mse')
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Beneficios de la IA en energía</h2>
+  <ul>
+    <li>Reducción del consumo y costos energéticos.</li>
+    <li>Mayor integración de energías renovables en la red.</li>
+    <li>Predicción de fallas en infraestructura energética.</li>
+    <li>Contribución a la sostenibilidad ambiental.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Retos en energía y sostenibilidad</h2>
+  <ul>
+    <li>Altos costos iniciales de implementación.</li>
+    <li>Requerimientos de grandes volúmenes de datos.</li>
+    <li>Seguridad en infraestructuras críticas.</li>
+    <li>Resistencia a cambios en sectores tradicionales.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Casos de éxito</h2>
+  <ul>
+    <li><strong>Google DeepMind:</strong> reducción del 40% en consumo energético de data centers.</li>
+    <li><strong>Siemens Gamesa:</strong> predicción de generación eólica con IA.</li>
+    <li><strong>Tesla:</strong> optimización de carga en baterías Powerwall y vehículos eléctricos.</li>
+    <li><strong>Enel:</strong> uso de IA en gestión de redes inteligentes.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Impacto en el futuro</h2>
+  <ul>
+    <li>Ciudades inteligentes con consumo energético optimizado.</li>
+    <li>Integración masiva de energías renovables en las redes eléctricas.</li>
+    <li>Transporte eléctrico autónomo y sostenible.</li>
+    <li>Uso extendido de IA para combatir el cambio climático.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>La IA es clave para enfrentar los retos de sostenibilidad. Su capacidad de optimizar recursos energéticos y reducir el impacto ambiental la convierte en un aliado esencial en la lucha contra el cambio climático.</p>
+</div>
+
     
 
         <div class="nav">

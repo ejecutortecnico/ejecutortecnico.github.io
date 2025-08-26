@@ -10,6 +10,94 @@
 </head>
     <body>
         <div class="container">
+            <div class="slide">
+  <h1>MISIÓN 3 · Lección 9</h1>
+  <h2>Proyecto Práctico: IA Aplicada a un Sector Específico</h2>
+  <p>En esta lección, los estudiantes aplicarán lo aprendido desarrollando un proyecto práctico de IA en un sector de su elección (salud, finanzas, retail, industria, transporte, energía o marketing).</p>
+</div>
+
+<div class="slide">
+  <h2>Objetivo del proyecto</h2>
+  <p>Integrar técnicas de machine learning, big data y analítica avanzada para resolver un problema real de negocio dentro de un sector específico.</p>
+</div>
+
+<div class="slide">
+  <h2>Fases del proyecto</h2>
+  <ol>
+    <li><strong>Definición del problema:</strong> identificar un reto relevante en el sector elegido.</li>
+    <li><strong>Recolección de datos:</strong> usar datasets abiertos o simulados.</li>
+    <li><strong>Preprocesamiento:</strong> limpieza, normalización y feature engineering.</li>
+    <li><strong>Modelado:</strong> aplicar algoritmos de ML/DL adecuados.</li>
+    <li><strong>Evaluación:</strong> medir resultados con métricas claras.</li>
+    <li><strong>Visualización:</strong> generar reportes y dashboards.</li>
+  </ol>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo 1: proyecto en salud</h2>
+  <p><strong>Problema:</strong> predecir el riesgo de diabetes en pacientes.</p>
+  <pre><code class="language-python">from pyspark.ml.classification import LogisticRegression
+
+ensamblador = VectorAssembler(inputCols=["edad", "glucosa", "imc"], outputCol="features")
+datos = ensamblador.transform(df)
+
+modelo = LogisticRegression(labelCol="diabetes", featuresCol="features").fit(datos)
+resultados = modelo.transform(datos)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo 2: proyecto en retail</h2>
+  <p><strong>Problema:</strong> recomendar productos para aumentar ventas.</p>
+  <pre><code class="language-python">from pyspark.ml.recommendation import ALS
+
+als = ALS(userCol="usuario", itemCol="producto", ratingCol="rating", coldStartStrategy="drop")
+modelo = als.fit(df)
+recomendaciones = modelo.recommendForAllUsers(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo 3: proyecto en transporte</h2>
+  <p><strong>Problema:</strong> optimización de rutas de entrega.</p>
+  <pre><code class="language-python">import networkx as nx
+
+G = nx.Graph()
+G.add_weighted_edges_from([("A","B",4),("B","C",2),("A","C",5),("C","D",3)])
+
+ruta = nx.shortest_path(G, source="A", target="D", weight="weight")
+print("Ruta óptima:", ruta)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Checklist de entrega</h2>
+  <ul>
+    <li>Definición clara del problema.</li>
+    <li>Dataset documentado.</li>
+    <li>Pipeline de preprocesamiento.</li>
+    <li>Modelo entrenado y evaluado.</li>
+    <li>Resultados visualizados.</li>
+    <li>Conclusiones y aprendizajes.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Criterios de evaluación</h2>
+  <ul>
+    <li>Relevancia del problema elegido.</li>
+    <li>Correcta aplicación de técnicas de IA.</li>
+    <li>Creatividad en la solución propuesta.</li>
+    <li>Claridad en la presentación de resultados.</li>
+    <li>Trabajo en equipo e innovación.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>Este proyecto permite a los estudiantes consolidar sus conocimientos, aplicar la teoría en un caso real y demostrar sus competencias en IA aplicada en distintos sectores industriales.</p>
+</div>
+
     
 
         <div class="nav">

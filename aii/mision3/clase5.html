@@ -10,6 +10,102 @@
 </head>
     <body>
         <div class="container">
+            <div class="slide">
+  <h1>MISIÓN 3 · Lección 5</h1>
+  <h2>Inteligencia Artificial en el Sector Industrial</h2>
+  <p>La industria 4.0 se apoya en la Inteligencia Artificial para optimizar la producción, mejorar la calidad y anticipar fallos. En esta lección exploraremos cómo la IA transforma el sector industrial.</p>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones principales</h2>
+  <ul>
+    <li><strong>Mantenimiento predictivo:</strong> detección temprana de fallos en maquinaria.</li>
+    <li><strong>Control de calidad:</strong> visión por computadora para detectar defectos en productos.</li>
+    <li><strong>Optimización de procesos:</strong> algoritmos que ajustan parámetros de producción en tiempo real.</li>
+    <li><strong>Robótica inteligente:</strong> robots autónomos y colaborativos (cobots).</li>
+    <li><strong>Gestión de la cadena de suministro:</strong> predicción de demanda y logística avanzada.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: mantenimiento predictivo</h2>
+  <pre><code class="language-python">from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.classification import RandomForestClassifier
+
+# Variables: temperatura, vibración, presión
+ensamblador = VectorAssembler(inputCols=["temperatura", "vibracion", "presion"], outputCol="features")
+datos = ensamblador.transform(df)
+
+modelo = RandomForestClassifier(labelCol="falla", featuresCol="features").fit(datos)
+predicciones = modelo.transform(datos)
+predicciones.select("falla", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: control de calidad con visión artificial</h2>
+  <pre><code class="language-python">import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# CNN para clasificar productos defectuosos
+model = models.Sequential([
+    layers.Conv2D(32, (3,3), activation='relu', input_shape=(128,128,3)),
+    layers.MaxPooling2D((2,2)),
+    layers.Conv2D(64, (3,3), activation='relu'),
+    layers.MaxPooling2D((2,2)),
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(2, activation='softmax')
+])
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Beneficios de la IA en la industria</h2>
+  <ul>
+    <li>Menor tiempo de inactividad gracias al mantenimiento predictivo.</li>
+    <li>Reducción de costos operativos y de producción.</li>
+    <li>Mayor eficiencia energética y sostenibilidad.</li>
+    <li>Productos con menos defectos y mayor calidad.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Retos en la industria</h2>
+  <ul>
+    <li>Alto costo inicial de implementación.</li>
+    <li>Integración con maquinaria y sistemas heredados.</li>
+    <li>Requerimiento de personal capacitado en IA y Big Data.</li>
+    <li>Ciberseguridad en fábricas conectadas.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Casos de éxito</h2>
+  <ul>
+    <li><strong>General Electric:</strong> mantenimiento predictivo en turbinas y motores.</li>
+    <li><strong>Siemens:</strong> fábricas inteligentes con gemelos digitales.</li>
+    <li><strong>Bosch:</strong> control de calidad con visión por computadora.</li>
+    <li><strong>Tesla:</strong> automatización y robótica avanzada en líneas de producción.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Impacto en el futuro</h2>
+  <ul>
+    <li>Expansión de fábricas totalmente autónomas.</li>
+    <li>Uso extendido de gemelos digitales en procesos industriales.</li>
+    <li>Mayor colaboración humano-robot en la producción.</li>
+    <li>Producción más flexible y personalizada.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>La IA en la industria es un motor clave para la transformación digital. Su implementación permitirá mayor competitividad, sostenibilidad y adaptación a las necesidades del mercado global.</p>
+</div>
     
 
         <div class="nav">

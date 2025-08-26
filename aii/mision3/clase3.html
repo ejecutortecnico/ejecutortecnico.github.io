@@ -10,6 +10,99 @@
 </head>
     <body>
         <div class="container">
+            <div class="slide">
+  <h1>MISIÓN 3 · Lección 3</h1>
+  <h2>Inteligencia Artificial en el Sector Financiero</h2>
+  <p>El sector financiero ha sido uno de los primeros en adoptar la Inteligencia Artificial. Desde la detección de fraudes hasta el trading algorítmico, la IA ha transformado la forma en que operan bancos, aseguradoras y fintechs.</p>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones principales</h2>
+  <ul>
+    <li><strong>Detección de fraudes:</strong> modelos de IA identifican patrones anómalos en transacciones.</li>
+    <li><strong>Trading algorítmico:</strong> algoritmos de ML toman decisiones de inversión en milisegundos.</li>
+    <li><strong>Scoring crediticio:</strong> análisis de riesgo con datos alternativos.</li>
+    <li><strong>Atención al cliente:</strong> chatbots y asistentes virtuales financieros.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: detección de fraudes</h2>
+  <pre><code class="language-python"># Dataset de transacciones
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.classification import RandomForestClassifier
+
+ensamblador = VectorAssembler(
+    inputCols=["monto", "hora", "ubicacion", "tipo_transaccion"], 
+    outputCol="features")
+datos = ensamblador.transform(df)
+
+modelo = RandomForestClassifier(labelCol="fraude", featuresCol="features")
+modelo = modelo.fit(datos)
+
+predicciones = modelo.transform(datos)
+predicciones.select("monto", "fraude", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: scoring crediticio</h2>
+  <pre><code class="language-python"># Regresión logística para clasificación de riesgo
+from pyspark.ml.classification import LogisticRegression
+
+modelo = LogisticRegression(featuresCol="features", labelCol="default")
+modelo = modelo.fit(datos)
+
+predicciones = modelo.transform(datos)
+predicciones.select("cliente_id", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Beneficios de la IA en finanzas</h2>
+  <ul>
+    <li>Mayor precisión en la detección de fraudes.</li>
+    <li>Acceso a crédito para personas sin historial tradicional.</li>
+    <li>Optimización de portafolios de inversión.</li>
+    <li>Atención al cliente 24/7 mediante chatbots.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Retos de la IA en finanzas</h2>
+  <ul>
+    <li>Explicabilidad de modelos en decisiones críticas.</li>
+    <li>Protección de datos sensibles y cumplimiento normativo.</li>
+    <li>Riesgos de sesgo en modelos de scoring.</li>
+    <li>Alta dependencia tecnológica en operaciones clave.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Casos de éxito</h2>
+  <ul>
+    <li><strong>Mastercard:</strong> sistemas de IA para detección de fraudes en tiempo real.</li>
+    <li><strong>JP Morgan Chase:</strong> automatización de análisis de contratos financieros.</li>
+    <li><strong>PayPal:</strong> redes neuronales para prevenir fraudes en pagos digitales.</li>
+    <li><strong>Robinhood:</strong> trading algorítmico y recomendaciones personalizadas.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Impacto en el futuro</h2>
+  <ul>
+    <li>Banca más inclusiva gracias al uso de datos alternativos.</li>
+    <li>Mayor automatización en inversiones y gestión de riesgos.</li>
+    <li>Regulación más estricta sobre modelos de IA.</li>
+    <li>Integración de IA con blockchain y criptoactivos.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>La IA en el sector financiero ofrece innovación y eficiencia, pero también implica responsabilidad en cuanto a ética, seguridad y regulación. El futuro de las finanzas estará estrechamente ligado a los avances en IA.</p>
+</div>
+
     
 
         <div class="nav">

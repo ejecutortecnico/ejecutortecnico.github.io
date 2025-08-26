@@ -10,6 +10,100 @@
 </head>
     <body>
         <div class="container">
+            <div class="slide">
+  <h1>MISIÓN 3 · Lección 6</h1>
+  <h2>Inteligencia Artificial en el Sector Transporte</h2>
+  <p>La Inteligencia Artificial está revolucionando el transporte mediante vehículos autónomos, optimización logística y gestión del tráfico. En esta lección exploraremos estas aplicaciones y sus beneficios.</p>
+</div>
+
+<div class="slide">
+  <h2>Aplicaciones principales</h2>
+  <ul>
+    <li><strong>Vehículos autónomos:</strong> conducción asistida y completamente autónoma.</li>
+    <li><strong>Optimización de rutas:</strong> algoritmos que reducen tiempos y costos de transporte.</li>
+    <li><strong>Gestión del tráfico:</strong> sistemas inteligentes que ajustan semáforos y flujos vehiculares.</li>
+    <li><strong>Mantenimiento predictivo:</strong> detección temprana de fallos en flotas de transporte.</li>
+    <li><strong>Seguridad vial:</strong> análisis en tiempo real de condiciones y riesgos.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: optimización de rutas</h2>
+  <pre><code class="language-python">import networkx as nx
+
+# Grafo de rutas
+G = nx.Graph()
+G.add_weighted_edges_from([
+    ("A", "B", 5),
+    ("B", "C", 3),
+    ("A", "C", 10),
+    ("C", "D", 2)
+])
+
+# Algoritmo de Dijkstra para ruta más corta
+ruta = nx.shortest_path(G, source="A", target="D", weight="weight")
+print("Ruta óptima:", ruta)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: predicción de demanda en transporte</h2>
+  <pre><code class="language-python">from pyspark.ml.regression import LinearRegression
+
+# Dataset con variables: hora, día, clima, eventos
+lr = LinearRegression(featuresCol="features", labelCol="demanda")
+modelo = lr.fit(df)
+
+predicciones = modelo.transform(df)
+predicciones.select("hora", "prediction").show(5)
+</code></pre>
+</div>
+
+<div class="slide">
+  <h2>Beneficios de la IA en transporte</h2>
+  <ul>
+    <li>Reducción de accidentes y mayor seguridad vial.</li>
+    <li>Ahorro de costos en logística y mantenimiento.</li>
+    <li>Reducción de tiempos de viaje y congestión.</li>
+    <li>Mejora en la sostenibilidad con menor consumo energético.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Retos del transporte con IA</h2>
+  <ul>
+    <li>Regulación y aceptación social de los vehículos autónomos.</li>
+    <li>Seguridad y ciberataques en sistemas conectados.</li>
+    <li>Infraestructura urbana limitada en algunas regiones.</li>
+    <li>Altos costos de implementación inicial.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Casos de éxito</h2>
+  <ul>
+    <li><strong>Tesla:</strong> conducción asistida y piloto automático.</li>
+    <li><strong>Waymo:</strong> flotas de taxis autónomos en ciudades piloto.</li>
+    <li><strong>UPS:</strong> algoritmos de optimización de rutas para reducir millas recorridas.</li>
+    <li><strong>Waze:</strong> uso de IA para predicción de tráfico en tiempo real.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Impacto en el futuro</h2>
+  <ul>
+    <li>Expansión de vehículos totalmente autónomos en transporte público y privado.</li>
+    <li>Ciudades inteligentes con gestión de tráfico basada en IA.</li>
+    <li>Logística autónoma con drones y robots de entrega.</li>
+    <li>Mayor integración con energías renovables y movilidad sostenible.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Reflexión final</h2>
+  <p>La IA en transporte promete mayor seguridad, eficiencia y sostenibilidad. Sin embargo, requiere superar barreras tecnológicas, sociales y regulatorias para consolidarse como el motor de la movilidad del futuro.</p>
+</div>
+
     
 
         <div class="nav">

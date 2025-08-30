@@ -147,6 +147,15 @@ import gradio as gr
 import tensorflow as tf
 import numpy as np
 
+train_ds = tf.keras.utils.image_dataset_from_directory(
+    "train",
+    validation_split=0.2,
+    subset="training",
+    seed=123,
+    image_size=(180, 180),
+    batch_size=32
+)
+
 # Cargar el modelo entrenado
 model = tf.keras.models.load_model("modelo_entrenado.keras")
 class_names = train_ds.class_names  # Lista de clases según el dataset

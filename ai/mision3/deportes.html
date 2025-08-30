@@ -50,6 +50,18 @@ val_ds = tf.keras.utils.image_dataset_from_directory(
     image_size=(180, 180),
     batch_size=32
 )
+
+test_ds = tf.keras.utils.image_dataset_from_directory(
+    "test",
+    validation_split=0.2,
+    subset="validation",
+    seed=123,
+    image_size=(180, 180),
+    batch_size=32
+)
+
+class_names = train_ds.class_names  # Lista de clases según el dataset
+num_clases = len(class_names)
                 </code></pre>
               </div>
               
@@ -88,6 +100,8 @@ history = model.fit(
     validation_data=val_ds,
     epochs=10
 )
+
+model.save("modelo_entrenado.keras")
                 </code></pre>
               </div>
               

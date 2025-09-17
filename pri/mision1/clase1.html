@@ -23,6 +23,33 @@
   </ul>
 </div>
 
+<div class="slide">
+  <h2>Datos, Información y Conocimiento</h2>
+  <ul>
+    <li><strong>Datos:</strong> Son hechos brutos, sin contexto ni interpretación.<br>
+      <em>Ejemplo:</em> "23", "Rojo", "2025-09-17".
+    </li>
+    <li><strong>Información:</strong> Son datos organizados y procesados que adquieren un significado.<br>
+      <em>Ejemplo:</em> "La temperatura es 23°C".
+    </li>
+    <li><strong>Conocimiento:</strong> Es la comprensión y uso de la información para tomar decisiones o resolver problemas.<br>
+      <em>Ejemplo:</em> "Con 23°C es una temperatura agradable para salir a caminar".
+    </li>
+  </ul>
+</div>
+
+ <div class="slide" data-title="¿Qué es una BD?">
+    <h2>¿Qué es una Base de Datos Relacional?</h2>
+    <ul>
+      <li>Un sistema para almacenar datos en <strong>tablas</strong> relacionadas entre sí.</li>
+      <li>Se basa en el <em>modelo relacional</em> (filas = tuplas, columnas = atributos).</li>
+      <li>Usa SQL como lenguaje de definición y consulta de datos.</li>
+      <li>Ventajas: consistencia, integridad, consultas potentes, transacciones ACID.</li>
+    </ul>
+    <p class="badge">Ejemplos: PostgreSQL, MySQL, MariaDB, SQLite, SQL Server, Oracle</p>
+  </div>
+
+
 <div class="slide" data-title="¿Qué es una BDR?">
   <h2>Introducción a las Bases de Datos Relacionales</h2>
   <p>
@@ -134,222 +161,6 @@ SHOW TABLES;</code></pre>
     <li>Verifica las tablas con <code>DESCRIBE</code> y <code>SHOW TABLES</code>.</li>
   </ol>
 </div>
-
-
-
-
-
-
-
-     <div class="slide" data-title="Título">
-    <h1>Misión 2 · Lección 1</h1>
-    <h2>Introducción a Bases de Datos Relacionales</h2>
-    <h3>Objetivos de la lección</h3>
-    <ul>
-      <li>Comprender qué es una base de datos relacional y por qué usarla.</li>
-      <li>Conocer tablas, filas, columnas, claves primarias y foráneas.</li>
-      <li>Ejecutar consultas SQL básicas: <code>CREATE</code>, <code>INSERT</code>, <code>SELECT</code>, <code>JOIN</code>.</li>
-    </ul>
-    <div class="kpi">
-      <div class="card"><strong>Duración:</strong><br/>90 min</div>
-      <div class="card"><strong>Requisitos:</strong><br/>Conocimientos básicos de programación</div>
-      <div class="card"><strong>Entorno:</strong><br/>PostgreSQL / MySQL / SQLite</div>
-    </div>
-  </div>
-
-  <div class="slide" data-title="¿Qué es una BD?">
-    <h2>¿Qué es una Base de Datos Relacional?</h2>
-    <ul>
-      <li>Un sistema para almacenar datos en <strong>tablas</strong> relacionadas entre sí.</li>
-      <li>Se basa en el <em>modelo relacional</em> (filas = tuplas, columnas = atributos).</li>
-      <li>Usa SQL como lenguaje de definición y consulta de datos.</li>
-      <li>Ventajas: consistencia, integridad, consultas potentes, transacciones ACID.</li>
-    </ul>
-    <p class="badge">Ejemplos: PostgreSQL, MySQL, MariaDB, SQLite, SQL Server, Oracle</p>
-  </div>
-
-  <div class="slide" data-title="Estructura">
-    <h2>Tablas, Filas, Columnas y Tipos</h2>
-    <div class="grid-2">
-      <div>
-        <ul>
-          <li><strong>Tabla</strong>: colección de registros del mismo tipo (p. ej., <code>clientes</code>).</li>
-          <li><strong>Fila</strong>: un registro (p. ej., un cliente).</li>
-          <li><strong>Columna</strong>: un atributo (p. ej., <code>email</code>).</li>
-          <li><strong>Tipos</strong>: <code>INT</code>, <code>VARCHAR</code>, <code>DATE</code>, <code>BOOLEAN</code>, etc.</li>
-        </ul>
-      </div>
-      <div>
-<pre><code>-- Ejemplo de tabla
-CREATE TABLE clientes (
-  id SERIAL PRIMARY KEY,
-  nombre VARCHAR(80) NOT NULL,
-  email VARCHAR(120) UNIQUE,
-  creado_en TIMESTAMP DEFAULT NOW()
-);</code></pre>
-      </div>
-    </div>
-  </div>
-
-  <div class="slide" data-title="Claves">
-    <h2>Claves Primarias y Foráneas</h2>
-    <ul>
-      <li><strong>PRIMARY KEY</strong>: identifica de forma única una fila.</li>
-      <li><strong>FOREIGN KEY</strong>: referencia a otra tabla para mantener integridad referencial.</li>
-    </ul>
-<pre><code>CREATE TABLE pedidos (
-  id SERIAL PRIMARY KEY,
-  cliente_id INT NOT NULL,
-  total NUMERIC(10,2) NOT NULL,
-  creado_en TIMESTAMP DEFAULT NOW(),
-  CONSTRAINT fk_cliente FOREIGN KEY (cliente_id)
-    REFERENCES clientes(id)
-    ON DELETE CASCADE
-);</code></pre>
-  </div>
-
-  <div class="slide" data-title="Modelo ER">
-    <h2>Modelo Entidad-Relación (ER)</h2>
-    <ul>
-      <li>Representa entidades (tablas) y relaciones (<code>1:1</code>, <code>1:N</code>, <code>N:M</code>).</li>
-      <li>Las relaciones <code>N:M</code> se modelan con una tabla intermedia.</li>
-    </ul>
-<pre><code>-- Tabla intermedia para relación N:M
-CREATE TABLE producto_pedido (
-  pedido_id INT REFERENCES pedidos(id),
-  producto_id INT REFERENCES productos(id),
-  cantidad INT NOT NULL DEFAULT 1,
-  PRIMARY KEY (pedido_id, producto_id)
-);</code></pre>
-  </div>
-
-  <div class="slide" data-title="Normalización">
-    <h2>Normalización (1FN, 2FN, 3FN)</h2>
-    <ul>
-      <li><strong>1FN</strong>: sin grupos repetidos; cada celda es atómica.</li>
-      <li><strong>2FN</strong>: 1FN + sin dependencias parciales de clave compuesta.</li>
-      <li><strong>3FN</strong>: 2FN + sin dependencias transitivas.</li>
-    </ul>
-<pre><code>-- Anti-ejemplo: dirección en un solo campo (no atómico)
-direccion = "Cra 1 #23-45, Bogotá, Colombia"
-
--- Mejor: separar columnas
-calle, numero, ciudad, pais</code></pre>
-  </div>
-
-  <div class="slide" data-title="DDL">
-    <h2>SQL DDL — Definición de Datos</h2>
-<pre><code>-- Crear base de datos y tablas
-CREATE DATABASE tienda;
-
-CREATE TABLE categorias (
-  id SERIAL PRIMARY KEY,
-  nombre VARCHAR(60) NOT NULL UNIQUE
-);
-
-CREATE TABLE productos (
-  id SERIAL PRIMARY KEY,
-  categoria_id INT NOT NULL REFERENCES categorias(id),
-  nombre VARCHAR(80) NOT NULL,
-  precio NUMERIC(10,2) NOT NULL CHECK (precio &gt;= 0),
-  stock INT NOT NULL DEFAULT 0
-);</code></pre>
-  </div>
-
-  <div class="slide" data-title="DML">
-    <h2>SQL DML — Inserción y Actualización</h2>
-<pre><code>-- Insertar datos
-INSERT INTO categorias (nombre) VALUES ('Bebidas'), ('Snacks');
-
-INSERT INTO productos (categoria_id, nombre, precio, stock)
-VALUES (1, 'Agua 600ml', 1.20, 50),
-       (2, 'Papas BBQ', 1.80, 25);
-
--- Actualizar y eliminar
-UPDATE productos SET stock = stock + 10 WHERE id = 1;
-DELETE FROM productos WHERE id = 2;</code></pre>
-  </div>
-
-  <div class="slide" data-title="SELECT">
-    <h2>Consultas Básicas — SELECT</h2>
-<pre><code>-- Proyección y filtrado
-SELECT id, nombre, precio FROM productos;
-
--- Filtros y orden
-SELECT * FROM productos
-WHERE precio &gt;= 1.50
-ORDER BY precio DESC
-LIMIT 10;</code></pre>
-  </div>
-
-  <div class="slide" data-title="Agregación">
-    <h2>Agregación — GROUP BY / HAVING</h2>
-<pre><code>-- Promedio de precio por categoría
-SELECT c.nombre AS categoria, AVG(p.precio) AS precio_prom
-FROM productos p
-JOIN categorias c ON c.id = p.categoria_id
-GROUP BY c.nombre
-HAVING AVG(p.precio) &gt;= 1.00;</code></pre>
-  </div>
-
-  <div class="slide" data-title="JOINs">
-    <h2>Relaciones — JOINs</h2>
-<pre><code>-- INNER JOIN: sólo coincidencias
-SELECT p.nombre, c.nombre AS categoria
-FROM productos p
-INNER JOIN categorias c ON c.id = p.categoria_id;
-
--- LEFT JOIN: conserva la izquierda
-SELECT c.nombre, p.nombre
-FROM categorias c
-LEFT JOIN productos p ON p.categoria_id = c.id;</code></pre>
-  </div>
-
-  <div class="slide" data-title="Constraints">
-    <h2>Restricciones y Reglas</h2>
-<pre><code>ALTER TABLE productos
-ADD CONSTRAINT uq_nombre UNIQUE (nombre);
-
-ALTER TABLE productos
-ADD CONSTRAINT chk_stock CHECK (stock &gt;= 0);
-
--- Integridad referencial con acciones
-ALTER TABLE productos
-ADD CONSTRAINT fk_categoria
-FOREIGN KEY (categoria_id)
-REFERENCES categorias(id)
-ON UPDATE CASCADE
-ON DELETE RESTRICT;</code></pre>
-  </div>
-
-  <div class="slide" data-title="Transacciones">
-    <h2>Transacciones y Propiedades ACID</h2>
-    <ul>
-      <li><strong>A</strong>tomicidad, <strong>C</strong>onsistencia, <strong>I</strong>solamiento, <strong>D</strong>urabilidad.</li>
-      <li>Garantizan que varias operaciones se ejecuten como una unidad.</li>
-    </ul>
-<pre><code>BEGIN;
-  UPDATE productos SET stock = stock - 2 WHERE id = 1;
-  INSERT INTO pedidos (cliente_id, total) VALUES (42, 2.40);
-COMMIT;
-
--- Si algo falla:
-ROLLBACK;</code></pre>
-  </div>
-
-  <div class="slide" data-title="Índices">
-    <h2>Índices y Rendimiento</h2>
-    <ul>
-      <li>Aceleran búsquedas a costa de espacio y coste en escrituras.</li>
-      <li>Úsalos en columnas muy consultadas o para claves externas.</li>
-    </ul>
-<pre><code>-- Crear índice
-CREATE INDEX idx_productos_nombre ON productos(nombre);
-
--- Inspeccionar plan (PostgreSQL)
-EXPLAIN ANALYZE
-SELECT * FROM productos WHERE nombre LIKE 'Agua%';</code></pre>
-  </div>
 
   <div class="slide" data-title="Ejercicio guiado">
     <h2>Ejercicio Guiado — Mini Tienda</h2>

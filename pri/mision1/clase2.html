@@ -32,7 +32,17 @@ INSERT INTO productos (nombre, precio, stock)
 VALUES ('Café', 2.50, 100),
        ('Té verde', 1.80, 50);</code></pre>
   </div>
+ <div class="slide" data-title="Selección básica">
+    <h2>SELECT — Consultas Básicas</h2>
+<pre><code>-- Consultar todas las filas
+SELECT * FROM productos;
 
+-- Selección de columnas
+SELECT nombre, precio FROM productos;
+
+-- Condiciones
+SELECT * FROM productos WHERE precio &gt;= 2.00;</code></pre>
+  </div>
   <div class="slide" data-title="Actualización">
     <h2>UPDATE — Modificar Datos</h2>
 <pre><code>-- Cambiar el email de un cliente
@@ -54,18 +64,6 @@ DELETE FROM clientes WHERE id = 5;
 -- Vaciar la tabla por completo (no recomendado)
 DELETE FROM clientes; -- ¡peligroso!</code></pre>
     <p>Para reiniciar un contador autoincremental se puede usar <code>TRUNCATE</code>.</p>
-  </div>
-
-  <div class="slide" data-title="Selección básica">
-    <h2>SELECT — Consultas Básicas</h2>
-<pre><code>-- Consultar todas las filas
-SELECT * FROM productos;
-
--- Selección de columnas
-SELECT nombre, precio FROM productos;
-
--- Condiciones
-SELECT * FROM productos WHERE precio &gt;= 2.00;</code></pre>
   </div>
 
   <div class="slide" data-title="Orden y límite">

@@ -96,6 +96,70 @@ LEFT JOIN pedidos p ON c.id = p.cliente_id
 WHERE p.id IS NULL;</code></pre>
   <p>Útil para detectar clientes inactivos.</p>
 </div>
+<div class="slide">
+  <h2>INNER JOIN: Clientes y sus Representantes de Ventas</h2>
+  <pre>
+  SELECT c.customerName, e.firstName, e.lastName
+  FROM customers c
+  INNER JOIN employees e 
+    ON c.salesRepEmployeeNumber = e.employeeNumber;
+  </pre>
+  <p><strong>Ejercicio:</strong> Muestra los clientes junto con el correo electrónico de su representante.</p>
+</div>
+
+<div class="slide">
+  <h2>LEFT JOIN: Clientes con o sin Pagos</h2>
+  <pre>
+  SELECT c.customerName, p.checkNumber, p.amount
+  FROM customers c
+  LEFT JOIN payments p 
+    ON c.customerNumber = p.customerNumber
+  ORDER BY c.customerName;
+  </pre>
+  <p><strong>Ejercicio:</strong> Encuentra los clientes que no han hecho ningún pago.</p>
+</div>
+
+<div class="slide">
+  <h2>RIGHT JOIN: Órdenes y Clientes</h2>
+  <pre>
+  SELECT o.orderNumber, o.orderDate, c.customerName
+  FROM orders o
+  RIGHT JOIN customers c 
+    ON o.customerNumber = c.customerNumber;
+  </pre>
+  <p><strong>Ejercicio:</strong> Identifica los clientes que aún no tienen órdenes registradas.</p>
+</div>
+
+<div class="slide">
+  <h2>JOIN con Múltiples Tablas: Órdenes, Detalles y Productos</h2>
+  <pre>
+  SELECT o.orderNumber, p.productName, od.quantityOrdered, od.priceEach
+  FROM orders o
+  JOIN orderdetails od ON o.orderNumber = od.orderNumber
+  JOIN products p ON od.productCode = p.productCode;
+  </pre>
+  <p><strong>Ejercicio:</strong> Lista los productos y cantidades pedidos por cada cliente.</p>
+</div>
+
+<div class="slide">
+  <h2>JOIN + Agregación: Total Pagado por Cliente</h2>
+  <pre>
+  SELECT c.customerName, SUM(p.amount) AS totalPagado
+  FROM customers c
+  JOIN payments p ON c.customerNumber = p.customerNumber
+  GROUP BY c.customerName
+  ORDER BY totalPagado DESC;
+  </pre>
+  <p><strong>Ejercicio:</strong> Encuentra el cliente que ha pagado la mayor cantidad total.</p>
+</div>
+
+<div class="slide">
+  <h2>Ejercicio Avanzado</h2>
+  <p>Consulta los clientes, su representante de ventas, el número de órdenes realizadas y el total pagado, mostrando solo los que han hecho más de 5 órdenes.</p>
+  <pre>
+  -- Inténtalo tú: requiere combinar customers, employees, orders y payments
+  </pre>
+</div>
 
 <div class="slide" data-title="Ejercicio">
   <h2>Ejercicio Guiado</h2>

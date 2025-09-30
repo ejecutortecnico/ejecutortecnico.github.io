@@ -10,125 +10,120 @@
 </head>
     <body>
         <div class="container">
-            <div class="slide">
-  <h1>MISIÓN 1 · Lección 3</h1>
-  <h2>Desarrollo de Aplicaciones de Análisis de Texto</h2>
-  <p>En esta lección aprenderemos cómo transformar un modelo de análisis de texto en una aplicación funcional que pueda ser consumida por usuarios o integrarse en otros sistemas.</p>
+
+    <div class="slide" data-title="Introducción">
+  <h1>Misión 1 · Lección 3</h1>
+  <h2>Manejo de Eventos en React</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender cómo se manejan los eventos en React.</li>
+    <li>Usar funciones para responder a interacciones del usuario.</li>
+    <li>Aprender a pasar parámetros en eventos.</li>
+    <li>Conocer eventos comunes como <code>onClick</code>, <code>onChange</code>, <code>onSubmit</code>.</li>
+  </ul>
 </div>
 
-<div class="slide">
-  <h2>Arquitectura de una aplicación NLP</h2>
+<div class="slide" data-title="Eventos en React">
+  <h2>Eventos en React</h2>
+  <ul>
+    <li>Se parecen a los del DOM, pero con sintaxis camelCase.</li>
+    <li>Ejemplo: en HTML se usa <code>onclick</code>, en React es <code>onClick</code>.</li>
+    <li>React usa un sistema de <strong>eventos sintéticos</strong> para unificar navegadores.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejemplo onClick">
+  <h2>Ejemplo: onClick</h2>
+<pre><code>export default function Boton() {
+  function manejarClick() {
+    alert("¡Botón clickeado!");
+  }
+
+  return &lt;button onClick={manejarClick}&gt;Haz clic aquí&lt;/button&gt;;
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Acceso al evento">
+  <h2>Acceso al objeto evento</h2>
+<pre><code>export default function Input() {
+  function manejarCambio(e) {
+    console.log("Valor:", e.target.value);
+  }
+
+  return &lt;input type="text" onChange={manejarCambio} /&gt;;
+}</code></pre>
+  <p>El parámetro <code>e</code> es un <strong>evento sintético</strong> con propiedades similares a un evento del DOM.</p>
+</div>
+
+<div class="slide" data-title="Prevenir comportamiento">
+  <h2>Prevenir comportamiento por defecto</h2>
+<pre><code>export default function Enlace() {
+  function manejarClick(e) {
+    e.preventDefault(); // evita que el link navegue
+    alert("Navegación bloqueada");
+  }
+
+  return (
+    &lt;a href="https://react.dev" onClick={manejarClick}&gt;
+      Ir a React
+    &lt;/a&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Eventos con parámetros">
+  <h2>Pasar parámetros en eventos</h2>
+<pre><code>export default function Producto({ id }) {
+  function manejarClick(idProducto) {
+    console.log("Producto clickeado:", idProducto);
+  }
+
+  return (
+    &lt;button onClick={(e) =&gt; manejarClick(id)}&gt;
+      Ver Producto
+    &lt;/button&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Eventos comunes">
+  <h2>Eventos comunes en React</h2>
+  <ul>
+    <li><code>onClick</code> → clic en un botón o elemento.</li>
+    <li><code>onChange</code> → cambios en inputs, selects.</li>
+    <li><code>onSubmit</code> → envío de formularios.</li>
+    <li><code>onMouseOver</code> / <code>onMouseOut</code> → interacción con el mouse.</li>
+    <li><code>onKeyDown</code>, <code>onKeyUp</code> → interacción con el teclado.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejemplo Formulario">
+  <h2>Ejemplo: Formulario con onSubmit</h2>
+<pre><code>export default function Formulario() {
+  function manejarSubmit(e) {
+    e.preventDefault();
+    alert("Formulario enviado");
+  }
+
+  return (
+    &lt;form onSubmit={manejarSubmit}&gt;
+      &lt;input type="text" placeholder="Escribe algo" /&gt;
+      &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Ejercicio">
+  <h2>Ejercicio Guiado 🛠️</h2>
   <ol>
-    <li><strong>Entrada:</strong> texto ingresado manualmente, archivos o datos de una API.</li>
-    <li><strong>Pipeline NLP:</strong> preprocesamiento → vectorización → modelo de predicción.</li>
-    <li><strong>Salida:</strong> etiquetas de sentimiento, puntuaciones, visualizaciones o endpoints de API.</li>
+    <li>Crea un componente <code>&lt;FormularioTarea /&gt;</code> con un input y un botón.</li>
+    <li>Usa <code>onChange</code> para capturar el texto escrito.</li>
+    <li>Usa <code>onSubmit</code> para mostrar el valor en un <code>alert</code>.</li>
+    <li>Extra: añade un botón "Limpiar" que reinicie el campo.</li>
   </ol>
 </div>
 
-<div class="slide">
-  <h2>Ejemplo: microservicio con FastAPI</h2>
-  <pre><code class="language-python">from fastapi import FastAPI
-from pydantic import BaseModel
-
-app = FastAPI()
-
-class Item(BaseModel):
-    text: str
-
-@app.post("/predict")
-async def predict(item: Item):
-    # Ejemplo: probabilidad fija
-    proba = 0.87
-    label = "positivo" if proba > 0.5 else "negativo"
-    return {"label": label, "score": proba}
-</code></pre>
-  <p>Con FastAPI podemos crear un servicio que reciba texto y devuelva la predicción del modelo.</p>
-</div>
-
-<div class="slide">
-  <h2>Conectar un modelo real</h2>
-  <pre><code class="language-python">from sklearn.pipeline import Pipeline
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-
-# Entrenamiento del modelo
-X = ["me encanta", "lo odio", "genial", "terrible"]
-y = [1, 0, 1, 0]
-
-pipe = Pipeline([
-  ("tfidf", TfidfVectorizer()),
-  ("clf", LogisticRegression(max_iter=1000))
-])
-pipe.fit(X, y)
-
-# Endpoint con modelo real
-@app.post("/predict_model")
-async def predict_model(item: Item):
-    label = pipe.predict([item.text])[0]
-    proba = pipe.predict_proba([item.text])[0,1]
-    return {"label": "positivo" if label == 1 else "negativo", "score": float(proba)}
-</code></pre>
-</div>
-
-<div class="slide">
-  <h2>Interfaz gráfica simple</h2>
-  <p>Podemos usar <strong>Streamlit</strong> para crear una interfaz web rápida:</p>
-  <pre><code class="language-python">import streamlit as st
-
-st.title("Análisis de Sentimientos")
-texto = st.text_area("Escribe un texto:")
-
-if st.button("Analizar"):
-    resultado = pipe.predict([texto])[0]
-    st.write("Resultado:", "Positivo" if resultado == 1 else "Negativo")
-</code></pre>
-</div>
-
-<div class="slide">
-  <h2>Persistencia y monitoreo</h2>
-  <ul>
-    <li>Guardar predicciones y retroalimentación en una base de datos.</li>
-    <li>Monitorear métricas en producción: latencia, precisión, drift de datos.</li>
-    <li>Versionar modelos con herramientas como <strong>MLflow</strong>.</li>
-  </ul>
-</div>
-
-<div class="slide">
-  <h2>Buenas prácticas</h2>
-  <ul>
-    <li>Separar entrenamiento y predicción en servicios distintos.</li>
-    <li>Documentar la API (FastAPI genera docs automáticamente en <code>/docs</code>).</li>
-    <li>Automatizar despliegue con Docker y CI/CD.</li>
-  </ul>
-</div>
-
-<div class="slide">
-  <h2>Ejemplo de despliegue con Docker</h2>
-  <pre><code class="language-dockerfile"># Dockerfile
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-</code></pre>
-  <p>Luego ejecutar: <code>docker build -t nlp-app .</code> y <code>docker run -p 8000:80 nlp-app</code></p>
-</div>
-
-<div class="slide">
-  <h2>Aplicaciones reales</h2>
-  <ul>
-    <li>Chatbots con análisis de intención y emociones.</li>
-    <li>Herramientas de análisis de reseñas de productos.</li>
-    <li>Moderación automática de comentarios en redes sociales.</li>
-  </ul>
-</div>
-
-<div class="slide">
-  <h2>Reflexión final</h2>
-  <p>Convertir modelos en aplicaciones es clave para crear valor real. Al integrar APIs, interfaces gráficas y monitoreo, aseguramos que el análisis de texto sea útil y escalable en entornos productivos.</p>
-</div>
-
-    
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

@@ -227,7 +227,7 @@ app.register_blueprint(usuarios_bp, url_prefix="/api")
   <ul>
     <li>La <code>secret_key</code> firma las cookies de sesión: usar variable de entorno y no commitearla.</li>
     <li><code>user_loader</code> debe devolver el objeto usuario o <code>None</code>.</li>
-    <li>No correr <code>debug=True</code> en producción.</li>
+    
   </ul>
 </div>
 
@@ -240,6 +240,7 @@ if __name__ == "__main__":
   <p>Explicación:</p>
   <ul>
     <li>lanza la app en modo desarrollo</li>
+    <li>No correr <code>debug=True</code> en producción.</li>
   </ul>
 </div>
 

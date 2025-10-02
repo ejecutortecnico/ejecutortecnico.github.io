@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+<div class="slide">
+  <h2>1 • Rest API login con flask</h2>
+  <p>Explicación paso a paso del código de la API REST con <strong>Flask</strong>, autenticación con <strong>Flask-Login</strong> y acceso a MySQL con <strong>mysql-connector-python</strong>.</p>
+</div>
+
+<div class="slide">
+  <h2>2 • Estructura del proyecto</h2>
+  <p>Organización propuesta (sencilla y clara):</p>
+  <pre><code>flask_api/
+├── app.py
+├── db.py
+├── models.py
+└── routes/
+    ├── login.py
+    └── usuarios.py
+</code></pre>
+  <p><small>Separar rutas en un package facilita pruebas y mantenimiento.</small></p>
+</div>
+
+<div class="slide">
+  <h2>3 • db.py — Conexión a MySQL</h2>
+  <p>Función central para abrir la conexión.</p>
+  <pre><code>import mysql.connector
+
+def get_db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="root",
+        database="tienda"
+    )
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li>Usa <code>mysql.connector.connect</code>. En producción usa variables de entorno y pooling.</li>
+    <li>Cierra la conexión en cada operación (o usa un pool para eficiencia).</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>4 • models.py — User para Flask-Login</h2>
+  <pre><code>from flask_login import UserMixin
+from db import get_db_connection
+
+class User(UserMixin):
+    def __init__(self, id, email, password):
+        self.id = id
+        self.email = email
+        self.password = password
+
+    @staticmethod
+    def get_by_email(email):
+        # consulta a la tabla usuarios
+        ...
+
+    @staticmethod
+    def get_by_id(user_id):
+        # consulta por id
+        ...
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li><code>UserMixin</code> provee <code>is_authenticated</code>, <code>get_id()</code>, etc.</li>
+    <li>Los métodos <code>get_by_email</code> y <code>get_by_id</code> son usados por las rutas y por <code>login_manager.user_loader</code>.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>5 • routes/login.py</h2>
+  <pre><code>
+from flask import Blueprint, request, jsonify
+from flask_login import login_user, logout_user, login_required, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
+from db import get_db_connection
+from models import User
+
+auth_bp = Blueprint("auth", __name__)
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li>importa las librerias.</li>
+     </ul>
+</div>
+
+<div class="slide">
+  <h2>5 • routes/login.py — Registro (register)</h2>
+  <pre><code>@auth_bp.route("/registrarse", methods=["POST"])
+def registrarse():
+    data = request.json
+    email = data.get("email")
+    password = data.get("password")
+
+    hashed_pw = generate_password_hash(password)
+    # insertar usuario con hashed_pw
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li>Siempre <strong>hashear</strong> contraseñas (ej. <code>generate_password_hash</code>).</li>
+    <li>Validar que <code>email</code> no exista antes de insertar y manejar errores de DB.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>6 • routes/login.py — Login / Logout</h2>
+  <pre><code>@auth_bp.route("/login", methods=["POST"])
+def login():
+    # buscar user
+    if user and check_password_hash(user.password, password):
+        login_user(user)
+        return {"message": "Login exitoso"}
+
+@auth_bp.route("/logout", methods=["POST"])
+@login_required
+def logout():
+    logout_user()
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li><code>login_user(user)</code> crea la sesión del usuario (cookie de sesión).</li>
+    <li>Para APIs públicas prefieren tokens (JWT). Flask-Login es ideal para apps que usan sesiones (web front-ends).</li>
+    <li>Recuerda: en Postman habilitar manejo de cookies para mantener la sesión entre requests.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>7 • routes/usuarios.py</h2>
+  <pre><code>
+from flask import Blueprint, request, jsonify
+from flask_login import login_required
+from db import get_db_connection
+
+usuarios_bp = Blueprint("usuarios", __name__)
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li>importa las librerias.</li>
+   
+</div>
+
+<div class="slide">
+  <h2>7 • routes/usuarios.py — GET (listar / obtener)</h2>
+  <pre><code>@usuarios_bp.route("/usuarios", methods=["GET"])
+@login_required
+def get_usuarios():
+    rows = cursor.execute("SELECT * FROM usuarios")
+    return jsonify(rows)
+
+@usuarios_bp.route("/usuario/<int:id>", methods=["GET"])
+@login_required
+def get_usuario(id):
+    cursor.execute("SELECT * FROM usuarios WHERE idusuario = %s", (id,))
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li><code>@login_required</code> protege las rutas para usuarios autenticados.</li>
+    <li>Usa consultas parametrizadas (<code>%s</code>) para evitar inyección SQL.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>8 • routes/usuarios.py — POST / PUT / DELETE</h2>
+  <pre><code>@usuarios_bp.route("/usuarios", methods=["POST"])
+@login_required
+def add_usuario():
+    cursor.execute("INSERT INTO usuarios (email) VALUES (%s)", (data["email"],))
+
+@usuarios_bp.route("/usuarios/<int:id>", methods=["PUT"])
+@login_required
+def update_usuario(id):
+    cursor.execute("UPDATE usuarios SET email = %s WHERE idusuario = %s", (data["email"], id))
+
+@usuarios_bp.route("/usuarios/<int:id>", methods=["DELETE"])
+@login_required
+def delete_usuario(id):
+    cursor.execute("DELETE FROM usuarios WHERE idusuario = %s", (id,))
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li>Siempre validar <code>data</code> entrante y manejar errores (p.ej. 400 para datos inválidos).</li>
+    <li>Retornar códigos HTTP apropiados: 201 al crear, 200 o 204 al actualizar/eliminar, 404 si no existe.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>9 • app.py</h2>
+  <pre><code>
+from flask import Flask
+from flask_login import LoginManager
+from models import User
+from routes.auth import auth_bp
+from routes.customers import customers_bp
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li>importa las librerias</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>9 • app.py — Inicialización y <code>LoginManager</code></h2>
+  <pre><code>app = Flask(__name__)
+app.secret_key = "clave_secreta"
+
+login_manager = LoginManager(); 
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get_by_id(user_id)
+
+app.register_blueprint(auth_bp, url_prefix="/auth")
+app.register_blueprint(usuarios_bp, url_prefix="/api")
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li>La <code>secret_key</code> firma las cookies de sesión: usar variable de entorno y no commitearla.</li>
+    <li><code>user_loader</code> debe devolver el objeto usuario o <code>None</code>.</li>
+    <li>No correr <code>debug=True</code> en producción.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>9 • app.py — lanzar la app</code></h2>
+  <pre><code>
+if __name__ == "__main__":
+    app.run(debug=True)
+</code></pre>
+  <p>Explicación:</p>
+  <ul>
+    <li>lanza la app en modo desarrollo</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>11 • Probar la API — ejemplos</h2>
+  <p><strong>Registro (Postman o curl)</strong></p>
+  <pre><code>curl -X POST http://localhost:5000/auth/registrarse \
+  -H "Content-Type: application/json" \
+  -d '{"email":"juan@gmail.com","password":"123456"}'
+</code></pre>
+  <p><strong>Login (guardar cookies) — curl con cookiejar</strong></p>
+  <pre><code>curl -c cookies.txt -X POST http://localhost:5000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"juan","password":"123456"}'
+
+# luego usar cookie para acceder
+curl -b cookies.txt http://localhost:5000/api/usuarios
+</code></pre>
+  <p><small>En Postman activa "Automatically follow redirects" y guarda cookies para mantener sesión.</small></p>
+</div>
+
+<div class="slide">
+  <h2>12 • Buenas prácticas y seguridad</h2>
+  <ul>
+    <li>Usar variables de entorno para credenciales y <code>secret_key</code> (p.ej. via <code>dotenv</code>).</li>
+    <li>Forzar HTTPS en producción y marcar <code>SESSION_COOKIE_SECURE</code> = True.</li>
+    <li>Usar conexión con <strong>pooling</strong> o un pool de conexiones en MySQL para rendimiento.</li>
+    <li>Hacer validación y sanitización de entrada; manejar excepciones de DB y errores HTTP.</li>
+    <li>Considerar roles/permissions si la app lo requiere.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>13 • Mejora: usar JWT (opcional)</h2>
+  <p>Si prefieres una API "stateless" para clientes móviles o SPAs, reemplaza sesiones por JWT:</p>
+  <pre><code>from flask_jwt_extended import create_access_token
+
+# en login exitoso:
+access_token = create_access_token(identity=user.id)
+return {"access_token": access_token}
+</code></pre>
+  <p><small>Ventaja: no dependes de cookies; Desventaja: manejar revocación / expiraciones.</small></p>
+</div>
+
+<div class="slide">
+  <h2>14 • Próximos pasos y recursos</h2>
+  <ul>
+    <li>Agregar manejo de migraciones: <code>Flask-Migrate / Alembic</code>.</li>
+    <li>Switch a ORM (SQLAlchemy) para consultas más expresivas y menos SQL ad-hoc.</li>
+    <li>Dockerizar la app y la BD para entornos reproducibles.</li>
+    <li>Tests automatizados (pytest) para rutas y modelos.</li>
+  </ul>
+  <p>¿Quieres que transforme estos slides en una presentación HTML interactiva (con navegación entre slides) o que incluya el código completo listo para copiar/pegar?</p>
+</div>
+
+ <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

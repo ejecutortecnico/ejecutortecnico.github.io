@@ -69,10 +69,10 @@ pre {
     text-align: left;
     max-width: 100%;
     overflow-x: auto;
-    user-select: none; /* Bloquea selección */
+    /* user-select: none; 
     -webkit-user-select: none;
     -moz-user-select: none;
-    -ms-user-select: none;
+    -ms-user-select: none; */
 }
 
 .modal {

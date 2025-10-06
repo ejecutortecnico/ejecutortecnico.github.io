@@ -10,6 +10,175 @@
 </head>
     <body>
         <div class="container">
+<div class="slide" data-title="Título">
+  <h1>Misión 1 · Lección 5</h1>
+  <h2>Comunicación entre Componentes</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender cómo los componentes se comunican entre sí en React.</li>
+    <li>Aprender a pasar datos del componente padre al hijo usando <code>props</code>.</li>
+    <li>Entender cómo enviar información del hijo al padre.</li>
+    <li>Practicar el patrón de "levantamiento de estado" (<em>lifting state up</em>).</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Introducción">
+  <h2>Comunicación entre componentes</h2>
+  <p>
+    En React, las aplicaciones se construyen a partir de múltiples componentes.  
+    Para que trabajen juntos, deben compartir información.
+  </p>
+  <ul>
+    <li>Los <strong>padres</strong> pueden enviar datos a los <strong>hijos</strong> usando <code>props</code>.</li>
+    <li>Los <strong>hijos</strong> pueden enviar datos o eventos al padre mediante <strong>funciones</strong>.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Props: datos del padre al hijo">
+  <h2>Envío de datos con Props</h2>
+<pre><code>function Saludo({ nombre }) {
+  return &lt;h3&gt;Hola, {nombre}!&lt;/h3&gt;;
+}
+
+export default function App() {
+  return (
+    &lt;div&gt;
+      &lt;Saludo nombre="Ana" /&gt;
+      &lt;Saludo nombre="Carlos" /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+  <p>
+    Las <code>props</code> son de solo lectura.  
+    El componente padre las define, y el hijo las recibe como parámetros.
+  </p>
+</div>
+
+<div class="slide" data-title="Props dinámicas">
+  <h2>Props dinámicas desde el estado</h2>
+<pre><code>import { useState } from "react";
+
+function Contador({ valor }) {
+  return &lt;p&gt;Valor actual: {valor}&lt;/p&gt;;
+}
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;Contador valor={count} /&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Incrementar&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+  <p>
+    El estado se mantiene en el padre y se pasa al hijo como prop.
+  </p>
+</div>
+
+<div class="slide" data-title="Funciones como props">
+  <h2>Enviar datos del hijo al padre</h2>
+  <p>
+    Para comunicar datos hacia el padre, se pasa una función como prop.
+  </p>
+<pre><code>function Hijo({ onEnviar }) {
+  return (
+    &lt;button onClick={() =&gt; onEnviar("Mensaje del hijo")}&gt;
+      Enviar mensaje
+    &lt;/button&gt;
+  );
+}
+
+export default function Padre() {
+  function manejarMensaje(msg) {
+    alert("Recibido: " + msg);
+  }
+
+  return &lt;Hijo onEnviar={manejarMensaje} /&gt;;
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Levantamiento de estado">
+  <h2>Levantamiento de Estado</h2>
+  <p>
+    Cuando dos componentes necesitan compartir el mismo dato,  
+    el estado debe moverse hacia su <strong>antecesor común</strong>.
+  </p>
+<pre><code>function InputUsuario({ nombre, setNombre }) {
+  return (
+    &lt;input
+      type="text"
+      value={nombre}
+      onChange={(e) =&gt; setNombre(e.target.value)}
+    /&gt;
+  );
+}
+
+function MostrarNombre({ nombre }) {
+  return &lt;p&gt;Hola, {nombre}!&lt;/p&gt;;
+}
+
+export default function App() {
+  const [nombre, setNombre] = useState("");
+
+  return (
+    &lt;div&gt;
+      &lt;InputUsuario nombre={nombre} setNombre={setNombre} /&gt;
+      &lt;MostrarNombre nombre={nombre} /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Props.children">
+  <h2>Uso de <code>props.children</code></h2>
+  <p>
+    Permite que un componente contenga otros elementos o componentes hijos.
+  </p>
+<pre><code>function Tarjeta({ children }) {
+  return &lt;div className="card"&gt;{children}&lt;/div&gt;;
+}
+
+export default function App() {
+  return (
+    &lt;Tarjeta&gt;
+      &lt;h3&gt;Bienvenido&lt;/h3&gt;
+      &lt;p&gt;Contenido dentro de la tarjeta&lt;/p&gt;
+    &lt;/Tarjeta&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas prácticas</h2>
+  <ul>
+    <li>Usa nombres descriptivos para props y funciones.</li>
+    <li>Evita pasar props innecesarias o muy anidadas.</li>
+    <li>Centraliza el estado solo cuando varios componentes lo necesiten.</li>
+    <li>Usa <code>props.children</code> para componentes reutilizables.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio Guiado">
+  <h2>Ejercicio Guiado 🧠</h2>
+  <ol>
+    <li>Crea un componente <code>&lt;FormularioUsuario /&gt;</code> que permita escribir un nombre.</li>
+    <li>Pasa el nombre al componente padre para mostrarlo en pantalla.</li>
+    <li>Agrega un botón en el hijo que borre el nombre (llamando una función del padre).</li>
+  </ol>
+</div>
+
+<div class="slide" data-title="Resumen">
+  <h2>Resumen de la Lección</h2>
+  <ul>
+    <li>Los componentes se comunican usando <strong>props</strong> y funciones.</li>
+    <li>El flujo de datos en React es <strong>unidireccional</strong> (padre → hijo).</li>
+    <li>Para compartir estado, se usa el <strong>levantamiento de estado</strong>.</li>
+    <li><code>props.children</code> permite componer interfaces flexibles y reutilizables.</li>
+  </ul>
+  <p>🚀 Con esto puedes conectar tus componentes y crear aplicaciones más modulares.</p>
+</div>
 
 
         <div class="nav">
@@ -20,4 +189,3 @@
     <script src="../../js/slide.js"></script>
     </body>
 </html>
-v

@@ -11,6 +11,167 @@
     <body>
         <div class="container">
     
+<div class="slide" data-title="Introducción">
+  <h1>Misión 1 · Lección 6</h1>
+  <h2>Consumo de Datos Externos con Fetch</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Aprender a consumir APIs externas desde React usando <code>fetch</code>.</li>
+    <li>Renderizar listas dinámicamente con datos obtenidos del servidor.</li>
+    <li>Manejar estados de carga (<em>loading</em>) y error.</li>
+    <li>Usar <code>useEffect</code> para realizar solicitudes al montar el componente.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="¿Qué es Fetch?">
+  <h2>¿Qué es Fetch?</h2>
+  <ul>
+    <li><code>fetch()</code> es una API nativa del navegador para hacer peticiones HTTP.</li>
+    <li>Permite solicitar y enviar datos a un servidor (GET, POST, PUT, DELETE).</li>
+    <li>Devuelve una promesa que resuelve con la respuesta del servidor.</li>
+  </ul>
+<pre><code>fetch("https://jsonplaceholder.typicode.com/users")
+  .then(res =&gt; res.json())
+  .then(data =&gt; console.log(data));</code></pre>
+</div>
+
+<div class="slide" data-title="useEffect para Fetch">
+  <h2>Uso de useEffect para cargar datos</h2>
+<pre><code>import { useState, useEffect } from "react";
+
+export default function Usuarios() {
+  const [usuarios, setUsuarios] = useState([]);
+
+  useEffect(() =&gt; {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res =&gt; res.json())
+      .then(data =&gt; setUsuarios(data));
+  }, []);
+
+  return (
+    &lt;ul&gt;
+      {usuarios.map(u =&gt; (
+        &lt;li key={u.id}&gt;{u.name}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code></pre>
+  <p>El arreglo vacío <code>[]</code> hace que la petición se ejecute una sola vez, al montar el componente.</p>
+</div>
+
+<div class="slide" data-title="Manejo de estados de carga y error">
+  <h2>Manejo de Carga y Error</h2>
+<pre><code>export default function Usuarios() {
+  const [usuarios, setUsuarios] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() =&gt; {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res =&gt; {
+        if (!res.ok) throw new Error("Error en la petición");
+        return res.json();
+      })
+      .then(data =&gt; setUsuarios(data))
+      .catch(err =&gt; setError(err.message))
+      .finally(() =&gt; setLoading(false));
+  }, []);
+
+  if (loading) return &lt;p&gt;Cargando...&lt;/p&gt;;
+  if (error) return &lt;p&gt;Error: {error}&lt;/p&gt;;
+
+  return (
+    &lt;ul&gt;
+      {usuarios.map(u =&gt; (
+        &lt;li key={u.id}&gt;{u.name}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Renderizado condicional">
+  <h2>Renderizado Condicional de Datos</h2>
+  <ul>
+    <li>Usa condicionales para mostrar distintos estados de la UI.</li>
+    <li>Ejemplo: cargando, error o datos.</li>
+  </ul>
+<pre><code>{loading && &lt;p&gt;Cargando usuarios...&lt;/p&gt;}
+{error && &lt;p&gt;Error: {error}&lt;/p&gt;}
+{!loading && !error && usuarios.length === 0 && &lt;p&gt;No hay usuarios.&lt;/p&gt;}</code></pre>
+</div>
+
+<div class="slide" data-title="Renderizar componentes con datos">
+  <h2>Renderizar componentes con datos</h2>
+<pre><code>function Usuario({ nombre, correo }) {
+  return (
+    &lt;div className="card"&gt;
+      &lt;h4&gt;{nombre}&lt;/h4&gt;
+      &lt;p&gt;{correo}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default function ListaUsuarios({ usuarios }) {
+  return (
+    &lt;div&gt;
+      {usuarios.map(u =&gt; (
+        &lt;Usuario key={u.id} nombre={u.name} correo={u.email} /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+  <p>Separar componentes mejora la legibilidad y reusabilidad del código.</p>
+</div>
+
+<div class="slide" data-title="Llamadas a APIs propias">
+  <h2>Consumo de APIs Propias</h2>
+  <p>
+    También puedes consumir APIs creadas por ti (por ejemplo, en Node.js o Flask).
+  </p>
+<pre><code>fetch("http://localhost:5000/api/usuarios")
+  .then(res =&gt; res.json())
+  .then(data =&gt; setUsuarios(data));</code></pre>
+  <p>
+    🔒 Si la API requiere autenticación, puedes enviar headers personalizados:
+  </p>
+<pre><code>fetch("/api/datos", {
+  headers: {
+    Authorization: "Bearer " + token
+  }
+});</code></pre>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas Prácticas</h2>
+  <ul>
+    <li>Siempre manejar errores y estados de carga.</li>
+    <li>Evita peticiones innecesarias; usa dependencias correctas en <code>useEffect</code>.</li>
+    <li>Extrae la lógica de fetch a una función o custom hook (<code>useFetch</code>).</li>
+    <li>No expongas tokens o claves API en el frontend.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio Guiado">
+  <h2>Ejercicio Guiado 🧠</h2>
+  <ol>
+    <li>Crea un componente <code>&lt;ListaTareas /&gt;</code> que consuma datos de <code>https://jsonplaceholder.typicode.com/todos</code>.</li>
+    <li>Muestra solo las primeras 10 tareas con su título y estado (<em>completed</em>).</li>
+    <li>Agrega manejo de <code>loading</code> y <code>error</code>.</li>
+    <li>Extra: Crea un botón para volver a cargar los datos manualmente.</li>
+  </ol>
+</div>
+
+<div class="slide" data-title="Resumen">
+  <h2>Resumen de la Lección</h2>
+  <ul>
+    <li>Usa <code>fetch</code> o librerías como Axios para consumir APIs.</li>
+    <li><code>useEffect</code> permite ejecutar peticiones al montar el componente.</li>
+    <li>Maneja siempre <strong>loading</strong> y <strong>error</strong>.</li>
+    <li>Los datos dinámicos se renderizan con <code>map()</code>.</li>
+  </ul>
+  <p>🚀 Con esto ya puedes conectar tu frontend con fuentes de datos reales.</p>
+</div>
 
 
         <div class="nav">
@@ -21,4 +182,3 @@
     <script src="../../js/slide.js"></script>
     </body>
 </html>
-v

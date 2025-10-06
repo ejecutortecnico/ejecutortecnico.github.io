@@ -11,7 +11,125 @@
     <body>
         <div class="container">
            
-    
+    <div class="slide" data-title="Introducción">
+      <h1>Misión 1 · Lección 4</h1>
+      <h2>Listas y Renderizado Condicional en React</h2>
+      <h3>Objetivos</h3>
+      <ul>
+        <li>Aprender a recorrer arreglos con <code>map()</code> para renderizar listas.</li>
+        <li>Entender la importancia de las <strong>keys</strong> en los elementos de lista.</li>
+        <li>Usar condicionales para mostrar u ocultar contenido dinámicamente.</li>
+      </ul>
+    </div>
+
+    <div class="slide" data-title="Renderizado de Listas">
+      <h2>Renderizado de Listas</h2>
+      <p>
+        En React, puedes mostrar listas de elementos usando el método <code>map()</code> de los arreglos.
+      </p>
+<pre><code>const frutas = ["🍎", "🍌", "🍊"];
+
+export default function ListaFrutas() {
+  return (
+    &lt;ul&gt;
+      {frutas.map((fruta, index) =&gt; (
+        &lt;li key={index}&gt;{fruta}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code></pre>
+      <p>
+        Cada elemento renderizado debe tener una propiedad <code>key</code> única.
+      </p>
+    </div>
+
+    <div class="slide" data-title="Importancia de las Keys">
+      <h2>Importancia de las Keys</h2>
+      <ul>
+        <li>Las <code>keys</code> ayudan a React a identificar qué elementos cambian, se agregan o eliminan.</li>
+        <li>Mejoran el rendimiento y evitan errores de renderizado.</li>
+        <li>Siempre deben ser <strong>únicas</strong> dentro del mismo nivel de lista.</li>
+      </ul>
+<pre><code>{productos.map((item) =&gt; (
+  &lt;li key={item.id}&gt;{item.nombre}&lt;/li&gt;
+))}</code></pre>
+    </div>
+
+    <div class="slide" data-title="Renderizado Condicional">
+      <h2>Renderizado Condicional</h2>
+      <p>
+        Puedes mostrar elementos de forma condicional usando operadores lógicos:
+      </p>
+<pre><code>export default function Mensaje({ isLogged }) {
+  return (
+    &lt;div&gt;
+      {isLogged ? (
+        &lt;h3&gt;Bienvenido de nuevo 👋&lt;/h3&gt;
+      ) : (
+        &lt;h3&gt;Por favor, inicia sesión&lt;/h3&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+      <p>
+        También se puede usar el operador <code>&amp;&amp;</code> para mostrar algo solo si una condición es verdadera.
+      </p>
+<pre><code>{tareas.length &gt; 0 &amp;&amp; &lt;p&gt;Tienes {tareas.length} tareas pendientes&lt;/p&gt;}</code></pre>
+    </div>
+
+    <div class="slide" data-title="Combinar Listas y Condicionales">
+      <h2>Combinar Listas y Condicionales</h2>
+<pre><code>const tareas = ["Estudiar", "Leer", "Practicar React"];
+
+export default function ListaTareas() {
+  return (
+    &lt;div&gt;
+      {tareas.length === 0 ? (
+        &lt;p&gt;No hay tareas pendientes.&lt;/p&gt;
+      ) : (
+        &lt;ul&gt;
+          {tareas.map((t, i) =&gt; (
+            &lt;li key={i}&gt;{t}&lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+      <p>
+        🔹 Este patrón es muy común en React: mostrar listas o mensajes alternativos dependiendo del estado.
+      </p>
+    </div>
+
+    <div class="slide" data-title="Buenas Prácticas">
+      <h2>Buenas Prácticas</h2>
+      <ul>
+        <li>Evita usar el índice del arreglo (<code>index</code>) como key, si puedes usar un ID único.</li>
+        <li>Usa fragmentos <code>&lt;&gt;&lt;/&gt;</code> si no necesitas un contenedor adicional.</li>
+        <li>Mantén el JSX legible separando las funciones de renderizado complejas.</li>
+      </ul>
+    </div>
+
+    <div class="slide" data-title="Ejercicio Guiado">
+      <h2>Ejercicio Guiado 🧠</h2>
+      <ol>
+        <li>Crea un componente <code>&lt;ListaUsuarios /&gt;</code> que reciba una lista de usuarios por props y los renderice en una lista.</li>
+        <li>Agrega una condición que muestre “No hay usuarios registrados” si la lista está vacía.</li>
+        <li>Agrega un botón “Agregar Usuario” que añada uno nuevo al estado.</li>
+      </ol>
+    </div>
+
+    <div class="slide" data-title="Resumen">
+      <h2>Resumen de la Lección</h2>
+      <ul>
+        <li><strong>map()</strong> permite renderizar listas de elementos.</li>
+        <li>Las <strong>keys</strong> únicas son necesarias para un renderizado eficiente.</li>
+        <li>El renderizado condicional permite mostrar contenido dinámico.</li>
+        <li>Combinar listas y condicionales crea interfaces interactivas y limpias.</li>
+      </ul>
+      <p>🚀 Con esto ya puedes mostrar datos dinámicos en React de forma profesional.</p>
+    </div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>
@@ -21,4 +139,3 @@
     <script src="../../js/slide.js"></script>
     </body>
 </html>
-v

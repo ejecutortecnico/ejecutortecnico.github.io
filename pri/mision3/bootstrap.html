@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programacion Intermedio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <div class="slide" data-title="Introducción">
+  <h1>Misión 1 · Bootstrap en React</h1>
+  <h2>Uso de Bootstrap para estilos y diseño responsivo</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender qué es Bootstrap y por qué se usa en React.</li>
+    <li>Aprender las formas de integrarlo en un proyecto React.</li>
+    <li>Usar clases de Bootstrap para crear interfaces modernas y responsivas.</li>
+    <li>Aplicar componentes listos de Bootstrap junto con JSX.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="¿Qué es Bootstrap?">
+  <h2>¿Qué es Bootstrap?</h2>
+  <ul>
+    <li>Es un framework CSS popular para crear interfaces modernas y responsivas.</li>
+    <li>Incluye estilos, rejillas, tipografía y componentes listos como botones, formularios y modales.</li>
+    <li>Permite ahorrar tiempo y mantener una apariencia consistente en toda la aplicación.</li>
+  </ul>
+  <p>
+    En React se puede usar <strong>Bootstrap tradicional</strong> (con clases CSS) o versiones adaptadas como 
+    <strong>React Bootstrap</strong> y <strong>Reactstrap</strong>.
+  </p>
+</div>
+
+<div class="slide" data-title="Métodos de instalación">
+  <h2>Formas de usar Bootstrap en React</h2>
+  <ol>
+    <li><strong>CDN:</strong> Añadir el enlace de Bootstrap en <code>index.html</code>.</li>
+    <li><strong>Instalación con npm:</strong> Importar estilos desde el proyecto.</li>
+    <li><strong>Uso con librerías adaptadas:</strong> como <code>react-bootstrap</code>.</li>
+  </ol>
+  <pre><code># Método 1 - Instalación con npm
+npm install bootstrap
+
+# Método 2 - Librería oficial de componentes React
+npm install react-bootstrap bootstrap</code></pre>
+</div>
+
+<div class="slide" data-title="Integrar Bootstrap en main.jsx">
+  <h2>Importar estilos en React</h2>
+  <p>Importa el archivo de estilos de Bootstrap en tu punto de entrada (<code>main.jsx</code> o <code>index.js</code>):</p>
+  <pre><code>import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+
+createRoot(document.getElementById("root")).render(&lt;App /&gt;);</code></pre>
+  <p>✅ Esto habilita todas las clases y scripts de Bootstrap en tu aplicación.</p>
+</div>
+
+<div class="slide" data-title="Usar clases Bootstrap en JSX">
+  <h2>Usar clases de Bootstrap en componentes</h2>
+  <pre><code>export default function Tarjeta() {
+  return (
+    &lt;div className="card text-center" style={{ width: "18rem" }}&gt;
+      &lt;img src="/img/avatar.png" className="card-img-top" alt="Perfil" /&gt;
+      &lt;div className="card-body"&gt;
+        &lt;h5 className="card-title"&gt;Juan Pérez&lt;/h5&gt;
+        &lt;p className="card-text"&gt;Desarrollador Frontend&lt;/p&gt;
+        &lt;a href="#" className="btn btn-primary"&gt;Ver Perfil&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+  <p>En React se usa <code>className</code> (no <code>class</code>) para aplicar estilos.</p>
+</div>
+
+<div class="slide" data-title="Sistema de rejilla (Grid)">
+  <h2>Sistema de Rejilla (Grid System)</h2>
+  <p>Bootstrap usa un sistema de 12 columnas para crear diseños responsivos.</p>
+  <pre><code>export default function Layout() {
+  return (
+    &lt;div className="container"&gt;
+      &lt;div className="row"&gt;
+        &lt;div className="col-md-4"&gt;Columna 1&lt;/div&gt;
+        &lt;div className="col-md-4"&gt;Columna 2&lt;/div&gt;
+        &lt;div className="col-md-4"&gt;Columna 3&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+  <p>
+    Usa <code>container</code>, <code>row</code> y <code>col-*</code> para distribuir elementos de forma adaptable.
+  </p>
+</div>
+
+<div class="slide" data-title="React Bootstrap">
+  <h2>Uso de React Bootstrap</h2>
+  <p>
+    <strong>React Bootstrap</strong> reescribe los componentes nativos de Bootstrap 
+    para funcionar directamente con JSX, sin depender de jQuery.
+  </p>
+  <pre><code>import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
+export default function Ejemplo() {
+  return (
+    &lt;Card style={{ width: "18rem" }}&gt;
+      &lt;Card.Body&gt;
+        &lt;Card.Title&gt;React Bootstrap&lt;/Card.Title&gt;
+        &lt;Card.Text&gt;Componentes listos para React.&lt;/Card.Text&gt;
+        &lt;Button variant="primary"&gt;Acción&lt;/Button&gt;
+      &lt;/Card.Body&gt;
+    &lt;/Card&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Componentes comunes">
+  <h2>Componentes más usados en React Bootstrap</h2>
+  <ul>
+    <li><code>Button</code> — Botones con variantes (<code>primary</code>, <code>danger</code>, <code>success</code>).</li>
+    <li><code>Card</code> — Tarjetas con imágenes y contenido.</li>
+    <li><code>Navbar</code> — Barras de navegación responsivas.</li>
+    <li><code>Form</code> — Formularios estilizados.</li>
+    <li><code>Modal</code> — Ventanas emergentes modulares.</li>
+    <li><code>Alert</code> — Mensajes de notificación.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejemplo con Navbar">
+  <h2>Ejemplo: Navbar con React Bootstrap</h2>
+  <pre><code>import { Navbar, Nav, Container } from "react-bootstrap";
+
+export default function Menu() {
+  return (
+    &lt;Navbar bg="dark" variant="dark" expand="lg"&gt;
+      &lt;Container&gt;
+        &lt;Navbar.Brand href="/"&gt;MiApp&lt;/Navbar.Brand&gt;
+        &lt;Navbar.Toggle aria-controls="menu" /&gt;
+        &lt;Navbar.Collapse id="menu"&gt;
+          &lt;Nav className="me-auto"&gt;
+            &lt;Nav.Link href="/"&gt;Inicio&lt;/Nav.Link&gt;
+            &lt;Nav.Link href="/about"&gt;Acerca&lt;/Nav.Link&gt;
+          &lt;/Nav&gt;
+        &lt;/Navbar.Collapse&gt;
+      &lt;/Container&gt;
+    &lt;/Navbar&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Personalización de estilos">
+  <h2>Personalización y temas</h2>
+  <ul>
+    <li>Puedes sobrescribir clases CSS en un archivo <code>.css</code> propio.</li>
+    <li>Bootstrap 5 permite usar variables CSS y temas personalizados.</li>
+    <li>También puedes usar <code>Sass</code> para importar solo los módulos necesarios.</li>
+  </ul>
+  <pre><code>:root {
+  --bs-primary: #0066ff;
+  --bs-secondary: #6c757d;
+}</code></pre>
+  <p>Esto cambia los colores de tu tema globalmente.</p>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas prácticas con Bootstrap en React</h2>
+  <ul>
+    <li>Usar <code>className</code> correctamente (no <code>class</code>).</li>
+    <li>No mezclar Bootstrap con otros frameworks CSS que puedan generar conflictos.</li>
+    <li>Utilizar componentes de <code>React Bootstrap</code> en lugar de HTML + clases, para mantener compatibilidad.</li>
+    <li>Evitar modificar directamente el archivo <code>bootstrap.min.css</code>.</li>
+    <li>Combinar Bootstrap con utilidades personalizadas en <code>estilos.css</code>.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio Guiado">
+  <h2>Ejercicio Guiado 🧠</h2>
+  <ol>
+    <li>Instala Bootstrap o React Bootstrap en tu proyecto.</li>
+    <li>Crea una página con un <code>Navbar</code>, un <code>Card</code> y un <code>Footer</code> responsivos.</li>
+    <li>Usa la rejilla (<code>container</code>, <code>row</code>, <code>col</code>) para distribuir elementos.</li>
+    <li>Personaliza los colores del tema usando variables CSS.</li>
+    <li>Extra: Agrega un botón con un <code>Modal</code> emergente.</li>
+  </ol>
+</div>
+
+<div class="slide" data-title="Resumen">
+  <h2>Resumen de la Lección</h2>
+  <ul>
+    <li>Bootstrap agiliza la creación de interfaces modernas y responsivas.</li>
+    <li>Se puede usar con CDN, npm o mediante librerías como <code>react-bootstrap</code>.</li>
+    <li>Los componentes preconstruidos reducen tiempo de desarrollo.</li>
+    <li>El sistema de rejilla facilita el diseño adaptable.</li>
+    <li>Personaliza el tema para mantener identidad visual.</li>
+  </ul>
+  <p>🚀 Con Bootstrap puedes crear aplicaciones React visualmente atractivas de forma rápida y profesional.</p>
+</div>
+
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

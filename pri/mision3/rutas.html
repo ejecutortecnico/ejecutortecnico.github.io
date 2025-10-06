@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programacion Intermedio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <div class="slide" data-title="Introducción">
+  <h1>Misión 1 · Rutas en React</h1>
+  <h2>Rutas con <code>react-router-dom</code> (v6)</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Instalar y configurar <code>react-router-dom</code>.</li>
+    <li>Definir rutas básicas y anidadas.</li>
+    <li>Navegar con <code>Link</code> / <code>NavLink</code> y con código (<code>useNavigate</code>).</li>
+    <li>Usar parámetros dinámicos, query params y rutas protegidas.</li>
+    <li>Aplicar lazy loading y buenas prácticas para producción.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Instalación">
+  <h2>Instalación</h2>
+  <p>Instala la librería oficial:</p>
+  <pre><code>npm install react-router-dom@6
+# o con yarn
+yarn add react-router-dom@6</code></pre>
+  <p>Recomendación: comprobar la versión para usar la API de v6 (Routes / Route / useNavigate / Outlet).</p>
+</div>
+
+<div class="slide" data-title="Setup en main.jsx">
+  <h2>Configuración inicial (main.jsx)</h2>
+  <p>Envuelve tu app con <code>&lt;BrowserRouter&gt;</code> en el punto de entrada:</p>
+  <pre><code>import React from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+
+createRoot(document.getElementById("root")).render(
+  &lt;React.StrictMode&gt;
+    &lt;BrowserRouter&gt;
+      &lt;App /&gt;
+    &lt;/BrowserRouter&gt;
+  &lt;/React.StrictMode&gt;
+);</code></pre>
+  <p>Si tu app se sirve desde una subruta, usa <code>&lt;BrowserRouter basename="/mi-app"&gt;</code>.</p>
+</div>
+
+<div class="slide" data-title="Rutas básicas">
+  <h2>Rutas básicas en App.jsx</h2>
+  <pre><code>import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
+
+export default function App() {
+  return (
+    &lt;Routes&gt;
+      &lt;Route path="/" element=&lt;Home /&gt; /&gt;
+      &lt;Route path="/about" element=&lt;About /&gt; /&gt;
+      &lt;Route path="*" element=&lt;NotFound /&gt; /&gt;
+    &lt;/Routes&gt;
+  );
+}</code></pre>
+  <p><strong>Nota:</strong> en v6 ya no se usa <code>Switch</code>, sino <code>Routes</code>.</p>
+</div>
+
+<div class="slide" data-title="Navegación: Link y NavLink">
+  <h2>Navegación: <code>Link</code> y <code>NavLink</code></h2>
+  <pre><code>import { Link, NavLink } from "react-router-dom";
+
+export default function Nav() {
+  return (
+    &lt;nav&gt;
+      &lt;Link to="/"&gt;Inicio&lt;/Link&gt;
+      &lt;NavLink to="/about"
+               className={({isActive}) =&gt; isActive ? "active" : ""}&gt;
+        Acerca
+      &lt;/NavLink&gt;
+    &lt;/nav&gt;
+  );
+}</code></pre>
+  <p><code>NavLink</code> permite estilos activos con la función <code>className</code>.</p>
+</div>
+
+<div class="slide" data-title="Rutas dinámicas (params)">
+  <h2>Rutas dinámicas: <code>:id</code> y <code>useParams</code></h2>
+  <pre><code>// Definición de ruta
+&lt;Route path="/products/:id" element=&lt;Product /&gt; /&gt;
+
+// Uso en el componente
+import { useParams } from "react-router-dom";
+
+export default function Product() {
+  const { id } = useParams(); // id como string
+  // fetch(`/api/products/${id}`) ...
+  return &lt;div&gt;Producto: {id}&lt;/div&gt;;
+}</code></pre>
+  <p>Útil para mostrar detalles basados en la URL.</p>
+</div>
+
+<div class="slide" data-title="Query params y useSearchParams">
+  <h2>Query params: <code>useSearchParams</code></h2>
+  <pre><code>import { useSearchParams } from "react-router-dom";
+
+export default function List() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = searchParams.get("page") ?? "1";
+
+  function irAPagina(p) {
+    setSearchParams({ page: String(p) });
+  }
+
+  return &lt;div&gt;Página actual: {page}&lt;/div&gt;;
+}</code></pre>
+  <p>Los query params quedan en la URL y son fáciles de leer/escribir con este hook.</p>
+</div>
+
+<div class="slide" data-title="Rutas anidadas y <Outlet>">
+  <h2>Rutas anidadas y <code>Outlet</code></h2>
+  <pre><code>// App.jsx
+&lt;Routes&gt;
+  &lt;Route path="/" element=&lt;Layout /&gt;&gt;
+    &lt;Route index element=&lt;Home /&gt; /&gt;
+    &lt;Route path="dashboard" element=&lt;Dashboard /&gt;&gt;
+      &lt;Route index element=&lt;Overview /&gt; /&gt;
+      &lt;Route path="settings" element=&lt;Settings /&gt; /&gt;
+    &lt;/Route&gt;
+  &lt;/Route&gt;
+&lt;/Routes&gt;
+
+// Layout.jsx
+import { Outlet } from "react-router-dom";
+export default function Layout() {
+  return (&lt;div&gt;&lt;Header /&gt;&lt;Outlet /&gt;&lt;Footer /&gt;&lt;/div&gt;);
+}</code></pre>
+  <p><code>&lt;Outlet /&gt;</code> es el placeholder donde se renderizan las rutas hijas.</p>
+</div>
+
+<div class="slide" data-title="Rutas protegidas (auth)">
+  <h2>Rutas protegidas: <code>RequireAuth</code> y <code>Navigate</code></h2>
+  <pre><code>import { Navigate, useLocation } from "react-router-dom";
+
+function RequireAuth({ children, isAuthenticated }) {
+  const location = useLocation();
+  if (!isAuthenticated) {
+    return &lt;Navigate to="/login" state={{ from: location }} replace /&gt;;
+  }
+  return children;
+}
+
+// Uso
+&lt;Route path="/profile" element=&lt;RequireAuth isAuthenticated={user}&gt;&lt;Profile /&gt;&lt;/RequireAuth&gt; /&gt;</code></pre>
+  <p>Al redirigir se puede pasar el origen en <code>state</code> para volver luego.</p>
+</div>
+
+<div class="slide" data-title="Navegación programática">
+  <h2>Navegación desde código: <code>useNavigate</code></h2>
+  <pre><code>import { useNavigate } from "react-router-dom";
+
+export default function Login() {
+  const navigate = useNavigate();
+
+  function handleLogin() {
+    // autenticar...
+    navigate("/dashboard"); // ir a otra ruta
+    // navigate(-1) -> volver
+  }
+
+  return &lt;button onClick={handleLogin}&gt;Entrar&lt;/button&gt;;
+}</code></pre>
+  <p><code>useNavigate</code> reemplaza a history.push de versiones antiguas.</p>
+</div>
+
+<div class="slide" data-title="Lazy loading de rutas">
+  <h2>Lazy loading / Code splitting</h2>
+  <pre><code>import React, { Suspense, lazy } from "react";
+
+const BigPage = lazy(() =&gt; import("./pages/BigPage"));
+
+export default function App() {
+  return (
+    &lt;Routes&gt;
+      &lt;Route path="/big" element={
+        &lt;Suspense fallback=&lt;div&gt;Cargando...&lt;/div&gt;&gt;
+          &lt;BigPage /&gt;
+        &lt;/Suspense&gt;
+      } /&gt;
+    &lt;/Routes&gt;
+  );
+}</code></pre>
+  <p>Permite cargar componentes solo cuando se visitan, reduciendo el tamaño inicial.</p>
+</div>
+
+<div class="slide" data-title="404 - Ruta no encontrada">
+  <h2>404: manejar rutas no encontradas</h2>
+  <pre><code>// Colocar al final de las rutas
+&lt;Route path="*" element=&lt;NotFound /&gt; /&gt;</code></pre>
+  <p>Usa una página 404 amigable y opcionalmente un botón para volver a <code>/</code>.</p>
+</div>
+
+<div class="slide" data-title="HashRouter y basename">
+  <h2><code>HashRouter</code> y <code>basename</code></h2>
+  <ul>
+    <li><code>HashRouter</code> (ej: <code>#/ruta</code>) útil en hosting estático sin server-side routing.</li>
+    <li><code>basename</code> en <code>BrowserRouter</code> para apps servidas en subcarpetas: <code>&lt;BrowserRouter basename="/mi-app"&gt;</code>.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas prácticas con rutas</h2>
+  <ul>
+    <li>Define rutas en un solo archivo (o un pequeño módulo) para mantener orden.</li>
+    <li>Usa nombres RESTful y coherentes (<code>/products</code>, <code>/products/:id</code>).</li>
+    <li>No pongas lógica pesada en los componentes de ruta; delega a hooks o servicios.</li>
+    <li>Prefiere <code>NavLink</code> para menús y <code>Link</code> para enlaces simples.</li>
+    <li>Maneja errores de fetch y estados antes de renderizar la ruta.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio Guiado">
+  <h2>Ejercicio práctico 🧠</h2>
+  <ol>
+    <li>Crear una app con rutas: <code>/</code>, <code>/about</code>, <code>/products</code>, <code>/products/:id</code>, y <code>/dashboard/*</code> (rutas anidadas).</li>
+    <li>Implementar navegación con <code>NavLink</code> y mostrar estilo activo.</li>
+    <li>Hacer <code>fetch</code> en <code>/products</code> y mostrar la lista; al clicar navegar a <code>/products/:id</code>.</li>
+    <li>Crear <code>RequireAuth</code> para proteger <code>/dashboard</code> (simular un estado de autenticación).</li>
+    <li>Añadir lazy loading a la ruta <code>/dashboard</code>.</li>
+  </ol>
+</div>
+
+<div class="slide" data-title="Recursos y documentación">
+  <h2>Recursos</h2>
+  <ul>
+    <li>Documentación oficial de React Router (consultar la versión 6 para ejemplos actuales).</li>
+    <li>Ejemplos prácticos en repositorios: buscar "react-router v6 examples".</li>
+    <li>Crear pequeños sandboxes (CodeSandbox / StackBlitz) para probar rutas en vivo.</li>
+  </ul>
+</div>
+
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

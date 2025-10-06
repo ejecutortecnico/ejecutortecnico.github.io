@@ -61,6 +61,191 @@ npm run dev</code></pre>
   </ul>
 </div>
 
+<div class="slide" data-title="Introducción">
+  <h1>Misión 1 · Lección 4</h1>
+  <h2>Componentes Funcionales y de Clase</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender qué es un componente en React.</li>
+    <li>Distinguir entre componentes funcionales y de clase.</li>
+    <li>Aprender sobre jerarquía, estado y propiedades (<code>props</code>).</li>
+    <li>Reconocer la importancia de la componentización y la reutilización.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="¿Qué es un Componente?">
+  <h2>¿Qué es un Componente?</h2>
+  <p>
+    Los componentes son la piedra angular de cualquier aplicación en React.
+    Representan piezas independientes y reutilizables de la interfaz de usuario (UI),
+    que se combinan para formar interfaces completas.
+  </p>
+  <p>
+    React se basa en la idea de descomponer la UI en pequeños bloques con su propia lógica y estructura.
+  </p>
+</div>
+
+<div class="slide" data-title="Componentización">
+  <h2>Concepto de Componentización</h2>
+  <ul>
+    <li>Proceso de dividir la interfaz en componentes reutilizables y modulares.</li>
+    <li>Cada componente maneja su propia lógica, estado y estilo.</li>
+    <li>Facilita el mantenimiento, la escalabilidad y las pruebas.</li>
+  </ul>
+  <p><strong>Ejemplo:</strong></p>
+  <ul>
+    <li><code>&lt;ProductCard /&gt;</code> — muestra información de un producto.</li>
+    <li><code>&lt;ShoppingCart /&gt;</code> — gestiona los artículos seleccionados.</li>
+    <li><code>&lt;UserProfile /&gt;</code> — muestra los datos del usuario.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Jerarquía de Componentes">
+  <h2>Jerarquía de Componentes</h2>
+  <p>
+    En React, los componentes se organizan en un árbol jerárquico donde los padres contienen hijos.
+  </p>
+  <ul>
+    <li>Los datos fluyen de los padres hacia los hijos a través de <code>props</code>.</li>
+    <li>Un componente puede contener múltiples componentes hijos.</li>
+  </ul>
+<pre><code>function App() {
+  return (
+    &lt;div&gt;
+      &lt;Header /&gt;
+      &lt;MainContent /&gt;
+      &lt;Footer /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Tipos de Componentes">
+  <h2>Tipos de Componentes en React</h2>
+  <ul>
+    <li><strong>Componentes Funcionales:</strong> basados en funciones de JavaScript.</li>
+    <li><strong>Componentes de Clase:</strong> basados en clases ES6, con ciclo de vida y estado interno.</li>
+  </ul>
+  <p>
+    Ambos pueden hacer lo mismo, pero los componentes funcionales son el estándar actual con Hooks.
+  </p>
+</div>
+
+<div class="slide" data-title="Componente Funcional">
+  <h2>Ejemplo de Componente Funcional</h2>
+<pre><code>export default function Saludo() {
+  return &lt;h2&gt;¡Hola desde un componente funcional!&lt;/h2&gt;;
+}</code></pre>
+  <ul>
+    <li>Simple y fácil de escribir.</li>
+    <li>Puede usar Hooks para manejar estado y efectos secundarios.</li>
+    <li>Ideal para la mayoría de los casos en React moderno.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Componente de Clase">
+  <h2>Ejemplo de Componente de Clase</h2>
+<pre><code>import React, { Component } from "react";
+
+class Saludo extends Component {
+  render() {
+    return &lt;h2&gt;¡Hola desde un componente de clase!&lt;/h2&gt;;
+  }
+}
+
+export default Saludo;</code></pre>
+  <ul>
+    <li>Antes de los Hooks, eran necesarios para manejar el estado y el ciclo de vida.</li>
+    <li>Aún se usan en proyectos antiguos o con ciertas bibliotecas.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Reutilización y Modularidad">
+  <h2>Reutilización y Modularidad</h2>
+  <p>
+    Una de las grandes ventajas de React es la posibilidad de reutilizar componentes.
+  </p>
+  <ul>
+    <li>Permite construir interfaces consistentes y uniformes.</li>
+    <li>Reduce la duplicación de código.</li>
+    <li>Promueve la modularidad del proyecto.</li>
+  </ul>
+  <p><strong>Ejemplo:</strong> un componente <code>&lt;BotonEnviar /&gt;</code> puede reutilizarse en varios formularios.</p>
+</div>
+
+<div class="slide" data-title="Props y Estado">
+  <h2>Props y Estado</h2>
+  <ul>
+    <li><strong>Props:</strong> datos que el componente padre pasa al hijo.</li>
+    <li><strong>Estado (State):</strong> datos internos del componente que pueden cambiar con el tiempo.</li>
+  </ul>
+<pre><code>function Saludo({ nombre }) {
+  return &lt;h3&gt;Hola, {nombre}!&lt;/h3&gt;;
+}
+
+// Uso
+&lt;Saludo nombre="Ana" /&gt;</code></pre>
+  <p>
+    Las props son inmutables, mientras que el estado cambia con funciones como <code>setState</code> o <code>useState</code>.
+  </p>
+</div>
+
+<div class="slide" data-title="Comparación entre Funcionales y de Clase">
+  <h2>Comparación de Tipos</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Característica</th>
+        <th>Funcional</th>
+        <th>De Clase</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sintaxis</td>
+        <td>Función JavaScript</td>
+        <td>Clase ES6</td>
+      </tr>
+      <tr>
+        <td>Estado</td>
+        <td>Hooks (<code>useState</code>)</td>
+        <td><code>this.state</code></td>
+      </tr>
+      <tr>
+        <td>Ciclo de vida</td>
+        <td><code>useEffect</code></td>
+        <td>Métodos como <code>componentDidMount</code></td>
+      </tr>
+      <tr>
+        <td>Popularidad</td>
+        <td>Alta (actual estándar)</td>
+        <td>Baja (uso legado)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="slide" data-title="Conclusión">
+  <h2>Conclusión</h2>
+  <ul>
+    <li>Los componentes son los bloques fundamentales de React.</li>
+    <li>Permiten dividir la UI en partes pequeñas, reutilizables y fáciles de mantener.</li>
+    <li>Los componentes funcionales son el enfoque moderno gracias a los Hooks.</li>
+    <li>Comprender su estructura es esencial para crear aplicaciones escalables y organizadas.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio Guiado">
+  <h2>Ejercicio Guiado 🛠️</h2>
+  <ol>
+    <li>Crea un componente funcional <code>&lt;Saludo /&gt;</code> que reciba una prop <code>nombre</code>.</li>
+    <li>Crea un componente de clase <code>&lt;Contador /&gt;</code> que tenga un estado con un número y un botón para incrementarlo.</li>
+    <li>Renderiza ambos componentes dentro de <code>App.jsx</code>.</li>
+    <li>Compara las diferencias entre el manejo del estado y las props.</li>
+  </ol>
+</div>
+
+
 <div class="slide" data-title="Primer componente">
   <h2>Tu primer componente</h2>
 <pre><code>// src/App.jsx

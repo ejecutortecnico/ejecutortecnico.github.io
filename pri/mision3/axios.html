@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programacion Intermedio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <div class="slide" data-title="Introducción">
+  <h1>Misión 2 · CRUD en React con Axios</h1>
+  <h2>Crear, Leer, Actualizar y Eliminar datos desde React</h2>
+  <h3>Objetivos</h3>
+  <ul>
+    <li>Comprender el concepto CRUD en aplicaciones web.</li>
+    <li>Aprender a usar Axios para comunicarse con APIs REST.</li>
+    <li>Implementar operaciones de lectura, creación, actualización y eliminación.</li>
+    <li>Conectar el frontend React con un backend Node.js o cualquier API externa.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="¿Qué es CRUD?">
+  <h2>¿Qué significa CRUD?</h2>
+  <ul>
+    <li><strong>C</strong> - Create (Crear): enviar datos al servidor.</li>
+    <li><strong>R</strong> - Read (Leer): obtener información desde la API.</li>
+    <li><strong>U</strong> - Update (Actualizar): modificar registros existentes.</li>
+    <li><strong>D</strong> - Delete (Eliminar): borrar registros del servidor.</li>
+  </ul>
+  <p>Estas son las 4 operaciones fundamentales en cualquier aplicación con base de datos.</p>
+</div>
+
+<div class="slide" data-title="¿Qué es Axios?">
+  <h2>¿Qué es Axios?</h2>
+  <ul>
+    <li>Axios es una librería basada en promesas para hacer peticiones HTTP desde JavaScript o React.</li>
+    <li>Alternativa más simple y poderosa que <code>fetch()</code>.</li>
+    <li>Soporta interceptores, headers personalizados, cancelación de peticiones y manejo de errores.</li>
+  </ul>
+  <pre><code>npm install axios</code></pre>
+  <p>Luego se importa con <code>import axios from "axios";</code>.</p>
+</div>
+
+<div class="slide" data-title="Configuración de Axios">
+  <h2>Configuración básica</h2>
+  <pre><code>// src/api/axios.js
+import axios from "axios";
+
+export default axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com", // API base
+  headers: { "Content-Type": "application/json" }
+});</code></pre>
+  <p>Esto permite centralizar la configuración y reutilizarla en tus componentes.</p>
+</div>
+
+<div class="slide" data-title="Leer datos (GET)">
+  <h2>Leer datos desde la API (GET)</h2>
+  <pre><code>import { useEffect, useState } from "react";
+import api from "../api/axios";
+
+export default function ListaUsuarios() {
+  const [usuarios, setUsuarios] = useState([]);
+
+  useEffect(() =&gt; {
+    api.get("/users")
+      .then(res =&gt; setUsuarios(res.data))
+      .catch(err =&gt; console.error("Error:", err));
+  }, []);
+
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;Usuarios&lt;/h3&gt;
+      &lt;ul&gt;
+        {usuarios.map(u =&gt; &lt;li key={u.id}&gt;{u.name}&lt;/li&gt;)}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+  <p>Se ejecuta con <code>useEffect</code> al montar el componente.</p>
+</div>
+
+<div class="slide" data-title="Crear datos (POST)">
+  <h2>Crear registros (POST)</h2>
+  <pre><code>import { useState } from "react";
+import api from "../api/axios";
+
+export default function FormUsuario() {
+  const [nombre, setNombre] = useState("");
+
+  function crearUsuario(e) {
+    e.preventDefault();
+    api.post("/users", { name: nombre })
+      .then(res =&gt; console.log("Creado:", res.data))
+      .catch(err =&gt; console.error("Error:", err));
+  }
+
+  return (
+    &lt;form onSubmit={crearUsuario}&gt;
+      &lt;input value={nombre} onChange={(e) =&gt; setNombre(e.target.value)} /&gt;
+      &lt;button type="submit"&gt;Agregar Usuario&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+  <p>Axios envía los datos en formato JSON por defecto.</p>
+</div>
+
+<div class="slide" data-title="Actualizar datos (PUT)">
+  <h2>Actualizar registros (PUT)</h2>
+  <pre><code>import api from "../api/axios";
+
+function actualizarUsuario(id, nuevoNombre) {
+  api.put(`/users/${id}`, { name: nuevoNombre })
+    .then(res =&gt; console.log("Actualizado:", res.data))
+    .catch(err =&gt; console.error(err));
+}</code></pre>
+  <p>El método <code>PUT</code> reemplaza los datos del registro especificado.</p>
+</div>
+
+<div class="slide" data-title="Eliminar datos (DELETE)">
+  <h2>Eliminar registros (DELETE)</h2>
+  <pre><code>function eliminarUsuario(id) {
+  api.delete(`/users/${id}`)
+    .then(() =&gt; console.log("Usuario eliminado"))
+    .catch(err =&gt; console.error(err));
+}</code></pre>
+  <p>El método <code>DELETE</code> elimina un recurso según su ID.</p>
+</div>
+
+<div class="slide" data-title="CRUD completo con Axios">
+  <h2>Ejemplo completo de CRUD</h2>
+  <pre><code>import { useEffect, useState } from "react";
+import api from "../api/axios";
+
+export default function Usuarios() {
+  const [usuarios, setUsuarios] = useState([]);
+  const [nombre, setNombre] = useState("");
+
+  useEffect(() =&gt; {
+    api.get("/users").then(res =&gt; setUsuarios(res.data));
+  }, []);
+
+  function agregarUsuario(e) {
+    e.preventDefault();
+    api.post("/users", { name: nombre }).then(res =&gt; {
+      setUsuarios([...usuarios, res.data]);
+      setNombre("");
+    });
+  }
+
+  function eliminarUsuario(id) {
+    api.delete(`/users/${id}`).then(() =&gt; {
+      setUsuarios(usuarios.filter(u =&gt; u.id !== id));
+    });
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;Gestión de Usuarios&lt;/h3&gt;
+      &lt;form onSubmit={agregarUsuario}&gt;
+        &lt;input value={nombre} onChange={e =&gt; setNombre(e.target.value)} /&gt;
+        &lt;button type="submit"&gt;Agregar&lt;/button&gt;
+      &lt;/form&gt;
+      &lt;ul&gt;
+        {usuarios.map(u =&gt; (
+          &lt;li key={u.id}&gt;
+            {u.name} &lt;button onClick={() =&gt; eliminarUsuario(u.id)}&gt;❌&lt;/button&gt;
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+</div>
+
+<div class="slide" data-title="Manejo de errores">
+  <h2>Manejo de errores con Axios</h2>
+  <pre><code>api.get("/users")
+  .then(res =&gt; console.log(res.data))
+  .catch(error =&gt; {
+    if (error.response) {
+      console.log("Error del servidor:", error.response.status);
+    } else if (error.request) {
+      console.log("No hubo respuesta del servidor");
+    } else {
+      console.log("Error:", error.message);
+    }
+  });</code></pre>
+  <p>Axios ofrece detalles sobre el tipo de error (respuesta, conexión o código).</p>
+</div>
+
+<div class="slide" data-title="Interceptores de Axios">
+  <h2>Interceptores de peticiones</h2>
+  <pre><code>api.interceptors.request.use(config =&gt; {
+  console.log("Petición:", config.method, config.url);
+  return config;
+});</code></pre>
+  <p>Los interceptores permiten modificar o registrar peticiones antes de enviarlas.</p>
+</div>
+
+<div class="slide" data-title="Buenas prácticas">
+  <h2>Buenas prácticas con CRUD en React</h2>
+  <ul>
+    <li>Centralizar las llamadas API en una carpeta <code>api/</code>.</li>
+    <li>Usar <code>async/await</code> para código más legible.</li>
+    <li>Controlar estados de carga (<code>loading</code>) y error.</li>
+    <li>Actualizar el estado local sin recargar toda la lista.</li>
+    <li>Validar los datos antes de enviarlos al servidor.</li>
+  </ul>
+</div>
+
+<div class="slide" data-title="Ejercicio Guiado">
+  <h2>Ejercicio Guiado 🧠</h2>
+  <ol>
+    <li>Configura Axios con una API pública (<code>https://jsonplaceholder.typicode.com</code>).</li>
+    <li>Crea una interfaz CRUD para usuarios o tareas.</li>
+    <li>Implementa las operaciones de lectura, creación, actualización y eliminación.</li>
+    <li>Muestra mensajes de éxito o error en pantalla.</li>
+    <li>Extra: agrega un spinner de carga y confirmación antes de eliminar.</li>
+  </ol>
+</div>
+
+<div class="slide" data-title="Resumen">
+  <h2>Resumen de la Lección</h2>
+  <ul>
+    <li>CRUD define las operaciones básicas de datos en una app web.</li>
+    <li>Axios simplifica las peticiones HTTP y el manejo de errores.</li>
+    <li>React usa estado y efectos para conectar con APIs de forma dinámica.</li>
+    <li>Centraliza la lógica API para mantener el código limpio y escalable.</li>
+  </ul>
+  <p>🚀 Con esto puedes construir interfaces completas conectadas a cualquier backend.</p>
+</div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

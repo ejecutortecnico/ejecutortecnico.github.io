@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    
+<!-- Slide 1: Título -->
+<div class="slide">
+    <h1>Relaciones en Bases de Datos MySQL</h1>
+    <p>Comprendiendo cómo se conectan las tablas para organizar la información.</p>
+</div>
+
+<!-- Slide 2: ¿Qué es una relación? -->
+<div class="slide">
+    <h2>¿Qué es una Relación?</h2>
+    <p>Una relación es un vínculo lógico entre dos tablas basado en campos en común.</p>
+    <ul>
+        <li>Permiten conectar información relacionada.</li>
+        <li>Evitan duplicar datos.</li>
+        <li>Mantienen la integridad de la base de datos.</li>
+    </ul>
+</div>
+
+<!-- Slide 3: Llaves primarias -->
+<div class="slide">
+    <h2>Clave Primaria (PRIMARY KEY)</h2>
+    <p>Es un campo que identifica de forma única cada registro de una tabla.</p>
+    <pre><code>
+CREATE TABLE usuarios (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(50)
+);
+    </code></pre>
+</div>
+
+<!-- Slide 4: Llaves foráneas -->
+<div class="slide">
+    <h2>Clave Foránea (FOREIGN KEY)</h2>
+    <p>Es un campo que crea una relación con la clave primaria de otra tabla.</p>
+    <pre><code>
+CREATE TABLE pedidos (
+    id INT PRIMARY KEY,
+    usuario_id INT,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+    </code></pre>
+</div>
+
+<!-- Slide 5: Tipos de Relaciones -->
+<div class="slide">
+    <h2>Tipos de Relaciones</h2>
+    <ul>
+        <li><strong>1 a 1 (Uno a Uno)</strong></li>
+        <li><strong>1 a N (Uno a Muchos)</strong></li>
+        <li><strong>N a M (Muchos a Muchos)</strong></li>
+    </ul>
+</div>
+
+<!-- Slide 6: Relación 1 a N -->
+<div class="slide">
+    <h2>Relación Uno a Muchos (1 a N)</h2>
+    <p>Un registro de una tabla puede estar relacionado con varios registros de otra tabla.</p>
+    <p><em>Ejemplo: Un usuario puede tener muchos pedidos.</em></p>
+</div>
+
+<!-- Slide 7: Relación N a M -->
+<div class="slide">
+    <h2>Relación Muchos a Muchos (N a M)</h2>
+    <p>Requiere una tabla intermedia para manejar la relación.</p>
+    <pre><code>
+CREATE TABLE curso_estudiante (
+    curso_id INT,
+    estudiante_id INT,
+    PRIMARY KEY (curso_id, estudiante_id)
+);
+    </code></pre>
+</div>
+
+<!-- Slide 8: Integridad Referencial -->
+<div class="slide">
+    <h2>Integridad Referencial</h2>
+    <p>Garantiza que las relaciones entre tablas sean consistentes.</p>
+    <ul>
+        <li>Evita eliminar datos que aún están siendo usados.</li>
+        <li>Asegura que las claves foráneas apunten a registros existentes.</li>
+    </ul>
+</div>
+
+<!-- Slide 9: Ejemplo Visual -->
+<div class="slide">
+    <h2>Ejemplo Visual</h2>
+    <p>Usuarios (1) → (N) Pedidos</p>
+    <pre><code>
+usuarios
+---------
+id | nombre
+
+pedidos
+---------
+id | usuario_id | detalle
+    </code></pre>
+</div>
+
+<!-- Slide 10: Conclusión -->
+<div class="slide">
+    <h2>Conclusión</h2>
+    <p>Las relaciones en MySQL permiten trabajar con datos de manera organizada, eficiente y consistente.</p>
+    <p>Son la base del diseño de bases de datos relacionales.</p>
+</div>
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

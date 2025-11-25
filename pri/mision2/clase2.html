@@ -77,8 +77,8 @@
                 <div class="slide" data-title="Rutas básicas">
                 <h2>Rutas Básicas</h2>
                 <pre><code>@app.route("/")
-                def home():
-                    return "Bienvenido a la página principal"</code></pre>
+def home():
+    return "Bienvenido a la página principal"</code></pre>
                 <p>Las rutas asocian una URL con una función de Python.</p>
                 </div>
 
@@ -86,25 +86,25 @@
                 <h2>Vistas que devuelven HTML</h2>
                 <pre><code>from flask import render_template
 
-                @app.route("/about")
-                def about():
-                    return render_template("about.html")</code></pre>
-                <p>Los archivos HTML se guardan en la carpeta <code>/templates</code>.</p>
+@app.route("/about")
+def about():
+    return render_template("about.html")</code></pre>
+<p>Los archivos HTML se guardan en la carpeta <code>/templates</code>.</p>
                 </div>
 
                 <div class="slide" data-title="Parámetros en rutas">
                 <h2>Parámetros en Rutas</h2>
-                <pre><code>@app.route("/user/&lt;nombre&gt;")
-                def usuario(nombre):
-                    return f"Hola {nombre}!"</code></pre>
+<pre><code>@app.route("/user/&lt;nombre&gt;")
+def usuario(nombre):
+    return f"Hola {nombre}!"</code></pre>
                 <p>Permite rutas dinámicas como <code>/user/Ana</code> o <code>/user/Juan</code>.</p>
                 </div>
 
                 <div class="slide" data-title="Tipos de parámetros">
                 <h2>Tipos de Parámetros</h2>
-                <pre><code>@app.route("/post/&lt;int:id&gt;")
-                def post(id):
-                    return f"Mostrando post {id}"</code></pre>
+<pre><code>@app.route("/post/&lt;int:id&gt;")
+def post(id):
+    return f"Mostrando post {id}"</code></pre>
                 <ul>
                     <li><b>string</b> (por defecto)</li>
                     <li><b>int</b></li>
@@ -115,22 +115,22 @@
 
                 <div class="slide" data-title="Query parameters">
                 <h2>Parámetros de Consulta (Query Params)</h2>
-                <pre><code>from flask import request
+<pre><code>from flask import request
 
-                @app.route("/search")
-                def search():
-                    q = request.args.get("q")
-                    return f"Buscando: {q}"</code></pre>
+@app.route("/search")
+def search():
+    q = request.args.get("q")
+    return f"Buscando: {q}"</code></pre>
                 <p>Se llaman con URL tipo: <code>/search?q=flask</code></p>
                 </div>
 
                 <div class="slide" data-title="Métodos HTTP">
                 <h2>Métodos HTTP</h2>
-                <pre><code>@app.route("/login", methods=["GET", "POST"])
-                def login():
-                    if request.method == "POST":
-                        return "Procesando login"
-                    return "Formulario de login"</code></pre>
+<pre><code>@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        return "Procesando login"
+    return "Formulario de login"</code></pre>
                 <ul>
                     <li><b>GET:</b> obtener datos.</li>
                     <li><b>POST:</b> enviar datos.</li>
@@ -140,18 +140,18 @@
 
                 <div class="slide" data-title="Respuestas JSON">
                 <h2>Respuestas en JSON</h2>
-                <pre><code>@app.route("/api/info")
-                def info():
-                    return jsonify({"curso": "Flask", "nivel": "intermedio"})</code></pre>
+<pre><code>@app.route("/api/info")
+def info():
+    return jsonify({"curso": "Flask", "nivel": "intermedio"})</code></pre>
                 </div>
 
                 <div class="slide" data-title="Redirecciones">
                 <h2>Redirecciones</h2>
-                <pre><code>from flask import redirect, url_for
+<pre><code>from flask import redirect, url_for
 
-                @app.route("/old")
-                def old():
-                    return redirect(url_for("home"))</code></pre>
+@app.route("/old")
+def old():
+    return redirect(url_for("home"))</code></pre>
                 <p>Redirige a la ruta <code>home</code>.</p>
                 </div>
 

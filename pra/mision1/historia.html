@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <!-- SLIDE 1 -->
+<div class="slide">
+  <div class="container">
+    <h1>Preparación (Lección 1)</h1>
+    <h2>Introducción a Node.js y Express</h2>
+    <p>En esta lección conocerás el origen de Node.js, por qué fue creado y por qué es tan importante en el desarrollo web moderno.</p>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+  <div class="container">
+    <h2>A. Introducción a Node.js</h2>
+    <p>Node.js es un entorno de ejecución que permite usar JavaScript fuera del navegador, especialmente para crear servidores y APIs.</p>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <div class="container">
+    <h2>Historia de Node.js</h2>
+    <p>
+      Node.js fue creado en 2009 por <strong>Ryan Dahl</strong> con el objetivo de resolver un problema común:
+      los servidores web tradicionales eran lentos y poco eficientes cuando manejaban muchas conexiones.
+    </p>
+    <p>
+      Antes de Node.js, servidores como Apache creaban un hilo por cada petición,
+      lo que consumía demasiados recursos cuando miles de usuarios accedían al mismo tiempo.
+    </p>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <div class="container">
+    <h2>La idea que inspiró a Ryan Dahl</h2>
+    <p>
+      Dahl notó que aplicaciones como Flickr no podían actualizar en tiempo real
+      una barra de progreso de carga de archivos debido a la forma bloqueante
+      en que funcionaban los servidores.
+    </p>
+    <p>
+      Esto lo llevó a crear un sistema donde el servidor pudiera atender muchas solicitudes
+      sin quedarse "esperando" a que termine una tarea.
+    </p>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  <div class="container">
+    <h2>¿Por qué usar JavaScript para Node.js?</h2>
+    <ul>
+      <li>JavaScript es de un solo hilo, ideal para trabajar con eventos.</li>
+      <li>Ya estaba diseñado para trabajar de forma no bloqueante.</li>
+      <li>Se integró con el motor V8 de Google, extremadamente rápido.</li>
+    </ul>
+    <p>Esto permitió crear servidores rápidos, modernos y muy eficientes.</p>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+  <div class="container">
+    <h2>¿Qué logró Node.js?</h2>
+    <p>
+      Node.js permitió crear aplicaciones capaces de manejar miles de usuarios al mismo tiempo
+      sin bloquear el sistema.
+    </p>
+    <p>Esto lo hizo ideal para:</p>
+    <ul>
+      <li>Chats en tiempo real</li>
+      <li>Aplicaciones colaborativas</li>
+      <li>Juegos online</li>
+      <li>APIs profesionales</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+  <div class="container">
+    <h2>Características principales de Node.js</h2>
+    <ul>
+      <li>Basado en el motor V8 de Google (alto rendimiento).</li>
+      <li>Modelo de ejecución no bloqueante.</li>
+      <li>Arquitectura basada en eventos.</li>
+      <li>Excelente para aplicaciones modernas y escalables.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+  <div class="container">
+    <h2>Modelo No Bloqueante</h2>
+    <p>
+      Node.js puede iniciar una tarea (por ejemplo, leer un archivo) y seguir trabajando en otras
+      solicitudes mientras esa tarea termina.
+    </p>
+    <p>Esto mejora mucho el rendimiento en sistemas con muchos usuarios conectados.</p>
+  </div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+  <div class="container">
+    <h2>Event Loop (Bucle de eventos)</h2>
+    <p>
+      Aunque Node.js usa un solo hilo principal, utiliza un sistema llamado <strong>Event Loop</strong>
+      para atender muchas solicitudes al mismo tiempo.
+    </p>
+    <p>
+      Esto lo hace eficiente, rápido y capaz de manejar aplicaciones de alto tráfico.
+    </p>
+  </div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+  <div class="container">
+    <h2>NPM: El ecosistema de paquetes</h2>
+    <p>
+      Node.js incluye NPM (Node Package Manager), una plataforma con millones de librerías listas para usar.
+    </p>
+    <ul>
+      <li>Autenticación</li>
+      <li>Seguridad</li>
+      <li>Conexión a bases de datos</li>
+      <li>Frameworks como Express</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide">
+  <div class="container">
+    <h2>Node.js es Multiplataforma</h2>
+    <p>Funciona en:</p>
+    <ul>
+      <li>Windows</li>
+      <li>Linux</li>
+      <li>macOS</li>
+    </ul>
+    <p>Una misma aplicación puede ejecutarse en cualquier sistema sin modificar el código.</p>
+  </div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide">
+  <div class="container">
+    <h2>Node.js y desarrollo Full Stack</h2>
+    <p>
+      Con Node.js puedes usar JavaScript tanto en frontend como en backend.
+    </p>
+    <p>
+      Esto permite a los desarrolladores trabajar con un solo lenguaje en toda la aplicación.
+    </p>
+  </div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide">
+  <div class="container">
+    <h2>Escalabilidad de Node.js</h2>
+    <ul>
+      <li>Puede crecer agregando más potencia al servidor (escalado vertical).</li>
+      <li>Puede crecer agregando más servidores (escalado horizontal).</li>
+      <li>Utiliza módulos como Cluster para aprovechar múltiples núcleos del CPU.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide">
+  <div class="container">
+    <h2>Casos de uso reales de Node.js</h2>
+    <ul>
+      <li>Netflix y YouTube (streaming)</li>
+      <li>PayPal y Walmart (APIs y microservicios)</li>
+      <li>Slack y Trello (colaboración en tiempo real)</li>
+      <li>IoT (Internet de las cosas)</li>
+      <li>Redes sociales y chats</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide">
+  <div class="container">
+    <h2>Conclusión sobre Node.js</h2>
+    <p>
+      Node.js transformó el desarrollo web moderno, permitiendo crear aplicaciones:
+    </p>
+    <ul>
+      <li>Rápidas</li>
+      <li>Escalables</li>
+      <li>Modernas</li>
+      <li>Profesionales</li>
+    </ul>
+  </div>
+</div>
+
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

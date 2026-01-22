@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/estilos.css">
+</head>
+    <body>
+        <div class="container">
+    <div class="slide">
+  <h1>Módulo 2</h1>
+  <h2>Fundamentos de Python para Inteligencia Artificial</h2>
+  <p>La base para crear modelos inteligentes</p>
+</div>
+
+<div class="slide">
+  <h1>¿Por qué Python para IA?</h1>
+  <ul>
+    <li>Fácil de aprender</li>
+    <li>Lenguaje más usado en IA</li>
+    <li>Gran cantidad de librerías</li>
+    <li>Usado por Google, Netflix, OpenAI, Meta</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Herramienta principal</h1>
+  <h2>Google Colab</h2>
+  <ul>
+    <li>No requiere instalación</li>
+    <li>Funciona desde el navegador</li>
+    <li>Permite ejecutar Python fácilmente</li>
+    <li>Ideal para trabajar con IA</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Variables en Python</h1>
+  <p>Una variable almacena información.</p>
+  <pre>
+x = 10
+nombre = "Ana"
+altura = 1.65
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Tipos de datos básicos</h1>
+  <ul>
+    <li>int → números enteros</li>
+    <li>float → números decimales</li>
+    <li>str → texto</li>
+    <li>bool → verdadero / falso</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Listas</h1>
+  <p>Permiten almacenar múltiples valores.</p>
+  <pre>
+numeros = [1, 2, 3, 4, 5]
+nombres = ["Ana", "Luis", "Carlos"]
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Diccionarios</h1>
+  <p>Guardan información con clave y valor.</p>
+  <pre>
+persona = {
+  "nombre": "Juan",
+  "edad": 25,
+  "ciudad": "Bogotá"
+}
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Condicionales</h1>
+  <p>Permiten tomar decisiones.</p>
+  <pre>
+edad = 18
+
+if edad >= 18:
+    print("Es mayor de edad")
+else:
+    print("Es menor de edad")
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Bucles (for)</h1>
+  <p>Permiten repetir acciones.</p>
+  <pre>
+for i in range(5):
+    print(i)
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Funciones</h1>
+  <p>Bloques reutilizables de código.</p>
+  <pre>
+def saludar(nombre):
+    return "Hola " + nombre
+
+print(saludar("Carlos"))
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Librerías clave para IA</h1>
+  <ul>
+    <li>NumPy → cálculos numéricos</li>
+    <li>Pandas → análisis de datos</li>
+    <li>Matplotlib → visualización</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Ejemplo con Pandas</h1>
+  <pre>
+import pandas as pd
+
+datos = {
+  "nombre": ["Ana", "Luis", "Carlos"],
+  "edad": [20, 25, 30]
+}
+
+df = pd.DataFrame(datos)
+print(df)
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Lectura de archivos CSV</h1>
+  <p>Así se trabaja con datos reales:</p>
+  <pre>
+import pandas as pd
+
+df = pd.read_csv("datos.csv")
+print(df.head())
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Actividad práctica</h1>
+  <h2>Mini reto</h2>
+  <ul>
+    <li>Crea una lista con 5 números</li>
+    <li>Crea una función que calcule el promedio</li>
+    <li>Muestra el resultado en pantalla</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Cierre del módulo</h1>
+  <ul>
+    <li>Python es la base para trabajar con IA</li>
+    <li>Ya puedes leer y manipular datos</li>
+    <li>Estás listo para analizar datos reales</li>
+  </ul>
+  <p><strong>Siguiente módulo:</strong> Análisis y exploración de datos (EDA) 📊</p>
+</div>
+
+
+        <div class="nav">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+    <script src="../../js/slide.js"></script>
+    </body>
+</html>

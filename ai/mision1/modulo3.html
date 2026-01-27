@@ -10,134 +10,42 @@
 </head>
     <body>
         <div class="container">
-    <div class="slide">
-  <h1>Módulo 2</h1>
-  <h2>Fundamentos de Python para Inteligencia Artificial</h2>
-  <p>La base para crear modelos inteligentes</p>
+
+              <div class="slide">
+  <h1>Módulo 3</h1>
+  <h2>Análisis y Exploración de Datos (EDA)</h2>
+  <p>Entendiendo los datos antes de usar Inteligencia Artificial</p>
 </div>
 
 <div class="slide">
-  <h1>¿Por qué Python para IA?</h1>
+  <h1>¿Qué son los datos?</h1>
+  <p>Los datos son información que usamos para entrenar modelos de IA.</p>
   <ul>
-    <li>Fácil de aprender</li>
-    <li>Lenguaje más usado en IA</li>
-    <li>Gran cantidad de librerías</li>
-    <li>Usado por Google, Netflix, OpenAI, Meta</li>
+    <li>Números</li>
+    <li>Texto</li>
+    <li>Imágenes</li>
+    <li>Sonido</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Herramienta principal</h1>
-  <h2>Google Colab</h2>
+  <h1>¿Por qué analizar los datos?</h1>
   <ul>
-    <li>No requiere instalación</li>
-    <li>Funciona desde el navegador</li>
-    <li>Permite ejecutar Python fácilmente</li>
-    <li>Ideal para trabajar con IA</li>
+    <li>Para entender qué información tenemos</li>
+    <li>Para detectar errores</li>
+    <li>Para mejorar los modelos</li>
+    <li>Sin buenos datos, no hay buena IA</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Variables en Python</h1>
-  <p>Una variable almacena información.</p>
-  <pre>
-x = 10
-nombre = "Ana"
-altura = 1.65
-  </pre>
+  <h1>Concepto clave</h1>
+  <h2>Análisis Exploratorio de Datos (EDA)</h2>
+  <p>Es el proceso de explorar los datos antes de entrenar un modelo.</p>
 </div>
 
 <div class="slide">
-  <h1>Tipos de datos básicos</h1>
-  <ul>
-    <li>int → números enteros</li>
-    <li>float → números decimales</li>
-    <li>str → texto</li>
-    <li>bool → verdadero / falso</li>
-  </ul>
-</div>
-
-<div class="slide">
-  <h1>Listas</h1>
-  <p>Permiten almacenar múltiples valores.</p>
-  <pre>
-numeros = [1, 2, 3, 4, 5]
-nombres = ["Ana", "Luis", "Carlos"]
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Diccionarios</h1>
-  <p>Guardan información con clave y valor.</p>
-  <pre>
-persona = {
-  "nombre": "Juan",
-  "edad": 25,
-  "ciudad": "Bogotá"
-}
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Condicionales</h1>
-  <p>Permiten tomar decisiones.</p>
-  <pre>
-edad = 18
-
-if edad >= 18:
-    print("Es mayor de edad")
-else:
-    print("Es menor de edad")
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Bucles (for)</h1>
-  <p>Permiten repetir acciones.</p>
-  <pre>
-for i in range(5):
-    print(i)
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Funciones</h1>
-  <p>Bloques reutilizables de código.</p>
-  <pre>
-def saludar(nombre):
-    return "Hola " + nombre
-
-print(saludar("Carlos"))
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Librerías clave para IA</h1>
-  <ul>
-    <li>NumPy → cálculos numéricos</li>
-    <li>Pandas → análisis de datos</li>
-    <li>Matplotlib → visualización</li>
-  </ul>
-</div>
-
-<div class="slide">
-  <h1>Ejemplo con Pandas</h1>
-  <pre>
-import pandas as pd
-
-datos = {
-  "nombre": ["Ana", "Luis", "Carlos"],
-  "edad": [20, 25, 30]
-}
-
-df = pd.DataFrame(datos)
-print(df)
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Lectura de archivos CSV</h1>
-  <p>Así se trabaja con datos reales:</p>
+  <h1>Cargar datos con Pandas</h1>
   <pre>
 import pandas as pd
 
@@ -147,23 +55,105 @@ print(df.head())
 </div>
 
 <div class="slide">
-  <h1>Actividad práctica</h1>
-  <h2>Mini reto</h2>
+  <h1>Ver información general del dataset</h1>
+  <pre>
+print(df.shape)
+print(df.columns)
+print(df.info())
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Descripción estadística</h1>
+  <p>Nos muestra promedios, valores máximos, mínimos, etc.</p>
+  <pre>
+print(df.describe())
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Datos faltantes</h1>
+  <p>Los datos incompletos son muy comunes.</p>
+  <pre>
+print(df.isnull().sum())
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Limpiar datos faltantes</h1>
+  <pre>
+df = df.dropna()
+  </pre>
+  <p>O reemplazarlos:</p>
+  <pre>
+df.fillna(0, inplace=True)
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Seleccionar columnas</h1>
+  <pre>
+print(df["edad"])
+print(df[["edad", "salario"]])
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Filtrar datos</h1>
+  <pre>
+mayores = df[df["edad"] > 30]
+print(mayores)
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Visualización de datos</h1>
+  <p>Los gráficos ayudan a entender mejor los datos.</p>
+  <pre>
+import matplotlib.pyplot as plt
+
+df["edad"].hist()
+plt.show()
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Relación entre variables</h1>
+  <p>Ejemplo: edad vs salario</p>
+  <pre>
+df.plot(x="edad", y="salario", kind="scatter")
+plt.show()
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Conclusión del EDA</h1>
   <ul>
-    <li>Crea una lista con 5 números</li>
-    <li>Crea una función que calcule el promedio</li>
-    <li>Muestra el resultado en pantalla</li>
+    <li>Entender los datos es obligatorio</li>
+    <li>Detectamos errores y patrones</li>
+    <li>Preparamos el camino para Machine Learning</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Actividad práctica</h1>
+  <h2>Reto con datos reales</h2>
+  <ul>
+    <li>Carga un archivo CSV</li>
+    <li>Muestra las primeras filas</li>
+    <li>Identifica si hay datos faltantes</li>
+    <li>Crea al menos un gráfico</li>
   </ul>
 </div>
 
 <div class="slide">
   <h1>Cierre del módulo</h1>
   <ul>
-    <li>Python es la base para trabajar con IA</li>
-    <li>Ya puedes leer y manipular datos</li>
-    <li>Estás listo para analizar datos reales</li>
+    <li>Ahora puedes analizar datasets reales</li>
+    <li>Sabes limpiar y visualizar datos</li>
+    <li>Estás listo para crear modelos de IA</li>
   </ul>
-  <p><strong>Siguiente módulo:</strong> Análisis y exploración de datos (EDA) 📊</p>
+  <p><strong>Siguiente módulo:</strong> Introducción al Machine Learning 🤖</p>
 </div>
 
 

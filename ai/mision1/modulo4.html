@@ -10,149 +10,146 @@
 </head>
     <body>
         <div class="container">
-    <div class="slide">
-  <h1>Módulo 3</h1>
-  <h2>Análisis y Exploración de Datos (EDA)</h2>
-  <p>Entendiendo los datos antes de usar Inteligencia Artificial</p>
+
+          <div class="slide">
+  <h1>Módulo 4</h1>
+  <h2>Introducción al Machine Learning</h2>
+  <p>Cómo aprenden las máquinas a partir de datos</p>
 </div>
 
 <div class="slide">
-  <h1>¿Qué son los datos?</h1>
-  <p>Los datos son información que usamos para entrenar modelos de IA.</p>
+  <h1>¿Qué es Machine Learning?</h1>
+  <p>Machine Learning es una rama de la IA donde las máquinas aprenden a partir de datos, sin ser programadas con reglas fijas.</p>
+  <p><strong>Idea clave:</strong> más datos + buen algoritmo = mejores predicciones</p>
+</div>
+
+<div class="slide">
+  <h1>Ejemplo sencillo</h1>
   <ul>
-    <li>Números</li>
-    <li>Texto</li>
-    <li>Imágenes</li>
-    <li>Sonido</li>
+    <li>Le mostramos muchos correos a la máquina</li>
+    <li>Algunos son "spam" y otros "no spam"</li>
+    <li>La máquina aprende patrones</li>
+    <li>Luego puede clasificar correos nuevos</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>¿Por qué analizar los datos?</h1>
+  <h1>Tipos de aprendizaje</h1>
   <ul>
-    <li>Para entender qué información tenemos</li>
-    <li>Para detectar errores</li>
-    <li>Para mejorar los modelos</li>
-    <li>Sin buenos datos, no hay buena IA</li>
+    <li><strong>Supervisado:</strong> datos con respuesta conocida</li>
+    <li><strong>No supervisado:</strong> datos sin etiquetas</li>
+    <li><strong>Por refuerzo:</strong> aprender por premios y castigos</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Concepto clave</h1>
-  <h2>Análisis Exploratorio de Datos (EDA)</h2>
-  <p>Es el proceso de explorar los datos antes de entrenar un modelo.</p>
-</div>
-
-<div class="slide">
-  <h1>Cargar datos con Pandas</h1>
-  <pre>
-import pandas as pd
-
-df = pd.read_csv("datos.csv")
-print(df.head())
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Ver información general del dataset</h1>
-  <pre>
-print(df.shape)
-print(df.columns)
-print(df.info())
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Descripción estadística</h1>
-  <p>Nos muestra promedios, valores máximos, mínimos, etc.</p>
-  <pre>
-print(df.describe())
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Datos faltantes</h1>
-  <p>Los datos incompletos son muy comunes.</p>
-  <pre>
-print(df.isnull().sum())
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Limpiar datos faltantes</h1>
-  <pre>
-df = df.dropna()
-  </pre>
-  <p>O reemplazarlos:</p>
-  <pre>
-df.fillna(0, inplace=True)
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Seleccionar columnas</h1>
-  <pre>
-print(df["edad"])
-print(df[["edad", "salario"]])
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Filtrar datos</h1>
-  <pre>
-mayores = df[df["edad"] > 30]
-print(mayores)
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Visualización de datos</h1>
-  <p>Los gráficos ayudan a entender mejor los datos.</p>
-  <pre>
-import matplotlib.pyplot as plt
-
-df["edad"].hist()
-plt.show()
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Relación entre variables</h1>
-  <p>Ejemplo: edad vs salario</p>
-  <pre>
-df.plot(x="edad", y="salario", kind="scatter")
-plt.show()
-  </pre>
-</div>
-
-<div class="slide">
-  <h1>Conclusión del EDA</h1>
+  <h1>Aprendizaje Supervisado</h1>
+  <p>La máquina aprende con ejemplos que ya tienen respuesta.</p>
   <ul>
-    <li>Entender los datos es obligatorio</li>
-    <li>Detectamos errores y patrones</li>
-    <li>Preparamos el camino para Machine Learning</li>
+    <li>Entrada: edad, notas, asistencia</li>
+    <li>Salida: aprobado / reprobado</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Aprendizaje No Supervisado</h1>
+  <p>La máquina busca patrones sin que le demos respuestas.</p>
+  <ul>
+    <li>Agrupar clientes por comportamiento</li>
+    <li>Detectar patrones ocultos</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Conceptos clave en Machine Learning</h1>
+  <ul>
+    <li><strong>Datos (X):</strong> la información de entrada</li>
+    <li><strong>Etiquetas (y):</strong> la respuesta correcta</li>
+    <li><strong>Modelo:</strong> el algoritmo que aprende</li>
+    <li><strong>Entrenar:</strong> enseñar al modelo con datos</li>
+    <li><strong>Predecir:</strong> usar el modelo con datos nuevos</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>¿Qué es un modelo?</h1>
+  <p>Es un programa matemático que encuentra patrones en los datos.</p>
+  <p>Ejemplos de modelos:</p>
+  <ul>
+    <li>Regresión lineal</li>
+    <li>Árboles de decisión</li>
+    <li>Redes neuronales</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Entrenamiento vs Predicción</h1>
+  <ul>
+    <li><strong>Entrenar:</strong> el modelo aprende con ejemplos</li>
+    <li><strong>Predecir:</strong> el modelo responde con datos nuevos</li>
+  </ul>
+  <p>Así como un estudiante primero estudia y luego presenta el examen.</p>
+</div>
+
+<div class="slide">
+  <h1>¿Qué es Scikit-learn?</h1>
+  <p>Es la librería más importante de Machine Learning en Python.</p>
+  <ul>
+    <li>Contiene modelos listos para usar</li>
+    <li>Fácil de aprender</li>
+    <li>Muy usada en la industria</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Primer modelo simple</h1>
+  <p>Ejemplo conceptual con Scikit-learn:</p>
+  <pre>
+from sklearn.linear_model import LinearRegression
+
+modelo = LinearRegression()
+modelo.fit(X, y)
+prediccion = modelo.predict([[5]])
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Overfitting (sobreajuste)</h1>
+  <p>Ocurre cuando el modelo memoriza los datos en lugar de aprender.</p>
+  <ul>
+    <li>Funciona perfecto con datos conocidos</li>
+    <li>Falla con datos nuevos</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Buena práctica en IA</h1>
+  <ul>
+    <li>Usar datos de entrenamiento</li>
+    <li>Usar datos de prueba</li>
+    <li>Evaluar siempre el modelo</li>
+    <li>No confiarse de un solo resultado</li>
   </ul>
 </div>
 
 <div class="slide">
   <h1>Actividad práctica</h1>
-  <h2>Reto con datos reales</h2>
+  <h2>Reflexión guiada</h2>
   <ul>
-    <li>Carga un archivo CSV</li>
-    <li>Muestra las primeras filas</li>
-    <li>Identifica si hay datos faltantes</li>
-    <li>Crea al menos un gráfico</li>
+    <li>Piensa en un problema que tenga datos de entrada</li>
+    <li>¿Qué podría predecir una máquina?</li>
+    <li>Ejemplo: notas → aprobado o no</li>
   </ul>
 </div>
 
 <div class="slide">
   <h1>Cierre del módulo</h1>
   <ul>
-    <li>Ahora puedes analizar datasets reales</li>
-    <li>Sabes limpiar y visualizar datos</li>
-    <li>Estás listo para crear modelos de IA</li>
+    <li>Ahora entiendes cómo aprenden las máquinas</li>
+    <li>Conoces los conceptos fundamentales de ML</li>
+    <li>Estás listo para construir modelos reales</li>
   </ul>
-  <p><strong>Siguiente módulo:</strong> Introducción al Machine Learning 🤖</p>
+  <p><strong>Siguiente módulo:</strong> Modelos Supervisados 📈</p>
 </div>
 
 

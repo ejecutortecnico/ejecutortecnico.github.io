@@ -10,7 +10,147 @@
 </head>
     <body>
         <div class="container">
-    
+    <div class="slide">
+  <h1>Módulo 6</h1>
+  <h2>Aprendizaje No Supervisado</h2>
+  <p>Cuando la máquina descubre patrones por sí sola</p>
+</div>
+
+<div class="slide">
+  <h1>¿Qué es el aprendizaje no supervisado?</h1>
+  <p>Es cuando la máquina trabaja con datos que no tienen respuesta correcta.</p>
+  <ul>
+    <li>No hay etiquetas (y)</li>
+    <li>El modelo busca patrones ocultos</li>
+    <li>Se usa para descubrir estructuras</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Ejemplo sencillo</h1>
+  <ul>
+    <li>Tienda con muchos clientes</li>
+    <li>No sabemos qué tipo de cliente es cada uno</li>
+    <li>La IA los agrupa por comportamiento</li>
+    <li>Resultado: grupos de clientes similares</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>¿Para qué se usa?</h1>
+  <ul>
+    <li>Segmentación de clientes</li>
+    <li>Análisis de comportamiento</li>
+    <li>Detección de patrones ocultos</li>
+    <li>Organización de grandes volúmenes de datos</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Clustering (Agrupamiento)</h1>
+  <p>Consiste en agrupar datos similares en grupos llamados clusters.</p>
+  <ul>
+    <li>Grupo 1: datos parecidos entre sí</li>
+    <li>Grupo 2: otro tipo de datos</li>
+    <li>Grupo 3: otro patrón distinto</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>K-Means</h1>
+  <p>Es el algoritmo de clustering más conocido.</p>
+  <ul>
+    <li>Elige un número de grupos (K)</li>
+    <li>Agrupa los datos automáticamente</li>
+    <li>Cada dato pertenece al grupo más cercano</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Ejemplo de K-Means</h1>
+  <pre>
+from sklearn.cluster import KMeans
+
+modelo = KMeans(n_clusters=3)
+modelo.fit(X)
+
+grupos = modelo.predict(X)
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Ejemplo práctico</h1>
+  <ul>
+    <li>Datos: edad e ingresos de clientes</li>
+    <li>K = 3 grupos</li>
+    <li>Resultado:</li>
+    <li>Grupo 1: jóvenes con bajos ingresos</li>
+    <li>Grupo 2: adultos con ingresos medios</li>
+    <li>Grupo 3: clientes premium</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Visualizar los grupos</h1>
+  <p>Los gráficos permiten entender mejor los clusters.</p>
+  <pre>
+import matplotlib.pyplot as plt
+
+plt.scatter(X[:,0], X[:,1], c=grupos)
+plt.show()
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>¿Qué es la reducción de dimensiones?</h1>
+  <p>Es una técnica para simplificar datos con muchas columnas.</p>
+  <ul>
+    <li>Menos variables</li>
+    <li>Más fácil de visualizar</li>
+    <li>Más fácil de entender</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Idea básica de PCA</h1>
+  <p>PCA permite resumir información importante en menos variables.</p>
+  <ul>
+    <li>No entraremos en matemáticas profundas</li>
+    <li>Lo usamos como herramienta práctica</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Diferencia clave</h1>
+  <ul>
+    <li>Supervisado: hay respuestas correctas</li>
+    <li>No supervisado: no hay respuestas</li>
+    <li>Supervisado: predecir</li>
+    <li>No supervisado: descubrir</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Actividad práctica</h1>
+  <h2>Reto de agrupamiento</h2>
+  <ul>
+    <li>Usa un dataset con varias columnas</li>
+    <li>Aplica K-Means con K=3</li>
+    <li>Observa cuántos grupos aparecen</li>
+    <li>Reflexiona: ¿qué representa cada grupo?</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Cierre del módulo</h1>
+  <ul>
+    <li>Ahora puedes descubrir patrones ocultos</li>
+    <li>Sabes agrupar datos automáticamente</li>
+    <li>Estás listo para explorar IA moderna</li>
+  </ul>
+  <p><strong>Siguiente módulo:</strong> IA Moderna e IA Generativa 🧠✨</p>
+</div>
+
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>

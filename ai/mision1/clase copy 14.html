@@ -11,6 +11,138 @@
     <body>
         <div class="container">
     
+<!-- Slide 1: Título -->
+<div class="slide">
+  <h1>Clasificación con Dataset de Diabetes</h1>
+  <p>Exploración de varios modelos de ML y evaluación de su desempeño</p>
+  <p>Dataset: Diabetes Dataset (Kaggle)</p>
+</div>
+
+<!-- Slide 2: Carga de datos -->
+<div class="slide">
+  <h2>Carga de Datos</h2>
+  <p>Importamos y vemos las primeras filas del dataset:</p>
+  <pre>
+from sklearn.model_selection import train_test_split
+import pandas as pd
+
+df = pd.read_csv("diabetes.csv")
+df.head()
+  </pre>
+  <p>El dataset contiene 768 registros y 8 características</p>
+</div>
+
+<!-- Slide 3: Preprocesamiento -->
+<div class="slide">
+  <h2>Preprocesamiento</h2>
+  <p>Separamos características y etiqueta, y dividimos en entrenamiento y prueba:</p>
+  <pre>
+X = df.drop("Outcome", axis=1)
+y = df["Outcome"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+  </pre>
+</div>
+
+<!-- Slide 4: Entrenamiento - Regresión Logística -->
+<div class="slide">
+  <h2>Modelo: Regresión Logística</h2>
+  <pre>
+from sklearn.linear_model import LogisticRegression
+model_lr = LogisticRegression(max_iter=1000)
+model_lr.fit(X_train, y_train)
+
+score_lr = model_lr.score(X_test, y_test)
+print("Accuracy Regresión Logística:", score_lr)
+  </pre>
+  <p>La regresión logística es un modelo lineal básico para clasificación binaria</p>
+</div>
+
+<!-- Slide 5: Entrenamiento - KNN -->
+<div class="slide">
+  <h2>Modelo: K-Nearest Neighbors (KNN)</h2>
+  <pre>
+from sklearn.neighbors import KNeighborsClassifier
+model_knn = KNeighborsClassifier(n_neighbors=5)
+model_knn.fit(X_train, y_train)
+
+score_knn = model_knn.score(X_test, y_test)
+print("Accuracy KNN:", score_knn)
+  </pre>
+  <p>KNN clasifica según vecinos más cercanos</p>
+</div>
+
+<!-- Slide 6: Entrenamiento - Árbol de Decisión -->
+<div class="slide">
+  <h2>Modelo: Árbol de Decisión</h2>
+  <pre>
+from sklearn.tree import DecisionTreeClassifier
+model_dt = DecisionTreeClassifier(random_state=42)
+model_dt.fit(X_train, y_train)
+
+score_dt = model_dt.score(X_test, y_test)
+print("Accuracy Árbol de Decisión:", score_dt)
+  </pre>
+</div>
+
+<!-- Slide 7: Entrenamiento - Random Forest -->
+<div class="slide">
+  <h2>Modelo: Random Forest</h2>
+  <pre>
+from sklearn.ensemble import RandomForestClassifier
+model_rf = RandomForestClassifier(n_estimators=100, random_state=42)
+model_rf.fit(X_train, y_train)
+
+score_rf = model_rf.score(X_test, y_test)
+print("Accuracy Random Forest:", score_rf)
+  </pre>
+  <p>Random Forest es un ensamble de árboles</p>
+</div>
+
+<!-- Slide 8: Evaluación con Matriz de Confusión -->
+<div class="slide">
+  <h2>Matriz de Confusión</h2>
+  <pre>
+from sklearn.metrics import confusion_matrix
+
+y_pred = model_rf.predict(X_test)
+cm = confusion_matrix(y_test, y_pred)
+print("Matriz de Confusión:\n", cm)
+  </pre>
+  <p>Permite ver verdaderos/falsos positivos y negativos</p>
+</div>
+
+<!-- Slide 9: Métricas adicionales -->
+<div class="slide">
+  <h2>Métricas de Evaluación</h2>
+  <pre>
+from sklearn.metrics import classification_report
+
+print(classification_report(y_test, y_pred))
+  </pre>
+  <p>Incluye precision, recall y F1-score</p>
+</div>
+
+<!-- Slide 10: Comparación de Modelos -->
+<div class="slide">
+  <h2>Comparación Final de Modelos</h2>
+  <p>Resultados de accuracy:</p>
+  <ul>
+    <li>Regresión Logística: <strong>score_lr</strong></li>
+    <li>KNN: <strong>score_knn</strong></li>
+    <li>Árbol de Decisión: <strong>score_dt</strong></li>
+    <li>Random Forest: <strong>score_rf</strong></li>
+  </ul>
+  <p>Analiza cuál generaliza mejor al conjunto de prueba</p>
+</div>
+
+<!-- Slide 11: Conclusión -->
+<div class="slide">
+  <h2>Conclusiones</h2>
+  <p>• Random Forest suele dar mejor rendimiento en este dataset</p>
+  <p>• KNN y modelos simples funcionan bien como baseline</p>
+  <p>• Evaluar con métricas completas es crucial</p>
+</div>
 
         <div class="nav">
             <button onclick="prevSlide()">Anterior</button>
